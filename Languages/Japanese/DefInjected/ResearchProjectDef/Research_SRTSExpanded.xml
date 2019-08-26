@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Research_SRTSMk2.label>SRTS Mk.2</Research_SRTSMk2.label>
+  <Research_SRTSMk2.description>X-11「Albatross」はもともと軍の惑星探査用シャトルとして設計されましたが、構成要素がSRTS(短距離輸送船:Short-Range-Transport-Shuttle)とほぼ完全に一致していることが判明しました。新しい視点と少しの改良により、より優れた燃費性能と効率性を兼ね備えた新しいSRTSの改良設計を研究できるかもしれません。</Research_SRTSMk2.description>
+
+  <Research_SRTSMk3.label>SRTS Mk.3</Research_SRTSMk3.label>
+  <Research_SRTSMk3.description>さらに研究を進めた結果、太古に絶滅したエイリアン文明によって使われていたた新しい技術を発見しました。この新型プロセスでは、宇宙船の建造で使用する材料を減らした上で、新しい技術を船に適用します。つまり、新しいモデルタイプは、より軽くより速く、同じ物理的外殻強度の限界を維持した上で以前よりも運搬能力を増加させる事が可能になります。</Research_SRTSMk3.description>
+
+</LanguageData>

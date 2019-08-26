@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <!-- SRTS MkII -->
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSMkII_Incoming</defName>
+    <label>SRTS Mk.II incoming</label>
+    <thingClass>DropPodIncoming</thingClass>
+    <graphicData>
+      <texPath>SRTSMk2</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>9</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6,6)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSMkII_Leaving</defName>
+    <label>SRTS Mk.II leaving</label>
+    <thingClass>SRTS.SRTSLeaving</thingClass>
+    <graphicData>
+      <texPath>SRTSMk2</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>9</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6,6)</shadowSize>
+      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>SRTSMkII_Active</defName>
+    <label>SRTS Mk.II active</label>
+    <category>Item</category>
+    <thingClass>ActiveDropPod</thingClass>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>SRTSMk2</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>9</drawSize>
+      <shadowData>
+        <volume>(0.8, 0.6, 0.8)</volume>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>2000</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <selectable>true</selectable>
+  </ThingDef>
+
+
+  <!-- SRTS MkIII -->
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSMkIII_Incoming</defName>
+    <label>SRTS Mk.III incoming</label>
+    <thingClass>DropPodIncoming</thingClass>
+    <graphicData>
+      <texPath>SRTSMk3</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>9</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6,6)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSMkIII_Leaving</defName>
+    <label>SRTS Mk.III leaving</label>
+    <thingClass>SRTS.SRTSLeaving</thingClass>
+    <graphicData>
+      <texPath>SRTSMk3</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>9</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6,6)</shadowSize>
+      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>SRTSMkIII_Active</defName>
+    <label>SRTS Mk.III active</label>
+    <category>Item</category>
+    <thingClass>ActiveDropPod</thingClass>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>SRTSMk3</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>9</drawSize>
+      <shadowData>
+        <volume>(0.8, 0.6, 0.8)</volume>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>3500</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <selectable>true</selectable>
+  </ThingDef>
+
+
+</Defs>

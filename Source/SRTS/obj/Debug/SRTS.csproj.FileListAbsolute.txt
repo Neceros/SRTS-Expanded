@@ -1,0 +1,5 @@
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\SRTS Expanded\Source\SRTS\obj\Debug\SRTS.csprojAssemblyReference.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\SRTS Expanded\Source\SRTS\obj\Debug\SRTS.csproj.CoreCompileInputs.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\SRTS Expanded\Source\SRTS\obj\Debug\SRTS.csproj.CopyComplete
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\SRTS Expanded\Assemblies\SRTS.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\SRTS Expanded\Source\SRTS\obj\Debug\SRTS.dll

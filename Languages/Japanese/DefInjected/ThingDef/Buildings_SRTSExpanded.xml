@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <SRTSMkII.label>SRTS:Mk-2 アルバトロス</SRTSMkII.label>
+  <SRTSMkII.description>X-11アルバトロス(アホウドリ)は、より高度な技術と技術によって、従来のSRTSとほぼ同じ重量クラスでありながら、より優れた燃費性能とより多くの燃料を積むことが可能です。</SRTSMkII.description>
+  <Blueprint_SRTSMkII.label>SRTS:Mk-2 アルバトロス(設計)</Blueprint_SRTSMkII.label>
+  <Frame_SRTSMkII.label>SRTS:Mk-2 アルバトロス(施行)</Frame_SRTSMkII.label>
+  <Frame_SRTSMkII.description>X-11アルバトロス(アホウドリ)は、より高度な技術と技術によって、従来のSRTSとほぼ同じ重量クラスでありながら、より優れた燃費性能とより多くの燃料を積むことが可能です。</Frame_SRTSMkII.description>
+
+  <SRTSMkIII.label>SRTS:Mk-3 フェニックス</SRTSMkIII.label>
+  <SRTSMkIII.description>フェニックスはアルバトロスと同程度の燃費性能を実現しましたが、予備燃料タンクと積載量が増加しています。さらにMk-2と異なりより高度な化学的資源を必要としますが、破壊するのがより困難で、建設に必要な材料がより少なくなる長所があります。</SRTSMkIII.description>
+  <Blueprint_SRTSMkIII.label>SRTS:Mk-3 フェニックス(設計)</Blueprint_SRTSMkIII.label>
+  <Frame_SRTSMkIII.label>SRTS:Mk-3 フェニックス(施行)</Frame_SRTSMkIII.label>
+  <Frame_SRTSMkIII.description>フェニックスはアルバトロスと同程度の燃費性能を実現しましたが、予備燃料タンクと積載量が増加しています。さらにMk-2と異なりより高度な化学的資源を必要としますが、破壊するのがより困難で、建設に必要な材料がより少なくなる長所があります。</Frame_SRTSMkIII.description>
+
+</LanguageData>

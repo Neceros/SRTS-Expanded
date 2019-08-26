@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ResearchProjectDef>
+    <tab>SRTS</tab>
+    <defName>Research_SRTSMk2</defName>
+    <label>SRTS Mk. II</label>
+    <description>The Albatross X-11 was originally designed for military exoplanetary exploration, but you've realized the components match the SRTS almost exactly. With this new insight and some tinkering you might come up with an improved SRTS design with better fuel capacity and efficiency.</description>
+    <baseCost>5000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>SRTSBuild</li>
+    </prerequisites>
+    <researchViewX>0</researchViewX>
+    <researchViewY>2</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+	  	<li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <tab>SRTS</tab>
+    <defName>Research_SRTSMk3</defName>
+    <label>SRTS Mk. III</label>
+    <description>After more research, you discover a new technique originally used by an ancient exctinct alien civilization. This process infuses the ship with this technology while using fewer materials in the build, meaning the new model should be lighter, faster, and with more hauling capacity with the same physical outer shell limits.</description>
+    <baseCost>10000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>Research_SRTSMk2</li>
+    </prerequisites>
+    <researchViewX>0</researchViewX>
+    <researchViewY>3</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
+</Defs>

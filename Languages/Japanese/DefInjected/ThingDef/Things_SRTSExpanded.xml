@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- SRTS MkII -->
+
+  <SRTSMkII_Incoming.label>SRTS:Mk-2(着陸)</SRTSMkII_Incoming.label>
+  <SRTSMkII_Leaving.label>SRTS:Mk-2(離陸)</SRTSMkII_Leaving.label>
+  <SRTSMkII_Active.label>SRTS:Mk-2(始動)</SRTSMkII_Active.label>
+
+
+  <!-- SRTS MkIII -->
+
+  <SRTSMkIII_Incoming.label>SRTS:Mk-3(着陸)</SRTSMkIII_Incoming.label>
+  <SRTSMkIII_Leaving.label>SRTS:Mk-3(着陸)</SRTSMkIII_Leaving.label>
+  <SRTSMkIII_Active.label>SRTS:Mk-3(始動)</SRTSMkIII_Active.label>
+
+</LanguageData>
