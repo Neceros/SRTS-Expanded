@@ -25,7 +25,7 @@
       <MaxHitPoints>2000</MaxHitPoints>
       <WorkToBuild>15000</WorkToBuild>
       <Flammability>0.4</Flammability>
-      <Mass>114514</Mass>
+      <Mass>10560</Mass>
     </statBases>
     <costList>
       <Plasteel>240</Plasteel>
@@ -95,7 +95,7 @@
       <MaxHitPoints>3000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
-      <Mass>114514</Mass>
+      <Mass>17250</Mass>
     </statBases>
     <costList>
       <Plasteel>450</Plasteel>
