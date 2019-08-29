@@ -13,4 +13,10 @@
   <Frame_SRTSMkIII.label>SRTS:Mk-3 フェニックス(施行)</Frame_SRTSMkIII.label>
   <Frame_SRTSMkIII.description>フェニックスはアルバトロスと同程度の燃費性能を実現しましたが、予備燃料タンクと積載量が増加しています。さらにMk-2と異なりより高度な化学的資源を必要としますが、破壊するのがより困難で、建設に必要な材料がより少なくなる長所があります。</Frame_SRTSMkIII.description>
 
+  <SRTF.label>SRTF</SRTF.label>
+  <SRTF.description>SRTF(短距離輸送機:Short-Range-Transport-Freighter)は大型輸送貨物船です。大型というだけあり、かなり大量な荷物を輸送する事が可能で、また飛行に使う燃料も大量に積載できます。攻撃任務には適しません。\n\n[[重要な注意事項]]\nこの船をマップの端に着陸させてはいけません！\n最悪船が消滅します。</SRTF.description>
+  <Blueprint_SRTF.label>SRTF(設計)</Blueprint_SRTF.label>
+  <Frame_SRTF.label>SRTF(施行)</Frame_SRTF.label>
+  <Frame_SRTF.description>SRTF(短距離輸送機:Short-Range-Transport-Freighter)は大型輸送貨物船です。大型というだけあり、かなり大量な荷物を輸送する事が可能で、また飛行に使う燃料も大量に積載できます。攻撃任務には適しません。\n\n[[重要な注意事項]]\nこの船をマップの端に着陸させてはいけません！\n最悪船が消滅します。</Frame_SRTF.description>
+
 </LanguageData>

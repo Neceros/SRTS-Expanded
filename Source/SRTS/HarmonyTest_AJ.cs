@@ -16,18 +16,21 @@ namespace SRTS
     {
       foreach (ActiveDropPodInfo pod in pods)
       {
-        if (pod.innerContainer.Contains(ThingDef.Named("SRTSMkII")) ||
-            pod.innerContainer.Contains(ThingDef.Named("SRTSMkIII")))
+        for (int index = 0; index < pod.innerContainer.Count; index++)
         {
-          Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
-          Traverse traverse = Traverse.Create((object) __instance);
-          IntVec3 c = traverse.Field("cell").GetValue<IntVec3>();
-          Map map = traverse.Field("mapParent").GetValue<MapParent>().Map;
-          TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(pods);
-          for (int index = 0; index < pods.Count; ++index)
-            DropPodUtility.MakeDropPodAt(c, map, pods[index]);
-          Messages.Message("MessageTransportPodsArrived".Translate(), (LookTargets) lookTarget, MessageTypeDefOf.TaskCompletion, true);
-          return false;
+          // Neceros Edit
+          if (pod.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null)
+          {
+            Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
+            Traverse traverse = Traverse.Create((object)__instance);
+            IntVec3 c = traverse.Field("cell").GetValue<IntVec3>();
+            Map map = traverse.Field("mapParent").GetValue<MapParent>().Map;
+            TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(pods);
+            for (int i = 0; i < pods.Count; i++)
+              DropPodUtility.MakeDropPodAt(c, map, pods[i]);
+            Messages.Message("MessageTransportPodsArrived".Translate(), (LookTargets)lookTarget, MessageTypeDefOf.TaskCompletion, true);
+            return false;
+          }
         }
       }
       return true;

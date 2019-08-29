@@ -19,13 +19,14 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
-    <designationCategory>Misc</designationCategory>
+    <designationCategory>NECAircraft</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>2000</MaxHitPoints>
       <WorkToBuild>15000</WorkToBuild>
       <Flammability>0.4</Flammability>
       <Mass>10560</Mass>
+      <Beauty>50</Beauty>
     </statBases>
     <costList>
       <Plasteel>240</Plasteel>
@@ -89,13 +90,14 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
-    <designationCategory>Misc</designationCategory>
+    <designationCategory>NECAircraft</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>3000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
       <Mass>17250</Mass>
+      <Beauty>75</Beauty>
     </statBases>
     <costList>
       <Plasteel>450</Plasteel>
@@ -108,7 +110,7 @@
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.8</restEffectiveness>
-        <massCapacity>7500</massCapacity>
+        <massCapacity>6000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS" />
       <li Class="CompProperties_Refuelable">
@@ -139,6 +141,78 @@
     </researchPrerequisites>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <uiIconScale>0.25</uiIconScale>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRTF</defName>
+    <label>SRTF</label>
+    <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. 
+
+Not suitable for assault missions. Seriously, do NOT Drop this ship at the edge of a map!</description>
+    <graphicData>
+      <texPath>SRTSFreighter</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(15,15)</drawSize>
+      <shadowData>
+        <volume>(0.1, 0.1, 0.1)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(7,9)</size>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.8</fillPercent>
+    <designationCategory>NECAircraft</designationCategory>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>6000</MaxHitPoints>
+      <WorkToBuild>32000</WorkToBuild>
+      <Flammability>0.3</Flammability>
+      <Mass>55650</Mass>
+      <Beauty>25</Beauty>
+    </statBases>
+    <costList>
+      <Plasteel>150</Plasteel>
+      <Steel>2000</Steel>
+      <Gold>350</Gold>
+      <ComponentIndustrial>18</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.8</restEffectiveness>
+        <massCapacity>15000</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>5000</fuelCapacity>
+        <fuelConsumptionRate>1.10</fuelConsumptionRate>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>5000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_TransporterContents</li>
+    </inspectorTabs>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>Research_SRTF</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <uiIconScale>0.75</uiIconScale>
   </ThingDef>
   
 </Defs>

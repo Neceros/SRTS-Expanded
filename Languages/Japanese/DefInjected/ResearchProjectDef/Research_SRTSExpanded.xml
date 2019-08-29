@@ -7,4 +7,7 @@
   <Research_SRTSMk3.label>SRTS Mk.3</Research_SRTSMk3.label>
   <Research_SRTSMk3.description>さらに研究を進めた結果、太古に絶滅したエイリアン文明によって使われていたた新しい技術を発見しました。この新型プロセスでは、宇宙船の建造で使用する材料を減らした上で、新しい技術を船に適用します。つまり、新しいモデルタイプは、より軽くより速く、同じ物理的外殻強度の限界を維持した上で以前よりも運搬能力を増加させる事が可能になります。</Research_SRTSMk3.description>
 
+  <Research_SRTF.label>SRTF</Research_SRTF.label>
+  <Research_SRTF.description>大気圏内で利用される大型輸送貨物船(SRTF:Short-Range-Transport-Freighter)です。この船の開発された経緯や歴史は不明ですが、どこにでもある一般的な船です。SRTFはすべての母星域で何百万隻と見ることができます。</Research_SRTF.description>
+
 </LanguageData>

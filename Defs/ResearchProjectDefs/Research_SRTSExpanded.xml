@@ -37,4 +37,22 @@
     </requiredResearchFacilities>
   </ResearchProjectDef>
 
+  <ResearchProjectDef>
+    <tab>SRTS</tab>
+    <defName>Research_SRTF</defName>
+    <label>SRTF</label>
+    <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions.</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Research_SRTSMk2</li>
+    </prerequisites>
+    <researchViewX>1</researchViewX>
+    <researchViewY>3</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
 </Defs>

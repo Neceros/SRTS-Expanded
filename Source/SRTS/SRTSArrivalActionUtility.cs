@@ -48,8 +48,8 @@ namespace SRTS
       SettlementBase settlement,
       Caravan car)
     {
-      Func<FloatMenuAcceptanceReport> acceptanceReportGetter1 = (Func<FloatMenuAcceptanceReport>) (() => TransportPodsArrivalAction_AttackSettlement.CanAttack(pods, settlement));
-      Func<TransportPodsArrivalAction_AttackSettlement> arrivalActionGetter1 = (Func<TransportPodsArrivalAction_AttackSettlement>) (() => new TransportPodsArrivalAction_AttackSettlement(settlement, PawnsArrivalModeDefOf.EdgeDrop));
+      Func<FloatMenuAcceptanceReport> acceptanceReportGetter1 = (Func<FloatMenuAcceptanceReport>)(() => TransportPodsArrivalAction_AttackSettlement.CanAttack(pods, settlement));
+      Func<TransportPodsArrivalAction_AttackSettlement> arrivalActionGetter1 = (Func<TransportPodsArrivalAction_AttackSettlement>)(() => new TransportPodsArrivalAction_AttackSettlement(settlement, PawnsArrivalModeDefOf.EdgeDrop));
       object[] objArray1 = new object[1]
       {
         (object) settlement.Label
@@ -58,7 +58,7 @@ namespace SRTS
       {
         FloatMenuOption f = floatMenuOption;
         yield return f;
-        f = (FloatMenuOption) null;
+        f = (FloatMenuOption)null;
       }
       Func<FloatMenuAcceptanceReport> acceptanceReportGetter2 = (Func<FloatMenuAcceptanceReport>) (() => TransportPodsArrivalAction_AttackSettlement.CanAttack(pods, settlement));
       Func<TransportPodsArrivalAction_AttackSettlement> arrivalActionGetter2 = (Func<TransportPodsArrivalAction_AttackSettlement>) (() => new TransportPodsArrivalAction_AttackSettlement(settlement, PawnsArrivalModeDefOf.CenterDrop));

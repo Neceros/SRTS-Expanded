@@ -17,8 +17,7 @@ namespace SRTS
         return;
       for (int index = 0; index < thingList1.Count; ++index)
       {
-        if (thingList1[index].def.defName != "SRTSMkII" ||
-            thingList1[index].def.defName != "SRTSMkIII")
+        if (thingList1[index].TryGetComp<CompLaunchableSRTS>() != null)
           thingList2.Add(thingList1[index]);
       }
       traverse.Field("playerCaravanAllPawnsAndItems").SetValue((object) thingList2);

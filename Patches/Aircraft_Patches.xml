@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>[CP] Get to the Chopper! - Helicopters [1.0]</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationAttributeAdd">
+          <xpath>Defs/DesignationCategoryDef[defName="NECAircraft"]</xpath>
+          <attribute>Abstract</attribute>
+          <value>True</value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Building_Helicopter"]/designationCategory</xpath>
+          <value>
+            <designationCategory>CP_Aircraft</designationCategory>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="SRTSMkII"]/designationCategory</xpath>
+          <value>
+            <designationCategory>CP_Aircraft</designationCategory>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="SRTSMkIII"]/designationCategory</xpath>
+          <value>
+            <designationCategory>CP_Aircraft</designationCategory>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="SRTF"]/designationCategory</xpath>
+          <value>
+            <designationCategory>CP_Aircraft</designationCategory>
+          </value>
+        </li>
+      </operations>
+    </match>
+</Operation>
+
+</Patch>

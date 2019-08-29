@@ -11,7 +11,7 @@ namespace SRTS
     {
       for (int index = 0; index < info.innerContainer.Count; index++)
       {
-        if (info.innerContainer[index].def.defName == "SRTSMkII" || info.innerContainer[index].def.defName == "SRTSMkIII")
+        if (info.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null)
         {
           string shipType = info.innerContainer[index].def.defName;
           ActiveDropPod activeDropPod = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(shipType + "_Active"), (ThingDef)null);

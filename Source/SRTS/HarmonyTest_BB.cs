@@ -18,10 +18,9 @@ namespace SRTS
       float masss = 0.0f;
       foreach (Pawn pawn in __instance.pawns.InnerListForReading)
       {
-        for (int index = 0; index < pawn.inventory.innerContainer.Count; ++index)
+        for (int index = 0; index < pawn.inventory.innerContainer.Count; index++)
         {
-          if (pawn.inventory.innerContainer[index].def.defName != "SRTSMkII" &&
-              pawn.inventory.innerContainer[index].def.defName != "SRTSMkIII")
+          if (pawn.inventory.innerContainer[index].TryGetComp<CompLaunchableSRTS>() == null)
             masss += pawn.inventory.innerContainer[index].def.BaseMass * (float) pawn.inventory.innerContainer[index].stackCount;
         }
       }
@@ -30,8 +29,7 @@ namespace SRTS
         Pawn_InventoryTracker pinv = pawn.inventory;
         for (int i = 0; i < pinv.innerContainer.Count; i++)
         {
-          if (pinv.innerContainer[i].def.defName == "SRTSMkII" ||
-              pinv.innerContainer[i].def.defName == "SRTSMkIII")
+          if (pinv.innerContainer[i].TryGetComp<CompLaunchableSRTS>() != null)
           {
             Command_Action commandAction1 = new Command_Action();
             commandAction1.defaultLabel = "CommandLaunchGroup".Translate();
@@ -59,7 +57,7 @@ namespace SRTS
               int count = 0;
               CompRefuelable comp = pinv.innerContainer[i].TryGetComp<CompRefuelable>();
               List<Thing> thingList = CaravanInventoryUtility.AllInventoryItems(__instance);
-              for (int index = 0; index < thingList.Count; ++index)
+              for (int index = 0; index < thingList.Count; index++)
               {
                 if (thingList[index].def == ThingDefOf.Chemfuel)
                 {

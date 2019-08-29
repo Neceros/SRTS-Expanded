@@ -14,9 +14,7 @@ namespace SRTS
       for (int index = activeDropPodInfo.innerContainer.Count - 1; index >= 0; --index)
       {
         Thing thing = activeDropPodInfo.innerContainer[index];
-        if (thing != null && 
-           (thing.def.defName == "SRTSMkII" ||
-            thing.def.defName == "SRTSMkIII"))
+        if (thing != null && thing.TryGetComp<CompLaunchableSRTS>() != null)
         {
           Thing lastResultingThing;
           GenPlace.TryPlaceThing(thing, __instance.Position, __instance.Map, ThingPlaceMode.Direct, out lastResultingThing, (Action<Thing, int>) ((placedThing, count) =>

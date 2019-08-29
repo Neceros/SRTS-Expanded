@@ -26,6 +26,14 @@ namespace SRTS
       }
     }
 
+    public bool DoIExist
+    {
+      get
+      {
+        return true;
+      }
+    }
+
     public bool ConnectedToFuelingPort
     {
       get
@@ -434,8 +442,7 @@ namespace SRTS
             for (int index = 0; index < inventory.innerContainer.Count; index++)
             {
               // Neceros Edit
-              if (inventory.innerContainer[index].def.defName == "SRTSMkII" ||
-                  inventory.innerContainer[index].def.defName == "SRTSMkIII")
+              if (inventory.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null)
               {
                 thing = inventory.innerContainer[index];
                 inventory.innerContainer[index].holdingOwner.Remove(inventory.innerContainer[index]);
