@@ -15,9 +15,9 @@ namespace SRTS
       List<Thing> thingList2 = new List<Thing>();
       if (thingList1 == null || thingList1.Count <= 0)
         return;
-      for (int index = 0; index < thingList1.Count; ++index)
+      for (int index = 0; index < thingList1.Count; index++)
       {
-        if (thingList1[index].TryGetComp<CompLaunchableSRTS>() != null)
+        if (thingList1[index].TryGetComp<CompLaunchableSRTS>() == null)
           thingList2.Add(thingList1[index]);
       }
       traverse.Field("playerCaravanAllPawnsAndItems").SetValue((object) thingList2);

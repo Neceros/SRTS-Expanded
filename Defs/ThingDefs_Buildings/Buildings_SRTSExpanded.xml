@@ -19,7 +19,7 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
-    <designationCategory>NECAircraft</designationCategory>
+    <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>2000</MaxHitPoints>
@@ -90,7 +90,7 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
-    <designationCategory>NECAircraft</designationCategory>
+    <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>3000</MaxHitPoints>
@@ -163,7 +163,7 @@ Not suitable for assault missions. Seriously, do NOT Drop this ship at the edge 
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
-    <designationCategory>NECAircraft</designationCategory>
+    <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>6000</MaxHitPoints>

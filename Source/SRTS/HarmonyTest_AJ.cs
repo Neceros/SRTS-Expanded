@@ -18,7 +18,6 @@ namespace SRTS
       {
         for (int index = 0; index < pod.innerContainer.Count; index++)
         {
-          // Neceros Edit
           if (pod.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null)
           {
             Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
@@ -26,7 +25,7 @@ namespace SRTS
             IntVec3 c = traverse.Field("cell").GetValue<IntVec3>();
             Map map = traverse.Field("mapParent").GetValue<MapParent>().Map;
             TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(pods);
-            for (int i = 0; i < pods.Count; i++)
+            for (int i = 0; i < pods.Count; ++i)
               DropPodUtility.MakeDropPodAt(c, map, pods[i]);
             Messages.Message("MessageTransportPodsArrived".Translate(), (LookTargets)lookTarget, MessageTypeDefOf.TaskCompletion, true);
             return false;

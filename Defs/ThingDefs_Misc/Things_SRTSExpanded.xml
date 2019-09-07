@@ -18,7 +18,7 @@
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSound>Sound_Incoming</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -39,7 +39,7 @@
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSound>Sound_Launch</anticipationSound>
       <anticipationSoundTicks>-10</anticipationSoundTicks>
       <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
     </skyfaller>
@@ -87,7 +87,7 @@
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSound>Sound_Incoming</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -108,7 +108,7 @@
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSound>Sound_Launch</anticipationSound>
       <anticipationSoundTicks>-10</anticipationSoundTicks>
       <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
     </skyfaller>
@@ -156,7 +156,7 @@
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSound>Sound_Incoming</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -177,7 +177,7 @@
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSound>Sound_Launch</anticipationSound>
       <anticipationSoundTicks>-10</anticipationSoundTicks>
       <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
     </skyfaller>

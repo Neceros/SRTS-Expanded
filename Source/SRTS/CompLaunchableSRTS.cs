@@ -26,14 +26,6 @@ namespace SRTS
       }
     }
 
-    public bool DoIExist
-    {
-      get
-      {
-        return true;
-      }
-    }
-
     public bool ConnectedToFuelingPort
     {
       get
@@ -439,7 +431,7 @@ namespace SRTS
           foreach (Pawn pawn in directlyHeldThings.InnerListForReading)
           {
             Pawn_InventoryTracker inventory = pawn.inventory;
-            for (int index = 0; index < inventory.innerContainer.Count; index++)
+            for (int index = 0; index < inventory.innerContainer.Count; ++index)
             {
               // Neceros Edit
               if (inventory.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null)
@@ -486,12 +478,12 @@ namespace SRTS
 
     public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel)
     {
-      return Mathf.FloorToInt(fuelLevel / 2.25f);
+      return Mathf.FloorToInt(fuelLevel / FuelPerTile);
     }
 
     public static float FuelNeededToLaunchAtDist(float dist)
     {
-      return 2.25f * dist;
+      return FuelPerTile * dist;
     }
 
     public IEnumerable<FloatMenuOption> GetTransportPodsFloatMenuOptionsAt(
