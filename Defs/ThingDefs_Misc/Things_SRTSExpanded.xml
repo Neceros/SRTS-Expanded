@@ -9,7 +9,7 @@
     <label>SRTS Mk.II incoming</label>
     <thingClass>DropPodIncoming</thingClass>
     <graphicData>
-      <texPath>SRTSMk2</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>9</drawSize>
@@ -29,7 +29,7 @@
     <label>SRTS Mk.II leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>SRTSMk2</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>9</drawSize>
@@ -53,7 +53,7 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>SRTSMk2</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>9</drawSize>
       <shadowData>
@@ -78,7 +78,7 @@
     <label>SRTS Mk.III incoming</label>
     <thingClass>DropPodIncoming</thingClass>
     <graphicData>
-      <texPath>SRTSDropShip</texPath>
+      <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>9</drawSize>
@@ -98,7 +98,7 @@
     <label>SRTS Mk.III leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>SRTSDropShip</texPath>
+      <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>9</drawSize>
@@ -122,7 +122,7 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>SRTSDropShip</texPath>
+      <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>9</drawSize>
       <shadowData>
@@ -147,7 +147,7 @@
     <label>SRTF incoming</label>
     <thingClass>DropPodIncoming</thingClass>
     <graphicData>
-      <texPath>SRTSFreighter</texPath>
+      <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>(15,15)</drawSize>
@@ -167,7 +167,7 @@
     <label>SRTF leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>SRTSFreighter</texPath>
+      <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>(15,15)</drawSize>
@@ -191,7 +191,7 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>SRTSFreighter</texPath>
+      <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(15,15)</drawSize>
       <shadowData>
