@@ -209,4 +209,136 @@
   </ThingDef>
 
 
+  <!-- Superpod -->
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSSuperpod_Incoming</defName>
+    <label>Superpod incoming</label>
+    <thingClass>DropPodIncoming</thingClass>
+    <graphicData>
+      <texPath>Superpod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(2,2)</shadowSize>
+      <anticipationSound>Sound_Incoming</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSSuperpod_Leaving</defName>
+    <label>Superpod leaving</label>
+    <thingClass>SRTS.SRTSLeaving</thingClass>
+    <graphicData>
+      <texPath>Superpod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(2,2)</shadowSize>
+      <anticipationSound>Sound_Launch</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>SRTSSuperpod_Active</defName>
+    <label>Superpod active</label>
+    <category>Item</category>
+    <thingClass>ActiveDropPod</thingClass>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Superpod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <selectable>true</selectable>
+  </ThingDef>
+
+
+  <!-- Skip -->
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSSkip_Incoming</defName>
+    <label>SRTS Skip incoming</label>
+    <thingClass>DropPodIncoming</thingClass>
+    <graphicData>
+      <texPath>Skip</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(3,3)</shadowSize>
+      <anticipationSound>Sound_Incoming</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSSkip_Leaving</defName>
+    <label>SRTS Skip leaving</label>
+    <thingClass>SRTS.SRTSLeaving</thingClass>
+    <graphicData>
+      <texPath>Skip</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(3,3)</shadowSize>
+      <anticipationSound>Sound_Launch</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>SRTSSkip_Active</defName>
+    <label>SRTS Skip active</label>
+    <category>Item</category>
+    <thingClass>ActiveDropPod</thingClass>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Skip</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <selectable>true</selectable>
+  </ThingDef>
+
+
 </Defs>

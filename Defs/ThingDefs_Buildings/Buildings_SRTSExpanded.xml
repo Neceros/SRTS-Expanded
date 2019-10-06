@@ -1,19 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  
-  <ThingDef ParentName="BuildingBase">
-    <defName>SRTSMkII</defName>
-    <label>SRTS Mk.II: Albatross</label>
-    <description>The Albatross offers better fuel efficiency and larger fuel reserve at almost the same weight class of the original SRTS thanks to more advanced technology and better techniques.</description>
+
+	<ThingDef ParentName="BuildingBase">
+    <defName>SRTSSuperpod</defName>
+    <label>Superpod</label>
+    <description>A transport pod that's been retrofit with better engines and a manual flight system. Not big and won't go far, but can return back home, unlike normal transport pods. Passengers on board rest, eat, and heal during flight, but not well.</description>
     <graphicData>
-      <texPath>Albatross</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(9,9)</drawSize>
-      <shadowData>
-        <volume>(0.1, 0.1, 0.1)</volume>
-      </shadowData>
+      <texPath>Superpod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <drawRotated>false</drawRotated>
     </graphicData>
-    <size>(3,3)</size>
+    <size>(2,2)</size>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>2400</WorkToBuild>
+      <Flammability>0.4</Flammability>
+      <Mass>2640</Mass>
+      <Beauty>15</Beauty>
+    </statBases>
+    <costList>
+      <Steel>200</Steel>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.6</restEffectiveness>
+		    <massCapacity>240</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>600</fuelCapacity>
+        <fuelConsumptionRate>1</fuelConsumptionRate>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>600</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_TransporterContents</li>
+    </inspectorTabs>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+		<researchPrerequisites>
+			<li>Research_SRTSSuperpod</li>
+		</researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <uiIconScale>0.75</uiIconScale>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRTSSkip</defName>
+    <label>SRTS Skip</label>
+    <description>A stable and fast flying transport ship designed for 1-3 people at most, with cargo. Better than a Superpod by far, but still not as comfortable as a ship designed for longer travel. Passengers on board rest, eat, and heal during flight, decently well.</description>
+    <graphicData>
+      <texPath>Skip</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(4,4)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
@@ -22,27 +87,26 @@
     <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
-      <MaxHitPoints>2000</MaxHitPoints>
-      <WorkToBuild>15000</WorkToBuild>
-      <Flammability>0.4</Flammability>
-      <Mass>10560</Mass>
-      <Beauty>50</Beauty>
+      <MaxHitPoints>450</MaxHitPoints>
+      <WorkToBuild>7200</WorkToBuild>
+      <Flammability>0.7</Flammability>
+      <Mass>3865</Mass>
+      <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <Plasteel>240</Plasteel>
-      <Steel>1200</Steel>
-      <Gold>150</Gold>
-      <ComponentIndustrial>16</ComponentIndustrial>
-      <ComponentSpacer>5</ComponentSpacer>
+      <Steel>340</Steel>
+      <Plasteel>50</Plasteel>
+      <Gold>25</Gold>
+      <ComponentIndustrial>10</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.8</restEffectiveness>
-		    <massCapacity>4000</massCapacity>
+        <restEffectiveness>0.7</restEffectiveness>
+		    <massCapacity>420</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS" />
       <li Class="CompProperties_Refuelable">
-        <fuelCapacity>1600</fuelCapacity>
+        <fuelCapacity>800</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>800</initialConfigurableTargetFuelLevel>
@@ -65,90 +129,19 @@
       <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
 		<researchPrerequisites>
-			<li>Research_SRTSMk2</li>
+			<li>Research_SRTSSkip</li>
 		</researchPrerequisites>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
-    <uiIconScale>0.25</uiIconScale>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <uiIconScale>0.55</uiIconScale>
   </ThingDef>
 
 
-  <ThingDef ParentName="BuildingBase">
-    <defName>SRTSMkIII</defName>
-    <label>SRTS Mk.III: Phoenix</label>
-    <description>The Phoenix offers similar fuel efficiency to the Albatross, but with an increased fuel reserve and carry capacity. Additionally, the Mk.II is harder to kill and uses less materials in its construction at the cost of some advanced chemistry.</description>
-    <graphicData>
-      <texPath>Phoenix</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(9,9)</drawSize>
-      <shadowData>
-        <volume>(0.1, 0.1, 0.1)</volume>
-      </shadowData>
-    </graphicData>
-    <size>(3,3)</size>
-    <tickerType>Normal</tickerType>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.5</fillPercent>
-    <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-    <statBases>
-      <MaxHitPoints>3000</MaxHitPoints>
-      <WorkToBuild>32000</WorkToBuild>
-      <Flammability>0.3</Flammability>
-      <Mass>17250</Mass>
-      <Beauty>75</Beauty>
-    </statBases>
-    <costList>
-      <Plasteel>450</Plasteel>
-      <Steel>800</Steel>
-      <Gold>150</Gold>
-      <Neutroamine>100</Neutroamine>
-      <ComponentIndustrial>20</ComponentIndustrial>
-      <ComponentSpacer>10</ComponentSpacer>
-    </costList>
-    <comps>
-      <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.8</restEffectiveness>
-        <massCapacity>6000</massCapacity>
-      </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS" />
-      <li Class="CompProperties_Refuelable">
-        <fuelCapacity>2000</fuelCapacity>
-        <fuelConsumptionRate>0.75</fuelConsumptionRate>
-        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
-        <fuelFilter>
-          <thingDefs>
-            <li>Chemfuel</li>
-          </thingDefs>
-        </fuelFilter>
-        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <autoRefuelPercent>1</autoRefuelPercent>
-        <showFuelGizmo>true</showFuelGizmo>
-        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-      </li>
-    </comps>
-    <inspectorTabs>
-      <li>ITab_TransporterContents</li>
-    </inspectorTabs>
-    <placeWorkers>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>
-    <researchPrerequisites>
-      <li>Research_SRTSMk3</li>
-    </researchPrerequisites>
-    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
-    <uiIconScale>0.25</uiIconScale>
-  </ThingDef>
-
-  <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="BuildingBase">
     <defName>SRTF</defName>
     <label>SRTF</label>
-    <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. 
+    <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. Hard to rest on this ship.
 
-Not suitable for assault missions. Seriously, do NOT Drop this ship at the edge of a map!</description>
+Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge of a map!</description>
     <graphicData>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -173,15 +166,15 @@ Not suitable for assault missions. Seriously, do NOT Drop this ship at the edge 
       <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <Plasteel>150</Plasteel>
       <Steel>2000</Steel>
+      <Plasteel>150</Plasteel>
       <Gold>350</Gold>
       <ComponentIndustrial>18</ComponentIndustrial>
       <ComponentSpacer>2</ComponentSpacer>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.8</restEffectiveness>
+        <restEffectiveness>0.6</restEffectiveness>
         <massCapacity>15000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS" />
@@ -213,6 +206,149 @@ Not suitable for assault missions. Seriously, do NOT Drop this ship at the edge 
     </researchPrerequisites>
     <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
+  </ThingDef>
+  
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRTSMkII</defName>
+    <label>SRTS Mk.II: Albatross</label>
+    <description>The Albatross offers better fuel efficiency and larger fuel reserve at almost the same weight class of the original SRTS thanks to more advanced technology and better techniques. Passengers on board rest, eat, and heal during flight.</description>
+    <graphicData>
+      <texPath>Albatross</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(9,9)</drawSize>
+      <shadowData>
+        <volume>(0.1, 0.1, 0.1)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(3,3)</size>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>2000</MaxHitPoints>
+      <WorkToBuild>15000</WorkToBuild>
+      <Flammability>0.4</Flammability>
+      <Mass>10560</Mass>
+      <Beauty>50</Beauty>
+    </statBases>
+    <costList>
+      <Steel>1200</Steel>
+      <Plasteel>240</Plasteel>
+      <Gold>150</Gold>
+      <ComponentIndustrial>16</ComponentIndustrial>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>1</restEffectiveness>
+		    <massCapacity>4000</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>1600</fuelCapacity>
+        <fuelConsumptionRate>0.8</fuelConsumptionRate>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>800</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_TransporterContents</li>
+    </inspectorTabs>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+		<researchPrerequisites>
+			<li>Research_SRTSMk2</li>
+		</researchPrerequisites>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <uiIconScale>0.30</uiIconScale>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRTSMkIII</defName>
+    <label>SRTS Mk.III: Phoenix</label>
+    <description>The Phoenix offers similar fuel efficiency to the Albatross, but with an increased fuel reserve and carry capacity. Additionally, the Mk.III is harder to kill and uses less materials in its construction at the cost of some advanced chemistry.Passengers on board rest, eat, and heal during flight really well.</description>
+    <graphicData>
+      <texPath>Phoenix</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(9,9)</drawSize>
+      <shadowData>
+        <volume>(0.1, 0.1, 0.1)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(3,3)</size>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>3000</MaxHitPoints>
+      <WorkToBuild>32000</WorkToBuild>
+      <Flammability>0.3</Flammability>
+      <Mass>17250</Mass>
+      <Beauty>75</Beauty>
+    </statBases>
+    <costList>
+      <Steel>800</Steel>
+      <Plasteel>450</Plasteel>
+      <Gold>150</Gold>
+      <Neutroamine>100</Neutroamine>
+      <ComponentIndustrial>20</ComponentIndustrial>
+      <ComponentSpacer>10</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>1.2</restEffectiveness>
+        <massCapacity>6000</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>2000</fuelCapacity>
+        <fuelConsumptionRate>0.75</fuelConsumptionRate>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_TransporterContents</li>
+    </inspectorTabs>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>Research_SRTSMk3</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    <uiIconScale>0.30</uiIconScale>
   </ThingDef>
   
 </Defs>

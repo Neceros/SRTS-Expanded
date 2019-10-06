@@ -3,17 +3,66 @@
 
   <ResearchProjectDef>
     <tab>SRTSE</tab>
+    <defName>Research_SRTSSuperpod</defName>
+    <label>Superpod</label>
+    <description>Slap on a few Orbital Relay Launch Modules onto a traditional transport pod and Voilà! You've got a ship capable of return flight! It's just a first step, though.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>TransportPod</li>
+    </prerequisites>
+    <researchViewX>0</researchViewX>
+    <researchViewY>0</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSSkip</defName>
+    <label>SRTS Skip</label>
+    <description>This vessel design was conceived after a nearby colony on this world tried their own version of a superpod. They decided to take apart the pods and put it together uniquely. It turned out really nice, and since then it's become popular as a design due to its cheap material cost and reliable transport.</description>
+    <baseCost>2400</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Research_SRTSSuperpod</li>
+    </prerequisites>
+    <researchViewX>1</researchViewX>
+    <researchViewY>0</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTF</defName>
+    <label>SRTF</label>
+    <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions. Not great on the chemfuel mileage.</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Research_SRTSSkip</li>
+      <li>AdvancedFabrication</li>
+    </prerequisites>
+    <researchViewX>1</researchViewX>
+    <researchViewY>1</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
     <defName>Research_SRTSMk2</defName>
     <label>SRTS Mk. II</label>
     <description>The Albatross X-11 was originally designed for military exoplanetary exploration, but you've realized the components match the SRTS almost exactly. With this new insight and some tinkering you might come up with an improved SRTS design with better fuel capacity and efficiency.</description>
     <baseCost>5000</baseCost>
     <techLevel>Spacer</techLevel>
     <prerequisites>
-      <li>TransportPod</li>
+      <li>Research_SRTSSkip</li>
       <li>AdvancedFabrication</li>
     </prerequisites>
-    <researchViewX>0</researchViewX>
-    <researchViewY>2</researchViewY>
+    <researchViewX>2</researchViewX>
+    <researchViewY>0</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
     <requiredResearchFacilities>
 	  	<li>MultiAnalyzer</li>
@@ -30,30 +79,13 @@
     <prerequisites>
       <li>Research_SRTSMk2</li>
     </prerequisites>
-    <researchViewX>0</researchViewX>
-    <researchViewY>3</researchViewY>
+    <researchViewX>3</researchViewX>
+    <researchViewY>0</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
     <requiredResearchFacilities>
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
   </ResearchProjectDef>
 
-  <ResearchProjectDef>
-    <tab>SRTSE</tab>
-    <defName>Research_SRTF</defName>
-    <label>SRTF</label>
-    <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions.</description>
-    <baseCost>2500</baseCost>
-    <techLevel>Spacer</techLevel>
-    <prerequisites>
-      <li>Research_SRTSMk2</li>
-    </prerequisites>
-    <researchViewX>1</researchViewX>
-    <researchViewY>3</researchViewY>
-    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <requiredResearchFacilities>
-      <li>MultiAnalyzer</li>
-    </requiredResearchFacilities>
-  </ResearchProjectDef>
 
 </Defs>

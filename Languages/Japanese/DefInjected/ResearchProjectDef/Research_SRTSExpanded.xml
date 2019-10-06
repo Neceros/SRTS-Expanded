@@ -1,13 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+  <Research_SRTSSuperpod.label>スーパーポッド</Research_SRTSSuperpod.label>
+  <Research_SRTSSuperpod.description>いくつかの軌道往復用発射モジュールを、伝統的な輸送用ポッドと組み合わせました！これでも往復できる船です！しかし、これは最初の第一歩にすぎません。</Research_SRTSSuperpod.description>
+
+  <Research_SRTSSkip.label>SRTS スキップ</Research_SRTSSkip.label>
+  <Research_SRTSSkip.description>この小型船(Skip)のデザインは、この世界にある近くのコロニーが独自のスーパーポッドを試した後に考え出されました。彼らはポッドを分解して独自の形に組み立てることにしました。とても素晴らしい船になりましたが、その安価な材料コストと信頼できる輸送能力によってこのデザインは人気が出ました。</Research_SRTSSkip.description>
+
+  <Research_SRTF.label>SRTF</Research_SRTF.label>
+  <Research_SRTF.description>大気圏内で利用される大型輸送貨物船(SRTF:Short-Range-Transport-Freighter)です。この船の開発された経緯や歴史は不明ですが、どこにでもある一般的な船です。SRTFはすべての母星域で何百万隻と見ることができます。</Research_SRTF.description>
+
   <Research_SRTSMk2.label>SRTS Mk.2</Research_SRTSMk2.label>
   <Research_SRTSMk2.description>X-11「Albatross」はもともと軍の惑星探査用シャトルとして設計されましたが、構成要素がSRTS(短距離輸送船:Short-Range-Transport-Shuttle)とほぼ完全に一致していることが判明しました。新しい視点と少しの改良により、より優れた燃費性能と効率性を兼ね備えた新しいSRTSの改良設計を研究できるかもしれません。</Research_SRTSMk2.description>
 
   <Research_SRTSMk3.label>SRTS Mk.3</Research_SRTSMk3.label>
   <Research_SRTSMk3.description>さらに研究を進めた結果、太古に絶滅したエイリアン文明によって使われていたた新しい技術を発見しました。この新型プロセスでは、宇宙船の建造で使用する材料を減らした上で、新しい技術を船に適用します。つまり、新しいモデルタイプは、より軽くより速く、同じ物理的外殻強度の限界を維持した上で以前よりも運搬能力を増加させる事が可能になります。</Research_SRTSMk3.description>
-
-  <Research_SRTF.label>SRTF</Research_SRTF.label>
-  <Research_SRTF.description>大気圏内で利用される大型輸送貨物船(SRTF:Short-Range-Transport-Freighter)です。この船の開発された経緯や歴史は不明ですが、どこにでもある一般的な船です。SRTFはすべての母星域で何百万隻と見ることができます。</Research_SRTF.description>
 
 </LanguageData>

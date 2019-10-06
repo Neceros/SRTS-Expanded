@@ -1,6 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+
+  <!-- Superpod -->
+
+  <SRTSSuperpod_Incoming.label>スーパーポッド(着陸)</SRTSSuperpod_Incoming.label>
+  <SRTSSuperpod_Leaving.label>スーパーポッド(離陸)</SRTSSuperpod_Leaving.label>
+  <SRTSSuperpod_Active.label>スーパーポッド(始動)</SRTSSuperpod_Active.label>
+
+
+  <!-- Skip -->
+
+  <SRTSSkip_Incoming.label>SRTS:スキップ(着陸)</SRTSSkip_Incoming.label>
+  <SRTSSkip_Leaving.label>SRTS:スキップ(離陸)</SRTSSkip_Leaving.label>
+  <SRTSSkip_Active.label>SRTS:スキップ(始動)</SRTSSkip_Active.label>
+
+
+  <!-- SRTF -->
+
+  <SRTF_Incoming.label>SRTF:(着陸)</SRTF_Incoming.label>
+  <SRTF_Leaving.label>SRTF:(離陸)</SRTF_Leaving.label>
+  <SRTF_Active.label>SRTF:(始動)</SRTF_Active.label>
+
+
   <!-- SRTS MkII -->
 
   <SRTSMkII_Incoming.label>SRTS:Mk-2(着陸)</SRTSMkII_Incoming.label>
@@ -13,12 +35,5 @@
   <SRTSMkIII_Incoming.label>SRTS:Mk-3(着陸)</SRTSMkIII_Incoming.label>
   <SRTSMkIII_Leaving.label>SRTS:Mk-3(離陸)</SRTSMkIII_Leaving.label>
   <SRTSMkIII_Active.label>SRTS:Mk-3(始動)</SRTSMkIII_Active.label>
-
-
-  <!-- SRTF -->
-
-  <SRTF_Incoming.label>SRTF:(着陸)</SRTF_Incoming.label>
-  <SRTF_Leaving.label>SRTF:(離陸)</SRTF_Leaving.label>
-  <SRTF_Active.label>SRTF:(始動)</SRTF_Active.label>
 
 </LanguageData>
