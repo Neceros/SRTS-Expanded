@@ -32,7 +32,7 @@ namespace SRTS
 
             if (c.x < offset)
             {
-                c.x = (int)offset;
+                c.x = offset;
             }
             else if (c.x >= (map.Size.x - offset))
             {
@@ -40,7 +40,7 @@ namespace SRTS
             }
             if (c.z < offset)
             {
-                c.z = (int)offset;
+                c.z = offset;
             }
             else if (c.z > (map.Size.z - offset))
             {
