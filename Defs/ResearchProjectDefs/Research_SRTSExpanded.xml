@@ -87,5 +87,23 @@
     </requiredResearchFacilities>
   </ResearchProjectDef>
 
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSMk4</defName>
+    <label>SRTS Mk. IV</label>
+    <description>The Genesis is a highly advance transport shuttle that consumes heavy material matter into energy, and uses archotech level technology to increase the cargo space beyond dimensional boundaries.</description>
+    <baseCost>15000</baseCost>
+    <techLevel>Archotech</techLevel>
+    <prerequisites>
+      <li>Research_SRTSMk3</li>
+    </prerequisites>
+    <researchViewX>4</researchViewX>
+    <researchViewY>0</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
 
 </Defs>

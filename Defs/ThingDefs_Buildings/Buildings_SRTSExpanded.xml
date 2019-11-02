@@ -350,5 +350,81 @@ Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge 
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRTSMkIV</defName>
+    <label>SRTS Mk.IV: Genesis</label>
+    <description>The Genesis transport ship is highly advanced archotech technology. Nothing can match the stability, fuel range, cargo space, and comfort of the Genesis. This ship converts a few types of matter into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.</description>
+    <graphicData>
+      <texPath>Phoenix</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(9,9)</drawSize>
+      <shadowData>
+        <volume>(0.1, 0.1, 0.1)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(3,3)</size>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>3000</MaxHitPoints>
+      <WorkToBuild>64000</WorkToBuild>
+      <Flammability>0.1</Flammability>
+      <Mass>17250</Mass>
+      <Beauty>150</Beauty>
+    </statBases>
+    <costList>
+      <Steel>2400</Steel>
+      <Plasteel>1000</Plasteel>
+      <Gold>350</Gold>
+      <Uranium>250</Uranium>
+      <ComponentIndustrial>30</ComponentIndustrial>
+      <ComponentSpacer>10</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>1.5</restEffectiveness>
+        <massCapacity>15000</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>2000</fuelCapacity>
+        <fuelConsumptionRate>0.25</fuelConsumptionRate>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+            <li>Steel</li>
+            <li>Plasteel</li>
+            <li>Gold</li>
+            <li>Uranium</li>
+            <li>Jade</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_TransporterContents</li>
+    </inspectorTabs>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>Research_SRTSMk4</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
+    <uiIconScale>0.30</uiIconScale>
+  </ThingDef>
   
 </Defs>

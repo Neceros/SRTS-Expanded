@@ -60,6 +60,7 @@
     <Compile Include="HarmonyTest_C.cs" />
     <Compile Include="HarmonyTest_AJ.cs" />
     <Compile Include="HarmonyTest_BB.cs" />
+    <Compile Include="HarmonyTest_TS.cs" />
     <Compile Include="SRTSLeaving.cs" />
     <Compile Include="SRTSArrivalActionUtility.cs" />
     <Compile Include="SRTSStatic.cs" />
