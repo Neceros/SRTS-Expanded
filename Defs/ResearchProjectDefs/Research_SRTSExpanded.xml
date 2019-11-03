@@ -87,6 +87,8 @@
     </requiredResearchFacilities>
   </ResearchProjectDef>
 
+
+<!-- not yet
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRTSMk4</defName>
@@ -104,6 +106,6 @@
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
   </ResearchProjectDef>
-
+-->
 
 </Defs>

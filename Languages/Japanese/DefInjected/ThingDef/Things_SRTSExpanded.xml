@@ -2,6 +2,26 @@
 <LanguageData>
 
 
+  <!-- SRTS MkII -->
+
+  <SRTSMkII_Incoming.label>SRTS:Mk-2(着陸)</SRTSMkII_Incoming.label>
+  <SRTSMkII_Leaving.label>SRTS:Mk-2(離陸)</SRTSMkII_Leaving.label>
+  <SRTSMkII_Active.label>SRTS:Mk-2(始動)</SRTSMkII_Active.label>
+
+
+  <!-- SRTS MkIII -->
+
+  <SRTSMkIII_Incoming.label>SRTS:Mk-3(着陸)</SRTSMkIII_Incoming.label>
+  <SRTSMkIII_Leaving.label>SRTS:Mk-3(離陸)</SRTSMkIII_Leaving.label>
+
+
+  <!-- SRTF -->
+
+  <SRTF_Incoming.label>SRTF:(着陸)</SRTF_Incoming.label>
+  <SRTF_Leaving.label>SRTF:(離陸)</SRTF_Leaving.label>
+  <SRTF_Active.label>SRTF:(始動)</SRTF_Active.label>
+
+
   <!-- Superpod -->
 
   <SRTSSuperpod_Incoming.label>スーパーポッド(着陸)</SRTSSuperpod_Incoming.label>
@@ -16,24 +36,11 @@
   <SRTSSkip_Active.label>SRTS:スキップ(始動)</SRTSSkip_Active.label>
 
 
-  <!-- SRTF -->
+  <!-- SRTS MkIV -->
 
-  <SRTF_Incoming.label>SRTF:(着陸)</SRTF_Incoming.label>
-  <SRTF_Leaving.label>SRTF:(離陸)</SRTF_Leaving.label>
-  <SRTF_Active.label>SRTF:(始動)</SRTF_Active.label>
-
-
-  <!-- SRTS MkII -->
-
-  <SRTSMkII_Incoming.label>SRTS:Mk-2(着陸)</SRTSMkII_Incoming.label>
-  <SRTSMkII_Leaving.label>SRTS:Mk-2(離陸)</SRTSMkII_Leaving.label>
-  <SRTSMkII_Active.label>SRTS:Mk-2(始動)</SRTSMkII_Active.label>
-
-
-  <!-- SRTS MkIII -->
-
-  <SRTSMkIII_Incoming.label>SRTS:Mk-3(着陸)</SRTSMkIII_Incoming.label>
-  <SRTSMkIII_Leaving.label>SRTS:Mk-3(離陸)</SRTSMkIII_Leaving.label>
-  <SRTSMkIII_Active.label>SRTS:Mk-3(始動)</SRTSMkIII_Active.label>
+  <!-- <SRTSMkIV_Incoming.label>SRTS:Mk-4(着陸)</SRTSMkIV_Incoming.label>
+  <SRTSMkIV_Leaving.label>SRTS:Mk-4(離陸)</SRTSMkIV_Leaving.label>
+  <SRTSMkIV_Active.label>SRTS:Mk-4(始動)</SRTSMkIV_Active.label>
+  <SRTSMkIV_Active.label>SRTS:Mk-4(始動)</SRTSMkIV_Active.label> -->
 
 </LanguageData>
