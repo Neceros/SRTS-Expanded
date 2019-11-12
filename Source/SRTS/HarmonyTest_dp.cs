@@ -17,6 +17,7 @@ namespace SRTS
         if (thing != null && thing.TryGetComp<CompLaunchableSRTS>() != null)
         {
           Thing lastResultingThing;
+          
           GenPlace.TryPlaceThing(thing, __instance.Position, __instance.Map, ThingPlaceMode.Direct, out lastResultingThing, (Action<Thing, int>) ((placedThing, count) =>
           {
             if (Find.TickManager.TicksGame >= 1200 || !TutorSystem.TutorialMode || placedThing.def.category != ThingCategory.Item)

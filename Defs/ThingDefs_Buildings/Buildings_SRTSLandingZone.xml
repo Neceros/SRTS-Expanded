@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>LandingSpot</defName>
+		<label>Landing Spot</label>
+		<description>Landing spot for SRTS Ships</description>
+		<thingClass>Building_MarriageSpot</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Misc/MarriageSpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<statBases>
+			<WorkToBuild>0</WorkToBuild>
+		</statBases>
+		<useHitPoints>False</useHitPoints>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<size>(1,1)</size>
+		<designationCategory>Ship</designationCategory>
+		<passability>Standable</passability>
+		<building>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<designationHotKey>Misc10</designationHotKey>
+	</ThingDef>
+</Defs>

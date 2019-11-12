@@ -204,6 +204,11 @@ namespace SRTS
       }
     }
 
+    public void AddThingsToSRTS(Thing thing)
+    {
+        thingsInsideShip.Add(thing);
+    }
+
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
       foreach (Gizmo gizmo in base.CompGetGizmosExtra())
@@ -222,7 +227,7 @@ namespace SRTS
         launch.action = (Action) (() =>
         {
           if (this.AnyInGroupHasAnythingLeftToLoad)
-            Find.WindowStack.Add((Window) Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate((object) this.FirstThingLeftToLoadInGroup.LabelCapNoCount), new Action(this.StartChoosingDestination), false, (string) null));
+            Find.WindowStack.Add((Window) Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(this.FirstThingLeftToLoadInGroup.LabelCapNoCount), new Action(this.StartChoosingDestination), false, (string) null));
           else
             this.StartChoosingDestination();
         });
@@ -281,10 +286,14 @@ namespace SRTS
             GUI.color = Color.red;
           return floatMenuOptionsAt.First<FloatMenuOption>().Label;
         }
+        foreach(FloatMenuOption f in floatMenuOptionsAt.ToList())
+          {
+              //Log.Message("-> " + f.Label); FIX LATER
+          }
         MapParent worldObject = target.WorldObject as MapParent;
         if (worldObject == null)
           return "ClickToSeeAvailableOrders_Empty".Translate();
-        return "ClickToSeeAvailableOrders_WorldObject".Translate((object) worldObject.LabelCap);
+        return "ClickToSeeAvailableOrders_WorldObject".Translate(worldObject.LabelCap);
       }));
     }
 
@@ -322,7 +331,7 @@ namespace SRTS
         MapParent worldObject = target.WorldObject as MapParent;
         if (worldObject == null)
           return "ClickToSeeAvailableOrders_Empty".Translate();
-        return "ClickToSeeAvailableOrders_WorldObject".Translate((object) worldObject.LabelCap);
+        return "ClickToSeeAvailableOrders_WorldObject".Translate(worldObject.LabelCap);
       }));
     }
 
@@ -338,7 +347,7 @@ namespace SRTS
       int num = Find.WorldGrid.TraversalDistanceBetween(this.carr != null ? this.carr.Tile : this.parent.Map.Tile, target.Tile, true, int.MaxValue);
       if (num > this.MaxLaunchDistance)
       {
-        Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate((object) CompLaunchableSRTS.FuelNeededToLaunchAtDist((float) num).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
+        Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float) num).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
         return false;
       }
       if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
@@ -452,6 +461,9 @@ namespace SRTS
           ActiveDropPod activeDropPod = (ActiveDropPod) ThingMaker.MakeThing(ThingDef.Named(parent.def.defName + "_Active"), (ThingDef) null);
           activeDropPod.Contents = new ActiveDropPodInfo();
           activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer((IEnumerable<Thing>) thingOwner, true, true);
+          activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer((IEnumerable<Thing>) thingsInsideShip, true, true);
+          thingsInsideShip.Clear();
+
           cafr.RemoveAllPawns();
           if (cafr.Spawned)
             Find.WorldObjects.Remove((WorldObject) cafr);
@@ -538,5 +550,8 @@ namespace SRTS
       if (!anything && !Find.World.Impassable(tile))
         yield return new FloatMenuOption("TransportPodsContentsWillBeLost".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) null, (Caravan) null)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
     }
+
+
+    List<Thing> thingsInsideShip = new List<Thing>();
   }
 }

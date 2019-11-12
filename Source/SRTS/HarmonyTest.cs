@@ -16,6 +16,8 @@ namespace SRTS
                     string shipType = info.innerContainer[index].def.defName;
                     ActiveDropPod activeDropPod = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(shipType + "_Active"), (ThingDef)null);
                     activeDropPod.Contents = info;
+                    
+                    //activeDropPod.Contents.innerContainer.Add
                     EnsureInBoundsSRTS(ref c, info.innerContainer[index].def, map);
                     SkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_Incoming"), (Thing)activeDropPod, c, map);
                     return false;
