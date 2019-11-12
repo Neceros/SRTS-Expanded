@@ -4,30 +4,35 @@
   <SRTSSuperpod.label>スーパー ポッド</SRTSSuperpod.label>
   <SRTSSuperpod.description>輸送ポッドよりも優れたエンジンと手動操作による飛行システムを装備して改造された輸送ポッドです。燃料タンクが大きくないので遠くまでは飛べませんが、通常の輸送ポッドとは違ってコロニーに戻ることが可能です。機内の乗客は飛行中に休息したり食事をしたり、治癒を行う事ができますが居心地はは良くありません。</SRTSSuperpod.description>
   <Blueprint_SRTSSuperpod.label>スーパーポッド(設計)</Blueprint_SRTSSuperpod.label>
+  <Blueprint_Install_SRTSSuperpod.label>スーパーポッド(移動先)</Blueprint_Install_SRTSSuperpod.label>
   <Frame_SRTSSuperpod.label>スーパーポッド(施行)</Frame_SRTSSuperpod.label>
   <Frame_SRTSSuperpod.description>輸送ポッドよりも優れたエンジンと手動操作による飛行システムを装備して改造された輸送ポッドです。燃料タンクが大きくないので遠くまでは飛べませんが、通常の輸送ポッドとは違ってコロニーに戻ることが可能です。機内の乗客は飛行中に休息したり食事をしたり、治癒を行う事ができますが居心地はは良くありません。</Frame_SRTSSuperpod.description>
 
   <SRTSSkip.label>SRTS: スキップ</SRTSSkip.label>
   <SRTSSkip.description>乗客を最大で1～3人乗れる用に設計された、貨物を搭載でき安定した高速飛行が可能な小型輸送船です。スーパーポッドよりもはるかに優れていますが、それでも長距離旅行用に設計された船ほどは快適ではありません。機内の乗客は飛行中まあまあ快適に休息したり食事をしたり、治癒を行う事ができます。</SRTSSkip.description>
   <Blueprint_SRTSSkip.label>SRTS: スキップ(設計)</Blueprint_SRTSSkip.label>
+  <Blueprint_Install_SRTSSkip.label>SRTS: スキップ(移動先)</Blueprint_Install_SRTSSkip.label>
   <Frame_SRTSSkip.label>SRTS: スキップ(施行)</Frame_SRTSSkip.label>
   <Frame_SRTSSkip.description>乗客を最大で1～3人乗れる用に設計された、貨物を搭載でき安定した高速飛行が可能な小型輸送船です。スーパーポッドよりもはるかに優れていますが、それでも長距離旅行用に設計された船ほどは快適ではありません。機内の乗客は飛行中まあまあ快適に休息したり食事をしたり、治癒を行う事ができます。</Frame_SRTSSkip.description>
 
   <SRTF.label>SRTF</SRTF.label>
   <SRTF.description>SRTF(短距離輸送機:Short-Range-Transport-Freighter)は大型輸送貨物船です。大型というだけあり、かなり大量な荷物を輸送する事が可能で、また飛行に使う燃料も大量に積載できます。攻撃任務には適しません。\n\nこの船で休息するのは難しいでしょう。</SRTF.description>
   <Blueprint_SRTF.label>SRTF(設計)</Blueprint_SRTF.label>
+  <Blueprint_Install_SRTF.label>SRTF(移動先)</Blueprint_Install_SRTF.label>
   <Frame_SRTF.label>SRTF(施行)</Frame_SRTF.label>
   <Frame_SRTF.description>SRTF(短距離輸送機:Short-Range-Transport-Freighter)は大型輸送貨物船です。大型というだけあり、かなり大量な荷物を輸送する事が可能で、また飛行に使う燃料も大量に積載できます。攻撃任務には適しません。\n\nこの船で休息するのは難しいでしょう。</Frame_SRTF.description>
 
   <SRTSMkII.label>SRTS:Mk-2 アルバトロス</SRTSMkII.label>
   <SRTSMkII.description>X-11アルバトロス(アホウドリ)は、より高度な技術と技術によって、従来のSRTSとほぼ同じ重量クラスでありながら、より優れた燃費性能とより多くの燃料を積むことが可能です。機内の乗客は飛行中に休息したり食事をしたり、治癒を行う事ができます。</SRTSMkII.description>
   <Blueprint_SRTSMkII.label>SRTS:Mk-2 アルバトロス(設計)</Blueprint_SRTSMkII.label>
+  <Blueprint_Install_SRTSMkII.label>SRTS:Mk-2 アルバトロス(移動先)</Blueprint_Install_SRTSMkII.label>
   <Frame_SRTSMkII.label>SRTS:Mk-2 アルバトロス(施行)</Frame_SRTSMkII.label>
   <Frame_SRTSMkII.description>X-11アルバトロス(アホウドリ)は、より高度な技術と技術によって、従来のSRTSとほぼ同じ重量クラスでありながら、より優れた燃費性能とより多くの燃料を積むことが可能です。機内の乗客は飛行中に休息したり食事をしたり、治癒を行う事ができます。</Frame_SRTSMkII.description>
 
   <SRTSMkIII.label>SRTS:Mk-3 フェニックス</SRTSMkIII.label>
   <SRTSMkIII.description>フェニックスはアルバトロスと同程度の燃費性能を実現しましたが、予備燃料タンクと積載量が増加しています。さらにMk-2と異なりより高度な化学的資源を必要としますが、破壊するのがより困難で、建設に必要な材料がより少なくなる長所があります。機内の乗客は飛行中にゆったりと休息したり食事をしたり、治癒を行う事ができます。</SRTSMkIII.description>
   <Blueprint_SRTSMkIII.label>SRTS:Mk-3 フェニックス(設計)</Blueprint_SRTSMkIII.label>
+  <Blueprint_Install_SRTSMkIII.label>SRTS:Mk-3 フェニックス(移動先)</Blueprint_Install_SRTSMkIII.label>
   <Frame_SRTSMkIII.label>SRTS:Mk-3 フェニックス(施行)</Frame_SRTSMkIII.label>
   <Frame_SRTSMkIII.description>フェニックスはアルバトロスと同程度の燃費性能を実現しましたが、予備燃料タンクと積載量が増加しています。さらにMk-2と異なりより高度な化学的資源を必要としますが、破壊するのがより困難で、建設に必要な材料がより少なくなる長所があります。機内の乗客は飛行中にゆったりと休息したり食事をしたり、治癒を行う事ができます。</Frame_SRTSMkIII.description>
 
@@ -35,6 +40,7 @@
   <!-- <SRTSMkIV.label>SRTS:Mk-4 ジェネシス</SRTSMkIV.label>
   <SRTSMkIV.description>ジェネシス型の輸送船は非常に高度なアーキテック技術の船です。ジェネシスの安定性や燃料搭載量や貨物積載量と快適性に匹敵する船はありません。この船は、いくつかの種類の物質を燃料としてエネルギー変換して、異次元収納空間を組み込んでおり、船体自体よりもはるかに大きく大量の貨物を運搬できます。</SRTSMkIV.description>
   <Blueprint_SRTSMkIV.label>SRTS:Mk-4 ジェネシス(設計)</Blueprint_SRTSMkIV.label>
+  <Blueprint_Install_SRTSMkIV.label>SRTS:Mk-4 ジェネシス(移動先)</Blueprint_Install_SRTSMkIV.label>
   <Frame_SRTSMkIV.label>SRTS:Mk-4 ジェネシス(施行)</Frame_SRTSMkIV.label>
   <Frame_SRTSMkIV.description>ジェネシス型の輸送船は非常に高度なアーキテック技術の船です。ジェネシスの安定性や燃料搭載量や貨物積載量と快適性に匹敵する船はありません。この船は、いくつかの種類の物質を燃料としてエネルギー変換して、異次元収納空間を組み込んでおり、船体自体よりもはるかに大きく大量の貨物を運搬できます。</Frame_SRTSMkIV.description> -->
 
