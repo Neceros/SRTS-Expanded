@@ -7,10 +7,10 @@
     <label>Flying Caravan</label>
     <description>Caravan in flight.</description>
     <worldObjectClass>TravelingTransportPods</worldObjectClass>
-    <texture>World/WorldObjects/TravelingTransportPods</texture>
+    <texture>SRTSIcon</texture>
     <useDynamicDrawer>true</useDynamicDrawer>
     <expandingIcon>true</expandingIcon>
-    <expandingIconTexture>WorldOBJPod</expandingIconTexture>
+    <expandingIconTexture>SRTSIcon</expandingIconTexture>
     <expandingIconPriority>30</expandingIconPriority>
     <expandMore>true</expandMore>
     <allowCaravanIncidentsWhichGenerateMap>true</allowCaravanIncidentsWhichGenerateMap>

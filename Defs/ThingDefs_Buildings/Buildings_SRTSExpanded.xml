@@ -15,6 +15,10 @@
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <rotatable>false</rotatable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
@@ -28,8 +32,8 @@
       <Beauty>15</Beauty>
     </statBases>
     <costList>
-      <Steel>200</Steel>
-      <Plasteel>20</Plasteel>
+      <Steel>300</Steel>
+      <Plasteel>40</Plasteel>
       <ComponentIndustrial>8</ComponentIndustrial>
     </costList>
     <comps>
@@ -72,7 +76,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>SRTSSkip</defName>
     <label>SRTS Skip</label>
-    <description>A stable and fast flying transport ship designed for 1-3 people at most, with cargo. Better than a Superpod by far, but still not as comfortable as a ship designed for longer travel. Passengers on board rest, eat, and heal during flight, decently well.</description>
+    <description>A stable and fast flying transport ship designed for 1-3 people at most, with cargo. Better than a Superpod, but still not as comfortable as a ship designed for longer travel. Passengers on board rest, eat, and heal during flight, decently well.</description>
     <graphicData>
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -84,10 +88,14 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
     <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
-      <MaxHitPoints>450</MaxHitPoints>
+      <MaxHitPoints>350</MaxHitPoints>
       <WorkToBuild>7200</WorkToBuild>
       <Flammability>0.7</Flammability>
       <Mass>3865</Mass>
@@ -139,9 +147,7 @@
     <ThingDef ParentName="BuildingBase">
     <defName>SRTF</defName>
     <label>SRTF</label>
-    <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. Hard to rest on this ship.
-
-Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge of a map!</description>
+    <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. Hard to rest on this ship.</description>
     <graphicData>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -153,13 +159,17 @@ Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge 
     <size>(7,9)</size>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
-      <MaxHitPoints>6000</MaxHitPoints>
+      <MaxHitPoints>3000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
       <Mass>55650</Mass>
@@ -224,13 +234,17 @@ Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge 
     <size>(3,3)</size>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
     <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
-      <MaxHitPoints>2000</MaxHitPoints>
+      <MaxHitPoints>700</MaxHitPoints>
       <WorkToBuild>15000</WorkToBuild>
       <Flammability>0.4</Flammability>
       <Mass>10560</Mass>
@@ -296,12 +310,16 @@ Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge 
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
     <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
-      <MaxHitPoints>3000</MaxHitPoints>
+      <MaxHitPoints>1250</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
       <Mass>17250</Mass>
@@ -351,6 +369,8 @@ Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge 
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
 
+
+<!-- not yet...
   <ThingDef ParentName="BuildingBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
@@ -367,12 +387,16 @@ Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge 
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
     <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
-      <MaxHitPoints>3000</MaxHitPoints>
+      <MaxHitPoints>1300</MaxHitPoints>
       <WorkToBuild>64000</WorkToBuild>
       <Flammability>0.1</Flammability>
       <Mass>17250</Mass>
@@ -426,5 +450,6 @@ Not suitable for assault missions. Seriously, DO NOT drop this ship at the edge 
     <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
+-->
   
 </Defs>
