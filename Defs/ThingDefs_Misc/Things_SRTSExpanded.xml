@@ -18,7 +18,7 @@
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>Sound_Incoming</anticipationSound>
+      <anticipationSound>DropPod_Fall</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -87,7 +87,7 @@
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>Sound_Incoming</anticipationSound>
+      <anticipationSound>DropPod_Fall</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -156,7 +156,7 @@
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>Sound_Incoming</anticipationSound>
+      <anticipationSound>DropPod_Fall</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -225,7 +225,7 @@
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(2,2)</shadowSize>
-      <anticipationSound>Sound_Incoming</anticipationSound>
+      <anticipationSound>DropPod_Fall</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -285,13 +285,13 @@
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(3,3)</drawSize>
+      <drawSize>(4,4)</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
-      <shadowSize>(3,3)</shadowSize>
-      <anticipationSound>Sound_Incoming</anticipationSound>
+      <shadowSize>(4,4)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -305,13 +305,13 @@
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(3,3)</drawSize>
+      <drawSize>(4,4)</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
-      <shadowSize>(3,3)</shadowSize>
+      <shadowSize>(4,4)</shadowSize>
       <anticipationSound>Sound_Launch</anticipationSound>
       <anticipationSoundTicks>-10</anticipationSoundTicks>
       <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
@@ -328,7 +328,7 @@
     <graphicData>
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(3,3)</drawSize>
+      <drawSize>(4,4)</drawSize>
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <blockWind>true</blockWind>
@@ -341,7 +341,8 @@
   </ThingDef>
 
 
-    <!-- SRTS MkIV -->
+  <!-- Not yet...
+  SRTS MkIV
 
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTSMkIV_Incoming</defName>
@@ -357,7 +358,7 @@
       <movementType>Decelerate</movementType>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
-      <anticipationSound>Sound_Incoming</anticipationSound>
+      <anticipationSound>DropPod_Fall</anticipationSound>
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
@@ -408,6 +409,8 @@
     </statBases>
     <selectable>true</selectable>
   </ThingDef>
+
+-->
 
 
 </Defs>
