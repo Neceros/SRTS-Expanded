@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Text;
 using Verse;
 using UnityEngine;
 using RimWorld;
@@ -33,8 +34,13 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Property(type: typeof(TravelingTransportPods), name: "TraveledPctStepPerTick").GetGetMethod(nonPublic: true),
                 prefix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(CustomTravelSpeedSRTS)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(CollectionsMassCalculator), name: nameof(CollectionsMassCalculator.CapacityLeftAfterTradeableTransfer)),
+                prefix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(SRTSMassCapacityCaravan)));
+            harmony.Patch(original: AccessTools.Property(type: typeof(Dialog_Trade), name: "MassUsage").GetGetMethod(nonPublic: true), prefix: null, postfix: null,
+                transpiler: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(SRTSMassUsageCaravan)));
         }
-        /*Smash Phil Addition : Disallow launching ship without at least 1 Pawn */
         public static IEnumerable<CodeInstruction> ErrorOnNoPawns(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
             List<CodeInstruction> instructionsList = instructions.ToList();
@@ -161,5 +167,49 @@ namespace SRTS
             }
             return true;
         }
+
+        public static bool SRTSMassCapacityCaravan(List<Thing> allCurrentThings, List<Tradeable> tradeables, StringBuilder explanation, ref float __result)
+        {
+            if (TradeSession.playerNegotiator.GetCaravan() is null)
+                Log.Message("test");
+            if (!TradeSession.playerNegotiator.GetCaravan().AllThings.Any())
+                Log.Message("test2");
+            Thing ship = null;
+            if(TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null))
+            {
+                ship = TradeSession.playerNegotiator.GetCaravan().AllThings.First(x => x.TryGetComp<CompLaunchableSRTS>() != null);
+            }
+            if (ship != null)
+            {
+                __result = ship.def.GetCompProperties<CompProperties_Transporter>().massCapacity;
+                return false;
+            }
+            return true;
+        }
+
+        public static IEnumerable<CodeInstruction> SRTSMassUsageCaravan(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
+        {
+            List<CodeInstruction> instructionList = instructions.ToList();
+
+            for(int i = 0; i < instructionList.Count; i++)
+            {
+                CodeInstruction instruction = instructionList[i];
+
+                if(instruction.opcode == OpCodes.Ldc_I4_0 && instructionList[i+1].opcode == OpCodes.Ldc_I4_0 && instructionList[i+2].opcode == OpCodes.Ldc_I4_0)
+                {
+                    
+                    yield return instruction;
+                    instruction = instructionList[++i];
+
+                    Label label = ilg.DefineLabel();
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(StartUp), name: nameof(StartUp.SRTSInCaravan)).GetGetMethod());
+                    continue;
+                }
+
+                yield return instruction;
+            }
+        }
+
+        public static bool SRTSInCaravan => TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null);
     }
 }
