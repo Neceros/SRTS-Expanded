@@ -53,9 +53,11 @@ namespace SRTS
                 {
                     Label label = ilg.DefineLabel();
 
+                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.PawnInTransporter)));
-                    yield return new CodeInstruction(opcode: OpCodes.Brtrue, label);
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.NoPawnInSRTS)));
+                    yield return new CodeInstruction(opcode: OpCodes.Brfalse_S, label);
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldstr, operand: "Can't send SRTS without a Pilot");
                     //yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(Translator), parameters: new Type[] { typeof(string) }, name: nameof(Translator.Translate)));
@@ -74,9 +76,9 @@ namespace SRTS
             }
         }
 
-        public static bool PawnInTransporter(List<Pawn> pawns)
+        public static bool NoPawnInSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
         {
-            if (pawns.Any(x => x.IsColonistPlayerControlled))
+            if (transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null) && !pawns.Any(x => x.IsColonistPlayerControlled))
                 return true;
             return false;
         }
@@ -106,7 +108,8 @@ namespace SRTS
 
         public static void AddToSRTSFromCaravan(Caravan caravan, Thing thing)
         {
-            caravan.AllThings.First(x => x.TryGetComp<CompLaunchableSRTS>() != null).TryGetComp<CompLaunchableSRTS>()?.AddThingsToSRTS(thing);
+            if(caravan.AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null))
+                caravan.AllThings.First(x => x.TryGetComp<CompLaunchableSRTS>() != null).TryGetComp<CompLaunchableSRTS>()?.AddThingsToSRTS(thing);
         }
 
         public static IEnumerable<CodeInstruction> RotateSRTSLeaving(IEnumerable<CodeInstruction> instructions)
