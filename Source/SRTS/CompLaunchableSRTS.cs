@@ -18,6 +18,9 @@ namespace SRTS
     private const float FuelPerTile = 2.25f;
     private Caravan carr;
 
+    public float TravelSpeed => this.SRTSProps.travelSpeed / 100000;
+
+    public CompProperties_LaunchableSRTS SRTSProps => (CompProperties_LaunchableSRTS)this.props;
     public Building FuelingPortSource
     {
       get
@@ -204,6 +207,11 @@ namespace SRTS
       }
     }
 
+    public void AddThingsToSRTS(Thing thing)
+    {
+        thingsInsideShip.Add(thing);
+    }
+
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
       foreach (Gizmo gizmo in base.CompGetGizmosExtra())
@@ -222,7 +230,7 @@ namespace SRTS
         launch.action = (Action) (() =>
         {
           if (this.AnyInGroupHasAnythingLeftToLoad)
-            Find.WindowStack.Add((Window) Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate((object) this.FirstThingLeftToLoadInGroup.LabelCapNoCount), new Action(this.StartChoosingDestination), false, (string) null));
+            Find.WindowStack.Add((Window) Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(this.FirstThingLeftToLoadInGroup.LabelCapNoCount), new Action(this.StartChoosingDestination), false, (string) null));
           else
             this.StartChoosingDestination();
         });
@@ -284,7 +292,7 @@ namespace SRTS
         MapParent worldObject = target.WorldObject as MapParent;
         if (worldObject == null)
           return "ClickToSeeAvailableOrders_Empty".Translate();
-        return "ClickToSeeAvailableOrders_WorldObject".Translate((object) worldObject.LabelCap);
+        return "ClickToSeeAvailableOrders_WorldObject".Translate(worldObject.LabelCap);
       }));
     }
 
@@ -322,7 +330,7 @@ namespace SRTS
         MapParent worldObject = target.WorldObject as MapParent;
         if (worldObject == null)
           return "ClickToSeeAvailableOrders_Empty".Translate();
-        return "ClickToSeeAvailableOrders_WorldObject".Translate((object) worldObject.LabelCap);
+        return "ClickToSeeAvailableOrders_WorldObject".Translate(worldObject.LabelCap);
       }));
     }
 
@@ -338,7 +346,7 @@ namespace SRTS
       int num = Find.WorldGrid.TraversalDistanceBetween(this.carr != null ? this.carr.Tile : this.parent.Map.Tile, target.Tile, true, int.MaxValue);
       if (num > this.MaxLaunchDistance)
       {
-        Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate((object) CompLaunchableSRTS.FuelNeededToLaunchAtDist((float) num).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
+        Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float) num).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
         return false;
       }
       if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
@@ -396,6 +404,7 @@ namespace SRTS
           // Neceros Edit
           Thing thing = ThingMaker.MakeThing(ThingDef.Named(parent.def.defName), (ThingDef) null);
           thing.SetFactionDirect(Faction.OfPlayer);
+          thing.Rotation = this.FuelingPortSource.Rotation;
           CompRefuelable comp2 = thing.TryGetComp<CompRefuelable>();
           comp2.GetType().GetField("fuel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue((object) comp2, (object) fuelingPortSource.TryGetComp<CompRefuelable>().Fuel);
           comp2.TargetFuelLevel = fuelingPortSource.TryGetComp<CompRefuelable>().TargetFuelLevel;
@@ -409,6 +418,7 @@ namespace SRTS
 
           // Neceros Edit
           SRTSLeaving srtsLeaving = (SRTSLeaving) SkyfallerMaker.MakeSkyfaller(ThingDef.Named(parent.def.defName + "_Leaving"), (Thing) activeDropPod);
+          srtsLeaving.rotation = this.FuelingPortSource.Rotation;
           srtsLeaving.groupID = groupId;
           srtsLeaving.destinationTile = destinationTile;
           srtsLeaving.arrivalAction = arrivalAction;
@@ -442,6 +452,13 @@ namespace SRTS
               }
             }
           }
+          /*Add caravan items to SRTS - SmashPhil */
+          foreach(Pawn p in directlyHeldThings.InnerListForReading)
+          {
+            p.inventory.innerContainer.InnerListForReading.ForEach(x => AddThingsToSRTS(x));
+            p.inventory.innerContainer.Clear();
+          }
+
           ThingOwner<Thing> thingOwner = new ThingOwner<Thing>();
           foreach (Pawn pawn in directlyHeldThings.AsEnumerable<Pawn>().ToList<Pawn>())
             thingOwner.TryAddOrTransfer((Thing) pawn, true);
@@ -452,6 +469,9 @@ namespace SRTS
           ActiveDropPod activeDropPod = (ActiveDropPod) ThingMaker.MakeThing(ThingDef.Named(parent.def.defName + "_Active"), (ThingDef) null);
           activeDropPod.Contents = new ActiveDropPodInfo();
           activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer((IEnumerable<Thing>) thingOwner, true, true);
+          activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer((IEnumerable<Thing>) thingsInsideShip, true, true);
+          thingsInsideShip.Clear();
+
           cafr.RemoveAllPawns();
           if (cafr.Spawned)
             Find.WorldObjects.Remove((WorldObject) cafr);
@@ -538,5 +558,8 @@ namespace SRTS
       if (!anything && !Find.World.Impassable(tile))
         yield return new FloatMenuOption("TransportPodsContentsWillBeLost".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) null, (Caravan) null)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
     }
+
+
+    List<Thing> thingsInsideShip = new List<Thing>();
   }
 }

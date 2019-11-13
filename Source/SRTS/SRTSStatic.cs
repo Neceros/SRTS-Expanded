@@ -35,7 +35,7 @@ namespace SRTS
       Caravan car)
     {
       if (TransportPodsArrivalAction_LandInSpecificCell.CanLandInSpecificCell(pods, mapparent))
-        yield return new FloatMenuOption("LandInExistingMap".Translate((object) mapparent.Label), (Action) (() =>
+        yield return new FloatMenuOption("LandInExistingMap".Translate(mapparent.Label), (Action) (() =>
         {
           Map myMap = car != null ? (Map) null : representative.parent.Map;
           Current.Game.CurrentMap = mapparent.Map;
@@ -107,12 +107,13 @@ namespace SRTS
         yield return f;
         f = (FloatMenuOption) null;
       }
-      foreach (FloatMenuOption giftFloatMenuOption in SRTSArrivalActionUtility.GetGIFTFloatMenuOptions(representative, pods, bs, car))
+      /*Uncomment to allow gifting of Ship and contents to faction -SmashPhil*/
+      /*foreach (FloatMenuOption giftFloatMenuOption in SRTSArrivalActionUtility.GetGIFTFloatMenuOptions(representative, pods, bs, car))
       {
         FloatMenuOption f2 = giftFloatMenuOption;
         yield return f2;
         f2 = (FloatMenuOption) null;
-      }
+      }*/
       foreach (FloatMenuOption atkFloatMenuOption in SRTSArrivalActionUtility.GetATKFloatMenuOptions(representative, pods, bs, car))
       {
         FloatMenuOption f3 = atkFloatMenuOption;

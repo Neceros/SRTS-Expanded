@@ -7,7 +7,7 @@
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTSMkII_Incoming</defName>
     <label>SRTS Mk.II incoming</label>
-    <thingClass>DropPodIncoming</thingClass>
+    <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
       <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -76,7 +76,7 @@
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTSMkIII_Incoming</defName>
     <label>SRTS Mk.III incoming</label>
-    <thingClass>DropPodIncoming</thingClass>
+    <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -145,7 +145,7 @@
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTF_Incoming</defName>
     <label>SRTF incoming</label>
-    <thingClass>DropPodIncoming</thingClass>
+    <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -214,7 +214,7 @@
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTSSuperpod_Incoming</defName>
     <label>Superpod incoming</label>
-    <thingClass>DropPodIncoming</thingClass>
+    <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
       <texPath>Superpod</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -280,7 +280,7 @@
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTSSkip_Incoming</defName>
     <label>SRTS Skip incoming</label>
-    <thingClass>DropPodIncoming</thingClass>
+    <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -347,7 +347,7 @@
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTSMkIV_Incoming</defName>
     <label>SRTS Mk.IV incoming</label>
-    <thingClass>DropPodIncoming</thingClass>
+    <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
