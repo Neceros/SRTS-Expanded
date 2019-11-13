@@ -13,13 +13,14 @@ namespace SRTS
             {
                 if (info.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null)
                 {
-                    string shipType = info.innerContainer[index].def.defName;
+                    Thing ship = info.innerContainer[index];
+                    string shipType = ship.def.defName;
                     ActiveDropPod activeDropPod = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(shipType + "_Active"), (ThingDef)null);
                     activeDropPod.Contents = info;
                     
-                    //activeDropPod.Contents.innerContainer.Add
                     EnsureInBoundsSRTS(ref c, info.innerContainer[index].def, map);
-                    SkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_Incoming"), (Thing)activeDropPod, c, map);
+                    SRTSIncoming incomingSRTS = (SRTSIncoming)SkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_Incoming"), (Thing)activeDropPod, c, map);
+                    incomingSRTS.SRTSRotation = ship.Rotation;
                     return false;
                 }
             }

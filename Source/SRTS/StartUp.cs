@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using Verse;
+using UnityEngine;
 using RimWorld;
 using RimWorld.Planet;
 using OpCodes = System.Reflection.Emit.OpCodes;
@@ -26,6 +27,12 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(SettlementBase_TraderTracker), name: nameof(SettlementBase_TraderTracker.GiveSoldThingToPlayer)), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(GiveSoldThingsToSRTS)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(Skyfaller), name: nameof(Skyfaller.DrawAt)), prefix: null, postfix: null,
+                transpiler: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(RotateSRTSLeaving)));
+            harmony.Patch(original: AccessTools.Property(type: typeof(TravelingTransportPods), name: "TraveledPctStepPerTick").GetGetMethod(nonPublic: true),
+                prefix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(CustomTravelSpeedSRTS)));
         }
         /*Smash Phil Addition : Disallow launching ship without at least 1 Pawn */
         public static IEnumerable<CodeInstruction> ErrorOnNoPawns(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
@@ -94,6 +101,61 @@ namespace SRTS
         public static void AddToSRTSFromCaravan(Caravan caravan, Thing thing)
         {
             caravan.AllThings.First(x => x.TryGetComp<CompLaunchableSRTS>() != null).TryGetComp<CompLaunchableSRTS>()?.AddThingsToSRTS(thing);
+        }
+
+        public static IEnumerable<CodeInstruction> RotateSRTSLeaving(IEnumerable<CodeInstruction> instructions)
+        {
+            List<CodeInstruction> instructionList = instructions.ToList();
+
+            for(int i = 0; i < instructionList.Count; i++)
+            {
+                CodeInstruction instruction = instructionList[i];
+
+                if(instruction.opcode == OpCodes.Stloc_0)
+                {
+                    yield return instruction;
+                    instruction = instructionList[++i];
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldflda, operand: AccessTools.Field(type: typeof(Skyfaller), name: nameof(Skyfaller.innerContainer)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.RotateSRTS)));
+                    yield return new CodeInstruction(opcode: OpCodes.Stloc_0);
+                }
+                yield return instruction;
+            }
+        }
+
+        public static Thing RotateSRTS(Thing t, ref ThingOwner ic)
+        {
+            t.Rotation = (t as SRTSLeaving) is null ? ( (t as SRTSIncoming) is null ? Rot4.North : Rot4.East) : Rot4.West;
+            ic[0].Rotation = t.Rotation;
+            return t;
+        }
+
+        private static bool CustomTravelSpeedSRTS(int ___initialTile, int ___destinationTile, List<ActiveDropPodInfo> ___pods, ref float __result)
+        {
+            if (___pods.Any(x => x.innerContainer.Any(y => y.TryGetComp<CompLaunchableSRTS>() != null)))
+            {
+                Vector3 start = Find.WorldGrid.GetTileCenter(___initialTile);
+                Vector3 end = Find.WorldGrid.GetTileCenter(___destinationTile);
+
+                if (start == end)
+                {
+                    __result = 1f;
+                    return false;
+                }
+                float num = GenMath.SphericalDistance(start.normalized, end.normalized);
+                if(num == 0f)
+                {
+                    __result = 1f;
+                    return false;
+                }
+                Thing ship = ___pods.Find(x => x.innerContainer.First(y => y.TryGetComp<CompLaunchableSRTS>() != null) != null).innerContainer.First(z => z.TryGetComp<CompLaunchableSRTS>() != null);
+                __result = ship.TryGetComp<CompLaunchableSRTS>().TravelSpeed / num;
+                return false;
+            }
+            return true;
         }
     }
 }

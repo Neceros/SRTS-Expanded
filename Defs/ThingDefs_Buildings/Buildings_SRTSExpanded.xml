@@ -112,7 +112,9 @@
         <restEffectiveness>0.7</restEffectiveness>
 		    <massCapacity>420</massCapacity>
       </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+		<travelSpeed>50</travelSpeed>
+	  </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>800</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>

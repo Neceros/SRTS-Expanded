@@ -13,7 +13,7 @@ namespace SRTS
     public int destinationTile = -1;
     public TransportPodsArrivalAction arrivalAction;
     private bool alreadyLeft;
-
+    public Rot4 rotation;
     public ActiveDropPodInfo Contents
     {
       get
@@ -33,6 +33,7 @@ namespace SRTS
       Scribe_Values.Look<int>(ref this.destinationTile, "destinationTile", 0, false);
       Scribe_Deep.Look<TransportPodsArrivalAction>(ref this.arrivalAction, "arrivalAction");
       Scribe_Values.Look<bool>(ref this.alreadyLeft, "alreadyLeft", false, false);
+      Scribe_Values.Look<Rot4>(ref this.rotation, "rotation");
     }
 
     protected override void LeaveMap()

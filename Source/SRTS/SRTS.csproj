@@ -61,11 +61,11 @@
     <Compile Include="HarmonyTest_AJ.cs" />
     <Compile Include="HarmonyTest_BB.cs" />
     <Compile Include="HarmonyTest_TS.cs" />
+    <Compile Include="SRTSIncoming.cs" />
     <Compile Include="SRTSLeaving.cs" />
     <Compile Include="SRTSArrivalActionUtility.cs" />
     <Compile Include="SRTSStatic.cs" />
     <Compile Include="StartUp.cs" />
-    <Compile Include="TravelingSRTS.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

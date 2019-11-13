@@ -8,5 +8,7 @@ namespace SRTS
     {
       this.compClass = typeof (CompLaunchableSRTS);
     }
+
+    public float travelSpeed = 25f;
   }
 }

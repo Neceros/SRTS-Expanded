@@ -18,6 +18,9 @@ namespace SRTS
     private const float FuelPerTile = 2.25f;
     private Caravan carr;
 
+    public float TravelSpeed => this.SRTSProps.travelSpeed / 100000;
+
+    public CompProperties_LaunchableSRTS SRTSProps => (CompProperties_LaunchableSRTS)this.props;
     public Building FuelingPortSource
     {
       get
@@ -286,10 +289,6 @@ namespace SRTS
             GUI.color = Color.red;
           return floatMenuOptionsAt.First<FloatMenuOption>().Label;
         }
-        foreach(FloatMenuOption f in floatMenuOptionsAt.ToList())
-          {
-              //Log.Message("-> " + f.Label); FIX LATER
-          }
         MapParent worldObject = target.WorldObject as MapParent;
         if (worldObject == null)
           return "ClickToSeeAvailableOrders_Empty".Translate();
@@ -405,6 +404,7 @@ namespace SRTS
           // Neceros Edit
           Thing thing = ThingMaker.MakeThing(ThingDef.Named(parent.def.defName), (ThingDef) null);
           thing.SetFactionDirect(Faction.OfPlayer);
+          thing.Rotation = this.FuelingPortSource.Rotation;
           CompRefuelable comp2 = thing.TryGetComp<CompRefuelable>();
           comp2.GetType().GetField("fuel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue((object) comp2, (object) fuelingPortSource.TryGetComp<CompRefuelable>().Fuel);
           comp2.TargetFuelLevel = fuelingPortSource.TryGetComp<CompRefuelable>().TargetFuelLevel;
@@ -418,6 +418,7 @@ namespace SRTS
 
           // Neceros Edit
           SRTSLeaving srtsLeaving = (SRTSLeaving) SkyfallerMaker.MakeSkyfaller(ThingDef.Named(parent.def.defName + "_Leaving"), (Thing) activeDropPod);
+          srtsLeaving.rotation = this.FuelingPortSource.Rotation;
           srtsLeaving.groupID = groupId;
           srtsLeaving.destinationTile = destinationTile;
           srtsLeaving.arrivalAction = arrivalAction;
@@ -451,6 +452,13 @@ namespace SRTS
               }
             }
           }
+          /*Add caravan items to SRTS - SmashPhil */
+          foreach(Pawn p in directlyHeldThings.InnerListForReading)
+          {
+            p.inventory.innerContainer.InnerListForReading.ForEach(x => AddThingsToSRTS(x));
+            p.inventory.innerContainer.Clear();
+          }
+
           ThingOwner<Thing> thingOwner = new ThingOwner<Thing>();
           foreach (Pawn pawn in directlyHeldThings.AsEnumerable<Pawn>().ToList<Pawn>())
             thingOwner.TryAddOrTransfer((Thing) pawn, true);
