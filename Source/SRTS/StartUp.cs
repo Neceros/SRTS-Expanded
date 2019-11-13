@@ -170,10 +170,6 @@ namespace SRTS
 
         public static bool SRTSMassCapacityCaravan(List<Thing> allCurrentThings, List<Tradeable> tradeables, StringBuilder explanation, ref float __result)
         {
-            if (TradeSession.playerNegotiator.GetCaravan() is null)
-                Log.Message("test");
-            if (!TradeSession.playerNegotiator.GetCaravan().AllThings.Any())
-                Log.Message("test2");
             Thing ship = null;
             if(TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null))
             {

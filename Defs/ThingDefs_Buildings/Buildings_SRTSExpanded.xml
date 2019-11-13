@@ -38,11 +38,11 @@
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.6</restEffectiveness>
-		    <massCapacity>240</massCapacity>
+      	<restEffectiveness>0.6</restEffectiveness>
+				<massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>20</travelSpeed>
+        <travelSpeed>25</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>600</fuelCapacity>
@@ -192,7 +192,7 @@
         <massCapacity>15000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>18</travelSpeed>
+        <travelSpeed>17</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>5000</fuelCapacity>
