@@ -128,6 +128,10 @@ namespace SRTS
 
         public static Thing RotateSRTS(Thing t, ref ThingOwner ic)
         {
+            string[] nameSplit = t.Label.Split(' ');
+            if(nameSplit[0] == "Superpod")
+                return t;
+
             t.Rotation = (t as SRTSLeaving) is null ? ( (t as SRTSIncoming) is null ? Rot4.North : Rot4.East) : Rot4.West;
             ic[0].Rotation = t.Rotation;
             return t;
