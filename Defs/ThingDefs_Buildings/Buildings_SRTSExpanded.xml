@@ -4,7 +4,7 @@
 	<ThingDef ParentName="BuildingBase">
     <defName>SRTSSuperpod</defName>
     <label>Superpod</label>
-    <description>A transport pod that's been retrofit with better engines and a manual flight system. Not big and won't go far, but can return back home, unlike normal transport pods. Passengers on board rest, eat, and heal during flight, but not well.</description>
+    <description>A transport pod that's been retrofit with better engines and a manual flight system. Not big and won't go far, but unlike a typical pod this one can return back home. Passengers on board rest, eat, and heal during flight, but not well.</description>
     <graphicData>
       <texPath>Superpod</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -41,7 +41,9 @@
         <restEffectiveness>0.6</restEffectiveness>
 		    <massCapacity>240</massCapacity>
       </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+        <travelSpeed>20</travelSpeed>
+      </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>600</fuelCapacity>
         <fuelConsumptionRate>1</fuelConsumptionRate>
@@ -113,8 +115,8 @@
 		    <massCapacity>420</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-		<travelSpeed>50</travelSpeed>
-	  </li>
+		    <travelSpeed>25</travelSpeed>
+      </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>800</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
@@ -189,7 +191,9 @@
         <restEffectiveness>0.6</restEffectiveness>
         <massCapacity>15000</massCapacity>
       </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+        <travelSpeed>18</travelSpeed>
+      </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>5000</fuelCapacity>
         <fuelConsumptionRate>1.10</fuelConsumptionRate>
@@ -264,7 +268,9 @@
         <restEffectiveness>1</restEffectiveness>
 		    <massCapacity>4000</massCapacity>
       </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+        <travelSpeed>30</travelSpeed>
+      </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
@@ -340,7 +346,9 @@
         <restEffectiveness>1.2</restEffectiveness>
         <massCapacity>6000</massCapacity>
       </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+        <travelSpeed>35</travelSpeed>
+      </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
         <fuelConsumptionRate>0.75</fuelConsumptionRate>
@@ -417,7 +425,9 @@
         <restEffectiveness>1.5</restEffectiveness>
         <massCapacity>15000</massCapacity>
       </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS" />
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+        <travelSpeed>40</travelSpeed>
+      </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
         <fuelConsumptionRate>0.25</fuelConsumptionRate>
