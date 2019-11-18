@@ -4,7 +4,10 @@
 	<ThingDef ParentName="BuildingBase">
     <defName>SRTSSuperpod</defName>
     <label>Superpod</label>
-    <description>A transport pod that's been retrofit with better engines and a manual flight system. Not big and won't go far, but unlike a typical pod this one can return back home. Passengers on board rest, eat, and heal during flight, but not well.</description>
+    <description>A transport pod that's been retrofit with better engines and a manual flight system. Not big and won't go far, but unlike a typical pod this one can return back home. Passengers on board rest, eat, and heal during flight, but not well.
+
+Speed: 10
+Internal power plant: 600w</description>
     <graphicData>
       <texPath>Superpod</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -42,7 +45,7 @@
 				<massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>25</travelSpeed>
+        <travelSpeed>10</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>600</fuelCapacity>
@@ -60,6 +63,13 @@
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
 		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-600</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -78,7 +88,10 @@
   <ThingDef ParentName="BuildingBase">
     <defName>SRTSSkip</defName>
     <label>SRTS Skip</label>
-    <description>A stable and fast flying transport ship designed for 1-3 people at most, with cargo. Better than a Superpod, but still not as comfortable as a ship designed for longer travel. Passengers on board rest, eat, and heal during flight, decently well.</description>
+    <description>A stable and fast flying transport ship designed for 1-3 people at most, with cargo. Better than a Superpod, but still not as comfortable as a ship designed for longer travel. Passengers on board rest, eat, and heal during flight, decently well.
+
+Speed: 15
+Internal power plant: 800w</description>
     <graphicData>
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -115,7 +128,7 @@
 		    <massCapacity>420</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-		    <travelSpeed>25</travelSpeed>
+		    <travelSpeed>15</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>800</fuelCapacity>
@@ -133,6 +146,13 @@
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
 		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-800</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -151,7 +171,10 @@
     <ThingDef ParentName="BuildingBase">
     <defName>SRTF</defName>
     <label>SRTF</label>
-    <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. Hard to rest on this ship.</description>
+    <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. Hard to rest on this ship.
+
+Speed: 10
+Internal power plant: 1600w</description>
     <graphicData>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -192,7 +215,7 @@
         <massCapacity>15000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>17</travelSpeed>
+        <travelSpeed>10</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>5000</fuelCapacity>
@@ -210,6 +233,13 @@
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1600</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -228,7 +258,10 @@
   <ThingDef ParentName="BuildingBase">
     <defName>SRTSMkII</defName>
     <label>SRTS Mk.II: Albatross</label>
-    <description>The Albatross offers better fuel efficiency and larger fuel reserve at almost the same weight class of the original SRTS thanks to more advanced technology and better techniques. Passengers on board rest, eat, and heal during flight.</description>
+    <description>The Albatross offers better fuel efficiency and larger fuel reserve at almost the same weight class of the original SRTS thanks to more advanced technology and better techniques. Passengers on board rest, eat, and heal during flight.
+
+Speed: 20
+Internal power plant: 1600w</description>
     <graphicData>
       <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -269,7 +302,7 @@
 		    <massCapacity>4000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>30</travelSpeed>
+        <travelSpeed>20</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
@@ -287,6 +320,13 @@
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
 		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1600</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -305,7 +345,10 @@
   <ThingDef ParentName="BuildingBase">
     <defName>SRTSMkIII</defName>
     <label>SRTS Mk.III: Phoenix</label>
-    <description>The Phoenix offers similar fuel efficiency to the Albatross, but with an increased fuel reserve and carry capacity. Additionally, the Mk.III is harder to kill and uses less materials in its construction at the cost of some advanced chemistry.Passengers on board rest, eat, and heal during flight really well.</description>
+    <description>The Phoenix offers similar fuel efficiency to the Albatross, but with an increased fuel reserve and carry capacity. Additionally, the Mk.III is harder to kill and uses less materials in its construction at the cost of some advanced chemistry.Passengers on board rest, eat, and heal during flight really well.
+
+Speed: 25
+Internal power plant: 2400w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -347,7 +390,7 @@
         <massCapacity>6000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>35</travelSpeed>
+        <travelSpeed>25</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -365,6 +408,13 @@
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-2400</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -384,7 +434,10 @@
   <ThingDef ParentName="BuildingBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
-    <description>The Genesis transport ship is highly advanced archotech technology. Nothing can match the stability, fuel range, cargo space, and comfort of the Genesis. This ship converts a few types of matter into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.</description>
+    <description>The Genesis transport ship is highly advanced archotech technology. Nothing can match the stability, fuel range, cargo space, and comfort of the Genesis. This ship converts a few types of matter into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.
+
+Speed: 25
+Internal power plant: 4200w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -426,7 +479,7 @@
         <massCapacity>15000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>40</travelSpeed>
+        <travelSpeed>25</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -449,6 +502,13 @@
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-4200</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
