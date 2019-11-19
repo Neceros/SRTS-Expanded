@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
+
+<!--
   <Operation Class="PatchOperationFindMod">
     <mods>
       <li>Save Our Ship 2</li>
@@ -15,13 +17,12 @@
               <fuelPerTile>1.75</fuelPerTile>
               <skyfaller>HeavyCargoShuttleSkyfaller</skyfaller>
             </li>
-            <li Class="CompProperties_BecomePawn">
-              <pawnDef>ShuttleHeavyHover</pawnDef>
-            </li>
           </value>
         </li>
       </operations>
     </match>
   </Operation>
+
+-->
 
 </Patch>

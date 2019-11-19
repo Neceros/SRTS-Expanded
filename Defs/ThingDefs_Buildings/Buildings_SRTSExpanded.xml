@@ -24,9 +24,9 @@ Internal power plant: 600w</description>
     </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.5</fillPercent>
+    <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
       <WorkToBuild>2400</WorkToBuild>
@@ -48,10 +48,10 @@ Internal power plant: 600w</description>
         <travelSpeed>10</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
-        <fuelCapacity>600</fuelCapacity>
+        <fuelCapacity>200</fuelCapacity>
         <fuelConsumptionRate>1</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>600</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>200</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -61,7 +61,7 @@ Internal power plant: 600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+		    <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -70,6 +70,10 @@ Internal power plant: 600w</description>
       </li>
       <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -102,7 +106,7 @@ Internal power plant: 800w</description>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.5</fillPercent>
+    <fillPercent>0.8</fillPercent>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
       <li>BuildingsMisc</li>
@@ -131,10 +135,10 @@ Internal power plant: 800w</description>
 		    <travelSpeed>15</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
-        <fuelCapacity>800</fuelCapacity>
+        <fuelCapacity>500</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>800</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>500</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -144,7 +148,7 @@ Internal power plant: 800w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+		    <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -153,6 +157,10 @@ Internal power plant: 800w</description>
       </li>
       <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -192,9 +200,9 @@ Internal power plant: 1600w</description>
     </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.8</fillPercent>
+    <fillPercent>0.9</fillPercent>
     <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>3000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
@@ -218,10 +226,10 @@ Internal power plant: 1600w</description>
         <travelSpeed>10</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
-        <fuelCapacity>5000</fuelCapacity>
+        <fuelCapacity>2000</fuelCapacity>
         <fuelConsumptionRate>1.10</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>5000</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -231,15 +239,18 @@ Internal power plant: 1600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-1600</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
       </li>
-      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>16</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -279,7 +290,7 @@ Internal power plant: 1600w</description>
     </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.5</fillPercent>
+    <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
@@ -308,7 +319,7 @@ Internal power plant: 1600w</description>
         <fuelCapacity>1600</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>800</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>1200</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -318,15 +329,18 @@ Internal power plant: 1600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+		    <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-1600</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
       </li>
-      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -345,7 +359,7 @@ Internal power plant: 1600w</description>
   <ThingDef ParentName="BuildingBase">
     <defName>SRTSMkIII</defName>
     <label>SRTS Mk.III: Phoenix</label>
-    <description>The Phoenix offers similar fuel efficiency to the Albatross, but with an increased fuel reserve and carry capacity. Additionally, the Mk.III is harder to kill and uses less materials in its construction at the cost of some advanced chemistry.Passengers on board rest, eat, and heal during flight really well.
+    <description>The Phoenix offers similar fuel efficiency to the Albatross, but with an increased fuel reserve and carry capacity. Additionally, the Mk.III is harder to kill and uses less materials in its construction at the cost of some advanced chemistry. Passengers on board rest, eat, and heal during flight really well.
 
 Speed: 25
 Internal power plant: 2400w</description>
@@ -366,9 +380,9 @@ Internal power plant: 2400w</description>
       <li>BuildingsMisc</li>
     </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.5</fillPercent>
+    <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>1250</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
@@ -396,7 +410,7 @@ Internal power plant: 2400w</description>
         <fuelCapacity>2000</fuelCapacity>
         <fuelConsumptionRate>0.75</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -406,15 +420,18 @@ Internal power plant: 2400w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-2400</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
       </li>
-      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -430,23 +447,22 @@ Internal power plant: 2400w</description>
   </ThingDef>
 
 
-<!-- not yet...
   <ThingDef ParentName="BuildingBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
-    <description>The Genesis transport ship is highly advanced archotech technology. Nothing can match the stability, fuel range, cargo space, and comfort of the Genesis. This ship converts a few types of matter into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.
+    <description>The Genesis transport ship is highly advanced archotech technology. Nothing can match the stability, fuel range, cargo space, and comfort of the Genesis. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers on board rest, eat, and heal during flight extremely well.
 
-Speed: 25
+Speed: 35
 Internal power plant: 4200w</description>
     <graphicData>
-      <texPath>Phoenix</texPath>
+      <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(9,9)</drawSize>
+      <drawSize>(13,13)</drawSize>
       <shadowData>
         <volume>(0.1, 0.1, 0.1)</volume>
       </shadowData>
     </graphicData>
-    <size>(3,3)</size>
+    <size>(7,7)</size>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
@@ -455,60 +471,61 @@ Internal power plant: 4200w</description>
       <li>BuildingsMisc</li>
     </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.5</fillPercent>
+    <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <statBases>
-      <MaxHitPoints>1300</MaxHitPoints>
-      <WorkToBuild>64000</WorkToBuild>
-      <Flammability>0.1</Flammability>
+      <MaxHitPoints>2000</MaxHitPoints>
+      <WorkToBuild>128000</WorkToBuild>
+      <Flammability>0</Flammability>
       <Mass>20</Mass>
-      <Beauty>150</Beauty>
+      <Beauty>1000</Beauty>
     </statBases>
     <costList>
-      <Steel>2400</Steel>
-      <Plasteel>1000</Plasteel>
-      <Gold>350</Gold>
-      <Uranium>250</Uranium>
-      <ComponentIndustrial>30</ComponentIndustrial>
-      <ComponentSpacer>10</ComponentSpacer>
+      <Steel>1800</Steel>
+      <Plasteel>1200</Plasteel>
+      <Gold>760</Gold>
+      <Uranium>500</Uranium>
+      <ComponentIndustrial>60</ComponentIndustrial>
+      <ComponentSpacer>20</ComponentSpacer>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>1.5</restEffectiveness>
-        <massCapacity>15000</massCapacity>
+        <massCapacity>100000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>25</travelSpeed>
+        <travelSpeed>35</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
-        <fuelCapacity>2000</fuelCapacity>
-        <fuelConsumptionRate>0.25</fuelConsumptionRate>
+        <fuelLabel>Uranium reactor charge level</fuelLabel>
+        <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
+        <fuelCapacity>100000</fuelCapacity>
+        <fuelConsumptionRate>0.01</fuelConsumptionRate>
+        <fuelMultiplier>444</fuelMultiplier>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
-            <li>Chemfuel</li>
-            <li>Steel</li>
-            <li>Plasteel</li>
-            <li>Gold</li>
             <li>Uranium</li>
-            <li>Jade</li>
           </thingDefs>
         </fuelFilter>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-4200</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
       </li>
-      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>20</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
     </comps>
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
@@ -520,8 +537,7 @@ Internal power plant: 4200w</description>
       <li>Research_SRTSMk4</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
-    <uiIconScale>0.30</uiIconScale>
+    <uiIconScale>0.60</uiIconScale>
   </ThingDef>
--->
   
 </Defs>
