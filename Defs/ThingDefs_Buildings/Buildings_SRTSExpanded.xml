@@ -17,6 +17,11 @@ Internal power plant: 600w</description>
     <size>(2,2)</size>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <stealable>false</stealable>
+    <thingCategories>
+      <li>Buildings</li>
+    </thingCategories>
     <rotatable>false</rotatable>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
@@ -103,6 +108,11 @@ Internal power plant: 800w</description>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <stealable>false</stealable>
+    <thingCategories>
+      <li>Buildings</li>
+    </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
@@ -189,6 +199,11 @@ Internal power plant: 1600w</description>
     <size>(7,9)</size>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <stealable>false</stealable>
+    <thingCategories>
+      <li>Buildings</li>
+    </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.9</fillPercent>
@@ -276,6 +291,11 @@ Internal power plant: 1600w</description>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <stealable>false</stealable>
+    <thingCategories>
+      <li>Buildings</li>
+    </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
@@ -362,6 +382,11 @@ Internal power plant: 2400w</description>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <stealable>false</stealable>
+    <thingCategories>
+      <li>Buildings</li>
+    </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
@@ -448,6 +473,11 @@ Internal power plant: 4200w</description>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <stealable>false</stealable>
+    <thingCategories>
+      <li>Buildings</li>
+    </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
