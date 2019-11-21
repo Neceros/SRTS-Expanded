@@ -10,6 +10,7 @@
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>TransportPod</li>
+      <li>Fabrication</li>
     </prerequisites>
     <researchViewX>0</researchViewX>
     <researchViewY>0</researchViewY>

@@ -18,10 +18,6 @@ Internal power plant: 600w</description>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <rotatable>false</rotatable>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
@@ -31,13 +27,15 @@ Internal power plant: 600w</description>
       <MaxHitPoints>200</MaxHitPoints>
       <WorkToBuild>2400</WorkToBuild>
       <Flammability>0.4</Flammability>
-      <Mass>20</Mass>
+      <Mass>1330</Mass>
       <Beauty>15</Beauty>
     </statBases>
     <costList>
-      <Steel>300</Steel>
-      <Plasteel>40</Plasteel>
-      <ComponentIndustrial>8</ComponentIndustrial>
+      <ShuttleComp_Plates>1</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>1</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>1</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>1</ShuttleComp_Engines>
+      <ShuttleComp_Structural>2</ShuttleComp_Structural>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -107,24 +105,21 @@ Internal power plant: 800w</description>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
     <designationCategory>Ship</designationCategory>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>350</MaxHitPoints>
       <WorkToBuild>7200</WorkToBuild>
       <Flammability>0.7</Flammability>
-      <Mass>20</Mass>
+      <Mass>3100</Mass>
       <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <Steel>340</Steel>
-      <Plasteel>50</Plasteel>
-      <Gold>25</Gold>
-      <ComponentIndustrial>10</ComponentIndustrial>
+      <ShuttleComp_Plates>2</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>1</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>1</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>2</ShuttleComp_Engines>
+      <ShuttleComp_Structural>4</ShuttleComp_Structural>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -194,10 +189,6 @@ Internal power plant: 1600w</description>
     <size>(7,9)</size>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.9</fillPercent>
@@ -207,15 +198,15 @@ Internal power plant: 1600w</description>
       <MaxHitPoints>3000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
-      <Mass>20</Mass>
+      <Mass>54425</Mass>
       <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <Steel>2000</Steel>
-      <Plasteel>150</Plasteel>
-      <Gold>350</Gold>
-      <ComponentIndustrial>18</ComponentIndustrial>
-      <ComponentSpacer>2</ComponentSpacer>
+      <ShuttleComp_Plates>10</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>4</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>3</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>6</ShuttleComp_Engines>
+      <ShuttleComp_Structural>8</ShuttleComp_Structural>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -284,10 +275,6 @@ Internal power plant: 1600w</description>
     <size>(3,3)</size>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
@@ -297,15 +284,15 @@ Internal power plant: 1600w</description>
       <MaxHitPoints>700</MaxHitPoints>
       <WorkToBuild>15000</WorkToBuild>
       <Flammability>0.4</Flammability>
-      <Mass>20</Mass>
+      <Mass>17200</Mass>
       <Beauty>50</Beauty>
     </statBases>
     <costList>
-      <Steel>1200</Steel>
-      <Plasteel>240</Plasteel>
-      <Gold>150</Gold>
-      <ComponentIndustrial>16</ComponentIndustrial>
-      <ComponentSpacer>5</ComponentSpacer>
+      <ShuttleComp_Plates>4</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>6</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>6</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>4</ShuttleComp_Engines>
+      <ShuttleComp_Structural>10</ShuttleComp_Structural>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -375,10 +362,6 @@ Internal power plant: 2400w</description>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
@@ -387,16 +370,15 @@ Internal power plant: 2400w</description>
       <MaxHitPoints>1250</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
-      <Mass>20</Mass>
+      <Mass>2850</Mass>
       <Beauty>75</Beauty>
     </statBases>
     <costList>
-      <Steel>800</Steel>
-      <Plasteel>450</Plasteel>
-      <Gold>150</Gold>
-      <Neutroamine>100</Neutroamine>
-      <ComponentIndustrial>20</ComponentIndustrial>
-      <ComponentSpacer>10</ComponentSpacer>
+      <ShuttleComp_MeshPlate>10</ShuttleComp_MeshPlate>
+      <ShuttleComp_MechSystem>3</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>4</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>4</ShuttleComp_Engines>
+      <ShuttleComp_Structural>12</ShuttleComp_Structural>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -466,10 +448,6 @@ Internal power plant: 4200w</description>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.8</fillPercent>
     <designationCategory>Ship</designationCategory>
@@ -478,16 +456,16 @@ Internal power plant: 4200w</description>
       <MaxHitPoints>2000</MaxHitPoints>
       <WorkToBuild>128000</WorkToBuild>
       <Flammability>0</Flammability>
-      <Mass>20</Mass>
+      <Mass>15600</Mass>
       <Beauty>1000</Beauty>
     </statBases>
     <costList>
-      <Steel>1800</Steel>
-      <Plasteel>1200</Plasteel>
-      <Gold>760</Gold>
-      <Uranium>500</Uranium>
-      <ComponentIndustrial>60</ComponentIndustrial>
-      <ComponentSpacer>20</ComponentSpacer>
+      <ShuttleComp_Plates>6</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>6</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>6</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Structural>12</ShuttleComp_Structural>
+      <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
+      <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
