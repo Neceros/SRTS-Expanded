@@ -59,7 +59,7 @@ Internal power plant: 600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
+		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -143,7 +143,7 @@ Internal power plant: 800w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
+		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -230,7 +230,7 @@ Internal power plant: 1600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -306,7 +306,7 @@ Internal power plant: 1600w</description>
         <fuelCapacity>1600</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>1200</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>1600</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -316,7 +316,7 @@ Internal power plant: 1600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
+		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -402,7 +402,7 @@ Internal power plant: 2400w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -492,7 +492,7 @@ Internal power plant: 4200w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
