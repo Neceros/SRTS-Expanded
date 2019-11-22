@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+
+<!--
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Save Our Ship 2</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="SRTSSuperpod"]/comps</xpath>
+          <value>
+            <li Class="CompProperties_ShuttleLaunchable">
+              <fuelPerTile>1.75</fuelPerTile>
+              <skyfaller>HeavyCargoShuttleSkyfaller</skyfaller>
+            </li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+-->
+
+</Patch>

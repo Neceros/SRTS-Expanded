@@ -341,18 +341,17 @@
   </ThingDef>
 
 
-  <!-- Not yet...
-  SRTS MkIV
+  <!-- SRTS MkIV -->
 
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTSMkIV_Incoming</defName>
     <label>SRTS Mk.IV incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
-      <texPath>Phoenix</texPath>
+      <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>9</drawSize>
+      <drawSize>13</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
@@ -369,10 +368,10 @@
     <label>SRTS Mk.IV leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>Phoenix</texPath>
+      <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>9</drawSize>
+      <drawSize>13</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
@@ -393,9 +392,9 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Phoenix</texPath>
+      <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>9</drawSize>
+      <drawSize>13</drawSize>
       <shadowData>
         <volume>(0.8, 0.6, 0.8)</volume>
       </shadowData>
@@ -409,8 +408,6 @@
     </statBases>
     <selectable>true</selectable>
   </ThingDef>
-
--->
 
 
 </Defs>

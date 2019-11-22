@@ -10,6 +10,7 @@
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>TransportPod</li>
+      <li>Fabrication</li>
     </prerequisites>
     <researchViewX>0</researchViewX>
     <researchViewY>0</researchViewY>
@@ -36,7 +37,7 @@
     <defName>Research_SRTF</defName>
     <label>SRTF</label>
     <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions. Not great on the chemfuel mileage.</description>
-    <baseCost>2500</baseCost>
+    <baseCost>3200</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>Research_SRTSSkip</li>
@@ -74,7 +75,7 @@
     <defName>Research_SRTSMk3</defName>
     <label>SRTS Mk. III</label>
     <description>After more research, you discover a new technique originally used by an ancient exctinct alien civilization. This process infuses the ship with this technology while using fewer materials in the build, meaning the new model should be lighter, faster, and with more hauling capacity with the same physical outer shell limits.</description>
-    <baseCost>10000</baseCost>
+    <baseCost>8500</baseCost>
     <techLevel>Ultra</techLevel>
     <prerequisites>
       <li>Research_SRTSMk2</li>
@@ -87,13 +88,11 @@
     </requiredResearchFacilities>
   </ResearchProjectDef>
 
-
-<!-- not yet
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRTSMk4</defName>
     <label>SRTS Mk. IV</label>
-    <description>The Genesis is a highly advance transport shuttle that consumes heavy material matter into energy, and uses archotech level technology to increase the cargo space beyond dimensional boundaries.</description>
+    <description>The Genesis is a highly advanced transport shuttle that utilizes uranium for fuel, and incorporates archotech level technology to increase the cargo space beyond dimensional boundaries. This is "Blue box" level stuff.</description>
     <baseCost>15000</baseCost>
     <techLevel>Archotech</techLevel>
     <prerequisites>
@@ -106,6 +105,5 @@
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
   </ResearchProjectDef>
--->
 
 </Defs>
