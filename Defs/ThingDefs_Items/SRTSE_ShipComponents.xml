@@ -49,7 +49,7 @@
     </recipeMaker>
   </ThingDef>
 
-  <ThingDef Name="SRTSAdvCompBase" Parent="SRTSCompBase" Abstract="True">
+  <ThingDef Name="SRTSAdvCompBase" ParentName="SRTSCompBase" Abstract="True">
     <techLevel>Ultra</techLevel>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -67,7 +67,7 @@
     </recipeMaker>
   </ThingDef>
 
-  <ThingDef Name="SRTSArchoCompBase" Parent="SRTSCompBase" Abstract="True">
+  <ThingDef Name="SRTSArchoCompBase" ParentName="SRTSCompBase" Abstract="True">
     <techLevel>Archotech</techLevel>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
