@@ -66,18 +66,19 @@
 移動速度：25マス/時間
 内部電源：2400W</Frame_SRTSMkIII.description>
 
-  <!-- Not Yet -->
-  <!-- <SRTSMkIV.label>SRTS:Mk-4 ジェネシス</SRTSMkIV.label>
-  <SRTSMkIV.description>ジェネシス型の輸送船は非常に高度なアーキテック技術の船です。ジェネシスの安定性や燃料搭載量や貨物積載量と快適性に匹敵する船はありません。この船は、いくつかの種類の物質を燃料としてエネルギー変換して、異次元収納空間を組み込んでおり、船体自体よりもはるかに大きく大量の貨物を運搬できます。
+  <SRTSMkIV.label>SRTS:Mk-4 ジェネシス</SRTSMkIV.label>
+  <SRTSMkIV.description>ジェネシス型の輸送船は非常に高度なアーキテック技術の船です。ジェネシスの安定性や燃料搭載量や貨物積載量と快適性に匹敵する船はありません。この船は、ウランを燃料としてゆっくりとエネルギー変換し、貨物の収容を異次元に組み込んで、船体自体よりもはるかに大きく大量の貨物を運搬できます。搭乗中の乗組員たちは飛行中に快適に休んだり食事をしたり治療を受けることが出来ます。
 
-移動速度：30マス/時間
-内部電源：3200W</SRTSMkIV.description>
+移動速度：35マス/時間
+内部電源：4200W</SRTSMkIV.description>
   <Blueprint_SRTSMkIV.label>SRTS:Mk-4 ジェネシス(設計)</Blueprint_SRTSMkIV.label>
   <Blueprint_Install_SRTSMkIV.label>SRTS:Mk-4 ジェネシス(移動先)</Blueprint_Install_SRTSMkIV.label>
   <Frame_SRTSMkIV.label>SRTS:Mk-4 ジェネシス(施行)</Frame_SRTSMkIV.label>
-  <Frame_SRTSMkIV.description>ジェネシス型の輸送船は非常に高度なアーキテック技術の船です。ジェネシスの安定性や燃料搭載量や貨物積載量と快適性に匹敵する船はありません。この船は、いくつかの種類の物質を燃料としてエネルギー変換して、異次元収納空間を組み込んでおり、船体自体よりもはるかに大きく大量の貨物を運搬できます。
+  <Frame_SRTSMkIV.description>ジェネシス型の輸送船は非常に高度なアーキテック技術の船です。ジェネシスの安定性や燃料搭載量や貨物積載量と快適性に匹敵する船はありません。この船は、ウランを燃料としてゆっくりとエネルギー変換し、貨物の収容を異次元に組み込んで、船体自体よりもはるかに大きく大量の貨物を運搬できます。搭乗中の乗組員たちは飛行中に快適に休んだり食事をしたり治療を受けることが出来ます。
 
-移動速度：30マス/時間
-内部電源：3200W</Frame_SRTSMkIV.description> -->
+移動速度：35マス/時間
+内部電源：4200W</Frame_SRTSMkIV.description>
+  <SRTSMkIV.comps.CompRefuelable.fuelGizmoLabel>ウラン反応炉</SRTSMkIV.comps.CompRefuelable.fuelGizmoLabel>
+  <SRTSMkIV.comps.CompRefuelable.fuelLabel>ウラン充填率</SRTSMkIV.comps.CompRefuelable.fuelLabel>
 
 </LanguageData>
