@@ -32,15 +32,13 @@ Internal power plant: 600w</description>
       <MaxHitPoints>200</MaxHitPoints>
       <WorkToBuild>2400</WorkToBuild>
       <Flammability>0.4</Flammability>
-      <Mass>1330</Mass>
+      <Mass>20</Mass>
       <Beauty>15</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>1</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>1</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>1</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>1</ShuttleComp_Engines>
-      <ShuttleComp_Structural>2</ShuttleComp_Structural>
+      <Steel>300</Steel>
+      <Gold>15</Gold>
+      <ComponentIndustrial>4</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -121,15 +119,14 @@ Internal power plant: 800w</description>
       <MaxHitPoints>350</MaxHitPoints>
       <WorkToBuild>7200</WorkToBuild>
       <Flammability>0.7</Flammability>
-      <Mass>3100</Mass>
+      <Mass>20</Mass>
       <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>2</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>1</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>1</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>2</ShuttleComp_Engines>
-      <ShuttleComp_Structural>4</ShuttleComp_Structural>
+      <Steel>550</Steel>
+      <Plasteel>35</Plasteel>
+      <Gold>45</Gold>
+      <ComponentIndustrial>10</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -213,7 +210,7 @@ Internal power plant: 1600w</description>
       <MaxHitPoints>3000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
-      <Mass>54425</Mass>
+      <Mass>20</Mass>
       <Beauty>25</Beauty>
     </statBases>
     <costList>
@@ -304,7 +301,7 @@ Internal power plant: 1600w</description>
       <MaxHitPoints>700</MaxHitPoints>
       <WorkToBuild>15000</WorkToBuild>
       <Flammability>0.4</Flammability>
-      <Mass>17200</Mass>
+      <Mass>20</Mass>
       <Beauty>50</Beauty>
     </statBases>
     <costList>
@@ -395,7 +392,7 @@ Internal power plant: 2400w</description>
       <MaxHitPoints>1250</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
-      <Mass>2850</Mass>
+      <Mass>20</Mass>
       <Beauty>75</Beauty>
     </statBases>
     <costList>
@@ -486,7 +483,7 @@ Internal power plant: 4200w</description>
       <MaxHitPoints>2000</MaxHitPoints>
       <WorkToBuild>128000</WorkToBuild>
       <Flammability>0</Flammability>
-      <Mass>15600</Mass>
+      <Mass>20</Mass>
       <Beauty>1000</Beauty>
     </statBases>
     <costList>
@@ -495,7 +492,7 @@ Internal power plant: 4200w</description>
       <ShuttleComp_ElectricSystem>6</ShuttleComp_ElectricSystem>
       <ShuttleComp_Structural>12</ShuttleComp_Structural>
       <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
-      <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
+      <ShuttleComp_DimShift>1</ShuttleComp_DimShift>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">

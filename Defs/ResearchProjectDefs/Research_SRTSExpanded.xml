@@ -10,7 +10,6 @@
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>TransportPod</li>
-      <li>Fabrication</li>
     </prerequisites>
     <researchViewX>0</researchViewX>
     <researchViewY>0</researchViewY>
@@ -26,10 +25,14 @@
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>Research_SRTSSuperpod</li>
+      <li>Fabrication</li>
     </prerequisites>
     <researchViewX>1</researchViewX>
     <researchViewY>0</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <discoveredLetterTitle>Short Range Transport Shuttles</discoveredLetterTitle>
+    <discoveredLetterText>You've unlocked the ability to craft your own ship parts!\n\nBuilding a shuttle is expensive and time consuming, but absolutely worth the cost.\n\nYou will find your ship blueprints under the SHIP tab, in your architech menu. Build the ship components necessary to craft your vessel in a Fabrication bench, or buy them from traders.</discoveredLetterText>
+    <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -100,6 +103,27 @@
     </prerequisites>
     <researchViewX>4</researchViewX>
     <researchViewY>0</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <discoveredLetterTitle>The Genesis</discoveredLetterTitle>
+    <discoveredLetterText>A few of the components needed to build the Genesis ellude you. You don't think you can craft them yourself being how complicated they are. At least not yet.\n\nBuy the more advanced components from traders or as quest rewards to build the Genesis.</discoveredLetterText>
+    <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSArchoComps</defName>
+    <label>Archotech Ship Components</label>
+    <description>Learn the techniques to build the super advanced components necessary to build the Genesis.</description>
+    <baseCost>9000</baseCost>
+    <techLevel>Archotech</techLevel>
+    <prerequisites>
+      <li>Research_SRTSMk4</li>
+    </prerequisites>
+    <researchViewX>4</researchViewX>
+    <researchViewY>1</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
     <requiredResearchFacilities>
       <li>MultiAnalyzer</li>
