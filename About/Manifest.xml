@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
     <identifier>SRTS Expanded</identifier>
-    <version>1.2.0</version>
+    <version>1.2.0.0</version>
     <loadBefore>
         <li>HugsLib</li>
         <li>JecsTools</li>
     </loadBefore>
-    <loadAfter>
-        <li>Core</li>
-    </loadAfter>
     <showCrossPromotions>true</showCrossPromotions>
+    <manifestUri>https://github.com/Neceros/SRTS-Expanded/blob/master/About/Manifest.xml</manifestUri>
+    <downloadUri>https://github.com/Neceros/SRTS-Expanded/</downloadUri>
 </Manifest>

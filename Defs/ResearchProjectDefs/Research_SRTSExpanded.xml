@@ -25,13 +25,12 @@
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>Research_SRTSSuperpod</li>
-      <li>Fabrication</li>
     </prerequisites>
     <researchViewX>1</researchViewX>
     <researchViewY>0</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
     <discoveredLetterTitle>Short Range Transport Shuttles</discoveredLetterTitle>
-    <discoveredLetterText>You've unlocked the ability to craft your own ship parts!\n\nBuilding a shuttle is expensive and time consuming, but absolutely worth the cost.\n\nYou will find your ship blueprints under the SHIP tab, in your architech menu. Build the ship components necessary to craft your vessel in a Fabrication bench, or buy them from traders.</discoveredLetterText>
+    <discoveredLetterText>You've unlocked the ability to craft your own ship parts!\n\nBuilding a shuttle is expensive and time consuming, but absolutely worth the cost.\n\nYou will find your ship blueprints under the SHIP tab, in your architech menu. Build the ship components necessary to craft your vessel in a Fabrication bench, or buy them from traders.\n\nYou won't need these parts for your Skip, but you will for all the future shuttles.</discoveredLetterText>
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
@@ -44,14 +43,11 @@
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>Research_SRTSSkip</li>
-      <li>AdvancedFabrication</li>
+      <li>Fabrication</li>
     </prerequisites>
     <researchViewX>1</researchViewX>
     <researchViewY>1</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <requiredResearchFacilities>
-      <li>MultiAnalyzer</li>
-    </requiredResearchFacilities>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -63,7 +59,7 @@
     <techLevel>Spacer</techLevel>
     <prerequisites>
       <li>Research_SRTSSkip</li>
-      <li>AdvancedFabrication</li>
+      <li>Fabrication</li>
     </prerequisites>
     <researchViewX>2</researchViewX>
     <researchViewY>0</researchViewY>
@@ -89,6 +85,9 @@
     <requiredResearchFacilities>
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
+    <discoveredLetterTitle>Advanced Ship Components</discoveredLetterTitle>
+    <discoveredLetterText>You can now build an additional type of component needed for the Mk. III Phoenix. Build them in the Fabrication bench.</discoveredLetterText>
+    <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -108,7 +107,7 @@
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
     <discoveredLetterTitle>The Genesis</discoveredLetterTitle>
-    <discoveredLetterText>A few of the components needed to build the Genesis ellude you. You don't think you can craft them yourself being how complicated they are. At least not yet.\n\nBuy the more advanced components from traders or as quest rewards to build the Genesis.</discoveredLetterText>
+    <discoveredLetterText>A few of the components needed to build the Genesis elude you. You don't think you can craft them yourself being how complicated they are. At least not yet.\n\nFor now, buy the more advanced components from traders or as quest rewards to build the Genesis.</discoveredLetterText>
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
