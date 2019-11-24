@@ -8,44 +8,15 @@ These are flying caravans, meant to load people and cargo and bring it somewhere
 
 Great for hauling cargo, trading with factions, assaulting points of interest on your world map, and so much more. Acts as both a caravan and a drop pod.
 
+LOAD THIS RIGHT AFTER CORE, BEFORE HUGSLIB, ETC. THIS WILL REDUCE CONFLICTS.
+
 
 A few additional role-specific short range transport shuttles (or SRTS) so you really can fly across the whole world and back again. All ships require their own research project, and they're not cheap. All passengers heal, rest, and eat while on board all transport shuttles, but some shuttles are easier than others to rest in.
 
-
-
-WARNING:
-You must have a pilot in the caravan. At least one person must go on the caravan. If you don't, you will lose the shuttle and it will act like a drop pod.
-If you choose the "Gift" option when launching your shuttle, you will give the faction your shuttle and EVERYTHING inside. Just like a drop pod.
-If you try to land too close to the edge of the map your shuttle may vanish. Leave a few blocks around your landing point to avoid this.
-
-
-
-
-FAQ
-Q: Where are the things I loaded into my ship? They disappeared.
-A: Check the inventories of the pawns that went on the trip. I bet you they have it.
-
-Q: When I land my ship it always points north!
-A: Yes. I'm sorry. As far as I can tell there's no way to save the orientation of the ships once they launch. I tried to make up for this by making the building sizes square, even though the ships clearly aren't. A small give and take for having something like this in RimWorld.
-
-Q: I don't like the ship graphics. Can I change the textures?
-A: Yes. Look in the mod's folder (SteamLibrary\steamapps\workshop\content\294100\1845423808) and find the Textures folder.
-
-You will find a bunch of sprites. Rename the one you like to the name it should be "Albatross", "Phoenix", and "SRTF" are looked for by the code (with the _north, _south, _east added). Change whatever you want to look like whatever you want, even outside graphics not included here.
-
-Make sure your sprites are 500x500 pixels.
-
-
+MORE INFO ON THE WORKSHOP PAGE!
 
 Conflicts
 - Multiplayer mod: You will not be able to actually load anything into the ship. It won't work. Sorry.
 - Vanishing Ships: If you build a ship and it instantly vanished, then you have a conflict. The Dev console may tell you why or how, but until we figure out why this is happening just move SRTS Expanded and SRTS above the HugsLib mod, so it loads before it.
-
-
-
-Huge Thanks / Credits
-Thanks to TechnoFox for creating SRTS, originally based on work by AKreedz风影!
-Thank you to Aquamarine for ship graphics!
-Thank you to the Rimworld Discord community, especially Jamaican Castle, Pelador, and dninemfive.
-Proxyer for Japanese translation</description>
+</description>
 </ModMetaData>
