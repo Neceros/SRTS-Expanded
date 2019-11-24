@@ -189,9 +189,6 @@ Internal power plant: 1600w</description>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(15,15)</drawSize>
-      <shadowData>
-        <volume>(0.1, 0.1, 0.1)</volume>
-      </shadowData>
     </graphicData>
     <size>(7,9)</size>
     <tickerType>Normal</tickerType>
@@ -280,9 +277,6 @@ Internal power plant: 1600w</description>
       <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(9,9)</drawSize>
-      <shadowData>
-        <volume>(0.1, 0.1, 0.1)</volume>
-      </shadowData>
     </graphicData>
     <size>(3,3)</size>
     <tickerType>Normal</tickerType>
@@ -371,9 +365,6 @@ Internal power plant: 2400w</description>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(9,9)</drawSize>
-      <shadowData>
-        <volume>(0.1, 0.1, 0.1)</volume>
-      </shadowData>
     </graphicData>
     <size>(3,3)</size>
     <tickerType>Normal</tickerType>
@@ -462,9 +453,6 @@ Internal power plant: 4200w</description>
       <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(13,13)</drawSize>
-      <shadowData>
-        <volume>(0.1, 0.1, 0.1)</volume>
-      </shadowData>
     </graphicData>
     <size>(7,7)</size>
     <tickerType>Normal</tickerType>
