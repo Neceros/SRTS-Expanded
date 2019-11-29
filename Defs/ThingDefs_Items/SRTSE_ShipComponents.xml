@@ -170,15 +170,15 @@
       <texPath>Items/CompInternal</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costList>
-      <Steel>15</Steel>
-      <WoodLog>25</WoodLog>
-    </costList>
     <costStuffCount>30</costStuffCount>
     <stuffCategories>
       <li>Fabric</li>
       <li>Leathery</li>
     </stuffCategories>
+    <costList>
+      <Steel>15</Steel>
+      <WoodLog>25</WoodLog>
+    </costList>
   </ThingDef>
 
 

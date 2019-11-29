@@ -1,7 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="BuildingBase">
+  <ThingDef Name="ShipBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<statBases>
+			<SellPriceFactor>0.70</SellPriceFactor>
+		</statBases>
+		<tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <stealable>false</stealable>
+    <!--
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>Buildings</li>
+    </thingCategories>
+  -->
+    <inspectorTabs>
+      <li>ITab_TransporterContents</li>
+    </inspectorTabs>
+    <!---
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    -->
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.8</fillPercent>
+    <designationCategory>Ship</designationCategory>
+  </ThingDef>
+
+	<ThingDef ParentName="ShipBase">
     <defName>SRTSSuperpod</defName>
     <label>Superpod</label>
     <description>A transport pod that's been retrofit with better engines and a manual flight system. Not big and won't go far, but unlike a typical pod this one can return back home. Passengers on board rest, eat, and heal during flight, but not well.
@@ -15,19 +51,7 @@ Internal power plant: 600w</description>
       <drawRotated>false</drawRotated>
     </graphicData>
     <size>(2,2)</size>
-    <tickerType>Normal</tickerType>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <stealable>false</stealable>
-    <thingCategories>
-      <li>Buildings</li>
-    </thingCategories>
     <rotatable>false</rotatable>
-    <passability>PassThroughOnly</passability>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.8</fillPercent>
-    <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
       <WorkToBuild>2400</WorkToBuild>
@@ -37,8 +61,10 @@ Internal power plant: 600w</description>
     </statBases>
     <costList>
       <Steel>300</Steel>
+      <Plasteel>25</Plasteel>
       <Gold>15</Gold>
-      <ComponentIndustrial>4</ComponentIndustrial>
+      <Silver>150</Silver>
+      <ComponentIndustrial>6</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -76,12 +102,6 @@ Internal power plant: 600w</description>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-    <inspectorTabs>
-      <li>ITab_TransporterContents</li>
-    </inspectorTabs>
-    <placeWorkers>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>
 		<researchPrerequisites>
 			<li>Research_SRTSSuperpod</li>
 		</researchPrerequisites>
@@ -90,7 +110,7 @@ Internal power plant: 600w</description>
   </ThingDef>
 
 
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="ShipBase">
     <defName>SRTSSkip</defName>
     <label>SRTS Skip</label>
     <description>A stable and fast flying transport ship designed for 1-3 people at most, with cargo. Better than a Superpod, but still not as comfortable as a ship designed for longer travel. Passengers on board rest, eat, and heal during flight, decently well.
@@ -103,18 +123,6 @@ Internal power plant: 800w</description>
       <drawSize>(4,4)</drawSize>
     </graphicData>
     <size>(2,2)</size>
-    <tickerType>Normal</tickerType>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <stealable>false</stealable>
-    <thingCategories>
-      <li>Buildings</li>
-    </thingCategories>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.8</fillPercent>
-    <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>350</MaxHitPoints>
       <WorkToBuild>7200</WorkToBuild>
@@ -126,6 +134,7 @@ Internal power plant: 800w</description>
       <Steel>550</Steel>
       <Plasteel>35</Plasteel>
       <Gold>45</Gold>
+      <Silver>450</Silver>
       <ComponentIndustrial>10</ComponentIndustrial>
     </costList>
     <comps>
@@ -164,12 +173,6 @@ Internal power plant: 800w</description>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-    <inspectorTabs>
-      <li>ITab_TransporterContents</li>
-    </inspectorTabs>
-    <placeWorkers>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>
 		<researchPrerequisites>
 			<li>Research_SRTSSkip</li>
 		</researchPrerequisites>
@@ -178,7 +181,7 @@ Internal power plant: 800w</description>
   </ThingDef>
 
 
-    <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="ShipBase">
     <defName>SRTF</defName>
     <label>SRTF</label>
     <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. Hard to rest on this ship.
@@ -191,18 +194,6 @@ Internal power plant: 1600w</description>
       <drawSize>(15,15)</drawSize>
     </graphicData>
     <size>(7,9)</size>
-    <tickerType>Normal</tickerType>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <stealable>false</stealable>
-    <thingCategories>
-      <li>Buildings</li>
-    </thingCategories>
-    <passability>PassThroughOnly</passability>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.9</fillPercent>
-    <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>3000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
@@ -252,12 +243,6 @@ Internal power plant: 1600w</description>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-    <inspectorTabs>
-      <li>ITab_TransporterContents</li>
-    </inspectorTabs>
-    <placeWorkers>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>
     <researchPrerequisites>
       <li>Research_SRTF</li>
     </researchPrerequisites>
@@ -266,7 +251,7 @@ Internal power plant: 1600w</description>
   </ThingDef>
   
 
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="ShipBase">
     <defName>SRTSMkII</defName>
     <label>SRTS Mk.II: Albatross</label>
     <description>The Albatross offers better fuel efficiency and larger fuel reserve at almost the same weight class of the original SRTS thanks to more advanced technology and better techniques. Passengers on board rest, eat, and heal during flight.
@@ -279,18 +264,6 @@ Internal power plant: 1600w</description>
       <drawSize>(9,9)</drawSize>
     </graphicData>
     <size>(3,3)</size>
-    <tickerType>Normal</tickerType>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <stealable>false</stealable>
-    <thingCategories>
-      <li>Buildings</li>
-    </thingCategories>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.8</fillPercent>
-    <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>700</MaxHitPoints>
       <WorkToBuild>15000</WorkToBuild>
@@ -340,12 +313,6 @@ Internal power plant: 1600w</description>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-    <inspectorTabs>
-      <li>ITab_TransporterContents</li>
-    </inspectorTabs>
-    <placeWorkers>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>
 		<researchPrerequisites>
 			<li>Research_SRTSMk2</li>
 		</researchPrerequisites>
@@ -354,7 +321,7 @@ Internal power plant: 1600w</description>
   </ThingDef>
 
 
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIII</defName>
     <label>SRTS Mk.III: Phoenix</label>
     <description>The Phoenix offers similar fuel efficiency to the Albatross, but with an increased fuel reserve and carry capacity. Additionally, the Mk.III is harder to kill and uses less materials in its construction at the cost of some advanced chemistry. Passengers on board rest, eat, and heal during flight really well.
@@ -367,18 +334,6 @@ Internal power plant: 2400w</description>
       <drawSize>(9,9)</drawSize>
     </graphicData>
     <size>(3,3)</size>
-    <tickerType>Normal</tickerType>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <stealable>false</stealable>
-    <thingCategories>
-      <li>Buildings</li>
-    </thingCategories>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.8</fillPercent>
-    <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>1250</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
@@ -428,12 +383,6 @@ Internal power plant: 2400w</description>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-    <inspectorTabs>
-      <li>ITab_TransporterContents</li>
-    </inspectorTabs>
-    <placeWorkers>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>
     <researchPrerequisites>
       <li>Research_SRTSMk3</li>
     </researchPrerequisites>
@@ -442,7 +391,7 @@ Internal power plant: 2400w</description>
   </ThingDef>
 
 
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
     <description>The Genesis transport ship is highly advanced archotech technology. Nothing can match the stability, fuel range, cargo space, and comfort of the Genesis. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers on board rest, eat, and heal during flight extremely well.
@@ -455,18 +404,6 @@ Internal power plant: 4200w</description>
       <drawSize>(13,13)</drawSize>
     </graphicData>
     <size>(7,7)</size>
-    <tickerType>Normal</tickerType>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <stealable>false</stealable>
-    <thingCategories>
-      <li>Buildings</li>
-    </thingCategories>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.8</fillPercent>
-    <designationCategory>Ship</designationCategory>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <statBases>
       <MaxHitPoints>2000</MaxHitPoints>
       <WorkToBuild>128000</WorkToBuild>
@@ -520,12 +457,6 @@ Internal power plant: 4200w</description>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-    <inspectorTabs>
-      <li>ITab_TransporterContents</li>
-    </inspectorTabs>
-    <placeWorkers>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>
     <researchPrerequisites>
       <li>Research_SRTSMk4</li>
     </researchPrerequisites>
