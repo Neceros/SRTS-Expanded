@@ -13,6 +13,7 @@
 
   <SRTSMkIII_Incoming.label>SRTS:Mk-3(着陸)</SRTSMkIII_Incoming.label>
   <SRTSMkIII_Leaving.label>SRTS:Mk-3(離陸)</SRTSMkIII_Leaving.label>
+  <SRTSMkIII_Active.label>SRTS:Mk-3(始動)</SRTSMkIII_Active.label>
 
 
   <!-- SRTF -->
@@ -38,9 +39,8 @@
 
   <!-- SRTS MkIV -->
 
-  <!-- <SRTSMkIV_Incoming.label>SRTS:Mk-4(着陸)</SRTSMkIV_Incoming.label>
+  <SRTSMkIV_Incoming.label>SRTS:Mk-4(着陸)</SRTSMkIV_Incoming.label>
   <SRTSMkIV_Leaving.label>SRTS:Mk-4(離陸)</SRTSMkIV_Leaving.label>
   <SRTSMkIV_Active.label>SRTS:Mk-4(始動)</SRTSMkIV_Active.label>
-  <SRTSMkIV_Active.label>SRTS:Mk-4(始動)</SRTSMkIV_Active.label> -->
 
 </LanguageData>

@@ -14,7 +14,11 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
+      <MarketValue>800</MarketValue>
     </statBases>
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
     <tradeability>All</tradeability>
     <techLevel>Industrial</techLevel>
     <comps>
@@ -24,9 +28,6 @@
     <drawGUIOverlay>true</drawGUIOverlay>
     <rotatable>false</rotatable>
     <pathCost>15</pathCost>
-    <tradeTags>
-      <li>ExoticMisc</li>
-    </tradeTags>
     <soundInteract>Metal_Drop</soundInteract>
     <soundDrop>Standard_Drop</soundDrop>
     <intricate>true</intricate>
@@ -45,12 +46,19 @@
       <skillRequirements>
         <Crafting>5</Crafting>
       </skillRequirements>
-      <researchPrerequisite>Research_SRTSSuperpod</researchPrerequisite>
+      <researchPrerequisite>Research_SRTSSkip</researchPrerequisite>
     </recipeMaker>
   </ThingDef>
 
   <ThingDef Name="SRTSAdvCompBase" ParentName="SRTSCompBase" Abstract="True">
     <techLevel>Ultra</techLevel>
+    <statBases>
+      <Beauty>-4</Beauty>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Mass>5</Mass>
+      <Flammability>0.4</Flammability>
+      <MarketValue>2500</MarketValue>
+    </statBases>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
       <effectWorking>Cook</effectWorking>
@@ -69,6 +77,13 @@
 
   <ThingDef Name="SRTSArchoCompBase" ParentName="SRTSCompBase" Abstract="True">
     <techLevel>Archotech</techLevel>
+    <statBases>
+      <Beauty>-4</Beauty>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Mass>5</Mass>
+      <Flammability>0.4</Flammability>
+      <MarketValue>9500</MarketValue>
+    </statBases>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
       <effectWorking>Cook</effectWorking>
@@ -81,7 +96,7 @@
       <skillRequirements>
         <Crafting>16</Crafting>
       </skillRequirements>
-      <researchPrerequisite>Research_SRTSMk4</researchPrerequisite>
+      <researchPrerequisite>Research_SRTSArchoComps</researchPrerequisite>
     </recipeMaker>
   </ThingDef>
 
@@ -157,13 +172,9 @@
     </graphicData>
     <costList>
       <Steel>15</Steel>
-      <WoodLog>25</WoodLog>
+      <WoodLog>20</WoodLog>
+      <Cloth>35</Cloth>
     </costList>
-    <costStuffCount>30</costStuffCount>
-    <stuffCategories>
-      <li>Fabric</li>
-      <li>Leathery</li>
-    </stuffCategories>
   </ThingDef>
 
 
@@ -177,13 +188,9 @@
       <texPath>Items/CompMeshPlates</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costStuffCount>14</costStuffCount>
-    <stuffCategories>
-      <li>Fabric</li>
-      <li>Leathery</li>
-    </stuffCategories>
     <costList>
       <Steel>80</Steel>
+      <ComponentSpacer>1</ComponentSpacer>
       <Neutroamine>12</Neutroamine>
     </costList>
   </ThingDef>
@@ -199,8 +206,11 @@
       <texPath>Items/CompReactor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
     <costList>
-      <Steel>200</Steel>
+      <Steel>450</Steel>
       <Gold>4.5</Gold>
       <Uranium>125</Uranium>
       <ComponentSpacer>6</ComponentSpacer>
@@ -215,10 +225,14 @@
       <texPath>Items/CompDim</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
     <costList>
-      <Steel>125</Steel>
-      <Plasteel>125</Plasteel>
-      <Uranium>125</Uranium>
+      <AIPersonaCore>1</AIPersonaCore>
+      <Steel>150</Steel>
+      <Plasteel>250</Plasteel>
+      <Hyperweave>25</Hyperweave>
       <ComponentSpacer>10</ComponentSpacer>
     </costList>
   </ThingDef>
