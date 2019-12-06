@@ -17,12 +17,10 @@
 		<tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <stealable>false</stealable>
-    <!--
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
       <li>Buildings</li>
     </thingCategories>
-  -->
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
     </inspectorTabs>
@@ -33,16 +31,23 @@
     -->
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.8</fillPercent>
+    <fillPercent>0.90</fillPercent>
     <designationCategory>Ship</designationCategory>
+    <killedLeavings>
+      <ChunkSlagSteel>8</ChunkSlagSteel>
+    </killedLeavings>
+    <comps />
   </ThingDef>
 
 	<ThingDef ParentName="ShipBase">
     <defName>SRTSSuperpod</defName>
     <label>Superpod</label>
-    <description>A transport pod that's been retrofit with better engines and a manual flight system. Not big and won't go far, but unlike a typical pod this one can return back home. Passengers on board rest, eat, and heal during flight, but not well.
+    <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Speed: 10
+Resting capablility : Awful
+Speed               : Awful
+Cargo capacity      : 240kg
+Fuel capacity       : 200L
 Internal power plant: 600w</description>
     <graphicData>
       <texPath>Superpod</texPath>
@@ -72,7 +77,7 @@ Internal power plant: 600w</description>
 				<massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>10</travelSpeed>
+        <travelSpeed>4</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>200</fuelCapacity>
@@ -113,10 +118,13 @@ Internal power plant: 600w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSSkip</defName>
     <label>SRTS Skip</label>
-    <description>A stable and fast flying transport ship designed for 1-3 people at most, with cargo. Better than a Superpod, but still not as comfortable as a ship designed for longer travel. Passengers on board rest, eat, and heal during flight, decently well.
+    <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Speed: 15
-Internal power plant: 800w</description>
+Resting capablility   : Poor
+Speed                 : Poor
+Cargo capacity        : 420kg
+Fuel capacity         : 500L
+Internal power plant  : 800w</description>
     <graphicData>
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -143,7 +151,7 @@ Internal power plant: 800w</description>
 		    <massCapacity>420</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-		    <travelSpeed>15</travelSpeed>
+		    <travelSpeed>8</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -184,10 +192,13 @@ Internal power plant: 800w</description>
     <ThingDef ParentName="ShipBase">
     <defName>SRTF</defName>
     <label>SRTF</label>
-    <description>SRTF (Short Range Transport Freighter) is a massive behemoth of a ship. It's large size means you can haul quite an insane amount of cargo, and you'll have the fuel to use it. Hard to rest on this ship.
+    <description>A complete transport system made to fly passengers and cargo across the world. These industrial behemoths have been in service for millenia. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Speed: 10
-Internal power plant: 1600w</description>
+Resting capablility   : Awful
+Speed                 : Poor
+Cargo capacity        : 15,000kg
+Fuel capacity         : 2,000L
+Internal power plant  : 1,600w</description>
     <graphicData>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -214,7 +225,7 @@ Internal power plant: 1600w</description>
         <massCapacity>15000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>10</travelSpeed>
+        <travelSpeed>8</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -254,10 +265,13 @@ Internal power plant: 1600w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkII</defName>
     <label>SRTS Mk.II: Albatross</label>
-    <description>The Albatross offers better fuel efficiency and larger fuel reserve at almost the same weight class of the original SRTS thanks to more advanced technology and better techniques. Passengers on board rest, eat, and heal during flight.
+    <description>A complete transport system made to fly passengers and cargo across the world. The Albatross is advanced. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Speed: 20
-Internal power plant: 1600w</description>
+Resting capablility   : Normal
+Speed                 : Good
+Cargo capacity        : 4,000kg
+Fuel capacity         : 1,600L
+Internal power plant  : 1,600w</description>
     <graphicData>
       <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -284,7 +298,7 @@ Internal power plant: 1600w</description>
 		    <massCapacity>4000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>20</travelSpeed>
+        <travelSpeed>14</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
@@ -324,10 +338,13 @@ Internal power plant: 1600w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIII</defName>
     <label>SRTS Mk.III: Phoenix</label>
-    <description>The Phoenix offers similar fuel efficiency to the Albatross, but with an increased fuel reserve and carry capacity. Additionally, the Mk.III is harder to kill and uses less materials in its construction at the cost of some advanced chemistry. Passengers on board rest, eat, and heal during flight really well.
+    <description>A complete transport system made to fly passengers and cargo across the world. Highly advanced, designed by an ancient civilization. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Speed: 25
-Internal power plant: 2400w</description>
+Resting capablility   : Good
+Speed                 : Exceptional
+Cargo capacity        : 6,000kg
+Fuel capacity         : 2,000L
+Internal power plant  : 2,400w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -354,7 +371,7 @@ Internal power plant: 2400w</description>
         <massCapacity>6000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>25</travelSpeed>
+        <travelSpeed>20</travelSpeed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -394,10 +411,13 @@ Internal power plant: 2400w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
-    <description>The Genesis transport ship is highly advanced archotech technology. Nothing can match the stability, fuel range, cargo space, and comfort of the Genesis. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers on board rest, eat, and heal during flight extremely well.
+    <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Speed: 35
-Internal power plant: 4200w</description>
+Resting capablility   : Legendary
+Speed                 : Legendary
+Cargo capacity        : 100,000kg
+Fuel capacity         : 100,000 x225 U
+Internal power plant  : 4,200w</description>
     <graphicData>
       <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -421,31 +441,32 @@ Internal power plant: 4200w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>1.5</restEffectiveness>
+        <restEffectiveness>2</restEffectiveness>
         <massCapacity>100000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>35</travelSpeed>
+        <travelSpeed>25</travelSpeed>
       </li>
-      <li Class="CompProperties_Refuelable">
-        <fuelLabel>Uranium reactor charge level</fuelLabel>
-        <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
-        <fuelCapacity>100000</fuelCapacity>
-        <fuelConsumptionRate>0.01</fuelConsumptionRate>
-        <fuelMultiplier>444</fuelMultiplier>
-        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
-        <fuelFilter>
-          <thingDefs>
-            <li>Uranium</li>
-          </thingDefs>
-        </fuelFilter>
-        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <autoRefuelPercent>1</autoRefuelPercent>
-        <showFuelGizmo>true</showFuelGizmo>
-        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-      </li>
+			<li Class="CompProperties_Refuelable">
+			  <fuelLabel>Uranium reactor charge level</fuelLabel>
+			  <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
+			  <fuelCapacity>100000</fuelCapacity>
+			  <fuelConsumptionRate>0.01</fuelConsumptionRate>
+			  <fuelMultiplier>444</fuelMultiplier>
+			  <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+			  <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
+			  <initialFuelPercent>0.25</initialFuelPercent>
+			  <fuelFilter>
+			    <thingDefs>
+			      <li>Uranium</li>
+			    </thingDefs>
+			  </fuelFilter>
+			  <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+			  <autoRefuelPercent>1</autoRefuelPercent>
+			  <showFuelGizmo>true</showFuelGizmo>
+			  <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+			  <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+			</li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-4200</basePowerConsumption>

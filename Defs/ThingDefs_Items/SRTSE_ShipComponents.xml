@@ -170,14 +170,10 @@
       <texPath>Items/CompInternal</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costStuffCount>30</costStuffCount>
-    <stuffCategories>
-      <li>Fabric</li>
-      <li>Leathery</li>
-    </stuffCategories>
     <costList>
       <Steel>15</Steel>
-      <WoodLog>25</WoodLog>
+      <WoodLog>20</WoodLog>
+      <Cloth>35</Cloth>
     </costList>
   </ThingDef>
 
@@ -192,11 +188,6 @@
       <texPath>Items/CompMeshPlates</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costStuffCount>14</costStuffCount>
-    <stuffCategories>
-      <li>Fabric</li>
-      <li>Leathery</li>
-    </stuffCategories>
     <costList>
       <Steel>80</Steel>
       <ComponentSpacer>1</ComponentSpacer>
@@ -239,9 +230,9 @@
     </thingSetMakerTags>
     <costList>
       <AIPersonaCore>1</AIPersonaCore>
-      <Steel>300</Steel>
+      <Steel>150</Steel>
       <Plasteel>250</Plasteel>
-      <Uranium>125</Uranium>
+      <Hyperweave>25</Hyperweave>
       <ComponentSpacer>10</ComponentSpacer>
     </costList>
   </ThingDef>
