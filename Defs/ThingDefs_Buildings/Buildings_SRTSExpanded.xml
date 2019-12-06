@@ -44,7 +44,9 @@
     <label>Superpod</label>
     <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
+Passenger capacity  : 1-2
 Resting capablility : Awful
+----------------------------
 Speed               : Awful
 Cargo capacity      : 240kg
 Fuel capacity       : 200L
@@ -78,6 +80,8 @@ Internal power plant: 600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>4</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>2</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>200</fuelCapacity>
@@ -120,7 +124,9 @@ Internal power plant: 600w</description>
     <label>SRTS Skip</label>
     <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
+Passenger capacity    : 1-3
 Resting capablility   : Poor
+----------------------------
 Speed                 : Poor
 Cargo capacity        : 420kg
 Fuel capacity         : 500L
@@ -152,6 +158,8 @@ Internal power plant  : 800w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
 		    <travelSpeed>8</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>3</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -194,7 +202,9 @@ Internal power plant  : 800w</description>
     <label>SRTF</label>
     <description>A complete transport system made to fly passengers and cargo across the world. These industrial behemoths have been in service for millenia. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
+Passenger capacity    : 1-4
 Resting capablility   : Awful
+----------------------------
 Speed                 : Poor
 Cargo capacity        : 15,000kg
 Fuel capacity         : 2,000L
@@ -226,6 +236,8 @@ Internal power plant  : 1,600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>8</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>4</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -267,7 +279,9 @@ Internal power plant  : 1,600w</description>
     <label>SRTS Mk.II: Albatross</label>
     <description>A complete transport system made to fly passengers and cargo across the world. The Albatross is advanced. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
+Passenger capacity    : 1-12
 Resting capablility   : Normal
+----------------------------
 Speed                 : Good
 Cargo capacity        : 4,000kg
 Fuel capacity         : 1,600L
@@ -299,6 +313,8 @@ Internal power plant  : 1,600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>14</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>12</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
@@ -340,7 +356,9 @@ Internal power plant  : 1,600w</description>
     <label>SRTS Mk.III: Phoenix</label>
     <description>A complete transport system made to fly passengers and cargo across the world. Highly advanced, designed by an ancient civilization. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
+Passenger capacity    : 1-20
 Resting capablility   : Good
+----------------------------
 Speed                 : Exceptional
 Cargo capacity        : 6,000kg
 Fuel capacity         : 2,000L
@@ -372,6 +390,8 @@ Internal power plant  : 2,400w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>20</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -413,7 +433,9 @@ Internal power plant  : 2,400w</description>
     <label>SRTS Mk.IV: Genesis</label>
     <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
+Passenger capacity    : 2-999
 Resting capablility   : Legendary
+----------------------------
 Speed                 : Legendary
 Cargo capacity        : 100,000kg
 Fuel capacity         : 100,000 x225 U
@@ -446,6 +468,8 @@ Internal power plant  : 4,200w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>25</travelSpeed>
+        <minPassengers>2</minPassengers>
+        <maxPassengers>999</maxPassengers>
       </li>
 			<li Class="CompProperties_Refuelable">
 			  <fuelLabel>Uranium reactor charge level</fuelLabel>
