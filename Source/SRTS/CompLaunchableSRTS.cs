@@ -164,7 +164,7 @@ namespace SRTS
       }
     }
 
-    private int MaxLaunchDistance
+    public int MaxLaunchDistance
     {
       get
       {
@@ -174,7 +174,7 @@ namespace SRTS
       }
     }
 
-    private int MaxLaunchDistanceEverPossible
+    public int MaxLaunchDistanceEverPossible
     {
       get
       {
@@ -229,6 +229,26 @@ namespace SRTS
         launch.alsoClickIfOtherInGroupClicked = false;
         launch.action = (Action) (() =>
         {
+            int num = 0;
+            foreach(Thing t in this.Transporter.innerContainer)
+            {
+                Log.Message("-> " + (t is Pawn) + " + " + (t as Pawn).IsColonist);
+                if(t is Pawn && (t as Pawn).IsColonist)
+                {
+                    num++;
+                }
+            }
+            if(num < this.SRTSProps.minPassengers)
+            {
+                Messages.Message("Not enough pilots to launch", MessageTypeDefOf.RejectInput, false);
+                return;
+            }
+            else if(num > this.SRTSProps.maxPassengers)
+            {
+                Messages.Message("Too many colonists to launch", MessageTypeDefOf.RejectInput, false);
+                return;
+            }
+
           if (this.AnyInGroupHasAnythingLeftToLoad)
             Find.WindowStack.Add((Window) Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(this.FirstThingLeftToLoadInGroup.LabelCapNoCount), new Action(this.StartChoosingDestination), false, (string) null));
           else
@@ -521,7 +541,7 @@ namespace SRTS
       }
       if (car == null)
       {
-        if (TransportPodsArrivalAction_FormCaravan.CanFormCaravanAt(pods, tile) && !Find.WorldObjects.AnySettlementBaseAt(tile) && !Find.WorldObjects.AnySiteAt(tile))
+        if(TransportPodsArrivalAction_FormCaravan.CanFormCaravanAt(pods, tile) && !Find.WorldObjects.AnySettlementBaseAt(tile) && !Find.WorldObjects.AnySiteAt(tile))
         {
           anything = true;
           yield return new FloatMenuOption("FormCaravanHere".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) new TransportPodsArrivalAction_FormCaravan(), car)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
