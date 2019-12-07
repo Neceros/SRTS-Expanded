@@ -161,6 +161,10 @@ Internal power plant  : 800w</description>
         <minPassengers>1</minPassengers>
         <maxPassengers>3</maxPassengers>
       </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>3</numberBombs>
+        <accuracy>0.5</accuracy>
+      </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
@@ -316,6 +320,10 @@ Internal power plant  : 1,600w</description>
         <minPassengers>1</minPassengers>
         <maxPassengers>12</maxPassengers>
       </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>7</numberBombs>
+        <accuracy>0.6</accuracy>
+      </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
@@ -392,6 +400,10 @@ Internal power plant  : 2,400w</description>
         <travelSpeed>20</travelSpeed>
         <minPassengers>1</minPassengers>
         <maxPassengers>20</maxPassengers>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>10</numberBombs>
+        <accuracy>0.7</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -470,6 +482,10 @@ Internal power plant  : 4,200w</description>
         <travelSpeed>25</travelSpeed>
         <minPassengers>2</minPassengers>
         <maxPassengers>999</maxPassengers>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>25</numberBombs>
+        <accuracy>0.75</accuracy>
       </li>
 			<li Class="CompProperties_Refuelable">
 			  <fuelLabel>Uranium reactor charge level</fuelLabel>
