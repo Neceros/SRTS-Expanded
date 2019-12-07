@@ -51,7 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompBombFlyer.cs" />
     <Compile Include="CompLaunchableSRTS.cs" />
+    <Compile Include="CompProperties_BombsAway.cs" />
     <Compile Include="CompProperties_LaunchableSRTS.cs" />
     <Compile Include="Gizmo_MapRefuelableFuelStatus.cs" />
     <Compile Include="HarmonyTest_dp.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="SRTSStatic.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Tex2D.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

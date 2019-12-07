@@ -152,6 +152,8 @@ Internal power plant  : 800w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
 		    <travelSpeed>8</travelSpeed>
+			<minPassengers>2</minPassengers>
+			<maxPassengers>5</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -295,11 +297,17 @@ Internal power plant  : 1,600w</description>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>1</restEffectiveness>
-		    <massCapacity>4000</massCapacity>
+		<massCapacity>4000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>14</travelSpeed>
+		<minPassengers>2</minPassengers>
+		<maxPassengers>5</maxPassengers>
       </li>
+	  <li Class="SRTS.CompProperties_BombsAway">
+		<numberBombs>5</numberBombs>
+		<accuracy>0.5</accuracy>
+	  </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
         <fuelConsumptionRate>0.8</fuelConsumptionRate>
