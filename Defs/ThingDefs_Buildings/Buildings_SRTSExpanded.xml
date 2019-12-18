@@ -159,8 +159,11 @@ Internal power plant  : 800w</description>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
 		    <travelSpeed>8</travelSpeed>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <minPassengers>1</minPassengers>
         <maxPassengers>3</maxPassengers>
+=======
+>>>>>>> parent of f2aab89... Added 5, 6, and 8 from list
 =======
 >>>>>>> parent of f2aab89... Added 5, 6, and 8 from list
       </li>
@@ -317,8 +320,11 @@ Internal power plant  : 1,600w</description>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>14</travelSpeed>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <minPassengers>1</minPassengers>
         <maxPassengers>12</maxPassengers>
+=======
+>>>>>>> parent of f2aab89... Added 5, 6, and 8 from list
 =======
 >>>>>>> parent of f2aab89... Added 5, 6, and 8 from list
       </li>
