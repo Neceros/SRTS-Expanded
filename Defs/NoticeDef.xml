@@ -13,7 +13,8 @@
 ADDED FEATURES:
 - Shuttle descriptions updated with more information!
 - Shuttles now have a hard limit on the number of passengers that can board at one time.
-- Add items to a caravan that's already being loaded.</description>
+- Add items to a caravan that's already being loaded.
+- </description>
 		<letter>D9UpdateNotice</letter>
 	</LiteUpdateNotice.NoticeDef>
 </Defs>
