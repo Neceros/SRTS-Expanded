@@ -5,7 +5,7 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSSuperpod</defName>
     <label>Superpod</label>
-    <description>Slap on a few Orbital Relay Launch Modules onto a traditional transport pod and Voilà! You've got a ship capable of return flight! \n\nIt's just a first step, though. This won't travel quickly and it'll be a bumpy terrible ride! Perfect, right?</description>
+    <description>Slap on a few Orbital Relay Launch Modules onto a traditional transport pod and Voilà! You've got a ship capable of return flight! It's just a first step, though.</description>
     <baseCost>1200</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -14,16 +14,13 @@
     <researchViewX>0</researchViewX>
     <researchViewY>0</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <discoveredLetterTitle>Congratulations!</discoveredLetterTitle>
-    <discoveredLetterText>You can now craft a short range transport shuttle! The superpod is slapped together and rattles something fierce on the inside, but you'll find it's steady and stable when you need it most.\n\nCheck the SHIP tab in your architect menu.</discoveredLetterText>
-    <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRTSSkip</defName>
     <label>SRTS Skip</label>
-    <description>This vessel design was conceived after a nearby colony on this world tried their own version of a superpod. They decided to take apart the pods and put it together into a far more aerodynamic form. \n\nIt exceeded expectations, and since then it's become popular on this rimworld as a design due to its cheap material cost and reliable transport.</description>
+    <description>This vessel design was conceived after a nearby colony on this world tried their own version of a superpod. They decided to take apart the pods and put it together uniquely. It turned out really nice, and since then it's become popular as a design due to its cheap material cost and reliable transport.</description>
     <baseCost>2400</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -33,7 +30,7 @@
     <researchViewY>0</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
     <discoveredLetterTitle>Short Range Transport Shuttles</discoveredLetterTitle>
-    <discoveredLetterText>You've unlocked the ability to craft your own ship parts!\n\nBuilding advanced shuttles is expensive and time consuming, but absolutely worth the investment.\n\nYou will find your ship blueprints under the SHIP tab, in your architech menu. Build the ship components necessary to craft your vessel at a Fabrication bench, or buy them from traders.\n\nYou won't need these parts for your Skip, but you will for all the future shuttles.</discoveredLetterText>
+    <discoveredLetterText>You've unlocked the ability to craft your own ship parts!\n\nBuilding a shuttle is expensive and time consuming, but absolutely worth the cost.\n\nYou will find your ship blueprints under the SHIP tab, in your architech menu. Build the ship components necessary to craft your vessel in a Fabrication bench, or buy them from traders.\n\nYou won't need these parts for your Skip, but you will for all the future shuttles.</discoveredLetterText>
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
@@ -41,7 +38,7 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTF</defName>
     <label>SRTF</label>
-    <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions. Not great on the chemfuel mileage nor the speed, but you will be happy as a muffalo in winter at the cargo space!</description>
+    <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions. Not great on the chemfuel mileage.</description>
     <baseCost>3200</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -57,7 +54,7 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSMk2</defName>
     <label>SRTS Mk. II</label>
-    <description>The Albatross X-11 was originally designed for military exoplanetary exploration, but you've discovered valueable insight into how ships work thanks to the efforts of your researchers. You're just a few steps away... \n\nYou think this new ship will outshine all current designs by a mile.</description>
+    <description>The Albatross X-11 was originally designed for military exoplanetary exploration, but you've realized the components match the SRTS almost exactly. With this new insight and some tinkering you might come up with an improved SRTS design with better fuel capacity and efficiency.</description>
     <baseCost>5000</baseCost>
     <techLevel>Spacer</techLevel>
     <prerequisites>
@@ -89,7 +86,7 @@
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
     <discoveredLetterTitle>Advanced Ship Components</discoveredLetterTitle>
-    <discoveredLetterText>You can now build an additional type of component needed for the Mk. III Phoenix. \n\nBuild them at the Fabrication bench.</discoveredLetterText>
+    <discoveredLetterText>You can now build an additional type of component needed for the Mk. III Phoenix. Build them in the Fabrication bench.</discoveredLetterText>
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
@@ -110,7 +107,7 @@
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
     <discoveredLetterTitle>The Genesis</discoveredLetterTitle>
-    <discoveredLetterText>A few of the components needed to build the Genesis elude you. You don't think you can craft them yourself being how complicated they are. At least not yet.\nFor now, buy the more advanced components from traders or as quest rewards to build the Genesis.\n\nThe things you've heard about this ship must be exaggerated, right? It's probably just a myth...</discoveredLetterText>
+    <discoveredLetterText>A few of the components needed to build the Genesis elude you. You don't think you can craft them yourself being how complicated they are. At least not yet.\n\nFor now, buy the more advanced components from traders or as quest rewards to build the Genesis.</discoveredLetterText>
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
@@ -118,8 +115,8 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSArchoComps</defName>
     <label>Archotech Ship Components</label>
-    <description>Learn the techniques to build the archotech components necessary to build the Genesis.</description>
-    <baseCost>25000</baseCost>
+    <description>Learn the techniques to build the super advanced components necessary to build the Genesis.</description>
+    <baseCost>9000</baseCost>
     <techLevel>Archotech</techLevel>
     <prerequisites>
       <li>Research_SRTSMk4</li>

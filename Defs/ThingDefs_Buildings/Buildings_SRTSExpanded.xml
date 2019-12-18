@@ -44,15 +44,12 @@
     <label>Superpod</label>
     <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Passenger capacity: 1
-Resting capablility: Awful
-Military: No
+Passenger capacity  : 1-2
+Resting capablility : Awful
 ----------------------------
-Speed: Awful
-Fuel capacity: 200L
-Fuel efficiency: Normal
-----------------------------
-Cargo capacity: 240kg
+Speed               : Awful
+Cargo capacity      : 240kg
+Fuel capacity       : 200L
 Internal power plant: 600w</description>
     <graphicData>
       <texPath>Superpod</texPath>
@@ -78,13 +75,13 @@ Internal power plant: 600w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-      	<restEffectiveness>0.5</restEffectiveness>
+      	<restEffectiveness>0.6</restEffectiveness>
 				<massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>4</travelSpeed>
         <minPassengers>1</minPassengers>
-        <maxPassengers>1</maxPassengers>
+        <maxPassengers>2</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>200</fuelCapacity>
@@ -117,7 +114,7 @@ Internal power plant: 600w</description>
 		<researchPrerequisites>
 			<li>Research_SRTSSuperpod</li>
 		</researchPrerequisites>
-    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
   </ThingDef>
 
@@ -127,16 +124,13 @@ Internal power plant: 600w</description>
     <label>SRTS Skip</label>
     <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Passenger capacity: Min 1 - 2 Max
-Resting capablility: Poor
-Military: 2 bombs, awful accuracy
+Passenger capacity    : 1-3
+Resting capablility   : Poor
 ----------------------------
-Speed: Good
-Fuel capacity: 500L
-Fuel efficiency: Good
-----------------------------
-Cargo capacity: 420kg
-Internal power plant: 800w</description>
+Speed                 : Poor
+Cargo capacity        : 420kg
+Fuel capacity         : 500L
+Internal power plant  : 800w</description>
     <graphicData>
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -159,17 +153,17 @@ Internal power plant: 800w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.75</restEffectiveness>
+        <restEffectiveness>0.7</restEffectiveness>
 		    <massCapacity>420</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-		    <travelSpeed>14</travelSpeed>
+		    <travelSpeed>8</travelSpeed>
         <minPassengers>1</minPassengers>
-        <maxPassengers>2</maxPassengers>
+        <maxPassengers>3</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>2</numberBombs>
-        <accuracy>0.35</accuracy>
+        <numberBombs>3</numberBombs>
+        <accuracy>0.5</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -212,16 +206,13 @@ Internal power plant: 800w</description>
     <label>SRTF</label>
     <description>A complete transport system made to fly passengers and cargo across the world. These industrial behemoths have been in service for millenia. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Passenger capacity: Min 1 - 3 Max
-Resting capablility: Awful
-Military: No
+Passenger capacity    : 1-4
+Resting capablility   : Awful
 ----------------------------
-Speed: Poor
-Fuel capacity: 2,000L
-Fuel efficiency: Poor
-----------------------------
-Cargo capacity: 5,000kg
-Internal power plant 600w</description>
+Speed                 : Poor
+Cargo capacity        : 15,000kg
+Fuel capacity         : 2,000L
+Internal power plant  : 1,600w</description>
     <graphicData>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -244,17 +235,17 @@ Internal power plant 600w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.5</restEffectiveness>
-        <massCapacity>5000</massCapacity>
+        <restEffectiveness>0.6</restEffectiveness>
+        <massCapacity>15000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>8</travelSpeed>
         <minPassengers>1</minPassengers>
-        <maxPassengers>3</maxPassengers>
+        <maxPassengers>4</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
-        <fuelConsumptionRate>1.25</fuelConsumptionRate>
+        <fuelConsumptionRate>1.10</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -270,7 +261,7 @@ Internal power plant 600w</description>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
-        <basePowerConsumption>-600</basePowerConsumption>
+        <basePowerConsumption>-1600</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
       </li>
       <li Class="CompProperties_Flickable" />
@@ -282,7 +273,7 @@ Internal power plant 600w</description>
     <researchPrerequisites>
       <li>Research_SRTF</li>
     </researchPrerequisites>
-    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
   </ThingDef>
   
@@ -292,16 +283,13 @@ Internal power plant 600w</description>
     <label>SRTS Mk.II: Albatross</label>
     <description>A complete transport system made to fly passengers and cargo across the world. The Albatross is advanced. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Passenger capacity: Min 1 - 7 Max
-Resting capablility: Normal
-Military: 7 bombs, normal accuracy
+Passenger capacity    : 1-12
+Resting capablility   : Normal
 ----------------------------
-Speed: Good
-Fuel capacity: 1,600L
-Fuel efficiency: Good
-----------------------------
-Cargo capacity: 4,000kg
-Internal power plant: 1,600w</description>
+Speed                 : Good
+Cargo capacity        : 4,000kg
+Fuel capacity         : 1,600L
+Internal power plant  : 1,600w</description>
     <graphicData>
       <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -330,15 +318,15 @@ Internal power plant: 1,600w</description>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>14</travelSpeed>
         <minPassengers>1</minPassengers>
-        <maxPassengers>7</maxPassengers>
+        <maxPassengers>12</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>7</numberBombs>
-        <accuracy>0.55</accuracy>
+        <accuracy>0.6</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
-        <fuelConsumptionRate>0.75</fuelConsumptionRate>
+        <fuelConsumptionRate>0.8</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>1600</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -366,7 +354,7 @@ Internal power plant: 1,600w</description>
 		<researchPrerequisites>
 			<li>Research_SRTSMk2</li>
 		</researchPrerequisites>
-    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
 
@@ -376,16 +364,13 @@ Internal power plant: 1,600w</description>
     <label>SRTS Mk.III: Phoenix</label>
     <description>A complete transport system made to fly passengers and cargo across the world. Highly advanced, designed by an ancient civilization. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Passenger capacity: Min 2 - 24 Max
-Resting capablility: Excellent
-Military: 12 bombs, good accuracy
+Passenger capacity    : 1-20
+Resting capablility   : Good
 ----------------------------
-Speed: Excellent
-Fuel capacity: 2,000L
-Fuel efficiency: Excellent
-----------------------------
-Cargo capacity: 6,000kg
-Internal power plant: 2,400w</description>
+Speed                 : Exceptional
+Cargo capacity        : 6,000kg
+Fuel capacity         : 2,000L
+Internal power plant  : 2,400w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -408,21 +393,21 @@ Internal power plant: 2,400w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>2</restEffectiveness>
+        <restEffectiveness>1.2</restEffectiveness>
         <massCapacity>6000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
-        <minPassengers>2</minPassengers>
-        <maxPassengers>24</maxPassengers>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>20</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>12</numberBombs>
-        <accuracy>0.75</accuracy>
+        <numberBombs>10</numberBombs>
+        <accuracy>0.7</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
-        <fuelConsumptionRate>0.50</fuelConsumptionRate>
+        <fuelConsumptionRate>0.75</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -450,7 +435,7 @@ Internal power plant: 2,400w</description>
     <researchPrerequisites>
       <li>Research_SRTSMk3</li>
     </researchPrerequisites>
-    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
 
@@ -460,16 +445,13 @@ Internal power plant: 2,400w</description>
     <label>SRTS Mk.IV: Genesis</label>
     <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Passenger capacity: Min 3 - No Max
-Resting capablility: Legendary
-Military: 30 bombs, Excellent accuracy
+Passenger capacity    : 2-999
+Resting capablility   : Legendary
 ----------------------------
-Speed: Legendary
-Fuel capacity: 100,000 x225 Ur
-Fuel efficiency: Legendary
-----------------------------
-Cargo capacity: 100,000kg
-Internal power plant: 4,200w</description>
+Speed                 : Legendary
+Cargo capacity        : 100,000kg
+Fuel capacity         : 100,000 x225 U
+Internal power plant  : 4,200w</description>
     <graphicData>
       <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -497,13 +479,13 @@ Internal power plant: 4,200w</description>
         <massCapacity>100000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>30</travelSpeed>
-        <minPassengers>3</minPassengers>
+        <travelSpeed>25</travelSpeed>
+        <minPassengers>2</minPassengers>
         <maxPassengers>999</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>30</numberBombs>
-        <accuracy>0.85</accuracy>
+        <numberBombs>25</numberBombs>
+        <accuracy>0.75</accuracy>
       </li>
 			<li Class="CompProperties_Refuelable">
 			  <fuelLabel>Uranium reactor charge level</fuelLabel>
