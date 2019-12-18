@@ -25,9 +25,6 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "CheckForErrors"), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(ErrorOnNoPawns)));
-            harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddItemsToTransferables"), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(AddItemsEntireMapNonHomeTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(SettlementBase_TraderTracker), name: nameof(SettlementBase_TraderTracker.GiveSoldThingToPlayer)), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(GiveSoldThingsToSRTS)));
@@ -43,9 +40,6 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Property(type: typeof(Dialog_Trade), name: "MassUsage").GetGetMethod(nonPublic: true), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(SRTSMassUsageCaravan)));
-            harmony.Patch(original: AccessTools.Method(type: typeof(CompTransporter), name: nameof(CompTransporter.CompGetGizmosExtra)), prefix: null,
-                postfix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(NoLaunchGroupForSRTS)));
         }
         public static IEnumerable<CodeInstruction> ErrorOnNoPawns(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
@@ -58,9 +52,6 @@ namespace SRTS
                 if(instruction.opcode == OpCodes.Ldc_I4_1 && instructionsList[i+1].opcode == OpCodes.Ret)
                 {
                     Label label = ilg.DefineLabel();
-                    Label label2 = ilg.DefineLabel();
-                    Label brlabelMin = ilg.DefineLabel();
-                    Label brlabelMax = ilg.DefineLabel();
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
@@ -78,114 +69,6 @@ namespace SRTS
                     yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ret);
 
-                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0) { labels = new List<Label> { label } };
-                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.MinPawnRestrictionsSRTS)));
-                    yield return new CodeInstruction(opcode: OpCodes.Brtrue, brlabelMin);
-
-                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.MaxPawnRestrictionsSRTS)));
-                    yield return new CodeInstruction(opcode: OpCodes.Brtrue, brlabelMax);
-
-                    yield return new CodeInstruction(opcode: OpCodes.Br, label2);
-
-                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0) { labels = new List<Label> { brlabelMin } };
-                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.MinMaxString)));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldsfld, operand: AccessTools.Field(type: typeof(MessageTypeDefOf), name: nameof(MessageTypeDefOf.RejectInput)));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(Messages), parameters: new Type[] { typeof(string), typeof(MessageTypeDef), typeof(bool) },
-                        name: nameof(Messages.Message)));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Ret);
-
-                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0) { labels = new List<Label> { brlabelMax } };
-                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.MinMaxString)));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldsfld, operand: AccessTools.Field(type: typeof(MessageTypeDefOf), name: nameof(MessageTypeDefOf.RejectInput)));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(Messages), parameters: new Type[] { typeof(string), typeof(MessageTypeDef), typeof(bool) },
-                        name: nameof(Messages.Message)));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Ret);
-
-                    instruction.labels.Add(label2);
-                }
-
-                yield return instruction;
-            }
-        }
-
-        public static string MinMaxString(List<CompTransporter> transporters, bool min)
-        {
-            var srts = transporters.First(x => x.parent.GetComp<CompLaunchableSRTS>() != null).parent;
-            return min ? "Minimum Required Pawns for " + srts.def.LabelCap + ": " + (srts.GetComp<CompLaunchableSRTS>().SRTSProps.minPassengers) :
-                "Maximum Pawns able to board " + srts.def.LabelCap + ": " + (srts.GetComp<CompLaunchableSRTS>().SRTSProps.maxPassengers);
-        }
-
-        public static bool NoPawnInSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
-        {
-            if (transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null) && !pawns.Any(x => x.IsColonistPlayerControlled))
-                return true;
-            return false;
-        }
-
-        public static bool MinPawnRestrictionsSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
-        {
-            if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
-            {
-                int minPawns = transporters.Min(x => x.parent.GetComp<CompLaunchableSRTS>().SRTSProps.minPassengers);
-                if(pawns.Where(x => x.IsColonistPlayerControlled).Count() < minPawns)
-                {
-                    return true;
-                }
-                
-            }
-            return false;
-        }
-        public static bool MaxPawnRestrictionsSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
-        {
-            if (transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
-            {
-                int maxPawns = transporters.Max(x => x.parent.GetComp<CompLaunchableSRTS>().SRTSProps.maxPassengers);
-                if (pawns.Count > maxPawns)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public static IEnumerable<CodeInstruction> AddItemsEntireMapNonHomeTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
-        {
-            List<CodeInstruction> instructionList = instructions.ToList();
-
-            for (int i = 0; i < instructionList.Count; i++)
-            {
-                CodeInstruction instruction = instructionList[i];
-
-                if(instruction.opcode == OpCodes.Call && instruction.operand == AccessTools.Method(type: typeof(CaravanFormingUtility), name: nameof(CaravanFormingUtility.AllReachableColonyItems)))
-                {
-                    Label label = ilg.DefineLabel();
-
-                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.SRTSLauncherSelected)));
-                    yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
-
-                    yield return new CodeInstruction(opcode: OpCodes.Pop);
-                    yield return new CodeInstruction(opcode: OpCodes.Pop);
-                    yield return new CodeInstruction(opcode: OpCodes.Pop);
-
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
-
                     instruction.labels.Add(label);
                 }
 
@@ -193,12 +76,10 @@ namespace SRTS
             }
         }
 
-        public static bool SRTSLauncherSelected(List<CompTransporter> transporters)
+        public static bool NoPawnInSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
         {
-            if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
-            {
+            if (transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null) && !pawns.Any(x => x.IsColonistPlayerControlled))
                 return true;
-            }
             return false;
         }
 
@@ -325,23 +206,6 @@ namespace SRTS
                 }
 
                 yield return instruction;
-            }
-        }
-
-        public static void NoLaunchGroupForSRTS(ref IEnumerable<Gizmo> __result, CompTransporter __instance)
-        {
-            if(__instance.parent.def.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
-            {
-                List<Gizmo> gizmos = __result.ToList();
-                for(int i = gizmos.Count - 1; i >= 0; i--)
-                {
-                    if( (gizmos[i] as Command_Action)?.defaultLabel == "CommandSelectPreviousTransporter".Translate() || (gizmos[i] as Command_Action)?.defaultLabel == "CommandSelectAllTransporters".Translate() ||
-                        (gizmos[i] as Command_Action)?.defaultLabel == "CommandSelectNextTransporter".Translate())
-                    {
-                        gizmos.Remove(gizmos[i]);
-                    }
-                }
-                __result = gizmos;
             }
         }
 
