@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ThingDef Name="ShipBase" Abstract="True">
@@ -70,11 +70,11 @@ Internal power plant: 600w</description>
       <Beauty>15</Beauty>
     </statBases>
     <costList>
-      <Steel>300</Steel>
-      <Plasteel>25</Plasteel>
-      <Gold>15</Gold>
+      <Steel>550</Steel>
+      <Plasteel>50</Plasteel>
+      <Gold>45</Gold>
       <Silver>150</Silver>
-      <ComponentIndustrial>6</ComponentIndustrial>
+      <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -83,8 +83,6 @@ Internal power plant: 600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>4</travelSpeed>
-        <minPassengers>1</minPassengers>
-        <maxPassengers>1</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>200</fuelCapacity>
@@ -151,11 +149,11 @@ Internal power plant: 800w</description>
       <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <Steel>550</Steel>
-      <Plasteel>35</Plasteel>
-      <Gold>45</Gold>
-      <Silver>450</Silver>
-      <ComponentIndustrial>10</ComponentIndustrial>
+      <Steel>1020</Steel>
+      <Plasteel>125</Plasteel>
+      <Gold>100</Gold>
+      <Silver>1250</Silver>
+      <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -164,12 +162,6 @@ Internal power plant: 800w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
 		    <travelSpeed>14</travelSpeed>
-        <minPassengers>1</minPassengers>
-        <maxPassengers>2</maxPassengers>
-      </li>
-      <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>2</numberBombs>
-        <accuracy>0.35</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -236,7 +228,7 @@ Internal power plant 600w</description>
       <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>8</ShuttleComp_Plates>
+      <ShuttleComp_Plates>10</ShuttleComp_Plates>
       <ShuttleComp_MechSystem>5</ShuttleComp_MechSystem>
       <ShuttleComp_ElectricSystem>2</ShuttleComp_ElectricSystem>
       <ShuttleComp_Engines>6</ShuttleComp_Engines>
@@ -249,8 +241,6 @@ Internal power plant 600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>4</travelSpeed>
-        <minPassengers>1</minPassengers>
-        <maxPassengers>3</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -316,10 +306,10 @@ Internal power plant: 1,600w</description>
       <Beauty>50</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>4</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>6</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>6</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>4</ShuttleComp_Engines>
+      <ShuttleComp_Plates>6</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>8</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>5</ShuttleComp_Engines>
       <ShuttleComp_Structural>10</ShuttleComp_Structural>
     </costList>
     <comps>
@@ -329,12 +319,6 @@ Internal power plant: 1,600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>14</travelSpeed>
-        <minPassengers>1</minPassengers>
-        <maxPassengers>7</maxPassengers>
-      </li>
-      <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>7</numberBombs>
-        <accuracy>0.55</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
@@ -400,10 +384,10 @@ Internal power plant: 2,400w</description>
       <Beauty>75</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_MeshPlate>10</ShuttleComp_MeshPlate>
+      <ShuttleComp_MeshPlate>12</ShuttleComp_MeshPlate>
       <ShuttleComp_MechSystem>3</ShuttleComp_MechSystem>
       <ShuttleComp_ElectricSystem>4</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>4</ShuttleComp_Engines>
+      <ShuttleComp_Engines>6</ShuttleComp_Engines>
       <ShuttleComp_Structural>12</ShuttleComp_Structural>
     </costList>
     <comps>
@@ -413,12 +397,6 @@ Internal power plant: 2,400w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
-        <minPassengers>2</minPassengers>
-        <maxPassengers>24</maxPassengers>
-      </li>
-      <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>12</numberBombs>
-        <accuracy>0.75</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -484,12 +462,12 @@ Internal power plant: 4,200w</description>
       <Beauty>1000</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>6</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>6</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>6</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Structural>12</ShuttleComp_Structural>
+      <ShuttleComp_Plates>16</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>16</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Structural>24</ShuttleComp_Structural>
       <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
-      <ShuttleComp_DimShift>1</ShuttleComp_DimShift>
+      <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -498,12 +476,6 @@ Internal power plant: 4,200w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>30</travelSpeed>
-        <minPassengers>3</minPassengers>
-        <maxPassengers>999</maxPassengers>
-      </li>
-      <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>30</numberBombs>
-        <accuracy>0.85</accuracy>
       </li>
 			<li Class="CompProperties_Refuelable">
 			  <fuelLabel>Uranium reactor charge level</fuelLabel>
