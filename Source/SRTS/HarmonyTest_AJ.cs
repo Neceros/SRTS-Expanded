@@ -15,14 +15,13 @@ namespace SRTS
             {
                 for (int index = 0; index < pod.innerContainer.Count; index++)
                 {
-                    if (pod.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null)
+                    if(pod.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null || DefDatabase<ThingDef>.GetNamed(pod.innerContainer[index]?.def?.defName?.Split('_')[0], false)?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
                     {
                         Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
                         Traverse traverse = Traverse.Create((object)__instance);
                         IntVec3 c = traverse.Field("cell").GetValue<IntVec3>();
                         Map map = traverse.Field("mapParent").GetValue<MapParent>().Map;
                         TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(pods);
-            
                         for (int i = 0; i < pods.Count; ++i)
                         {
                             pods[i].openDelay = 0;

@@ -232,7 +232,6 @@ namespace SRTS
             int num = 0;
             foreach(Thing t in this.Transporter.innerContainer)
             {
-                Log.Message("-> " + (t is Pawn) + " + " + (t as Pawn).IsColonist);
                 if(t is Pawn && (t as Pawn).IsColonist)
                 {
                     num++;

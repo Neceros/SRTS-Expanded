@@ -46,6 +46,9 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(CompTransporter), name: nameof(CompTransporter.CompGetGizmosExtra)), prefix: null,
                 postfix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(NoLaunchGroupForSRTS)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(TransportPodsArrivalActionUtility), name: nameof(TransportPodsArrivalActionUtility.DropTravelingTransportPods)),
+                prefix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(DropSRTSExactSpot)));
         }
         public static IEnumerable<CodeInstruction> ErrorOnNoPawns(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
@@ -345,6 +348,28 @@ namespace SRTS
             }
         }
 
+        public static bool DropSRTSExactSpot(List<ActiveDropPodInfo> dropPods, IntVec3 near, Map map)
+        {
+            foreach(ActiveDropPodInfo pod in dropPods)
+            {
+                foreach(Thing t in pod.innerContainer)
+                {
+                    if(ThingDef.Named(t.def.defName.Split('_')[0]).GetCompProperties<CompProperties_LaunchableSRTS>() != null)
+                    {
+                        TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(dropPods);
+                        foreach(ActiveDropPodInfo pod2 in dropPods)
+                        {
+                            DropPodUtility.MakeDropPodAt(near, map, pod2);
+                        }
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         public static bool SRTSInCaravan => TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null);
+
+        public static Dictionary<int, Pair<Map, IntVec3>> SRTSBombers = new Dictionary<int, Pair<Map, IntVec3>>();
     }
 }

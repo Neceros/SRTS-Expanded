@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 using Verse;
 using RimWorld;
 using RimWorld.Planet;
@@ -12,14 +13,12 @@ namespace SRTS
     public class CompBombFlyer : ThingComp
     {
         public Building SRTS_Launcher => this.parent as Building;
-
         public CompLaunchableSRTS CompLauncher => SRTS_Launcher.GetComp<CompLaunchableSRTS>();
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             if(SRTS_Launcher.GetComp<CompLaunchableSRTS>().LoadingInProgressOrReadyToLaunch)
             {
-                yield break;
                 yield return new Command_Action()
                 {
                     defaultLabel = "Bomb Target",
@@ -70,7 +69,7 @@ namespace SRTS
                 if (!target.IsValid)
                     return null;
                 int num = Find.WorldGrid.TraversalDistanceBetween(tile, target.Tile);
-                if(num > CompLauncher.MaxLaunchDistance)
+                if (num > CompLauncher.MaxLaunchDistance)
                 {
                     GUI.color = Color.red;
                     if (num > CompLauncher.MaxLaunchDistanceEverPossible)
@@ -121,14 +120,15 @@ namespace SRTS
             if(Find.WorldObjects.AnySettlementBaseAt(target.Tile))
             {
                 MapParent targetMapParent = Find.WorldObjects.MapParentAt(target.Tile);
-                if (TransportPodsArrivalAction_LandInSpecificCell.CanLandInSpecificCell(null, targetMapParent))
+                if(SRTSArrivalActionBombRun.CanBombSpecificCell(null, targetMapParent))
                 {
                     Map targetMap = targetMapParent.Map;
                     Current.Game.CurrentMap = targetMap;
                     CameraJumper.TryHideWorld();
+                    
                     Find.Targeter.BeginTargeting(TargetingParameters.ForDropPodsDestination(), delegate (LocalTargetInfo x)
                     {
-                        Log.Message("BOMB RUN");
+                        TryLaunchBombRun(target.Tile, x.Cell, targetMapParent);
                     }, null, delegate ()
                     {
                         if (Find.Maps.Contains(this.parent.Map))
@@ -143,28 +143,7 @@ namespace SRTS
             return false;
         }
 
-        public static IEnumerable<FloatMenuOption> GetMapParent(
-      MapParent mapparent,
-      IEnumerable<IThingHolder> pods,
-      CompLaunchableSRTS representative,
-      Caravan car)
-        {
-            if (TransportPodsArrivalAction_LandInSpecificCell.CanLandInSpecificCell(pods, mapparent))
-                yield return new FloatMenuOption("LandInExistingMap".Translate(mapparent.Label), (Action)(() =>
-                {
-                    Map myMap = car != null ? (Map)null : representative.parent.Map;
-                    Current.Game.CurrentMap = mapparent.Map;
-                    CameraJumper.TryHideWorld();
-                    Find.Targeter.BeginTargeting(TargetingParameters.ForDropPodsDestination(), (Action<LocalTargetInfo>)(x => representative.TryLaunch(mapparent.Tile, (TransportPodsArrivalAction)new TransportPodsArrivalAction_LandInSpecificCell(mapparent, x.Cell), car)), (Pawn)null, (Action)(() =>
-                    {
-                        if (myMap == null || !Find.Maps.Contains(myMap))
-                            return;
-                        Current.Game.CurrentMap = myMap;
-                    }), CompLaunchable.TargeterMouseAttachment);
-                }), MenuOptionPriority.Default, (Action)null, (Thing)null, 0.0f, (Func<Rect, bool>)null, (WorldObject)null);
-        }
-
-        private void TryLaunchBombRun(int destTile)
+        private void TryLaunchBombRun(int destTile, IntVec3 bombCell, MapParent mapParent)
         {
             if (!this.parent.Spawned)
             {
@@ -184,7 +163,40 @@ namespace SRTS
                 return;
             }
             CompLauncher.Transporter.TryRemoveLord(map);
+            int groupID = CompLauncher.Transporter.groupID;
+            float amount = Mathf.Max(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num), 1f);
+            CompTransporter comp1 = CompLauncher.FuelingPortSource.TryGetComp<CompTransporter>();
+            Building fuelPortSource = CompLauncher.FuelingPortSource;
+            if (fuelPortSource != null)
+                fuelPortSource.TryGetComp<CompRefuelable>().ConsumeFuel(amount);
+            ThingOwner directlyHeldThings = comp1.GetDirectlyHeldThings();
 
+            Thing thing = ThingMaker.MakeThing(ThingDef.Named(parent.def.defName), null);
+            thing.SetFactionDirect(Faction.OfPlayer);
+            thing.Rotation = CompLauncher.FuelingPortSource.Rotation;
+            CompRefuelable comp2 = thing.TryGetComp<CompRefuelable>();
+            comp2.GetType().GetField("fuel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue((object)comp2, (object)fuelPortSource.TryGetComp<CompRefuelable>().Fuel);
+            comp2.TargetFuelLevel = fuelPortSource.TryGetComp<CompRefuelable>().TargetFuelLevel;
+            thing.stackCount = 1;
+            directlyHeldThings.TryAddOrTransfer(thing, true);
+
+            ActiveDropPod activeDropPod = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(parent.def.defName + "_Active"), null);
+            activeDropPod.Contents = new ActiveDropPodInfo();
+            activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer((IEnumerable<Thing>)directlyHeldThings, true, true);
+
+            SRTSLeaving srtsLeaving = (SRTSLeaving)SkyfallerMaker.MakeSkyfaller(ThingDef.Named(parent.def.defName + "_Leaving"), (Thing)activeDropPod);
+            srtsLeaving.rotation = CompLauncher.FuelingPortSource.Rotation;
+            srtsLeaving.groupID = groupID;
+            srtsLeaving.destinationTile = destTile;
+            srtsLeaving.arrivalAction = new SRTSArrivalActionBombRun(mapParent, bombCell);
+
+            StartUp.SRTSBombers.Add(thing.thingIDNumber, new Pair<Map, IntVec3>(map, CompLauncher.FuelingPortSource.Position));
+
+            comp1.CleanUpLoadingVars(map);
+            IntVec3 position = fuelPortSource.Position;
+            SRTSStatic.SRTSDestroy((Thing)fuelPortSource, DestroyMode.Vanish);
+            GenSpawn.Spawn((Thing)srtsLeaving, position, map, WipeMode.Vanish);
+            CameraJumper.TryHideWorld();
         }
     }
 }

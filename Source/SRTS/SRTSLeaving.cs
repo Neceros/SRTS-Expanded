@@ -14,6 +14,7 @@ namespace SRTS
     public TransportPodsArrivalAction arrivalAction;
     private bool alreadyLeft;
     public Rot4 rotation;
+
     public ActiveDropPodInfo Contents
     {
       get
