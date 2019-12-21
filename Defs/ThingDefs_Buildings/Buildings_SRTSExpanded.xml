@@ -11,10 +11,10 @@
     <repairEffect>Repair</repairEffect>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <filthLeaving>Filth_RubbleBuilding</filthLeaving>
-		<statBases>
-			<SellPriceFactor>0.70</SellPriceFactor>
-		</statBases>
-		<tickerType>Normal</tickerType>
+    <statBases>
+      <SellPriceFactor>0.70</SellPriceFactor>
+    </statBases>
+    <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <stealable>false</stealable>
     <minifiedDef>MinifiedThing</minifiedDef>
@@ -39,15 +39,19 @@
     <comps />
   </ThingDef>
 
-	<ThingDef ParentName="ShipBase">
+  <ThingDef ParentName="ShipBase">
     <defName>SRTSSuperpod</defName>
     <label>Superpod</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world.
 
-Resting capablility : Awful
-Speed               : Awful
-Cargo capacity      : 240kg
-Fuel capacity       : 200L
+Passenger capacity: 1
+Military: No
+----------------------------
+Speed: Awful
+Fuel capacity: 200L
+Fuel efficiency: Normal
+----------------------------
+Cargo capacity: 240kg
 Internal power plant: 600w</description>
     <graphicData>
       <texPath>Superpod</texPath>
@@ -65,19 +69,21 @@ Internal power plant: 600w</description>
       <Beauty>15</Beauty>
     </statBases>
     <costList>
-      <Steel>300</Steel>
-      <Plasteel>25</Plasteel>
-      <Gold>15</Gold>
+      <Steel>550</Steel>
+      <Plasteel>50</Plasteel>
+      <Gold>45</Gold>
       <Silver>150</Silver>
-      <ComponentIndustrial>6</ComponentIndustrial>
+      <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-      	<restEffectiveness>0.6</restEffectiveness>
-				<massCapacity>240</massCapacity>
+        <restEffectiveness>0.5</restEffectiveness>
+        <massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>4</travelSpeed>
+        <travelSpeed>3</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>200</fuelCapacity>
@@ -93,7 +99,7 @@ Internal power plant: 600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -103,14 +109,14 @@ Internal power plant: 600w</description>
       <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>6</glowRadius>
+        <glowRadius>12</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-		<researchPrerequisites>
-			<li>Research_SRTSSuperpod</li>
-		</researchPrerequisites>
-    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>Research_SRTSSuperpod</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
   </ThingDef>
 
@@ -118,13 +124,17 @@ Internal power plant: 600w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSSkip</defName>
     <label>SRTS Skip</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world.
 
-Resting capablility   : Poor
-Speed                 : Poor
-Cargo capacity        : 420kg
-Fuel capacity         : 500L
-Internal power plant  : 800w</description>
+Passenger capacity: Min 1 - 2 Max
+Military: 5 bombs
+----------------------------
+Speed: Normal
+Fuel capacity: 500L
+Fuel efficiency: Good
+----------------------------
+Cargo capacity: 420kg
+Internal power plant: 800w</description>
     <graphicData>
       <texPath>Skip</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -139,21 +149,26 @@ Internal power plant  : 800w</description>
       <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <Steel>550</Steel>
-      <Plasteel>35</Plasteel>
-      <Gold>45</Gold>
-      <Silver>450</Silver>
-      <ComponentIndustrial>10</ComponentIndustrial>
+      <Steel>1020</Steel>
+      <Plasteel>125</Plasteel>
+      <Gold>100</Gold>
+      <Silver>1250</Silver>
+      <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.7</restEffectiveness>
-		    <massCapacity>420</massCapacity>
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>420</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-		    <travelSpeed>8</travelSpeed>
-			<minPassengers>2</minPassengers>
-			<maxPassengers>5</maxPassengers>
+        <travelSpeed>8</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>2</maxPassengers>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>5</numberBombs>
+        <radiusOfDrop>4</radiusOfDrop>
+        <speed>0.85</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -169,7 +184,7 @@ Internal power plant  : 800w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -179,13 +194,13 @@ Internal power plant  : 800w</description>
       <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>8</glowRadius>
+        <glowRadius>12</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-		<researchPrerequisites>
-			<li>Research_SRTSSkip</li>
-		</researchPrerequisites>
+    <researchPrerequisites>
+      <li>Research_SRTSSkip</li>
+    </researchPrerequisites>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <uiIconScale>0.55</uiIconScale>
   </ThingDef>
@@ -194,13 +209,17 @@ Internal power plant  : 800w</description>
     <ThingDef ParentName="ShipBase">
     <defName>SRTF</defName>
     <label>SRTF</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. These industrial behemoths have been in service for millenia. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world. These industrial behemoths have been in service for millenia.
 
-Resting capablility   : Awful
-Speed                 : Poor
-Cargo capacity        : 15,000kg
-Fuel capacity         : 2,000L
-Internal power plant  : 1,600w</description>
+Passenger capacity: Min 1 - 3 Max
+Military: No
+----------------------------
+Speed: Awful
+Fuel capacity: 2,000L
+Fuel efficiency: Awful
+----------------------------
+Cargo capacity: 5,000kg
+Internal power plant: 600w</description>
     <graphicData>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -216,24 +235,110 @@ Internal power plant  : 1,600w</description>
     </statBases>
     <costList>
       <ShuttleComp_Plates>10</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>4</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>3</ShuttleComp_ElectricSystem>
+      <ShuttleComp_MechSystem>5</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>2</ShuttleComp_ElectricSystem>
       <ShuttleComp_Engines>6</ShuttleComp_Engines>
-      <ShuttleComp_Structural>8</ShuttleComp_Structural>
+      <ShuttleComp_Structural>6</ShuttleComp_Structural>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.6</restEffectiveness>
-        <massCapacity>15000</massCapacity>
+        <restEffectiveness>0.5</restEffectiveness>
+        <massCapacity>5000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>8</travelSpeed>
+        <travelSpeed>4</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>3</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
-        <fuelConsumptionRate>1.10</fuelConsumptionRate>
+        <fuelConsumptionRate>1.75</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-600</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>18</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>Research_SRTF</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <uiIconScale>0.75</uiIconScale>
+  </ThingDef>
+  
+
+  <ThingDef ParentName="ShipBase">
+    <defName>SRTSMkII</defName>
+    <label>SRTS Mk.II: Albatross</label>
+    <description>A complete transport system made to fly passengers and cargo across the world.
+
+Passenger capacity: Min 1 - 7 Max
+Military: 12 bombs
+----------------------------
+Speed: Good
+Fuel capacity: 1,600L
+Fuel efficiency: Good
+----------------------------
+Cargo capacity: 1,600kg
+Internal power plant: 1,600w</description>
+    <graphicData>
+      <texPath>Albatross</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(9,9)</drawSize>
+    </graphicData>
+    <size>(3,3)</size>
+    <statBases>
+      <MaxHitPoints>700</MaxHitPoints>
+      <WorkToBuild>15000</WorkToBuild>
+      <Flammability>0.4</Flammability>
+      <Mass>20</Mass>
+      <Beauty>50</Beauty>
+    </statBases>
+    <costList>
+      <ShuttleComp_Plates>6</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>8</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>5</ShuttleComp_Engines>
+      <ShuttleComp_Structural>10</ShuttleComp_Structural>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>1</restEffectiveness>
+        <massCapacity>1600</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+        <travelSpeed>14</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>6</maxPassengers>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>12</numberBombs>
+        <radiusOfDrop>6</radiusOfDrop>
+        <speed>0.65</speed>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>1600</fuelCapacity>
+        <fuelConsumptionRate>0.75</fuelConsumptionRate>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1600</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -252,94 +357,14 @@ Internal power plant  : 1,600w</description>
       </li>
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>16</glowRadius>
+        <glowRadius>18</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTF</li>
+      <li>Research_SRTSMk2</li>
     </researchPrerequisites>
-    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
-    <uiIconScale>0.75</uiIconScale>
-  </ThingDef>
-  
-
-  <ThingDef ParentName="ShipBase">
-    <defName>SRTSMkII</defName>
-    <label>SRTS Mk.II: Albatross</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. The Albatross is advanced. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
-
-Resting capablility   : Normal
-Speed                 : Good
-Cargo capacity        : 4,000kg
-Fuel capacity         : 1,600L
-Internal power plant  : 1,600w</description>
-    <graphicData>
-      <texPath>Albatross</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(9,9)</drawSize>
-    </graphicData>
-    <size>(3,3)</size>
-    <statBases>
-      <MaxHitPoints>700</MaxHitPoints>
-      <WorkToBuild>15000</WorkToBuild>
-      <Flammability>0.4</Flammability>
-      <Mass>20</Mass>
-      <Beauty>50</Beauty>
-    </statBases>
-    <costList>
-      <ShuttleComp_Plates>4</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>6</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>6</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>4</ShuttleComp_Engines>
-      <ShuttleComp_Structural>10</ShuttleComp_Structural>
-    </costList>
-    <comps>
-      <li Class="CompProperties_Transporter">
-        <restEffectiveness>1</restEffectiveness>
-		<massCapacity>4000</massCapacity>
-      </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>14</travelSpeed>
-		<minPassengers>2</minPassengers>
-		<maxPassengers>5</maxPassengers>
-      </li>
-	  <li Class="SRTS.CompProperties_BombsAway">
-		<numberBombs>5</numberBombs>
-		<radiusOfDrop>8</radiusOfDrop>
-		<speed>1</speed>
-	  </li>
-      <li Class="CompProperties_Refuelable">
-        <fuelCapacity>1600</fuelCapacity>
-        <fuelConsumptionRate>0.8</fuelConsumptionRate>
-        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>1600</initialConfigurableTargetFuelLevel>
-        <fuelFilter>
-          <thingDefs>
-            <li>Chemfuel</li>
-          </thingDefs>
-        </fuelFilter>
-        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <autoRefuelPercent>1</autoRefuelPercent>
-        <showFuelGizmo>true</showFuelGizmo>
-        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-      </li>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerPlant</compClass>
-        <basePowerConsumption>-1600</basePowerConsumption>
-        <transmitsPower>true</transmitsPower>
-      </li>
-      <li Class="CompProperties_Flickable" />
-      <li Class="CompProperties_Glower">
-        <glowRadius>12</glowRadius>
-        <glowColor>(217,217,217,0)</glowColor>
-      </li>
-    </comps>
-		<researchPrerequisites>
-			<li>Research_SRTSMk2</li>
-		</researchPrerequisites>
-    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
 
@@ -347,13 +372,17 @@ Internal power plant  : 1,600w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIII</defName>
     <label>SRTS Mk.III: Phoenix</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. Highly advanced, designed by an ancient civilization. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world. Highly advanced, designed by an ancient civilization.
 
-Resting capablility   : Good
-Speed                 : Exceptional
-Cargo capacity        : 6,000kg
-Fuel capacity         : 2,000L
-Internal power plant  : 2,400w</description>
+Passenger capacity: Min 2 - 24 Max
+Military: 20 bombs
+----------------------------
+Speed: Excellent
+Fuel capacity: 2,000L
+Fuel efficiency: Excellent
+----------------------------
+Cargo capacity: 3,600kg
+Internal power plant: 2,400w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -368,23 +397,30 @@ Internal power plant  : 2,400w</description>
       <Beauty>75</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_MeshPlate>10</ShuttleComp_MeshPlate>
+      <ShuttleComp_MeshPlate>12</ShuttleComp_MeshPlate>
       <ShuttleComp_MechSystem>3</ShuttleComp_MechSystem>
       <ShuttleComp_ElectricSystem>4</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>4</ShuttleComp_Engines>
+      <ShuttleComp_Engines>6</ShuttleComp_Engines>
       <ShuttleComp_Structural>12</ShuttleComp_Structural>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>1.2</restEffectiveness>
-        <massCapacity>6000</massCapacity>
+        <restEffectiveness>2</restEffectiveness>
+        <massCapacity>3600</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
+        <minPassengers>2</minPassengers>
+        <maxPassengers>24</maxPassengers>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>20</numberBombs>
+        <radiusOfDrop>8</radiusOfDrop>
+        <speed>0.55</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
-        <fuelConsumptionRate>0.75</fuelConsumptionRate>
+        <fuelConsumptionRate>0.50</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -405,14 +441,14 @@ Internal power plant  : 2,400w</description>
       </li>
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>12</glowRadius>
+        <glowRadius>18</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
     <researchPrerequisites>
       <li>Research_SRTSMk3</li>
     </researchPrerequisites>
-    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
 
@@ -420,13 +456,17 @@ Internal power plant  : 2,400w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
-    <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.
 
-Resting capablility   : Legendary
-Speed                 : Legendary
-Cargo capacity        : 100,000kg
-Fuel capacity         : 100,000 x225 U
-Internal power plant  : 4,200w</description>
+Passenger capacity: Min 2 - No Max
+Military: 32 bombs
+----------------------------
+Speed: Legendary
+Fuel capacity: 100,000 x225 Ur
+Fuel efficiency: Legendary
+----------------------------
+Cargo capacity: 100,000kg
+Internal power plant: 4,200w</description>
     <graphicData>
       <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -441,41 +481,48 @@ Internal power plant  : 4,200w</description>
       <Beauty>1000</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>6</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>6</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>6</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Structural>12</ShuttleComp_Structural>
+      <ShuttleComp_Plates>16</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>16</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Structural>24</ShuttleComp_Structural>
       <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
-      <ShuttleComp_DimShift>1</ShuttleComp_DimShift>
+      <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>2</restEffectiveness>
+        <restEffectiveness>4</restEffectiveness>
         <massCapacity>100000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>25</travelSpeed>
+        <travelSpeed>30</travelSpeed>
+        <minPassengers>2</minPassengers>
+        <maxPassengers>999</maxPassengers>
       </li>
-			<li Class="CompProperties_Refuelable">
-			  <fuelLabel>Uranium reactor charge level</fuelLabel>
-			  <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
-			  <fuelCapacity>100000</fuelCapacity>
-			  <fuelConsumptionRate>0.01</fuelConsumptionRate>
-			  <fuelMultiplier>444</fuelMultiplier>
-			  <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-			  <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
-			  <initialFuelPercent>0.25</initialFuelPercent>
-			  <fuelFilter>
-			    <thingDefs>
-			      <li>Uranium</li>
-			    </thingDefs>
-			  </fuelFilter>
-			  <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-			  <autoRefuelPercent>1</autoRefuelPercent>
-			  <showFuelGizmo>true</showFuelGizmo>
-			  <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-			  <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-			</li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>32</numberBombs>
+        <radiusOfDrop>10</radiusOfDrop>
+        <speed>0.35</speed>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Uranium reactor charge level</fuelLabel>
+        <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
+        <fuelCapacity>100000</fuelCapacity>
+        <fuelConsumptionRate>0.01</fuelConsumptionRate>
+        <fuelMultiplier>444</fuelMultiplier>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <fuelFilter>
+          <thingDefs>
+            <li>Uranium</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-4200</basePowerConsumption>
