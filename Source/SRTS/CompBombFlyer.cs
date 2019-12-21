@@ -14,7 +14,7 @@ namespace SRTS
     {
         public Building SRTS_Launcher => this.parent as Building;
         public CompLaunchableSRTS CompLauncher => SRTS_Launcher.GetComp<CompLaunchableSRTS>();
-
+        public CompProperties_BombsAway Props => (CompProperties_BombsAway)this.props;
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             if(SRTS_Launcher.GetComp<CompLaunchableSRTS>().LoadingInProgressOrReadyToLaunch)

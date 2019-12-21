@@ -1,58 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="BomberSkyfallerBase" ParentName="EtherealThingBase" Abstract="True">
-		<thingClass>BomberSkyfaller</thingClass>
-		<useHitPoints>false</useHitPoints>
-		<drawOffscreen>true</drawOffscreen>
-		<tickerType>Normal</tickerType>
-		<altitudeLayer>Skyfaller</altitudeLayer>
-		<drawerType>RealtimeOnly</drawerType>
-		<skyfaller />
-	</ThingDef>
-	
+  <ThingDef Name="BomberSkyfallerBase" ParentName="EtherealThingBase" Abstract="True">
+    <thingClass>BomberSkyfaller</thingClass>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <skyfaller />
+  </ThingDef>
+  
   <!-- SRTS MkII -->
 
-	<ThingDef ParentName="SkyfallerBase">
-		<defName>SRTSMkII_Incoming</defName>
-		<label>SRTS Mk.II incoming</label>
-		<thingClass>SRTS.SRTSIncoming</thingClass>
-		<graphicData>
-			<texPath>Albatross</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<shaderType>CutoutFlying</shaderType>
-			<drawSize>9</drawSize>
-		</graphicData>
-		<skyfaller>
-			<movementType>Decelerate</movementType>
-			<shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
-			<shadowSize>(6,6)</shadowSize>
-			<anticipationSound>DropPod_Fall</anticipationSound>
-			<anticipationSoundTicks>100</anticipationSoundTicks>
-			<motesPerCell>0</motesPerCell>
-		</skyfaller>
-	</ThingDef>
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRTSMkII_Incoming</defName>
+    <label>SRTS Mk.II incoming</label>
+    <thingClass>SRTS.SRTSIncoming</thingClass>
+    <graphicData>
+      <texPath>Albatross</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>9</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6,6)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+    </skyfaller>
+  </ThingDef>
   
-	<ThingDef ParentName="BomberSkyfallerBase">
-		<defName>SRTSMkII_BomberRun</defName>
-		<label>SRTS Mk.II Bombing</label>
-		<thingClass>SRTS.SRTSBombing</thingClass>
-		<graphicData>
-			<texPath>Albatross</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<shaderType>CutoutFlying</shaderType>
-			<drawSize>9</drawSize>
-		</graphicData>
-		<skyfaller>
-			<speed>0.85</speed>
-			<movementType>ConstantSpeed</movementType>
-			<shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
-			<shadowSize>(6,6)</shadowSize>
-			<anticipationSound>DropPod_Fall</anticipationSound>
-			<anticipationSoundTicks>100</anticipationSoundTicks>
-			<motesPerCell>0</motesPerCell>
-		</skyfaller>
-	</ThingDef>
+  <ThingDef ParentName="BomberSkyfallerBase">
+    <defName>SRTSMkII_BomberRun</defName>
+    <label>SRTS Mk.II Bombing</label>
+    <thingClass>SRTS.SRTSBombing</thingClass>
+    <graphicData>
+      <texPath>Albatross</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>9</drawSize>
+    </graphicData>
+    <skyfaller>
+      <speed>0.85</speed>
+      <movementType>ConstantSpeed</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6,6)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+    </skyfaller>
+  </ThingDef>
 
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRTSMkII_Leaving</defName>

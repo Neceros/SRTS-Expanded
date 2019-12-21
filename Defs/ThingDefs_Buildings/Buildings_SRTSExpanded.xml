@@ -42,10 +42,9 @@
   <ThingDef ParentName="ShipBase">
     <defName>SRTSSuperpod</defName>
     <label>Superpod</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world.
 
 Passenger capacity: 1
-Resting capablility: Awful
 Military: No
 ----------------------------
 Speed: Awful
@@ -82,7 +81,7 @@ Internal power plant: 600w</description>
         <massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>4</travelSpeed>
+        <travelSpeed>3</travelSpeed>
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
       </li>
@@ -125,13 +124,12 @@ Internal power plant: 600w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSSkip</defName>
     <label>SRTS Skip</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world.
 
 Passenger capacity: Min 1 - 2 Max
-Resting capablility: Poor
-Military: 3 bombs, awful accuracy
+Military: 5 bombs
 ----------------------------
-Speed: Good
+Speed: Normal
 Fuel capacity: 500L
 Fuel efficiency: Good
 ----------------------------
@@ -163,13 +161,14 @@ Internal power plant: 800w</description>
         <massCapacity>420</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>14</travelSpeed>
+        <travelSpeed>8</travelSpeed>
         <minPassengers>1</minPassengers>
         <maxPassengers>2</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>3</numberBombs>
-        <accuracy>0.5</accuracy>
+        <numberBombs>5</numberBombs>
+        <radiusOfDrop>4</radiusOfDrop>
+        <speed>0.85</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -210,10 +209,9 @@ Internal power plant: 800w</description>
     <ThingDef ParentName="ShipBase">
     <defName>SRTF</defName>
     <label>SRTF</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. These industrial behemoths have been in service for millenia. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world. These industrial behemoths have been in service for millenia.
 
 Passenger capacity: Min 1 - 3 Max
-Resting capablility: Awful
 Military: No
 ----------------------------
 Speed: Awful
@@ -221,7 +219,7 @@ Fuel capacity: 2,000L
 Fuel efficiency: Awful
 ----------------------------
 Cargo capacity: 5,000kg
-Internal power plant 600w</description>
+Internal power plant: 600w</description>
     <graphicData>
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -290,11 +288,10 @@ Internal power plant 600w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkII</defName>
     <label>SRTS Mk.II: Albatross</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. The Albatross is advanced. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world.
 
 Passenger capacity: Min 1 - 7 Max
-Resting capablility: Normal
-Military: 6 bombs, normal accuracy
+Military: 12 bombs
 ----------------------------
 Speed: Good
 Fuel capacity: 1,600L
@@ -333,8 +330,9 @@ Internal power plant: 1,600w</description>
         <maxPassengers>6</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>6</numberBombs>
-        <accuracy>0.7</accuracy>
+        <numberBombs>12</numberBombs>
+        <radiusOfDrop>6</radiusOfDrop>
+        <speed>0.65</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
@@ -374,11 +372,10 @@ Internal power plant: 1,600w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIII</defName>
     <label>SRTS Mk.III: Phoenix</label>
-    <description>A complete transport system made to fly passengers and cargo across the world. Highly advanced, designed by an ancient civilization. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>A complete transport system made to fly passengers and cargo across the world. Highly advanced, designed by an ancient civilization.
 
 Passenger capacity: Min 2 - 24 Max
-Resting capablility: Excellent
-Military: 12 bombs, good accuracy
+Military: 20 bombs
 ----------------------------
 Speed: Excellent
 Fuel capacity: 2,000L
@@ -417,8 +414,9 @@ Internal power plant: 2,400w</description>
         <maxPassengers>24</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>12</numberBombs>
-        <accuracy>0.85</accuracy>
+        <numberBombs>20</numberBombs>
+        <radiusOfDrop>8</radiusOfDrop>
+        <speed>0.55</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -458,11 +456,10 @@ Internal power plant: 2,400w</description>
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
-    <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
+    <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.
 
 Passenger capacity: Min 2 - No Max
-Resting capablility: Legendary
-Military: 20 bombs, Excellent accuracy
+Military: 32 bombs
 ----------------------------
 Speed: Legendary
 Fuel capacity: 100,000 x225 Ur
@@ -502,8 +499,9 @@ Internal power plant: 4,200w</description>
         <maxPassengers>999</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>20</numberBombs>
-        <accuracy>0.95</accuracy>
+        <numberBombs>32</numberBombs>
+        <radiusOfDrop>10</radiusOfDrop>
+        <speed>0.35</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Uranium reactor charge level</fuelLabel>

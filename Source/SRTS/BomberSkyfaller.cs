@@ -7,6 +7,7 @@ using RimWorld.Planet;
 using Verse;
 using UnityEngine;
 using SPExtended;
+using Verse.Sound;
 
 namespace SRTS
 {
@@ -37,14 +38,14 @@ namespace SRTS
                 switch (this.def.skyfaller.movementType)
                 {
                     case SkyfallerMovementType.Accelerate:
-                        return SkyfallerDrawPosUtilityExtended.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.def.skyfaller.speed);
+                        return SkyfallerDrawPosUtilityExtended.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                     case SkyfallerMovementType.ConstantSpeed:
-                        return SkyfallerDrawPosUtilityExtended.DrawPos_ConstantSpeed(base.DrawPos, this.ticksToExit, this.angle, this.def.skyfaller.speed);
+                        return SkyfallerDrawPosUtilityExtended.DrawPos_ConstantSpeed(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                     case SkyfallerMovementType.Decelerate:
-                        return SkyfallerDrawPosUtilityExtended.DrawPos_Decelerate(base.DrawPos, this.ticksToExit, this.angle, this.def.skyfaller.speed);
+                        return SkyfallerDrawPosUtilityExtended.DrawPos_Decelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                     default:
                         Log.ErrorOnce("SkyfallerMovementType not handled: " + this.def.skyfaller.movementType, this.thingIDNumber ^ 1948576711, false);
-                        return SkyfallerDrawPosUtilityExtended.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.def.skyfaller.speed);
+                        return SkyfallerDrawPosUtilityExtended.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                 }
             }
         }
@@ -88,8 +89,10 @@ namespace SRTS
             base.SpawnSetup(map, respawningAfterLoad);
             if(!respawningAfterLoad)
             {
-                this.ticksToExit = this.def.skyfaller.ticksToImpactRange.RandomInRange;
+                this.ticksToExit = Mathf.CeilToInt((float)SPExtra.Distance(new IntVec3(map.Size.x/2, map.Size.y, map.Size.z/2), this.Position)*2 / this.speed);
             }
+            if(sound != null)
+                sound.PlayOneShotOnCamera(this.Map);
         }
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
@@ -211,27 +214,25 @@ namespace SRTS
 
         public ThingOwner innerContainer;
 
-        public int ticksToExit;
+        private int ticksToExit;
 
         public float angle;
 
         private Material cachedShadowMaterial;
 
-        private bool anticipationSoundPlayed;
+        public SoundDef sound;
 
         private static MaterialPropertyBlock shadowPropertyBlock = new MaterialPropertyBlock();
-
-        public const float DefaultAngle = -30f;
-
-        private const int RoofHitPreDelay = 15;
 
         public IntVec3 bombPos;
 
         public Pair<Map, IntVec3> source;
 
-        public int numberOfBombs = 4;
+        public int numberOfBombs;
 
-        public int radius = 10;
+        public int radius;
+
+        public float speed;
 
         private bool payloadReleased;
     }

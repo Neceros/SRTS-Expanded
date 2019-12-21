@@ -30,7 +30,7 @@ namespace SRTS
                     string shipType = ship.def.defName;
                     ActiveDropPod srts = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(shipType + "_Active"), null);
                     srts.Contents = info;
-                    BomberSkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_BomberRun"), srts, c, map, ship.thingIDNumber);
+                    BomberSkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_BomberRun"), srts, c, map, ship.thingIDNumber, ship);
                 }
             }
         }
