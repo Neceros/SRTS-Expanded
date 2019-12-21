@@ -113,7 +113,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
-      <Steel>175</Steel>
+      <Steel>220</Steel>
     </costList>
   </ThingDef>
 
@@ -126,7 +126,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
-      <Steel>50</Steel>
+      <Steel>65</Steel>
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
   </ThingDef>
@@ -140,9 +140,9 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
-      <Steel>25</Steel>
-      <ComponentIndustrial>4</ComponentIndustrial>
-      <Gold>1.5</Gold>
+      <Steel>45</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+      <Gold>3</Gold>
     </costList>
   </ThingDef>
 
@@ -172,8 +172,8 @@
     </graphicData>
     <costList>
       <Steel>15</Steel>
-      <WoodLog>20</WoodLog>
-      <Cloth>35</Cloth>
+      <WoodLog>35</WoodLog>
+      <Cloth>50</Cloth>
     </costList>
   </ThingDef>
 
@@ -189,9 +189,10 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
-      <Steel>80</Steel>
+      <Steel>15</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
       <ComponentSpacer>1</ComponentSpacer>
-      <Neutroamine>12</Neutroamine>
+      <Neutroamine>10</Neutroamine>
     </costList>
   </ThingDef>
 
@@ -211,9 +212,10 @@
     </thingSetMakerTags>
     <costList>
       <Steel>450</Steel>
-      <Gold>4.5</Gold>
-      <Uranium>125</Uranium>
-      <ComponentSpacer>6</ComponentSpacer>
+      <Gold>8</Gold>
+      <Uranium>180</Uranium>
+      <ComponentIndustrial>3</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
     </costList>
   </ThingDef>
 
@@ -231,9 +233,10 @@
     <costList>
       <AIPersonaCore>1</AIPersonaCore>
       <Steel>150</Steel>
-      <Plasteel>250</Plasteel>
-      <Hyperweave>25</Hyperweave>
-      <ComponentSpacer>10</ComponentSpacer>
+      <Plasteel>140</Plasteel>
+      <Hyperweave>30</Hyperweave>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <ComponentSpacer>5</ComponentSpacer>
     </costList>
   </ThingDef>
 
