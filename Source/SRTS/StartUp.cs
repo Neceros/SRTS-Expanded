@@ -364,7 +364,7 @@ namespace SRTS
             {
                 foreach(Thing t in pod.innerContainer)
                 {
-                    if(ThingDef.Named(t.def.defName.Split('_')[0]).GetCompProperties<CompProperties_LaunchableSRTS>() != null)
+                    if(ThingDef.Named(t.def.defName.Split('_')[0])?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
                     {
                         TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(dropPods);
                         foreach(ActiveDropPodInfo pod2 in dropPods)
