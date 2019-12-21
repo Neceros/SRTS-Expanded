@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ThingDef Name="ShipBase" Abstract="True">
@@ -11,10 +11,10 @@
     <repairEffect>Repair</repairEffect>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <filthLeaving>Filth_RubbleBuilding</filthLeaving>
-		<statBases>
-			<SellPriceFactor>0.70</SellPriceFactor>
-		</statBases>
-		<tickerType>Normal</tickerType>
+    <statBases>
+      <SellPriceFactor>0.70</SellPriceFactor>
+    </statBases>
+    <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <stealable>false</stealable>
     <minifiedDef>MinifiedThing</minifiedDef>
@@ -39,7 +39,7 @@
     <comps />
   </ThingDef>
 
-	<ThingDef ParentName="ShipBase">
+  <ThingDef ParentName="ShipBase">
     <defName>SRTSSuperpod</defName>
     <label>Superpod</label>
     <description>A complete transport system made to fly passengers and cargo across the world. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
@@ -78,11 +78,13 @@ Internal power plant: 600w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-      	<restEffectiveness>0.5</restEffectiveness>
-				<massCapacity>240</massCapacity>
+        <restEffectiveness>0.5</restEffectiveness>
+        <massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>4</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>200</fuelCapacity>
@@ -98,7 +100,7 @@ Internal power plant: 600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -108,13 +110,13 @@ Internal power plant: 600w</description>
       <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>6</glowRadius>
+        <glowRadius>12</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-		<researchPrerequisites>
-			<li>Research_SRTSSuperpod</li>
-		</researchPrerequisites>
+    <researchPrerequisites>
+      <li>Research_SRTSSuperpod</li>
+    </researchPrerequisites>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
   </ThingDef>
@@ -127,7 +129,7 @@ Internal power plant: 600w</description>
 
 Passenger capacity: Min 1 - 2 Max
 Resting capablility: Poor
-Military: 2 bombs, awful accuracy
+Military: 3 bombs, awful accuracy
 ----------------------------
 Speed: Good
 Fuel capacity: 500L
@@ -158,10 +160,16 @@ Internal power plant: 800w</description>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.75</restEffectiveness>
-		    <massCapacity>420</massCapacity>
+        <massCapacity>420</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-		    <travelSpeed>14</travelSpeed>
+        <travelSpeed>14</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>2</maxPassengers>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>3</numberBombs>
+        <accuracy>0.5</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -177,7 +185,7 @@ Internal power plant: 800w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -187,13 +195,13 @@ Internal power plant: 800w</description>
       <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>8</glowRadius>
+        <glowRadius>12</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-		<researchPrerequisites>
-			<li>Research_SRTSSkip</li>
-		</researchPrerequisites>
+    <researchPrerequisites>
+      <li>Research_SRTSSkip</li>
+    </researchPrerequisites>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <uiIconScale>0.55</uiIconScale>
   </ThingDef>
@@ -241,6 +249,8 @@ Internal power plant 600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>4</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>3</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -265,7 +275,7 @@ Internal power plant 600w</description>
       </li>
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>16</glowRadius>
+        <glowRadius>18</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
@@ -284,7 +294,7 @@ Internal power plant 600w</description>
 
 Passenger capacity: Min 1 - 7 Max
 Resting capablility: Normal
-Military: 7 bombs, normal accuracy
+Military: 6 bombs, normal accuracy
 ----------------------------
 Speed: Good
 Fuel capacity: 1,600L
@@ -315,10 +325,16 @@ Internal power plant: 1,600w</description>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>1</restEffectiveness>
-				<massCapacity>1600</massCapacity>
+        <massCapacity>1600</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>14</travelSpeed>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>6</maxPassengers>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>6</numberBombs>
+        <accuracy>0.7</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
@@ -334,7 +350,7 @@ Internal power plant: 1,600w</description>
         <autoRefuelPercent>1</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-		    <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -343,13 +359,13 @@ Internal power plant: 1,600w</description>
       </li>
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>12</glowRadius>
+        <glowRadius>18</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-		<researchPrerequisites>
-			<li>Research_SRTSMk2</li>
-		</researchPrerequisites>
+    <researchPrerequisites>
+      <li>Research_SRTSMk2</li>
+    </researchPrerequisites>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
@@ -397,6 +413,12 @@ Internal power plant: 2,400w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
+        <minPassengers>2</minPassengers>
+        <maxPassengers>24</maxPassengers>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>12</numberBombs>
+        <accuracy>0.85</accuracy>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -421,7 +443,7 @@ Internal power plant: 2,400w</description>
       </li>
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
-        <glowRadius>12</glowRadius>
+        <glowRadius>18</glowRadius>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
@@ -438,9 +460,9 @@ Internal power plant: 2,400w</description>
     <label>SRTS Mk.IV: Genesis</label>
     <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. Passengers sleep, eat, heal, and entertain themselves while flying, but not while stationary.
 
-Passenger capacity: Min 3 - No Max
+Passenger capacity: Min 2 - No Max
 Resting capablility: Legendary
-Military: 30 bombs, Excellent accuracy
+Military: 20 bombs, Excellent accuracy
 ----------------------------
 Speed: Legendary
 Fuel capacity: 100,000 x225 Ur
@@ -476,27 +498,33 @@ Internal power plant: 4,200w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>30</travelSpeed>
+        <minPassengers>2</minPassengers>
+        <maxPassengers>999</maxPassengers>
       </li>
-			<li Class="CompProperties_Refuelable">
-			  <fuelLabel>Uranium reactor charge level</fuelLabel>
-			  <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
-			  <fuelCapacity>100000</fuelCapacity>
-			  <fuelConsumptionRate>0.01</fuelConsumptionRate>
-			  <fuelMultiplier>444</fuelMultiplier>
-			  <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-			  <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
-			  <initialFuelPercent>0.25</initialFuelPercent>
-			  <fuelFilter>
-			    <thingDefs>
-			      <li>Uranium</li>
-			    </thingDefs>
-			  </fuelFilter>
-			  <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-			  <autoRefuelPercent>1</autoRefuelPercent>
-			  <showFuelGizmo>true</showFuelGizmo>
-			  <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-			  <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-			</li>
+      <li Class="SRTS.CompProperties_BombsAway">
+        <numberBombs>20</numberBombs>
+        <accuracy>0.95</accuracy>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Uranium reactor charge level</fuelLabel>
+        <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
+        <fuelCapacity>100000</fuelCapacity>
+        <fuelConsumptionRate>0.01</fuelConsumptionRate>
+        <fuelMultiplier>444</fuelMultiplier>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <fuelFilter>
+          <thingDefs>
+            <li>Uranium</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-4200</basePowerConsumption>

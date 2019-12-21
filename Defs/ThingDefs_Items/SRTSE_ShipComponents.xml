@@ -14,7 +14,7 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>800</MarketValue>
+      <MarketValue>950</MarketValue>
     </statBases>
     <tradeTags>
       <li>ExoticMisc</li>
@@ -57,7 +57,7 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>2500</MarketValue>
+      <MarketValue>4200</MarketValue>
     </statBases>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -82,7 +82,7 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>9500</MarketValue>
+      <MarketValue>24000</MarketValue>
     </statBases>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -113,7 +113,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
-      <Steel>220</Steel>
+      <Steel>175</Steel>
     </costList>
   </ThingDef>
 
@@ -126,7 +126,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
-      <Steel>65</Steel>
+      <Steel>50</Steel>
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
   </ThingDef>
@@ -140,9 +140,9 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
-      <Steel>45</Steel>
-      <ComponentIndustrial>3</ComponentIndustrial>
-      <Gold>3</Gold>
+      <Steel>25</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <Gold>1.5</Gold>
     </costList>
   </ThingDef>
 
@@ -172,8 +172,8 @@
     </graphicData>
     <costList>
       <Steel>15</Steel>
-      <WoodLog>35</WoodLog>
-      <Cloth>50</Cloth>
+      <WoodLog>20</WoodLog>
+      <Cloth>35</Cloth>
     </costList>
   </ThingDef>
 
@@ -189,10 +189,9 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
-      <Steel>15</Steel>
-      <ComponentIndustrial>2</ComponentIndustrial>
+      <Steel>80</Steel>
       <ComponentSpacer>1</ComponentSpacer>
-      <Neutroamine>10</Neutroamine>
+      <Neutroamine>12</Neutroamine>
     </costList>
   </ThingDef>
 
@@ -212,10 +211,9 @@
     </thingSetMakerTags>
     <costList>
       <Steel>450</Steel>
-      <Gold>8</Gold>
-      <Uranium>180</Uranium>
-      <ComponentIndustrial>3</ComponentIndustrial>
-      <ComponentSpacer>2</ComponentSpacer>
+      <Gold>4.5</Gold>
+      <Uranium>125</Uranium>
+      <ComponentSpacer>6</ComponentSpacer>
     </costList>
   </ThingDef>
 
@@ -233,10 +231,9 @@
     <costList>
       <AIPersonaCore>1</AIPersonaCore>
       <Steel>150</Steel>
-      <Plasteel>140</Plasteel>
-      <Hyperweave>30</Hyperweave>
-      <ComponentIndustrial>4</ComponentIndustrial>
-      <ComponentSpacer>5</ComponentSpacer>
+      <Plasteel>250</Plasteel>
+      <Hyperweave>25</Hyperweave>
+      <ComponentSpacer>10</ComponentSpacer>
     </costList>
   </ThingDef>
 

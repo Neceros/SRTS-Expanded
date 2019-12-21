@@ -41,6 +41,10 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="SPExtended, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblies\SPExtended.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -51,7 +55,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FallingBomb.cs" />
+    <Compile Include="BomberSkyfaller.cs" />
+    <Compile Include="BomberSkyFallerMaker.cs" />
+    <Compile Include="BombRunArrivalUtility.cs" />
+    <Compile Include="CompBombFlyer.cs" />
     <Compile Include="CompLaunchableSRTS.cs" />
+    <Compile Include="CompProperties_BombsAway.cs" />
     <Compile Include="CompProperties_LaunchableSRTS.cs" />
     <Compile Include="Gizmo_MapRefuelableFuelStatus.cs" />
     <Compile Include="HarmonyTest_dp.cs" />
@@ -61,12 +71,16 @@
     <Compile Include="HarmonyTest_AJ.cs" />
     <Compile Include="HarmonyTest_BB.cs" />
     <Compile Include="HarmonyTest_TS.cs" />
+    <Compile Include="SkyfallerDrawPosUtilityExtended.cs" />
+    <Compile Include="SRTSArrivalActionBombRun.cs" />
+    <Compile Include="SRTSBombing.cs" />
     <Compile Include="SRTSIncoming.cs" />
     <Compile Include="SRTSLeaving.cs" />
     <Compile Include="SRTSArrivalActionUtility.cs" />
     <Compile Include="SRTSStatic.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Tex2D.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
