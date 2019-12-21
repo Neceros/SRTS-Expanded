@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FallingBomb.cs" />
     <Compile Include="BomberSkyfaller.cs" />
     <Compile Include="BomberSkyFallerMaker.cs" />
     <Compile Include="BombRunArrivalUtility.cs" />

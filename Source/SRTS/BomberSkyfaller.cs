@@ -6,7 +6,7 @@ using RimWorld;
 using RimWorld.Planet;
 using Verse;
 using UnityEngine;
-using Harmony;
+using SPExtended;
 
 namespace SRTS
 {
@@ -16,8 +16,7 @@ namespace SRTS
         public BomberSkyfaller()
         {
             this.innerContainer = new ThingOwner<Thing>(this);
-            this.droppingBombs = false;
-            this.tickCount = this.ticksPerDrop;
+            this.payloadReleased = false;
         }
 
         public override Graphic Graphic
@@ -90,11 +89,6 @@ namespace SRTS
             if(!respawningAfterLoad)
             {
                 this.ticksToExit = this.def.skyfaller.ticksToImpactRange.RandomInRange;
-                //this.angle = -60f;
-                if(this.def.rotatable && this.innerContainer.Any)
-                {
-                    //Rotation here?
-                }
             }
         }
 
@@ -117,40 +111,38 @@ namespace SRTS
             this.innerContainer.ThingOwnerTick(true);
             this.ticksToExit--;
 
-            if(Math.Abs(this.DrawPosCell.x - bombPos.x) < 5 && Math.Abs(this.DrawPosCell.z - bombPos.z) < 5)
-                this.droppingBombs = true;
-            if(droppingBombs && this.tickCount < 0 && numberOfBombs > 0 && this.ticksToExit >= this.ticksPerDrop)
-            {
-                numberOfBombs--;
+            if(Math.Abs(this.DrawPosCell.x - bombPos.x) < 2 && Math.Abs(this.DrawPosCell.z - bombPos.z) < 2 && !payloadReleased)
                 this.DropBombs();
-                tickCount = ticksPerDrop;
-                if(numberOfBombs <= 0)
-                    droppingBombs = false;
-            }
-            if(droppingBombs)
-                tickCount--;
             if(this.ticksToExit == 0)
                 this.ExitMap();
         }
 
         private void DropBombs()
         {
-            if(innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => y.def == ThingDefOf.Shell_HighExplosive || y.def == ThingDefOf.Shell_AntigrainWarhead) ?? false))
+            this.payloadReleased = true;
+            for (int i = 0; i < numberOfBombs; i++)
             {
-                ActiveDropPod srts = (ActiveDropPod)innerContainer.First();
+                if (innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => y.def == ThingDefOf.Shell_HighExplosive || y.def == ThingDefOf.Shell_AntigrainWarhead) ?? false))
+                {
+                    ActiveDropPod srts = (ActiveDropPod)innerContainer.First();
 
-                Thing thing = srts?.Contents.innerContainer.First(y => y.def == ThingDefOf.Shell_HighExplosive || y.def == ThingDefOf.Shell_AntigrainWarhead);
-                if (thing is null)
-                    return;
+                    Thing thing = srts?.Contents.innerContainer.First(y => y.def == ThingDefOf.Shell_HighExplosive || y.def == ThingDefOf.Shell_AntigrainWarhead);
+                    if (thing is null)
+                        return;
 
-                Thing thing2 = srts?.Contents.innerContainer.Take(thing, 1);
+                    Thing thing2 = srts?.Contents.innerContainer.Take(thing, 1);
+                    FallingBomb bombThing = new FallingBomb(thing2, thing2.TryGetComp<CompExplosive>(), this.Map, this.def.skyfaller.shadow);
+                    bombThing.HitPoints = int.MaxValue;
+                    bombThing.ticksRemaining = 10 + (10 * i);
 
-                IntVec3 c = (from x in GenRadial.RadialCellsAround(this.bombPos, radius, true)
-                             where x.InBounds(this.Map)
-                             select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
-
-                Thing bomb = GenSpawn.Spawn(thing2, c, this.Map);
-                AccessTools.Method(type: typeof(CompExplosive), name: "Detonate").Invoke(bomb.TryGetComp<CompExplosive>(), new object[] { thing2.Map });
+                    IntVec3 c = (from x in GenRadial.RadialCellsAround(this.bombPos, radius, true)
+                                 where x.InBounds(this.Map)
+                                 select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
+                    bombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c) * -10);
+                    bombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c) / bombThing.ticksRemaining;
+                    Thing t = GenSpawn.Spawn(bombThing, c, this.Map);
+                    GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(t, thing2.TryGetComp<CompExplosive>().Props.explosiveDamageType, null);
+                }
             }
         }
 
@@ -237,14 +229,10 @@ namespace SRTS
 
         public Pair<Map, IntVec3> source;
 
-        public int ticksPerDrop = 15;
-
-        private int tickCount;
-
-        public int numberOfBombs = 5;
+        public int numberOfBombs = 4;
 
         public int radius = 10;
 
-        private bool droppingBombs = false;
+        private bool payloadReleased;
     }
 }
