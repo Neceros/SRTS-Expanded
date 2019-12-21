@@ -52,10 +52,15 @@ namespace SRTS
             return (BomberSkyfaller)GenSpawn.Spawn(thing, pos, map, WipeMode.Vanish);
         }
 
-        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, Thing innerThing, IntVec3 pos, Map map, int idNumber)
+        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, Thing innerThing, IntVec3 pos, Map map, int idNumber, Thing original)
         {
             BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, innerThing);
             thing.source = StartUp.SRTSBombers[idNumber];
+            thing.numberOfBombs = original.TryGetComp<CompBombFlyer>().Props.numberBombs;
+            thing.speed = original.TryGetComp<CompBombFlyer>().Props.speed;
+            thing.radius = original.TryGetComp<CompBombFlyer>().Props.radiusOfDrop;
+            thing.sound = original.TryGetComp<CompBombFlyer>().Props.soundFlyBy;
+
             double angle = pos.AngleThroughOrigin(map);
             if(pos.x == map.Size.x / 2 && pos.z == map.Size.z / 2)
                 angle = 0;

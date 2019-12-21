@@ -17,8 +17,6 @@ namespace SRTS
             this.def = reference.def;
             this.thingIDNumber = reference.thingIDNumber;
             this.map = map;
-            this.positionInt = reference.Position;
-            this.rotationInt = reference.Rotation;
             this.factionInt = reference.Faction;
             this.graphicInt = reference.DefaultGraphic;
             this.hitPointsInt = reference.HitPoints;
@@ -124,10 +122,6 @@ namespace SRTS
         public int ticksRemaining;
 
         private Map map;
-
-        private IntVec3 positionInt = IntVec3.Invalid;
-
-        private Rot4 rotationInt = Rot4.North;
 
         private Graphic graphicInt;
 

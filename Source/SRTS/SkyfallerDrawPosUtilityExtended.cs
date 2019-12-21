@@ -20,7 +20,7 @@ namespace SRTS
         public static Vector3 DrawPos_ConstantSpeed(Vector3 center, int ticksToImpact, float angle, float speed)
         {
             ticksToImpact = Mathf.Max(ticksToImpact, 0);
-            float dist = (float)ticksToImpact * speed * 2;
+            float dist = (float)ticksToImpact * speed;
             return SkyfallerDrawPosUtilityExtended.PosAtDist(center, dist, angle);
         }
 

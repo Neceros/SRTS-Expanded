@@ -306,7 +306,8 @@ Internal power plant  : 1,600w</description>
       </li>
 	  <li Class="SRTS.CompProperties_BombsAway">
 		<numberBombs>5</numberBombs>
-		<accuracy>0.5</accuracy>
+		<radiusOfDrop>8</radiusOfDrop>
+		<speed>1</speed>
 	  </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
