@@ -381,7 +381,7 @@ Speed: Excellent
 Fuel capacity: 2,000L
 Fuel efficiency: Excellent
 ----------------------------
-Cargo capacity: 3,600kg
+Cargo capacity: 5,000kg
 Internal power plant: 2,400w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
@@ -397,7 +397,7 @@ Internal power plant: 2,400w</description>
       <Beauty>75</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_MeshPlate>12</ShuttleComp_MeshPlate>
+      <ShuttleComp_MeshPlate>13</ShuttleComp_MeshPlate>
       <ShuttleComp_MechSystem>3</ShuttleComp_MechSystem>
       <ShuttleComp_ElectricSystem>4</ShuttleComp_ElectricSystem>
       <ShuttleComp_Engines>6</ShuttleComp_Engines>
@@ -406,7 +406,7 @@ Internal power plant: 2,400w</description>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>2</restEffectiveness>
-        <massCapacity>3600</massCapacity>
+        <massCapacity>5000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
