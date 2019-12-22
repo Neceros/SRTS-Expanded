@@ -5,6 +5,7 @@
   <!-- SRTS MkII -->
 
   <SRTSMkII_Incoming.label>SRTS:Mk-2(着陸)</SRTSMkII_Incoming.label>
+  <SRTSMkII_BomberRun.label>SRTS:Mk-2(爆撃中)</SRTSMkII_BomberRun.label>
   <SRTSMkII_Leaving.label>SRTS:Mk-2(離陸)</SRTSMkII_Leaving.label>
   <SRTSMkII_Active.label>SRTS:Mk-2(始動)</SRTSMkII_Active.label>
 
@@ -12,6 +13,7 @@
   <!-- SRTS MkIII -->
 
   <SRTSMkIII_Incoming.label>SRTS:Mk-3(着陸)</SRTSMkIII_Incoming.label>
+  <SRTSMkIII_BomberRun.label>SRTS:Mk-3(爆撃中)</SRTSMkIII_BomberRun.label>
   <SRTSMkIII_Leaving.label>SRTS:Mk-3(離陸)</SRTSMkIII_Leaving.label>
   <SRTSMkIII_Active.label>SRTS:Mk-3(始動)</SRTSMkIII_Active.label>
 
@@ -33,6 +35,7 @@
   <!-- Skip -->
 
   <SRTSSkip_Incoming.label>SRTS:スキップ(着陸)</SRTSSkip_Incoming.label>
+  <SRTSSkip_BomberRun.label>SRTS:スキップ(爆撃中)</SRTSSkip_BomberRun.label>
   <SRTSSkip_Leaving.label>SRTS:スキップ(離陸)</SRTSSkip_Leaving.label>
   <SRTSSkip_Active.label>SRTS:スキップ(始動)</SRTSSkip_Active.label>
 
@@ -40,6 +43,7 @@
   <!-- SRTS MkIV -->
 
   <SRTSMkIV_Incoming.label>SRTS:Mk-4(着陸)</SRTSMkIV_Incoming.label>
+  <SRTSMkIV_BomberRun.label>SRTS:Mk-4(爆撃中)</SRTSMkIV_BomberRun.label>
   <SRTSMkIV_Leaving.label>SRTS:Mk-4(離陸)</SRTSMkIV_Leaving.label>
   <SRTSMkIV_Active.label>SRTS:Mk-4(始動)</SRTSMkIV_Active.label>
 

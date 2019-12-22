@@ -181,13 +181,18 @@ namespace SRTS
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.SRTSLauncherSelected)));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
+                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "map"));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.SRTSNonPlayerHomeMap)));
+                    yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
+
                     yield return new CodeInstruction(opcode: OpCodes.Pop);
                     yield return new CodeInstruction(opcode: OpCodes.Pop);
                     yield return new CodeInstruction(opcode: OpCodes.Pop);
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
                     yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
 
                     instruction.labels.Add(label);
                 }
@@ -203,6 +208,11 @@ namespace SRTS
                 return true;
             }
             return false;
+        }
+
+        public static bool SRTSNonPlayerHomeMap(Map map)
+        {
+            return !map.IsPlayerHome;
         }
 
         public static IEnumerable<CodeInstruction> GiveSoldThingsToSRTS(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
@@ -354,7 +364,7 @@ namespace SRTS
             {
                 foreach(Thing t in pod.innerContainer)
                 {
-                    if(ThingDef.Named(t.def.defName.Split('_')[0]).GetCompProperties<CompProperties_LaunchableSRTS>() != null)
+                    if(ThingDef.Named(t.def.defName.Split('_')[0])?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
                     {
                         TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(dropPods);
                         foreach(ActiveDropPodInfo pod2 in dropPods)
