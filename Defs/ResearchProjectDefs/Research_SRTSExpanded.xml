@@ -20,7 +20,7 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSSkip</defName>
     <label>SRTS Skip</label>
-    <description>This vessel design was conceived after a nearby colony on this world tried their own version of a superpod. They decided to take apart the pods and put it together uniquely. It turned out really nice, and since then it's become popular as a design due to its cheap material cost and reliable transport.</description>
+    <description>This vessel design was conceived after a nearby colony on this world tried their own version of a superpod. They decided to take apart the pods and put it together uniquely. It turned out really nice, and since then it's become popular as a design due to its cheap material cost and reliable transport. Has military potential.</description>
     <baseCost>2400</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -38,7 +38,7 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTF</defName>
     <label>SRTF</label>
-    <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions. Not great on the chemfuel mileage.</description>
+    <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions. Not great on the chemfuel mileage and very slow, but the cargo room is amazing.</description>
     <baseCost>3200</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -73,7 +73,7 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSMk3</defName>
     <label>SRTS Mk. III</label>
-    <description>After more research, you discover a new technique originally used by an ancient exctinct alien civilization. This process infuses the ship with this technology while using fewer materials in the build, meaning the new model should be lighter, faster, and with more hauling capacity with the same physical outer shell limits.</description>
+    <description>After more research, you discover a new technique originally used by an ancient exctinct alien civilization. This process infuses the ship with this technology while using fewer materials in the build, meaning the new model should be lighter, faster, and with more hauling capacity with the same physical outer hull size as the Mk. II.\n\nThe schematic shows a vast bomb bay.</description>
     <baseCost>8500</baseCost>
     <techLevel>Ultra</techLevel>
     <prerequisites>
@@ -94,8 +94,8 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSMk4</defName>
     <label>SRTS Mk. IV</label>
-    <description>The Genesis is a highly advanced transport shuttle that utilizes uranium for fuel, and incorporates archotech level technology to increase the cargo space beyond dimensional boundaries. This is "Blue box" level stuff.</description>
-    <baseCost>15000</baseCost>
+    <description>The Genesis is a highly advanced transport shuttle that utilizes uranium for fuel, and incorporates archotech level technology to increase the cargo space beyond dimensional boundaries. This is "Blue box" level stuff.\n\nThis blueprint seems like it simply won't work with how advanced it is, but we won't know unless we try.</description>
+    <baseCost>12500</baseCost>
     <techLevel>Archotech</techLevel>
     <prerequisites>
       <li>Research_SRTSMk3</li>
@@ -115,8 +115,8 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSArchoComps</defName>
     <label>Archotech Ship Components</label>
-    <description>Learn the techniques to build the super advanced components necessary to build the Genesis.</description>
-    <baseCost>9000</baseCost>
+    <description>Learn the techniques to build the super advanced components necessary to build the mythical Genesis.</description>
+    <baseCost>25000</baseCost>
     <techLevel>Archotech</techLevel>
     <prerequisites>
       <li>Research_SRTSMk4</li>

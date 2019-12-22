@@ -210,7 +210,7 @@
       <li>RewardSpecial</li>
     </thingSetMakerTags>
     <costList>
-      <Steel>450</Steel>
+      <Steel>1800</Steel>
       <Gold>4.5</Gold>
       <Uranium>125</Uranium>
       <ComponentSpacer>6</ComponentSpacer>
@@ -231,8 +231,8 @@
     <costList>
       <AIPersonaCore>1</AIPersonaCore>
       <Steel>150</Steel>
-      <Plasteel>250</Plasteel>
-      <Hyperweave>25</Hyperweave>
+      <Plasteel>360</Plasteel>
+      <Hyperweave>100</Hyperweave>
       <ComponentSpacer>10</ComponentSpacer>
     </costList>
   </ThingDef>
