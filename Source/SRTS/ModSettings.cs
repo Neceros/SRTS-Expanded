@@ -113,8 +113,14 @@ namespace SRTS
                 listing_Standard.Settings_SliderLabeled("FlightSpeed".Translate(), string.Empty, ref props.flightSpeed, 1, 50, 2);
                 if(settings.passengerLimits)
                 {
+                    int min = props.minPassengers;
+                    int max = props.maxPassengers;
                     listing_Standard.Settings_SliderLabeled("MinPassengers".Translate(), string.Empty, ref props.minPassengers, 1, 100);
                     listing_Standard.Settings_SliderLabeled("MaxPassengers".Translate(), string.Empty, ref props.maxPassengers, 1, 100, 999);
+                    if(props.minPassengers > props.maxPassengers && min != props.minPassengers)
+                        props.maxPassengers = props.minPassengers;
+                    if(props.maxPassengers < props.minPassengers && max != props.maxPassengers)
+                        props.minPassengers = props.maxPassengers;
                 }
                 else
                 {
