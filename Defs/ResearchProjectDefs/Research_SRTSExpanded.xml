@@ -6,7 +6,7 @@
     <defName>Research_SRTSSuperpod</defName>
     <label>Superpod</label>
     <description>Slap on a few Orbital Relay Launch Modules onto a traditional transport pod and Voilà! You've got a ship capable of return flight! It's just a first step, though.</description>
-    <baseCost>1200</baseCost>
+    <baseCost>4800</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>TransportPod</li>
@@ -21,7 +21,7 @@
     <defName>Research_SRTSSkip</defName>
     <label>SRTS Skip</label>
     <description>This vessel design was conceived after a nearby colony on this world tried their own version of a superpod. They decided to take apart the pods and put it together uniquely. It turned out really nice, and since then it's become popular as a design due to its cheap material cost and reliable transport. Has military potential.</description>
-    <baseCost>2400</baseCost>
+    <baseCost>6200</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>Research_SRTSSuperpod</li>
@@ -39,7 +39,7 @@
     <defName>Research_SRTF</defName>
     <label>SRTF</label>
     <description>A large transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRTF on every homeworld in the millions. Not great on the chemfuel mileage and very slow, but the cargo room is amazing.</description>
-    <baseCost>3200</baseCost>
+    <baseCost>7200</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>Research_SRTSSkip</li>
@@ -55,7 +55,7 @@
     <defName>Research_SRTSMk2</defName>
     <label>SRTS Mk. II</label>
     <description>The Albatross X-11 was originally designed for military exoplanetary exploration, but you've realized the components match the SRTS almost exactly. With this new insight and some tinkering you might come up with an improved SRTS design with better fuel capacity and efficiency.</description>
-    <baseCost>5000</baseCost>
+    <baseCost>12000</baseCost>
     <techLevel>Spacer</techLevel>
     <prerequisites>
       <li>Research_SRTSSkip</li>
@@ -74,7 +74,7 @@
     <defName>Research_SRTSMk3</defName>
     <label>SRTS Mk. III</label>
     <description>After more research, you discover a new technique originally used by an ancient exctinct alien civilization. This process infuses the ship with this technology while using fewer materials in the build, meaning the new model should be lighter, faster, and with more hauling capacity with the same physical outer hull size as the Mk. II.\n\nThe schematic shows a vast bomb bay.</description>
-    <baseCost>8500</baseCost>
+    <baseCost>24000</baseCost>
     <techLevel>Ultra</techLevel>
     <prerequisites>
       <li>Research_SRTSMk2</li>
@@ -95,7 +95,7 @@
     <defName>Research_SRTSMk4</defName>
     <label>SRTS Mk. IV</label>
     <description>The Genesis is a highly advanced transport shuttle that utilizes uranium for fuel, and incorporates archotech level technology to increase the cargo space beyond dimensional boundaries. This is "Blue box" level stuff.\n\nThis blueprint seems like it simply won't work with how advanced it is, but we won't know unless we try.</description>
-    <baseCost>12500</baseCost>
+    <baseCost>36000</baseCost>
     <techLevel>Archotech</techLevel>
     <prerequisites>
       <li>Research_SRTSMk3</li>
@@ -116,7 +116,7 @@
     <defName>Research_SRTSArchoComps</defName>
     <label>Archotech Ship Components</label>
     <description>Learn the techniques to build the super advanced components necessary to build the mythical Genesis.</description>
-    <baseCost>25000</baseCost>
+    <baseCost>50000</baseCost>
     <techLevel>Archotech</techLevel>
     <prerequisites>
       <li>Research_SRTSMk4</li>

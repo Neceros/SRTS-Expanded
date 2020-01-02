@@ -48,7 +48,7 @@ Passenger capacity: 1
 Military: No
 ----------------------------
 Speed: Awful
-Fuel capacity: 200L
+Fuel capacity: 240L
 Fuel efficiency: Normal
 ----------------------------
 Cargo capacity: 240kg
@@ -81,15 +81,15 @@ Internal power plant: 600w</description>
         <massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>3</travelSpeed>
+        <travelSpeed>2</travelSpeed>
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
-        <fuelCapacity>200</fuelCapacity>
+        <fuelCapacity>240</fuelCapacity>
         <fuelConsumptionRate>1</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>200</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>240</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -246,7 +246,7 @@ Internal power plant: 1000w</description>
         <massCapacity>5000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>4</travelSpeed>
+        <travelSpeed>2</travelSpeed>
         <minPassengers>1</minPassengers>
         <maxPassengers>3</maxPassengers>
       </li>
@@ -381,7 +381,7 @@ Speed: Excellent
 Fuel capacity: 2,000L
 Fuel efficiency: Excellent
 ----------------------------
-Cargo capacity: 5,000kg
+Cargo capacity: 10,000kg
 Internal power plant: 3,600w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
@@ -406,7 +406,7 @@ Internal power plant: 3,600w</description>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>2</restEffectiveness>
-        <massCapacity>5000</massCapacity>
+        <massCapacity>10000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
@@ -500,7 +500,7 @@ Internal power plant: 12,600w</description>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
-        <radiusOfDrop>10</radiusOfDrop>
+        <radiusOfDrop>12</radiusOfDrop>
         <speed>0.25</speed>
       </li>
       <li Class="CompProperties_Refuelable">
