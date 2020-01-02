@@ -56,9 +56,9 @@ namespace SRTS
         {
             BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, innerThing);
             thing.source = StartUp.SRTSBombers[idNumber];
-            thing.numberOfBombs = original.TryGetComp<CompBombFlyer>().Props.numberBombs;
-            thing.speed = original.TryGetComp<CompBombFlyer>().Props.speed;
-            thing.radius = original.TryGetComp<CompBombFlyer>().Props.radiusOfDrop;
+            thing.numberOfBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.numberBombs);
+            thing.speed = SRTSMod.GetStatFor<float>(original.def.defName, StatName.bombingSpeed);
+            thing.radius = SRTSMod.GetStatFor<int>(original.def.defName, StatName.radiusDrop);
             thing.sound = original.TryGetComp<CompBombFlyer>().Props.soundFlyBy;
 
             double angle = pos.AngleThroughOrigin(map);

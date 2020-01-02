@@ -18,8 +18,6 @@ namespace SRTS
     private const float FuelPerTile = 2.25f;
     private Caravan carr;
 
-    public float TravelSpeed => this.SRTSProps.travelSpeed / 100000;
-
     public CompProperties_LaunchableSRTS SRTSProps => (CompProperties_LaunchableSRTS)this.props;
     public Building FuelingPortSource
     {
@@ -237,15 +235,18 @@ namespace SRTS
                     num++;
                 }
             }
-            if(num < this.SRTSProps.minPassengers)
+            if(SRTSMod.mod.settings.passengerLimits)
             {
-                Messages.Message("Not enough pilots to launch", MessageTypeDefOf.RejectInput, false);
-                return;
-            }
-            else if(num > this.SRTSProps.maxPassengers)
-            {
-                Messages.Message("Too many colonists to launch", MessageTypeDefOf.RejectInput, false);
-                return;
+                if (num < this.SRTSProps.minPassengers)
+                {
+                    Messages.Message("Not enough pilots to launch", MessageTypeDefOf.RejectInput, false);
+                    return;
+                }
+                else if (num > this.SRTSProps.maxPassengers)
+                {
+                    Messages.Message("Too many colonists to launch", MessageTypeDefOf.RejectInput, false);
+                    return;
+                }
             }
 
           if (this.AnyInGroupHasAnythingLeftToLoad)
