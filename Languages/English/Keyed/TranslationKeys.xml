@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<LanguageData>
+	<!-- Labels and Titles -->
+	<SRTSExpanded>SRTS Expanded</SRTSExpanded>
+	<SRTSDef>SRTS Def</SRTSDef>
+	
+	<!-- Settings -->
+	<ResetDefault>Reset</ResetDefault>
+	<ResetDefaultTooltip>Reset to Default Values</ResetDefaultTooltip>
+	<ResetThisSRTS>Reset This</ResetThisSRTS>
+	<ResetAll>Reset All</ResetAll>
+	
+	<MainSettings>Main Settings</MainSettings>
+	
+	<PassengerLimit>Passenger Limits</PassengerLimit>
+	<PassengerLimitTooltip>Enforce minimum and maximum passengers allowed on SRTS</PassengerLimitTooltip>
+	
+	<DefSettings>Stats</DefSettings>
+	
+	<SRTSSettings>SRTS Settings</SRTSSettings>
+	<FlightSpeed>Flight Speed (World Map)</FlightSpeed>
+	<CargoCapacity>Cargo Capacity</CargoCapacity>
+	<MinPassengers>Minimum Passengers</MinPassengers>
+	<MaxPassengers>Maximum Passengers</MaxPassengers>
+	
+	<BombSettings>Bomb Settings</BombSettings>
+	<BombSpeed>Flight Speed (Bomb Run)</BombSpeed>
+	<RadiusDrop>Bomb Radius</RadiusDrop>
+	<NumberBombs>Max Bombs Dropped</NumberBombs>
+	<!-- Float Menu -->
+
+	<!-- Messages -->
+	<SRTSNoPilot>Cannot send SRTS without a Pilot.</SRTSNoPilot>
+	
+	<!-- Caravans -->
+
+	<!-- Status -->
+
+</LanguageData>

@@ -45,6 +45,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Assemblies\SPExtended.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -55,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DialogSettings.cs" />
     <Compile Include="FallingBomb.cs" />
     <Compile Include="BomberSkyfaller.cs" />
     <Compile Include="BomberSkyFallerMaker.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="HarmonyTest_AJ.cs" />
     <Compile Include="HarmonyTest_BB.cs" />
     <Compile Include="HarmonyTest_TS.cs" />
+    <Compile Include="ModSettings.cs" />
     <Compile Include="SkyfallerDrawPosUtilityExtended.cs" />
     <Compile Include="SRTSArrivalActionBombRun.cs" />
     <Compile Include="SRTSBombing.cs" />

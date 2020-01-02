@@ -49,6 +49,9 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(TransportPodsArrivalActionUtility), name: nameof(TransportPodsArrivalActionUtility.DropTravelingTransportPods)),
                 prefix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(DropSRTSExactSpot)));
+            harmony.Patch(original: AccessTools.Property(type: typeof(Dialog_LoadTransporters), name: "MassCapacity").GetGetMethod(nonPublic: true), 
+                prefix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(CustomSRTSMassCapacity)));
         }
         public static IEnumerable<CodeInstruction> ErrorOnNoPawns(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
@@ -58,7 +61,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionsList[i];
 
-                if(instruction.opcode == OpCodes.Ldc_I4_1 && instructionsList[i+1].opcode == OpCodes.Ret)
+                if(instruction.opcode == OpCodes.Ldc_I4_1 && instructionsList[i+1].opcode == OpCodes.Ret && SRTSMod.mod.settings.passengerLimits)
                 {
                     Label label = ilg.DefineLabel();
                     Label label2 = ilg.DefineLabel();
@@ -71,8 +74,8 @@ namespace SRTS
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.NoPawnInSRTS)));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse_S, label);
 
-                    yield return new CodeInstruction(opcode: OpCodes.Ldstr, operand: "Can't send SRTS without a Pilot");
-                    //yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(Translator), parameters: new Type[] { typeof(string) }, name: nameof(Translator.Translate)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldstr, operand: "SRTSNoPilot");
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(Translator), parameters: new Type[] { typeof(string) }, name: nameof(Translator.Translate)));
                     yield return new CodeInstruction(opcode: OpCodes.Ldsfld, operand: AccessTools.Field(type: typeof(MessageTypeDefOf), name: nameof(MessageTypeDefOf.RejectInput)));
                     yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(Messages), parameters: new Type[] { typeof(string), typeof(MessageTypeDef), typeof(bool) },
@@ -127,13 +130,13 @@ namespace SRTS
         public static string MinMaxString(List<CompTransporter> transporters, bool min)
         {
             var srts = transporters.First(x => x.parent.GetComp<CompLaunchableSRTS>() != null).parent;
-            return min ? "Minimum Required Pawns for " + srts.def.LabelCap + ": " + (srts.GetComp<CompLaunchableSRTS>().SRTSProps.minPassengers) :
-                "Maximum Pawns able to board " + srts.def.LabelCap + ": " + (srts.GetComp<CompLaunchableSRTS>().SRTSProps.maxPassengers);
+            return min ? "Minimum Required Pawns for " + srts.def.LabelCap + ": " + (SRTSMod.GetStatFor<int>(srts.def.defName, StatName.minPassengers)) :
+                "Maximum Pawns able to board " + srts.def.LabelCap + ": " + (SRTSMod.GetStatFor<int>(srts.def.defName, StatName.maxPassengers));
         }
 
         public static bool NoPawnInSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
         {
-            if (transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null) && !pawns.Any(x => x.IsColonistPlayerControlled))
+            if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null) && !pawns.Any(x => x.IsColonistPlayerControlled))
                 return true;
             return false;
         }
@@ -142,7 +145,7 @@ namespace SRTS
         {
             if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
             {
-                int minPawns = transporters.Min(x => x.parent.GetComp<CompLaunchableSRTS>().SRTSProps.minPassengers);
+                int minPawns = transporters.Min(x => SRTSMod.GetStatFor<int>(x.parent.def.defName, StatName.minPassengers));
                 if(pawns.Where(x => x.IsColonistPlayerControlled).Count() < minPawns)
                 {
                     return true;
@@ -153,9 +156,9 @@ namespace SRTS
         }
         public static bool MaxPawnRestrictionsSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
         {
-            if (transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
+            if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
             {
-                int maxPawns = transporters.Max(x => x.parent.GetComp<CompLaunchableSRTS>().SRTSProps.maxPassengers);
+                int maxPawns = transporters.Max(x => SRTSMod.GetStatFor<int>(x.parent.def.defName, StatName.maxPassengers));
                 if (pawns.Count > maxPawns)
                 {
                     return true;
@@ -290,14 +293,14 @@ namespace SRTS
                     __result = 1f;
                     return false;
                 }
-                float num = GenMath.SphericalDistance(start.normalized, end.normalized);
+                float num = GenMath.SphericalDistance(start.normalized, end.normalized) * 100000;
                 if(num == 0f)
                 {
                     __result = 1f;
                     return false;
                 }
                 Thing ship = ___pods.Find(x => x.innerContainer.First(y => y.TryGetComp<CompLaunchableSRTS>() != null) != null).innerContainer.First(z => z.TryGetComp<CompLaunchableSRTS>() != null);
-                __result = ship.TryGetComp<CompLaunchableSRTS>().TravelSpeed / num;
+                __result = SRTSMod.GetStatFor<float>(ship.def.defName, StatName.flightSpeed) / num;
                 return false;
             }
             return true;
@@ -374,6 +377,21 @@ namespace SRTS
                         return false;
                     }
                 }
+            }
+            return true;
+        }
+
+        public static bool CustomSRTSMassCapacity(ref float __result, List<CompTransporter> ___transporters)
+        {
+            if(___transporters.Any(x => x.parent.TryGetComp<CompLaunchableSRTS>() != null))
+            {
+                float num = 0f;
+                foreach(CompTransporter comp in ___transporters)
+                {
+                    num += SRTSMod.GetStatFor<float>(comp.parent.def.defName, StatName.massCapacity);   
+                }
+                __result = num;
+                return false;
             }
             return true;
         }
