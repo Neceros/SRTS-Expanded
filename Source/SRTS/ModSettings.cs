@@ -178,7 +178,7 @@ namespace SRTS
 
                 listing_Standard.Settings_Header("SRTSSettings".Translate(), DialogSettings.highlightColor);
 
-                listing_Standard.Settings_SliderLabeled("FlightSpeed".Translate(), string.Empty, ref props.flightSpeed, 1, 50, 2);
+                listing_Standard.Settings_SliderLabeled("FlightSpeed".Translate(), string.Empty, ref props.flightSpeed, 0.15f, 50, 2, 2, 9999f, "Instant".Translate());
 
                 listing_Standard.Settings_SliderLabeled("FuelEfficiency".Translate(), "FuelEfficiencySymbol".Translate(), ref props.fuelPerTile, 1, 6f);
                 

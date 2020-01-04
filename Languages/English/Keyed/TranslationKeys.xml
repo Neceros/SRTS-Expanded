@@ -24,6 +24,7 @@
 	
 	<SRTSSettings>SRTS Settings</SRTSSettings>
 	<FlightSpeed>Flight Speed (World Map)</FlightSpeed>
+	<Instant>Instant</Instant>
 	<FuelEfficiency>Fuel Cost</FuelEfficiency>
 	<FuelEfficiencySymbol> per Tile</FuelEfficiencySymbol>
 	<CargoCapacity>Cargo Capacity</CargoCapacity>
