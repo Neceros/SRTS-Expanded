@@ -44,8 +44,11 @@
 	<AddResearch>Add</AddResearch>
 	<RemoveResearch>Remove</RemoveResearch>
 	<RestartGameResearch>Restart your game for new research settings to apply</RestartGameResearch>
+	
 	<!-- Float Menu -->
-
+	<BoardSRTS>Board {0}</BoardSRTS>
+	<JoinSRTSGroup>Join SRTS Boarding Group</JoinSRTSGroup>
+	
 	<!-- Messages -->
 	<SRTSNoPilot>Cannot send SRTS without a Pilot.</SRTSNoPilot>
 	<NotEnoughPilots>Not enough pilots to launch</NotEnoughPilots>

@@ -424,7 +424,7 @@ namespace SRTS
                     flag = this.numberBombs == referencedDef.GetCompProperties<CompProperties_BombsAway>().numberBombs && this.radiusDrop == referencedDef.GetCompProperties<CompProperties_BombsAway>().radiusOfDrop &&
                         this.bombingSpeed == referencedDef.GetCompProperties<CompProperties_BombsAway>().speed;
                 }
-                return flag && this.RequiredResearch[0].baseCost == this.researchPoints && !this.customResearchDefNames.Any() && this.ID == this.referencedDef.defName && this.massCapacity == referencedDef.GetCompProperties<CompProperties_Transporter>().massCapacity && this.minPassengers == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().minPassengers
+                return flag && this.RequiredResearch[0].baseCost == this.researchPoints && !this.customResearchDefNames.Any() && this.massCapacity == referencedDef.GetCompProperties<CompProperties_Transporter>().massCapacity && this.minPassengers == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().minPassengers
                     && this.maxPassengers == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().maxPassengers && this.flightSpeed == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().travelSpeed &&
                     this.fuelPerTile == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().fuelPerTile;
             }
@@ -577,8 +577,6 @@ namespace SRTS
         public int radiusDrop = 1;
 
         public float bombingSpeed = 1;
-
-        private string ID;
 
         private bool bombingCapable;
 
