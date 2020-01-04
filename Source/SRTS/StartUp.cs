@@ -85,13 +85,6 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawResearchPrereqs"), prefix: null,
                postfix: new HarmonyMethod(type: typeof(StartUp),
                name: nameof(DrawCustomResearchPrereqs)));
-
-            srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
-            List<ThingDef> defs = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.researchPrerequisites?[0].tab.ToString() == "SRTSE").ToList();
-            foreach(ThingDef def in defs)
-            {
-                srtsDefProjects.Add(def, def.researchPrerequisites[0]);
-            }
         }
         public static IEnumerable<CodeInstruction> ErrorOnNoPawnsTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
@@ -666,6 +659,16 @@ namespace SRTS
                     if(i == 0)
                         Widgets.DrawLine(start, end, new Color(255, 215, 0, 0.25f), 2f);
                 }
+            }
+        }
+
+        public static void PopulateDictionary()
+        {
+            srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
+            List<ThingDef> defs = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.researchPrerequisites?[0].tab.ToString() == "SRTSE").ToList();
+            foreach (ThingDef def in defs)
+            {
+                srtsDefProjects.Add(def, def.researchPrerequisites[0]);
             }
         }
 

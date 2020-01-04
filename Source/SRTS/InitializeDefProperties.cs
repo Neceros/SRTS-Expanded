@@ -14,6 +14,7 @@ namespace SRTS
         {
             SRTSMod.mod.settings.CheckDictionarySavedValid();
             SRTS_ModSettings.CheckNewDefaultValues();
+            StartUp.PopulateDictionary();
         }
     }
 }
