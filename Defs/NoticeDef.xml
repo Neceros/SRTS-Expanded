@@ -3,16 +3,8 @@
 	<LiteUpdateNotice.NoticeDef>
 		<defName>SRTSUpdate_1_2_1</defName>
 		<label>SRTS Update 1.2.1</label>
-		<description>This update introduces a few fixes and a few big features!
-- BOMBING RUNS
-Select a military capable ship (read the descriptions of the shuttles) and load it with some mortar shells. For now only hi-explosive and anti-grain work. The rest will be added soon. Once loaded, click on "Bombing run" and select an open and active map, and choose the location to bomb. You must first scout out a location to bomb.
-
-- PASSENGER LIMITS
-Each ship can only support a certain amount of room inside for people. Cargo has its own room in the automated cargo area, but it's not safe for people back there.
-
-- FIXES
-No longer required to home zone or stockpile an encounter map to load things into your shuttle.</description>
+		<description>SRTS Expanded has been updated. \n \n Mod Settings has been added. Visit the steam workshop for more information.</description>
 		<letter>SRTSUpdateNotice</letter>
-		<version>1.2.1</version>
+		<version>1.2.2</version>
 	</LiteUpdateNotice.NoticeDef>
 </Defs>
