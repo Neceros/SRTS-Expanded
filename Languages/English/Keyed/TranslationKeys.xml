@@ -47,9 +47,15 @@
 
 	<!-- Messages -->
 	<SRTSNoPilot>Cannot send SRTS without a Pilot.</SRTSNoPilot>
+	<NotEnoughPilots>Not enough pilots to launch</NotEnoughPilots>
+	<TooManyPilots>Too many colonists to launch</TooManyPilots>
+	<BombRunStarted>Bomb run has begun.</BombRunStarted>
 	
 	<!-- Caravans -->
 
 	<!-- Status -->
-
+	
+	<!-- Gizmo -->
+	<BombTarget>Bomb Target</BombTarget>
+	<BombTargetDesc>Select a target on another map to drop bombs on.</BombTargetDesc>
 </LanguageData>

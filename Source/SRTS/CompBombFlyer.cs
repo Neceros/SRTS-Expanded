@@ -21,8 +21,8 @@ namespace SRTS
             {
                 yield return new Command_Action()
                 {
-                    defaultLabel = "Bomb Target",
-                    defaultDesc = "Select a target on another map to drop bombs on.",
+                    defaultLabel = "BombTarget".Translate(),
+                    defaultDesc = "BombTargetDesc".Translate(),
                     icon = TexCommand.Attack,
                     action = delegate()
                     {
@@ -36,12 +36,12 @@ namespace SRTS
                         }
                         if (num < CompLauncher.SRTSProps.minPassengers)
                         {
-                            Messages.Message("Not enough pilots to launch", MessageTypeDefOf.RejectInput, false);
+                            Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
                             return;
                         }
                         else if (num > CompLauncher.SRTSProps.maxPassengers)
                         {
-                            Messages.Message("Too many colonists to launch", MessageTypeDefOf.RejectInput, false);
+                            Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
                             return;
                         }
 

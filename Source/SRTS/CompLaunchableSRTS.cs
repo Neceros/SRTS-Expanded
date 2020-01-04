@@ -239,12 +239,12 @@ namespace SRTS
             {
                 if (num < this.SRTSProps.minPassengers)
                 {
-                    Messages.Message("Not enough pilots to launch", MessageTypeDefOf.RejectInput, false);
+                    Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
                     return;
                 }
                 else if (num > this.SRTSProps.maxPassengers)
                 {
-                    Messages.Message("Too many colonists to launch", MessageTypeDefOf.RejectInput, false);
+                    Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
                     return;
                 }
             }
