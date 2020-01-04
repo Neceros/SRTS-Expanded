@@ -81,8 +81,8 @@ Internal power plant: 600w</description>
         <massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>2</travelSpeed> <!-- Drop pod is 25 speed, min 1, max 6 -->
-        <fuelPerTile>2.50</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 100 -->
+        <travelSpeed>2</travelSpeed> <!-- Drop pod is 25 speed, min 1, max 100 -->
+        <fuelPerTile>2.50</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 6 -->
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
       </li>
@@ -162,14 +162,14 @@ Internal power plant: 800w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>8</travelSpeed>
-        <fuelPerTile>2</fuelPerTile>
+        <fuelPerTile>1.75</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>2</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>5</numberBombs>
-        <radiusOfDrop>4</radiusOfDrop>
-        <speed>0.85</speed>
+        <numberBombs>5</numberBombs> <!-- num dropped per run -->
+        <radiusOfDrop>4</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
@@ -247,12 +247,12 @@ Internal power plant: 1000w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>2</travelSpeed>
+        <fuelPerTile>4.25</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>3</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
-        <fuelConsumptionRate>1.75</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -326,17 +326,17 @@ Internal power plant: 1,700w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>11</travelSpeed>
+        <fuelPerTile>1.75</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>7</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>12</numberBombs>
         <radiusOfDrop>6</radiusOfDrop>
-        <speed>0.85</speed>
+        <speed>1</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
-        <fuelConsumptionRate>0.75</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>1600</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -410,17 +410,17 @@ Internal power plant: 3,600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
+        <fuelPerTile>1.25</fuelPerTile>
         <minPassengers>2</minPassengers>
         <maxPassengers>24</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>20</numberBombs>
         <radiusOfDrop>8</radiusOfDrop>
-        <speed>0.85</speed>
+        <speed>1</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
-        <fuelConsumptionRate>0.50</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -495,19 +495,19 @@ Internal power plant: 12,600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>30</travelSpeed>
+        <fuelPerTile>1</fuelPerTile>
         <minPassengers>2</minPassengers>
         <maxPassengers>999</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
         <radiusOfDrop>10</radiusOfDrop>
-        <speed>1.25</speed>
+        <speed>1</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Uranium reactor charge level</fuelLabel>
         <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
         <fuelCapacity>100000</fuelCapacity>
-        <fuelConsumptionRate>0.01</fuelConsumptionRate>
         <fuelMultiplier>444</fuelMultiplier>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
