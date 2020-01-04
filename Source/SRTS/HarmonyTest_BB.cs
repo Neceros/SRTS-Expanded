@@ -83,7 +83,7 @@ namespace SRTS
                                 }
                             }
                             if (flag)
-                                Messages.Message("AddFuelDoneMsg".Translate((object) count, (object) comp.Fuel), MessageTypeDefOf.PositiveEvent, false);
+                                Messages.Message("AddFuelDoneMsg".Translate(count, comp.Fuel), MessageTypeDefOf.PositiveEvent, false);
                             else
                                 Messages.Message("NonOilMsg".Translate(), MessageTypeDefOf.RejectInput, false);
                         });

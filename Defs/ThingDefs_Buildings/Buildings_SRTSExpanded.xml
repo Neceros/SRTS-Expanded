@@ -84,6 +84,7 @@ Internal power plant: 600w</description>
         <travelSpeed>3</travelSpeed>
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
+		<fuelPerTile>2.35</fuelPerTile> <!-- Drop pod cost is 2.25 per tile -->
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>200</fuelCapacity>
@@ -501,7 +502,7 @@ Internal power plant: 4,200w</description>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
         <radiusOfDrop>10</radiusOfDrop>
-        <speed>0.35</speed>
+        <speed>1.25</speed>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Uranium reactor charge level</fuelLabel>
