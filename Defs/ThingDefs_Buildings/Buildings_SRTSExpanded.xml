@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ThingDef Name="ShipBase" Abstract="True">
@@ -81,13 +81,13 @@ Internal power plant: 600w</description>
         <massCapacity>240</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>2</travelSpeed>
+        <travelSpeed>2</travelSpeed> <!-- Drop pod is 25 speed, min 1, max 6 -->
+        <fuelPerTile>2.50</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 100 -->
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>240</fuelCapacity>
-        <fuelConsumptionRate>1</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>240</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -162,6 +162,7 @@ Internal power plant: 800w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>8</travelSpeed>
+        <fuelPerTile>2</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>2</maxPassengers>
       </li>
@@ -172,7 +173,6 @@ Internal power plant: 800w</description>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
-        <fuelConsumptionRate>0.8</fuelConsumptionRate>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>500</initialConfigurableTargetFuelLevel>
         <fuelFilter>
@@ -500,8 +500,13 @@ Internal power plant: 12,600w</description>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
+<<<<<<< HEAD:Defs/ThingDefs_Buildings/Buildings_SRTSExpanded.xml.old
         <radiusOfDrop>12</radiusOfDrop>
         <speed>0.25</speed>
+=======
+        <radiusOfDrop>10</radiusOfDrop>
+        <speed>1.25</speed>
+>>>>>>> pr/16:Defs/ThingDefs_Buildings/Buildings_SRTSExpanded.xml
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Uranium reactor charge level</fuelLabel>
