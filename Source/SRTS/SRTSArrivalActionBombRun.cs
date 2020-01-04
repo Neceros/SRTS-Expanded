@@ -45,7 +45,7 @@ namespace SRTS
         {
             Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
             BombRunArrivalUtility.BombWithSRTS(pods, this.cell, this.mapParent.Map);
-            Messages.Message("BombRunStarted", lookTarget, MessageTypeDefOf.CautionInput, true);
+            Messages.Message("Bomb run has begun", lookTarget, MessageTypeDefOf.CautionInput, true);
         }
 
         public static bool CanBombSpecificCell(IEnumerable<IThingHolder> pods, MapParent mapParent)

@@ -21,8 +21,8 @@ namespace SRTS
             {
                 yield return new Command_Action()
                 {
-                    defaultLabel = "BombTarget".Translate(),
-                    defaultDesc = "BombTargetDesc".Translate(),
+                    defaultLabel = "Bomb Target",
+                    defaultDesc = "Select a target on another map to drop bombs on.",
                     icon = TexCommand.Attack,
                     action = delegate()
                     {
@@ -36,12 +36,12 @@ namespace SRTS
                         }
                         if (num < CompLauncher.SRTSProps.minPassengers)
                         {
-                            Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
+                            Messages.Message("Not enough pilots to launch", MessageTypeDefOf.RejectInput, false);
                             return;
                         }
                         else if (num > CompLauncher.SRTSProps.maxPassengers)
                         {
-                            Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
+                            Messages.Message("Too many colonists to launch", MessageTypeDefOf.RejectInput, false);
                             return;
                         }
 
@@ -114,10 +114,10 @@ namespace SRTS
             int num = Find.WorldGrid.TraversalDistanceBetween(this.parent.Map.Tile, target.Tile);
             if(num > CompLauncher.MaxLaunchDistance)
             {
-                Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num, this.parent.GetComp<CompLaunchableSRTS>().BaseFuelPerTile).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
+                Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
                 return false;
             }
-            if(Find.WorldObjects.AnySettlementBaseAt(target.Tile) || Find.WorldObjects.AnySiteAt(target.Tile))
+            if(Find.WorldObjects.AnySettlementBaseAt(target.Tile))
             {
                 MapParent targetMapParent = Find.WorldObjects.MapParentAt(target.Tile);
                 if(SRTSArrivalActionBombRun.CanBombSpecificCell(null, targetMapParent))
@@ -164,7 +164,7 @@ namespace SRTS
             }
             CompLauncher.Transporter.TryRemoveLord(map);
             int groupID = CompLauncher.Transporter.groupID;
-            float amount = Mathf.Max(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num, this.parent.GetComp<CompLaunchableSRTS>().BaseFuelPerTile), 1f);
+            float amount = Mathf.Max(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num), 1f);
             CompTransporter comp1 = CompLauncher.FuelingPortSource.TryGetComp<CompTransporter>();
             Building fuelPortSource = CompLauncher.FuelingPortSource;
             if (fuelPortSource != null)

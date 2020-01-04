@@ -73,7 +73,6 @@
     <Compile Include="HarmonyTest_AJ.cs" />
     <Compile Include="HarmonyTest_BB.cs" />
     <Compile Include="HarmonyTest_TS.cs" />
-    <Compile Include="InitializeDefProperties.cs" />
     <Compile Include="ModSettings.cs" />
     <Compile Include="SkyfallerDrawPosUtilityExtended.cs" />
     <Compile Include="SRTSArrivalActionBombRun.cs" />
