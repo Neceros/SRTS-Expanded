@@ -377,7 +377,7 @@ namespace SRTS
         public SRTS_DefProperties props;
     }
 
-    public class SRTS_DefProperties : IExposable, ILoadReferenceable
+    public class SRTS_DefProperties : IExposable
     {
         public SRTS_DefProperties()
         {
@@ -386,7 +386,6 @@ namespace SRTS
         public SRTS_DefProperties(ThingDef def)
         {
             this.referencedDef = def;
-            this.ID = this.referencedDef.defName;
             this.defaultValues = true;
             this.massCapacity = referencedDef.GetCompProperties<CompProperties_Transporter>().massCapacity;
             this.minPassengers = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().minPassengers;
@@ -585,13 +584,8 @@ namespace SRTS
 
         public bool defaultValues = true;
 
-        public string GetUniqueLoadID()
-        {
-            return "SRTS_DefProperties_" + this.ID;
-        }
         public void ExposeData()
         {
-            Scribe_Values.Look<string>(ref this.ID, "ID");
             Scribe_Values.Look<bool>(ref this.defaultValues, "defaultValues");
             Scribe_Values.Look(ref this.massCapacity, "massCapacity");
             Scribe_Values.Look(ref this.minPassengers, "minPassengers");
