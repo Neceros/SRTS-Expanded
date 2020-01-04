@@ -42,7 +42,7 @@ namespace SRTS
                             if ((double) masss <= (double) massCapacity)
                                 pinv.innerContainer[i].TryGetComp<CompLaunchableSRTS>().WorldStartChoosingDestination(__instance);
                             else
-                                Messages.Message("TooBigTransportersMassUsage".Translate() + "(" + (object) (float) ((double) massCapacity - (double) masss) + "KG)", MessageTypeDefOf.RejectInput, false);
+                                Messages.Message("TooBigTransportersMassUsage".Translate() + "(" + (object) (float) ((double) massCapacity - (double) masss) + "Kg)", MessageTypeDefOf.RejectInput, false);
                         });
                         List<Gizmo> list = __result.ToList<Gizmo>();
                         list.Add((Gizmo) commandAction1);
@@ -83,7 +83,7 @@ namespace SRTS
                                 }
                             }
                             if (flag)
-                                Messages.Message("AddFuelDoneMsg".Translate((object) count, (object) comp.Fuel), MessageTypeDefOf.PositiveEvent, false);
+                                Messages.Message("AddFuelDoneMsg".Translate(count, comp.Fuel), MessageTypeDefOf.PositiveEvent, false);
                             else
                                 Messages.Message("NonOilMsg".Translate(), MessageTypeDefOf.RejectInput, false);
                         });

@@ -12,5 +12,7 @@ namespace SRTS
         public float travelSpeed = 25f;
         public int minPassengers = 1;
         public int maxPassengers = 2;
+
+        public float fuelPerTile = 2.25f;
     }
 }
