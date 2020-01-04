@@ -500,13 +500,8 @@ Internal power plant: 12,600w</description>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
-<<<<<<< HEAD:Defs/ThingDefs_Buildings/Buildings_SRTSExpanded.xml.old
-        <radiusOfDrop>12</radiusOfDrop>
-        <speed>0.25</speed>
-=======
         <radiusOfDrop>10</radiusOfDrop>
         <speed>1.25</speed>
->>>>>>> pr/16:Defs/ThingDefs_Buildings/Buildings_SRTSExpanded.xml
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Uranium reactor charge level</fuelLabel>
