@@ -93,7 +93,7 @@ namespace SRTS
 
         public static bool CanStartCustomResearch(ref bool __result, ResearchProjectDef __instance)
         {
-            Log.Message(!__instance.IsFinished + " | " + __instance.PrerequisitesCompleted + " | ");
+            //Log.Message(!__instance.IsFinished + " | " + __instance.PrerequisitesCompleted + " | ");
             return true;
         }
         public static IEnumerable<CodeInstruction> ErrorOnNoPawnsTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
@@ -562,13 +562,11 @@ namespace SRTS
         {
             if(ContainedInDefProjects(__instance) && ___prerequisites != null && __result is true)
             {
-                Log.Message("before: " + __result);
                 List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[srtsDefProjects.FirstOrDefault(x => x.Value == __instance).Key.defName].CustomResearch;
                 foreach(ResearchProjectDef proj in projects)
                 {
                     if (!proj.IsFinished)
                     {
-                        Log.Message("Result False");
                         __result = false;
                     }
                 }
