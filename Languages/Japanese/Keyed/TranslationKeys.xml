@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Labels and Titles -->
+  <SRTSExpanded>SRTS Expanded</SRTSExpanded>
+  <SRTSDef>SRTS Def</SRTSDef>
+
+  <!-- Settings -->
+  <ResetDefault>リセット</ResetDefault>
+  <ResetDefaultTooltip>初期値にリセットします</ResetDefaultTooltip>
+  <ResetThisSRTS>この船をリセット</ResetThisSRTS>
+  <ResetAll>全てリセット</ResetAll>
+
+  <DefaultValues>初期値</DefaultValues>
+  <CustomValues>改変値</CustomValues>
+
+  <MainSettings>メイン設定</MainSettings>
+
+  <PassengerLimit>乗客人数の制限：</PassengerLimit>
+  <PassengerLimitTooltip>SRTSで許可される最小乗客数と最大乗客数を設定する</PassengerLimitTooltip>
+  <DisplayHomeItems>全アイテムをリストに表示：</DisplayHomeItems>
+  <DisplayHomeItemsTooltip>SRTSに積み込む際にコロニーゾーンだけでなくマップ上の全アイテムを表示します。</DisplayHomeItemsTooltip>
+  <DefSettings>ステータス</DefSettings>
+
+  <SRTSSettings>SRTSの設定</SRTSSettings>
+  <FlightSpeed>飛行速度（ワールドマップ上）</FlightSpeed>
+  <Instant>即時</Instant>
+  <FuelEfficiency>燃料コスト:</FuelEfficiency>
+  <FuelEfficiencySymbol>/タイル毎</FuelEfficiencySymbol>
+  <CargoCapacity>最大積載量:</CargoCapacity>
+  <MinPassengers>最小乗客人数:</MinPassengers>
+  <MaxPassengers>最大乗客人数:</MaxPassengers>
+  <SRTSResearch>研究コスト:</SRTSResearch>
+  <SRTSResearchRequirements>前提となる研究</SRTSResearchRequirements>
+
+  <BombSettings>爆撃の設定</BombSettings>
+  <BombSpeed>飛行速度（爆撃時）</BombSpeed>
+  <RadiusDrop>爆撃半径:</RadiusDrop>
+  <NumberBombs>最大爆弾搭載数:</NumberBombs>
+
+  <ResearchSettings>研究</ResearchSettings>
+  <ResearchDef>Research Def:\n{0}</ResearchDef>
+  <SearchResearch>Research Defsを追加</SearchResearch>
+  <AddResearch>追加</AddResearch>
+  <RemoveResearch>削除</RemoveResearch>
+  <RestartGameResearch>変更した研究設定を適用するには再起動が必要</RestartGameResearch>
+
+  <!-- Float Menu -->
+  <BoardSRTS>{0}に乗り込む</BoardSRTS>
+  <JoinSRTSGroup>SRTS搭乗グループに追加</JoinSRTSGroup>
+
+  <!-- Messages -->
+  <SRTSNoPilot>パイロットなしでSRTSは発進できません。</SRTSNoPilot>
+  <NotEnoughPilots>発信するのにパイロットが不足</NotEnoughPilots>
+  <TooManyPilots>乗り込む入植者が多すぎます</TooManyPilots>
+  <BombRunStarted>爆撃が開始されました。</BombRunStarted>
+
+  <!-- Caravans -->
+
+  <!-- Status -->
+
+  <!-- Gizmo -->
+  <BombTarget>爆撃目標</BombTarget>
+  <BombTargetDesc>別のマップで爆弾を投下する目標を選択します。</BombTargetDesc>
+
+</LanguageData>
