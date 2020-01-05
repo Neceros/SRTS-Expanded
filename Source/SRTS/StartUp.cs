@@ -33,6 +33,9 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(SettlementBase_TraderTracker), name: nameof(SettlementBase_TraderTracker.GiveSoldThingToPlayer)), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(GiveSoldThingsToSRTSTranspiler)));
+            harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.CanStartNow)).GetGetMethod(),
+                prefix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(CanStartCustomResearch)));
 
             //Bomb Runs
             harmony.Patch(original: AccessTools.Method(type: typeof(TransportPodsArrivalActionUtility), name: nameof(TransportPodsArrivalActionUtility.DropTravelingTransportPods)),
@@ -85,6 +88,13 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawResearchPrereqs"), prefix: null,
                postfix: new HarmonyMethod(type: typeof(StartUp),
                name: nameof(DrawCustomResearchPrereqs)));
+            
+        }
+
+        public static bool CanStartCustomResearch(ref bool __result, ResearchProjectDef __instance)
+        {
+            Log.Message(!__instance.IsFinished + " | " + __instance.PrerequisitesCompleted + " | ");
+            return true;
         }
         public static IEnumerable<CodeInstruction> ErrorOnNoPawnsTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
@@ -552,11 +562,13 @@ namespace SRTS
         {
             if(ContainedInDefProjects(__instance) && ___prerequisites != null && __result is true)
             {
-                List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[srtsDefProjects.FirstOrDefault(x => x.Value == __instance).Key.defName].ResearchPrerequisites;
+                Log.Message("before: " + __result);
+                List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[srtsDefProjects.FirstOrDefault(x => x.Value == __instance).Key.defName].CustomResearch;
                 foreach(ResearchProjectDef proj in projects)
                 {
                     if (!proj.IsFinished)
                     {
+                        Log.Message("Result False");
                         __result = false;
                     }
                 }
