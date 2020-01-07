@@ -142,7 +142,7 @@
     <costList>
       <Steel>25</Steel>
       <ComponentIndustrial>4</ComponentIndustrial>
-      <Gold>1.5</Gold>
+      <Gold>2</Gold>
     </costList>
   </ThingDef>
 
@@ -211,7 +211,7 @@
     </thingSetMakerTags>
     <costList>
       <Steel>1800</Steel>
-      <Gold>4.5</Gold>
+      <Gold>10</Gold>
       <Uranium>125</Uranium>
       <ComponentSpacer>6</ComponentSpacer>
     </costList>
