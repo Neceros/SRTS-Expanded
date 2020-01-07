@@ -238,12 +238,12 @@ namespace SRTS
 			            }
 			            if(SRTSMod.mod.settings.passengerLimits)
 			            {
-				            if (num < this.SRTSProps.minPassengers)
+				            if (num < SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.minPassengers))
 				            {
 					            Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
 					            return;
 				            }
-				            else if (num > this.SRTSProps.maxPassengers)
+				            else if (num > SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.maxPassengers))
 				            {
 					            Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
 					            return;

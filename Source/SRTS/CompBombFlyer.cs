@@ -34,12 +34,12 @@ namespace SRTS
                                 num++;
                             }
                         }
-                        if (num < CompLauncher.SRTSProps.minPassengers)
+                        if (num < SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.minPassengers))
                         {
                             Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
                             return;
                         }
-                        else if (num > CompLauncher.SRTSProps.maxPassengers)
+                        else if (num > SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.maxPassengers))
                         {
                             Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
                             return;
