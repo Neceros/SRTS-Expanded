@@ -117,7 +117,7 @@ namespace SRTS
                 Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num, this.parent.GetComp<CompLaunchableSRTS>().BaseFuelPerTile).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
                 return false;
             }
-            if(Find.WorldObjects.AnySettlementBaseAt(target.Tile) || Find.WorldObjects.AnySiteAt(target.Tile))
+            if(Find.WorldObjects.AnyMapParentAt(target.Tile))
             {
                 MapParent targetMapParent = Find.WorldObjects.MapParentAt(target.Tile);
                 if(SRTSArrivalActionBombRun.CanBombSpecificCell(null, targetMapParent))
@@ -139,7 +139,7 @@ namespace SRTS
                     return true;
                 }
             }
-            Messages.Message("Cannot Bomb map unless loaded.", MessageTypeDefOf.RejectInput, false);
+            Messages.Message("CannotBombMap".Translate(), MessageTypeDefOf.RejectInput, false);
             return false;
         }
 

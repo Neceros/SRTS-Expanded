@@ -54,7 +54,7 @@
 	<NotEnoughPilots>Not enough pilots to launch</NotEnoughPilots>
 	<TooManyPilots>Too many colonists to launch</TooManyPilots>
 	<BombRunStarted>Bomb run has begun.</BombRunStarted>
-	
+	<CannotBombMap>Cannot bomb here unless active map is loaded.</CannotBombMap>
 	<!-- Caravans -->
 
 	<!-- Status -->

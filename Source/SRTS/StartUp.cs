@@ -41,7 +41,7 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(TransportPodsArrivalActionUtility), name: nameof(TransportPodsArrivalActionUtility.DropTravelingTransportPods)),
                 prefix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(DropSRTSExactSpot)));
-
+            
             //Custom Settings
             harmony.Patch(original: AccessTools.Property(type: typeof(TravelingTransportPods), name: "TraveledPctStepPerTick").GetGetMethod(nonPublic: true),
                 prefix: new HarmonyMethod(type: typeof(StartUp),
