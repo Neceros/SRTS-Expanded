@@ -12,6 +12,10 @@ namespace SRTS
     [StaticConstructorOnStartup]
     public class FallingBomb : ThingWithComps
     {
+        public FallingBomb()
+        {
+        }
+
         public FallingBomb(Thing reference, CompExplosive comp, Map map, string texPathShadow)
         {
             this.def = reference.def;
@@ -48,7 +52,7 @@ namespace SRTS
             }
         }
 
-        private Material ShadowMaterial
+        protected Material ShadowMaterial
         {
             get
             {
@@ -58,14 +62,14 @@ namespace SRTS
             }
         }
 
-        private void DrawDropSpotShadow()
+        protected void DrawDropSpotShadow()
         {
             if (this.ShadowMaterial is null)
                 return;
             FallingBomb.DrawDropSpotShadow(base.DrawPos, base.Rotation, ShadowMaterial, new Vector2(this.RotatedSize.x, this.RotatedSize.z), ticksRemaining);
         }
 
-        private static void DrawDropSpotShadow(Vector3 center, Rot4 rot, Material material, Vector2 shadowSize, int ticksToImpact)
+        protected static void DrawDropSpotShadow(Vector3 center, Rot4 rot, Material material, Vector2 shadowSize, int ticksToImpact)
         {
             if(rot.IsHorizontal)
                 Gen.Swap<float>(ref shadowSize.x, ref shadowSize.y);

@@ -88,7 +88,6 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawResearchPrereqs"), prefix: null,
                postfix: new HarmonyMethod(type: typeof(StartUp),
                name: nameof(DrawCustomResearchPrereqs)));
-            
         }
 
         public static bool CanStartCustomResearch(ref bool __result, ResearchProjectDef __instance)
@@ -104,7 +103,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionsList[i];
 
-                if(instruction.opcode == OpCodes.Ldc_I4_1 && instructionsList[i+1].opcode == OpCodes.Ret && SRTSMod.mod.settings.passengerLimits)
+                /*if(instruction.opcode == OpCodes.Ldc_I4_1 && instructionsList[i+1].opcode == OpCodes.Ret && SRTSMod.mod.settings.passengerLimits)
                 {
                     Label label = ilg.DefineLabel();
                     Label label2 = ilg.DefineLabel();
@@ -164,7 +163,7 @@ namespace SRTS
                     yield return new CodeInstruction(opcode: OpCodes.Ret);
 
                     instruction.labels.Add(label2);
-                }
+                }*/
 
                 yield return instruction;
             }
@@ -682,8 +681,43 @@ namespace SRTS
             }
         }
 
+        public static void PopulateAllowedBombs()
+        {
+            if(CEModLoaded)
+            {
+                List<ThingDef> CEthings = DefDatabase<ThingDef>.AllDefsListForReading.FindAll(x => x.HasComp(Type.GetType("CombatExtended.CompExplosiveCE,CombatExtended")));
+                if (SRTSMod.mod.settings.allowedBombs is null)
+                    SRTSMod.mod.settings.allowedBombs = new List<string>();
+                if (SRTSMod.mod.settings.disallowedBombs is null)
+                    SRTSMod.mod.settings.disallowedBombs = new List<string>();
+                foreach(ThingDef td in CEthings)
+                {
+                    if (!SRTSMod.mod.settings.allowedBombs.Contains(td.defName) && !SRTSMod.mod.settings.disallowedBombs.Contains(td.defName))
+                    {
+                        SRTSMod.mod.settings.allowedBombs.Add(td.defName);
+                    }
+                }
+                return;
+            }
+
+            List<ThingDef> things = DefDatabase<ThingDef>.AllDefsListForReading.FindAll(x => x.GetCompProperties<CompProperties_Explosive>() != null && x.projectileWhenLoaded != null);
+            if(SRTSMod.mod.settings.allowedBombs is null)
+                SRTSMod.mod.settings.allowedBombs = new List<string>();
+            if(SRTSMod.mod.settings.disallowedBombs is null)
+                SRTSMod.mod.settings.disallowedBombs = new List<string>();
+            foreach(ThingDef td in things)
+            {
+                if(!SRTSMod.mod.settings.allowedBombs.Contains(td.defName) && !SRTSMod.mod.settings.disallowedBombs.Contains(td.defName))
+                {
+                    SRTSMod.mod.settings.allowedBombs.Add(td.defName);
+                }
+            }
+        }
         public static bool SRTSInCaravan => TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null);
         public static Dictionary<int, Pair<Map, IntVec3>> SRTSBombers = new Dictionary<int, Pair<Map, IntVec3>>();
         private static Dictionary<ThingDef, ResearchProjectDef> srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
+        public static bool CEModLoaded = false;
+        public static Type CompProperties_ExplosiveCE;
+        public static Type CompExplosiveCE;
     }
 }

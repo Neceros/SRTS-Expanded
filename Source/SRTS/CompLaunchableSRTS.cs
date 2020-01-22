@@ -266,40 +266,25 @@ namespace SRTS
 	          }
 	    }
 
-        /*public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn pawn)
+        public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn pawn)
         {
-            if(!pawn.Dead && !pawn.InMentalState && pawn.Faction == Faction.OfPlayerSilentFail)
+            if (!pawn.Dead && !pawn.InMentalState && pawn.Faction == Faction.OfPlayerSilentFail)
             {
                 if(pawn.CanReach(this.parent, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn))
                 {
                     if(this.LoadingInProgressOrReadyToLaunch)
                     {
-                        yield return new FloatMenuOption("JoinSRTSGroup".Translate(this.parent.Label), delegate ()
-                        {
-                            foreach(Pawn p in pawn.Map.mapPawns.AllPawnsSpawned)
-                            {
-                                if(p?.CurJobDef != JobDefOf.HaulToTransporter)
-                                    continue;
-                                CompTransporter transport = ((JobDriver_HaulToTransporter)p?.jobs?.curDriver)?.Transporter;
-                                if(transport != null && transport.groupID == p?.mindState?.duty?.transportersGroup)
-                                {
-                                    p.CurJob.lord.AddPawn(pawn);
-                                }
-                            }
-                        }, MenuOptionPriority.Default, null, null, 0f, null, null);
-                    }
-                    else
-                    {
                         yield return new FloatMenuOption("BoardSRTS".Translate(this.parent.Label), delegate ()
                         {
                             Job job = new Job(JobDefOf.EnterTransporter, this.parent);
+                            pawn.jobs.TryTakeOrderedJob(job);
                         }, MenuOptionPriority.Default, null, null, 0f, null, null);
                     }
                 }
             }
-        }*/
+        }
 
-	    public override string CompInspectStringExtra()
+        public override string CompInspectStringExtra()
 	    {
 	          if (!this.LoadingInProgressOrReadyToLaunch)
 		            return (string) null;
@@ -527,13 +512,14 @@ namespace SRTS
 		                  thingsInsideShip.Clear();
 
 		                  cafr.RemoveAllPawns();
-		                  if (cafr.Spawned)
+		                  if(cafr.Spawned)
 			                    Find.WorldObjects.Remove((WorldObject) cafr);
-		                  TravelingTransportPods travelingTransportPods = (TravelingTransportPods) WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
+		                  TravelingSRTS travelingTransportPods = (TravelingSRTS) WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
 		                  travelingTransportPods.Tile = cafr.Tile;
 		                  travelingTransportPods.SetFaction(Faction.OfPlayer);
 		                  travelingTransportPods.destinationTile = destinationTile;
 		                  travelingTransportPods.arrivalAction = arrivalAction;
+                          travelingTransportPods.material = this.parent.Graphic.MatSingle;
 		                  Find.WorldObjects.Add((WorldObject) travelingTransportPods);
 		                  travelingTransportPods.AddPod(activeDropPod.Contents, true);
 		                  activeDropPod.Contents = (ActiveDropPodInfo) null;

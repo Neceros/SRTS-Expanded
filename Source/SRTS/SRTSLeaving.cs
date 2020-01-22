@@ -56,7 +56,7 @@ namespace SRTS
         Lord lord = TransporterUtility.FindLord(this.groupID, this.Map);
         if (lord != null)
           this.Map.lordManager.RemoveLord(lord);
-        TravelingTransportPods travelingTransportPods = (TravelingTransportPods) WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
+        TravelingSRTS travelingTransportPods = (TravelingSRTS) WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
         travelingTransportPods.Tile = this.Map.Tile;
         travelingTransportPods.SetFaction(Faction.OfPlayer);
         travelingTransportPods.destinationTile = this.destinationTile;
@@ -64,6 +64,7 @@ namespace SRTS
         Find.WorldObjects.Add((WorldObject) travelingTransportPods);
         SRTSLeaving.tmpActiveDropPods.Clear();
         SRTSLeaving.tmpActiveDropPods.AddRange((IEnumerable<Thing>) this.Map.listerThings.ThingsInGroup(ThingRequestGroup.ActiveDropPod));
+        travelingTransportPods.material = tmpActiveDropPods.Find(x => (x as SRTSLeaving)?.groupID == this.groupID).Graphic.MatSingle;
         for (int index = 0; index < SRTSLeaving.tmpActiveDropPods.Count; ++index)
         {
           SRTSLeaving tmpActiveDropPod = SRTSLeaving.tmpActiveDropPods[index] as SRTSLeaving;

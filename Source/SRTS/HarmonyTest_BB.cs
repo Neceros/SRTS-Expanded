@@ -38,7 +38,7 @@ namespace SRTS
                         commandAction1.alsoClickIfOtherInGroupClicked = false;
                         commandAction1.action = (Action) (() =>
                         {
-                            float massCapacity = pinv.innerContainer[i].TryGetComp<CompTransporter>().Props.massCapacity;
+                            float massCapacity = SRTSMod.GetStatFor<float>(pinv.innerContainer[i].def.defName, StatName.massCapacity);//pinv.innerContainer[i].TryGetComp<CompTransporter>().Props.massCapacity;
                             if ((double) masss <= (double) massCapacity)
                                 pinv.innerContainer[i].TryGetComp<CompLaunchableSRTS>().WorldStartChoosingDestination(__instance);
                             else

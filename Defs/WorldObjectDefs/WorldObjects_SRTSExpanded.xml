@@ -6,13 +6,13 @@
     <defName>TravelingSRTS</defName>
     <label>Flying Caravan</label>
     <description>Caravan in flight.</description>
-    <worldObjectClass>TravelingTransportPods</worldObjectClass>
+    <worldObjectClass>SRTS.TravelingSRTS</worldObjectClass>
     <texture>SRTSIcon</texture>
     <useDynamicDrawer>true</useDynamicDrawer>
-    <expandingIcon>true</expandingIcon>
+    <expandingIcon>false</expandingIcon>
     <expandingIconTexture>SRTSIcon</expandingIconTexture>
     <expandingIconPriority>30</expandingIconPriority>
-    <expandMore>true</expandMore>
+    <expandMore>false</expandMore>
     <allowCaravanIncidentsWhichGenerateMap>true</allowCaravanIncidentsWhichGenerateMap>
   </WorldObjectDef>
 

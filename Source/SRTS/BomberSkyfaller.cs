@@ -125,15 +125,17 @@ namespace SRTS
             this.payloadReleased = true;
             for (int i = 0; i < numberOfBombs; i++)
             {
-                if (innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => y.def == ThingDefOf.Shell_HighExplosive || y.def == ThingDefOf.Shell_AntigrainWarhead) ?? false))
+                if(innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName)) ?? false))
                 {
+                    Log.Message("Bomb Detected");
                     ActiveDropPod srts = (ActiveDropPod)innerContainer.First();
 
-                    Thing thing = srts?.Contents.innerContainer.First(y => y.def == ThingDefOf.Shell_HighExplosive || y.def == ThingDefOf.Shell_AntigrainWarhead);
-                    if (thing is null)
+                    Thing thing = srts?.Contents.innerContainer.FirstOrDefault(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName));
+                    if(thing is null)
                         return;
-
                     Thing thing2 = srts?.Contents.innerContainer.Take(thing, 1);
+                    if (StartUp.CEModLoaded)
+                        goto Block_CEPatched;
                     FallingBomb bombThing = new FallingBomb(thing2, thing2.TryGetComp<CompExplosive>(), this.Map, this.def.skyfaller.shadow);
                     bombThing.HitPoints = int.MaxValue;
                     bombThing.ticksRemaining = 10 + (10 * i);
@@ -145,6 +147,20 @@ namespace SRTS
                     bombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c) / bombThing.ticksRemaining;
                     Thing t = GenSpawn.Spawn(bombThing, c, this.Map);
                     GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(t, thing2.TryGetComp<CompExplosive>().Props.explosiveDamageType, null);
+                    continue;
+
+                Block_CEPatched:;
+                    ThingComp CEComp = (thing2 as ThingWithComps)?.AllComps.Find(x => x.GetType().Name == "CompExplosiveCE");
+                    FallingBombCE CEbombThing = new FallingBombCE(thing2, CEComp.props, CEComp, this.Map, this.def.skyfaller.shadow);
+                    CEbombThing.HitPoints = int.MaxValue;
+                    CEbombThing.ticksRemaining = 10 + (10 * i);
+                    IntVec3 c2 = (from x in GenRadial.RadialCellsAround(this.bombPos, radius, true)
+                                 where x.InBounds(this.Map)
+                                 select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
+                    CEbombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c2) * -10);
+                    CEbombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c2) / CEbombThing.ticksRemaining;
+                    Thing CEt = GenSpawn.Spawn(CEbombThing, c2, this.Map);
+                    //GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(CEt, DamageDefOf., null);
                 }
             }
         }
@@ -155,11 +171,12 @@ namespace SRTS
             activeDropPod.Contents = new ActiveDropPodInfo();
             activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer((IEnumerable<Thing>)((ActiveDropPod)innerContainer.First()).Contents.innerContainer, true, true);
 
-            TravelingTransportPods travelingTransportPods = (TravelingTransportPods)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
+            TravelingSRTS travelingTransportPods = (TravelingSRTS)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
             travelingTransportPods.Tile = this.Map.Tile;
             travelingTransportPods.SetFaction(Faction.OfPlayer);
             travelingTransportPods.destinationTile = this.source.First.Tile;
             travelingTransportPods.arrivalAction = new TransportPodsArrivalAction_LandInSpecificCell(this.source.First.Parent, this.source.Second);
+            travelingTransportPods.material = this.Graphic.MatSingle;
             Find.WorldObjects.Add((WorldObject)travelingTransportPods);
             travelingTransportPods.AddPod(activeDropPod.Contents, true);
             this.Destroy();

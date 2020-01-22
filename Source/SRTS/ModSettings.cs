@@ -22,6 +22,8 @@ namespace SRTS
         public bool displayHomeItems = true;
         public bool disableAdvancedRecipes = false;
         public float buildCostMultiplier = 1f;
+        public List<string> allowedBombs = new List<string>();
+        public List<string> disallowedBombs = new List<string>();
 
         public override void ExposeData()
         {
@@ -30,6 +32,8 @@ namespace SRTS
             Scribe_Values.Look<bool>(ref dynamicRotation, "dynamicRotation", true);
             Scribe_Values.Look<bool>(ref displayHomeItems, "displayHomeItems", true);
             Scribe_Collections.Look<string, SRTS_DefProperties>(ref defProperties, "defProperties", LookMode.Value, LookMode.Deep);
+            Scribe_Collections.Look<string>(ref allowedBombs, "allowedBombs", LookMode.Value);
+            Scribe_Collections.Look<string>(ref disallowedBombs, "disallowedBombs", LookMode.Value);
         }
 
         public void CheckDictionarySavedValid()
@@ -169,7 +173,6 @@ namespace SRTS
             }
             listing_Standard.End();
 
-            Rect viewRect = new Rect(0f, -45f, inRect.width, inRect.height);
             Rect group2 = new Rect(inRect.x, settingsCategory.y + 36f, inRect.width / 3, inRect.height);
 
             if (currentPage == SRTS.SettingsCategory.Stats)
@@ -243,7 +246,7 @@ namespace SRTS
                     listing_Standard.Gap(8f);
                 }
 
-                if(listing_Standard.Settings_Button("AddResearch".Translate(), new Rect(group2.width - 60f, group2.y + 24f, 60f, 20f), Color.white, true, true))
+                if(listing_Standard.Settings_Button("AddItemSRTS".Translate(), new Rect(group2.width - 60f, group2.y + 24f, 60f, 20f), Color.white, true, true))
                 {
                     Find.WindowStack.Add(new Dialog_ResearchChange());
                 }
@@ -254,12 +257,50 @@ namespace SRTS
             }
             else if(currentPage == SRTS.SettingsCategory.Settings)
             {
+                if(!checkValidityBombs)
+                {
+                    ///<summary>Only run once, ensure that removed ThingDefs do not show defNames inside inner list.</summary>
+                    for(int i = mod.settings.allowedBombs.Count - 1; i >= 0; i--)
+                    {
+                        string s = mod.settings.allowedBombs[i];
+                        if (mod.settings.allowedBombs.Contains(s) && DefDatabase<ThingDef>.GetNamedSilentFail(s) is default(ThingDef))
+                            mod.settings.allowedBombs.Remove(s);
+                        if (mod.settings.disallowedBombs.Contains(s) && DefDatabase<ThingDef>.GetNamedSilentFail(s) is default(ThingDef))
+                            mod.settings.disallowedBombs.Remove(s);
+                    }
+                    checkValidityBombs = true;
+                }
+
                 listing_Standard.Begin(group2);
 
                 listing_Standard.CheckboxLabeled("PassengerLimit".Translate(), ref settings.passengerLimits, "PassengerLimitTooltip".Translate());
 
                 listing_Standard.CheckboxLabeled("DisplayHomeItems".Translate(), ref settings.displayHomeItems, "DisplayHomeItemsTooltip".Translate());
+
+                listing_Standard.Gap(24f);
+
+                listing_Standard.Settings_Header("AllowedBombs".Translate(), DialogSettings.highlightColor, GameFont.Small);
+
+                if(listing_Standard.Settings_Button("ChangeItemSRTS".Translate(), new Rect(group2.width - 60f, group2.y - 3f, 60f, 20f), Color.white, true, true))
+                {
+                    Find.WindowStack.Add(new Dialog_AllowedBombs());
+                }
+
                 listing_Standard.End();
+
+                Rect group3 = new Rect(group2.x, group2.y + 96f, group2.width, group2.height / 3);
+                Rect viewRect = new Rect(group3.x, group3.y, group2.width - 24f, group3.height * ((float)mod.settings.allowedBombs.Count / 6f) + 24f);
+
+                Widgets.BeginScrollView(group3, ref scrollPosition, viewRect, true);
+                listing_Standard.Begin(viewRect);
+
+                foreach(string s in mod.settings.allowedBombs)
+                {
+                    listing_Standard.Settings_Header(s, Color.clear, GameFont.Small);
+                }
+
+                listing_Standard.End();
+                Widgets.EndScrollView();
             }
 
             if (currentPage == SRTS.SettingsCategory.Stats || currentPage == SRTS.SettingsCategory.Research)
@@ -301,6 +342,9 @@ namespace SRTS
             this.settings.passengerLimits = true;
             this.settings.dynamicRotation = true;
             this.settings.displayHomeItems = true;
+            this.settings.disallowedBombs.Clear();
+            this.settings.allowedBombs.Clear();
+            StartUp.PopulateAllowedBombs();
         }
 
         public void ReferenceDefCheck(ref SRTS_DefProperties props)
@@ -375,6 +419,8 @@ namespace SRTS
         public Vector2 scrollPosition;
 
         public SRTS_DefProperties props;
+
+        private bool checkValidityBombs = false;
     }
 
     public class SRTS_DefProperties : IExposable

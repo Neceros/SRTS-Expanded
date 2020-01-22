@@ -21,6 +21,10 @@
 	<DisplayHomeItems>Display All Items</DisplayHomeItems>
 	<DisplayHomeItemsTooltip>Display all items on the map when loading SRTS and not on home map.</DisplayHomeItemsTooltip>
 	<DefSettings>Stats</DefSettings>
+	<AllowedBombs>Allowed Explosives (Bomb Runs)</AllowedBombs>
+	<ChangeItemSRTS>Edit</ChangeItemSRTS>
+	<SearchExplosive>Add Item</SearchExplosive>
+	<CurrentExplosives>Allowed Explosives</CurrentExplosives>
 	
 	<SRTSSettings>SRTS Settings</SRTSSettings>
 	<FlightSpeed>Flight Speed (World Map)</FlightSpeed>
@@ -41,7 +45,7 @@
 	<ResearchSettings>Research</ResearchSettings>
 	<ResearchDef>{0} ResearchDef</ResearchDef>
 	<SearchResearch>Add Research Defs</SearchResearch>
-	<AddResearch>Add</AddResearch>
+	<AddItemSRTS>Add</AddItemSRTS>
 	<RemoveResearch>Remove</RemoveResearch>
 	<RestartGameResearch>Restart your game for new research settings to apply</RestartGameResearch>
 	
