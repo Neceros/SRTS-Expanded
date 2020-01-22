@@ -71,7 +71,7 @@
       <skillRequirements>
         <Crafting>12</Crafting>
       </skillRequirements>
-      <researchPrerequisite>Research_SRTSMk3</researchPrerequisite>
+      <researchPrerequisite>Research_SRTSMk2</researchPrerequisite>
     </recipeMaker>
   </ThingDef>
 
