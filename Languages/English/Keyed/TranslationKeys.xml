@@ -21,6 +21,8 @@
 	<DisplayHomeItems>Display All Items</DisplayHomeItems>
 	<DisplayHomeItemsTooltip>Display all items on the map when loading SRTS and not on home map.</DisplayHomeItemsTooltip>
 	<DefSettings>Stats</DefSettings>
+	<ExpandBombPoints>Expand Bomb Targets</ExpandBombPoints>
+	<ExpandBombPointsTooltip>Expand the bombing points along the targeting line to fit across the line.</ExpandBombPointsTooltip>
 	<AllowedBombs>Allowed Explosives (Bomb Runs)</AllowedBombs>
 	<ChangeItemSRTS>Edit</ChangeItemSRTS>
 	<SearchExplosive>Add Item</SearchExplosive>
@@ -41,6 +43,9 @@
 	<BombSpeed>Flight Speed (Bomb Run)</BombSpeed>
 	<RadiusDrop>Bomb Radius</RadiusDrop>
 	<NumberBombs>Max Bombs Dropped</NumberBombs>
+	<DistanceBetweenDrops>Distance between drops</DistanceBetweenDrops>
+	<CellsEndValue> Cells</CellsEndValue>
+	<SingleDrop>Single Drop</SingleDrop>
 	
 	<ResearchSettings>Research</ResearchSettings>
 	<ResearchDef>{0} ResearchDef</ResearchDef>

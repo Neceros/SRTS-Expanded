@@ -41,6 +41,15 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(TransportPodsArrivalActionUtility), name: nameof(TransportPodsArrivalActionUtility.DropTravelingTransportPods)),
                 prefix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(DropSRTSExactSpot)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(Targeter), name: nameof(Targeter.TargeterOnGUI)), prefix: null,
+                postfix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(DrawBombingTargeter)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(Targeter), name: nameof(Targeter.ProcessInputEvents)), prefix: null,
+                postfix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(ProcessBombingInputEvents)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(Targeter), name: nameof(Targeter.TargeterUpdate)), prefix: null,
+                postfix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(BombTargeterUpdate)));
             
             //Custom Settings
             harmony.Patch(original: AccessTools.Property(type: typeof(TravelingTransportPods), name: "TraveledPctStepPerTick").GetGetMethod(nonPublic: true),
@@ -423,6 +432,21 @@ namespace SRTS
             return true;
         }
 
+        public static void DrawBombingTargeter()
+        {
+            StartUp.targeter.TargeterOnGUI();
+        }
+
+        public static void ProcessBombingInputEvents()
+        {
+            StartUp.targeter.ProcessInputEvents();
+        }
+
+        public static void BombTargeterUpdate()
+        {
+            StartUp.targeter.TargeterUpdate();
+        }
+
         public static bool CustomSRTSMassCapacity(ref float __result, List<CompTransporter> ___transporters)
         {
             if(___transporters.Any(x => x.parent.TryGetComp<CompLaunchableSRTS>() != null))
@@ -714,10 +738,11 @@ namespace SRTS
             }
         }
         public static bool SRTSInCaravan => TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null);
-        public static Dictionary<int, Pair<Map, IntVec3>> SRTSBombers = new Dictionary<int, Pair<Map, IntVec3>>();
         private static Dictionary<ThingDef, ResearchProjectDef> srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
         public static bool CEModLoaded = false;
         public static Type CompProperties_ExplosiveCE;
         public static Type CompExplosiveCE;
+
+        public static BombingTargeter targeter = new BombingTargeter();
     }
 }

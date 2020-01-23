@@ -16,7 +16,7 @@ namespace SRTS
         {
             if (!StartUp.CEModLoaded)
             {
-                throw new NotImplementedException("Calling wrong constructor. This is only enabled for Combat Extended calls");
+                throw new NotImplementedException("Calling wrong constructor. This is only enabled for Combat Extended calls. - Smash Phil");
             }
             this.def = reference.def;
             this.thingIDNumber = reference.thingIDNumber;
@@ -43,8 +43,7 @@ namespace SRTS
         {
             if (!this.SpawnedOrAnyParentSpawned)
                 return;
-            MethodInfo test = AccessTools.Method(type: StartUp.CompExplosiveCE, "Explode");//.Invoke(CEprops.compClass, new object[] { this, this.Position, this.Map });
-            test.Invoke(this.CEcomp, new object[] { this as Thing, this.Position.ToVector3(), this.Map, 1f});
+            AccessTools.Method(type: StartUp.CompExplosiveCE, "Explode").Invoke(this.CEcomp, new object[] { this as Thing, this.Position.ToVector3(), this.Map, 1f});
             this.Destroy();
         }
 

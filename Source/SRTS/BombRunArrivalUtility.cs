@@ -10,17 +10,17 @@ namespace SRTS
 {
     public static class BombRunArrivalUtility
     {
-        public static void BombWithSRTS(List<ActiveDropPodInfo> srts, IntVec3 target, Map map)
+        public static void BombWithSRTS(List<ActiveDropPodInfo> srts, IntVec3 targetA, IntVec3 targetB, List<IntVec3> bombCells, Map map, Map originalMap, IntVec3 returnSpot)
         {
             if(srts.Count > 1)
                 Log.Error("Initiating bomb run with more than 1 SRTS in Drop Pod Group. This should not happen. - Smash Phil");
             for(int i = 0; i < srts.Count; i++)
             {
-                MakeSRTSBombingAt(target, map, srts[i]);
+                MakeSRTSBombingAt(targetA, targetB, bombCells, map, srts[i], originalMap, returnSpot);
             }
         }
 
-        public static void MakeSRTSBombingAt(IntVec3 c, Map map, ActiveDropPodInfo info)
+        public static void MakeSRTSBombingAt(IntVec3 c1, IntVec3 c2, List<IntVec3> bombCells, Map map, ActiveDropPodInfo info, Map originalMap, IntVec3 returnSpot)
         {
             for (int index = 0; index < info.innerContainer.Count; index++)
             {
@@ -30,7 +30,7 @@ namespace SRTS
                     string shipType = ship.def.defName;
                     ActiveDropPod srts = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(shipType + "_Active"), null);
                     srts.Contents = info;
-                    BomberSkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_BomberRun"), srts, c, map, ship.thingIDNumber, ship);
+                    BomberSkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_BomberRun"), srts, c1, c2, bombCells, map, ship.thingIDNumber, ship, originalMap, returnSpot);
                 }
             }
         }

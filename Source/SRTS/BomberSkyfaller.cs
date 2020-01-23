@@ -17,7 +17,6 @@ namespace SRTS
         public BomberSkyfaller()
         {
             this.innerContainer = new ThingOwner<Thing>(this);
-            this.payloadReleased = false;
         }
 
         public override Graphic Graphic
@@ -75,8 +74,17 @@ namespace SRTS
             {
                 this
             });
-            Scribe_Values.Look<int>(ref this.ticksToExit, "ticksToExit", 0, false);
-            Scribe_Values.Look<float>(ref this.angle, "angle", 0f, false);
+            Scribe_Values.Look<int>(ref ticksToExit, "ticksToExit", 0, false);
+            Scribe_Values.Look<float>(ref angle, "angle", 0f, false);
+            Scribe_References.Look<Map>(ref originalMap, "originalMap");
+            Scribe_Values.Look(ref sourceLandingSpot, "sourceLandingSpot");
+            Scribe_Collections.Look<IntVec3>(ref bombCells, "bombCells", LookMode.Undefined, new object[0]);
+            Scribe_References.Look(ref originalMap, "originalMap");
+
+            Scribe_Values.Look(ref numberOfBombs, "numberOfBombs");
+            Scribe_Values.Look(ref speed, "speed");
+            Scribe_Values.Look(ref radius, "radius");
+            Scribe_Defs.Look(ref sound, "sound");
         }
 
         public override void PostMake()
@@ -111,57 +119,56 @@ namespace SRTS
 
         public override void Tick()
         {
+            Log.Message("thingOwner: " + (innerContainer is null));
             this.innerContainer.ThingOwnerTick(true);
             this.ticksToExit--;
-
-            if(Math.Abs(this.DrawPosCell.x - bombPos.x) < 2 && Math.Abs(this.DrawPosCell.z - bombPos.z) < 2 && !payloadReleased)
-                this.DropBombs();
-            if(this.ticksToExit == 0)
+            Log.Message("cells: " + (bombCells is null) + " | " + bombCells?.Count);
+            if(bombCells.Any() && Math.Abs(this.DrawPosCell.x - bombCells.First().x) < 3 && Math.Abs(this.DrawPosCell.z - bombCells.First().z) < 3)
+                this.DropBomb();
+            if (this.ticksToExit == 0)
                 this.ExitMap();
         }
 
-        private void DropBombs()
+        private void DropBomb()
         {
-            this.payloadReleased = true;
-            for (int i = 0; i < numberOfBombs; i++)
+            if (innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName)) ?? false))
             {
-                if(innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName)) ?? false))
-                {
-                    Log.Message("Bomb Detected");
-                    ActiveDropPod srts = (ActiveDropPod)innerContainer.First();
+                ActiveDropPod srts = (ActiveDropPod)innerContainer.First();
 
-                    Thing thing = srts?.Contents.innerContainer.FirstOrDefault(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName));
-                    if(thing is null)
-                        return;
-                    Thing thing2 = srts?.Contents.innerContainer.Take(thing, 1);
-                    if (StartUp.CEModLoaded)
-                        goto Block_CEPatched;
-                    FallingBomb bombThing = new FallingBomb(thing2, thing2.TryGetComp<CompExplosive>(), this.Map, this.def.skyfaller.shadow);
-                    bombThing.HitPoints = int.MaxValue;
-                    bombThing.ticksRemaining = 10 + (10 * i);
+                Thing thing = srts?.Contents.innerContainer.FirstOrDefault(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName));
+                if (thing is null)
+                    return;
+                Thing thing2 = srts?.Contents.innerContainer.Take(thing, 1);
+                IntVec3 bombPos = bombCells[0];
+                bombCells.RemoveAt(0);
+                int timerTickExplode = 20; //Change later to allow release timer
+                if (StartUp.CEModLoaded)
+                    goto Block_CEPatched;
+                FallingBomb bombThing = new FallingBomb(thing2, thing2.TryGetComp<CompExplosive>(), this.Map, this.def.skyfaller.shadow);
+                bombThing.HitPoints = int.MaxValue;
+                bombThing.ticksRemaining = timerTickExplode; 
 
-                    IntVec3 c = (from x in GenRadial.RadialCellsAround(this.bombPos, radius, true)
-                                 where x.InBounds(this.Map)
-                                 select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
-                    bombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c) * -10);
-                    bombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c) / bombThing.ticksRemaining;
-                    Thing t = GenSpawn.Spawn(bombThing, c, this.Map);
-                    GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(t, thing2.TryGetComp<CompExplosive>().Props.explosiveDamageType, null);
-                    continue;
+                IntVec3 c = (from x in GenRadial.RadialCellsAround(bombPos, radius, true)
+                                where x.InBounds(this.Map)
+                                select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
+                bombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c) * -10);
+                bombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c) / bombThing.ticksRemaining;
+                Thing t = GenSpawn.Spawn(bombThing, c, this.Map);
+                GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(t, thing2.TryGetComp<CompExplosive>().Props.explosiveDamageType, null);
+                return;
 
                 Block_CEPatched:;
-                    ThingComp CEComp = (thing2 as ThingWithComps)?.AllComps.Find(x => x.GetType().Name == "CompExplosiveCE");
-                    FallingBombCE CEbombThing = new FallingBombCE(thing2, CEComp.props, CEComp, this.Map, this.def.skyfaller.shadow);
-                    CEbombThing.HitPoints = int.MaxValue;
-                    CEbombThing.ticksRemaining = 10 + (10 * i);
-                    IntVec3 c2 = (from x in GenRadial.RadialCellsAround(this.bombPos, radius, true)
-                                 where x.InBounds(this.Map)
-                                 select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
-                    CEbombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c2) * -10);
-                    CEbombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c2) / CEbombThing.ticksRemaining;
-                    Thing CEt = GenSpawn.Spawn(CEbombThing, c2, this.Map);
-                    //GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(CEt, DamageDefOf., null);
-                }
+                ThingComp CEComp = (thing2 as ThingWithComps)?.AllComps.Find(x => x.GetType().Name == "CompExplosiveCE");
+                FallingBombCE CEbombThing = new FallingBombCE(thing2, CEComp.props, CEComp, this.Map, this.def.skyfaller.shadow);
+                CEbombThing.HitPoints = int.MaxValue;
+                CEbombThing.ticksRemaining = timerTickExplode;
+                IntVec3 c2 = (from x in GenRadial.RadialCellsAround(bombPos, radius, true)
+                                where x.InBounds(this.Map)
+                                select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
+                CEbombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c2) * -10);
+                CEbombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c2) / CEbombThing.ticksRemaining;
+                Thing CEt = GenSpawn.Spawn(CEbombThing, c2, this.Map);
+                //GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(CEt, DamageDefOf., null); /*Is GenExplosion CE compatible?*/
             }
         }
 
@@ -174,8 +181,8 @@ namespace SRTS
             TravelingSRTS travelingTransportPods = (TravelingSRTS)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
             travelingTransportPods.Tile = this.Map.Tile;
             travelingTransportPods.SetFaction(Faction.OfPlayer);
-            travelingTransportPods.destinationTile = this.source.First.Tile;
-            travelingTransportPods.arrivalAction = new TransportPodsArrivalAction_LandInSpecificCell(this.source.First.Parent, this.source.Second);
+            travelingTransportPods.destinationTile = this.originalMap.Tile;
+            travelingTransportPods.arrivalAction = new TransportPodsArrivalAction_LandInSpecificCell(this.originalMap.Parent, this.sourceLandingSpot);
             travelingTransportPods.material = this.Graphic.MatSingle;
             Find.WorldObjects.Add((WorldObject)travelingTransportPods);
             travelingTransportPods.AddPod(activeDropPod.Contents, true);
@@ -241,16 +248,16 @@ namespace SRTS
 
         private static MaterialPropertyBlock shadowPropertyBlock = new MaterialPropertyBlock();
 
-        public IntVec3 bombPos;
+        public List<IntVec3> bombCells = new List<IntVec3>();
 
-        public Pair<Map, IntVec3> source;
+        public Map originalMap;
+
+        public IntVec3 sourceLandingSpot;
 
         public int numberOfBombs;
 
         public int radius;
 
         public float speed;
-
-        private bool payloadReleased;
     }
 }

@@ -125,11 +125,21 @@ namespace SRTS
                     Map targetMap = targetMapParent.Map;
                     Current.Game.CurrentMap = targetMap;
                     CameraJumper.TryHideWorld();
-                    
-                    Find.Targeter.BeginTargeting(TargetingParameters.ForDropPodsDestination(), delegate (LocalTargetInfo x)
+
+                    TargetingParameters bombingTargetingParams = new TargetingParameters();
+                    bombingTargetingParams.canTargetLocations = true;
+                    bombingTargetingParams.canTargetSelf = false;
+                    bombingTargetingParams.canTargetPawns = false;
+                    bombingTargetingParams.canTargetFires = true;
+                    bombingTargetingParams.canTargetBuildings = true;
+                    bombingTargetingParams.canTargetItems = true;
+                    bombingTargetingParams.validator = ((TargetInfo x) => x.Cell.InBounds(targetMap) && (!x.Cell.GetRoof(targetMap)?.isThickRoof ?? true));
+
+                    StartUp.targeter.BeginTargeting(bombingTargetingParams, delegate (IEnumerable<IntVec3> cells, Pair<IntVec3, IntVec3> targetPoints)
                     {
-                        TryLaunchBombRun(target.Tile, x.Cell, targetMapParent);
-                    }, null, delegate ()
+                        Log.Message("Target: " + targetPoints.First + " | " + targetPoints.Second);
+                        TryLaunchBombRun(target.Tile, targetPoints, cells, targetMapParent);
+                    }, this.parent.def, targetMap, null, delegate ()
                     {
                         if (Find.Maps.Contains(this.parent.Map))
                         {
@@ -143,7 +153,7 @@ namespace SRTS
             return false;
         }
 
-        private void TryLaunchBombRun(int destTile, IntVec3 bombCell, MapParent mapParent)
+        private void TryLaunchBombRun(int destTile, Pair<IntVec3, IntVec3> targetPoints, IEnumerable<IntVec3> bombCells, MapParent mapParent)
         {
             if (!this.parent.Spawned)
             {
@@ -188,9 +198,8 @@ namespace SRTS
             srtsLeaving.rotation = CompLauncher.FuelingPortSource.Rotation;
             srtsLeaving.groupID = groupID;
             srtsLeaving.destinationTile = destTile;
-            srtsLeaving.arrivalAction = new SRTSArrivalActionBombRun(mapParent, bombCell);
-
-            StartUp.SRTSBombers.Add(thing.thingIDNumber, new Pair<Map, IntVec3>(map, CompLauncher.FuelingPortSource.Position));
+            srtsLeaving.arrivalAction = new SRTSArrivalActionBombRun(mapParent, targetPoints, bombCells, map, CompLauncher.FuelingPortSource.Position);
+            //StartUp.SRTSBombers.Add(thing.thingIDNumber, new Pair<Map, IntVec3>(map, CompLauncher.FuelingPortSource.Position));
 
             comp1.CleanUpLoadingVars(map);
             IntVec3 position = fuelPortSource.Position;

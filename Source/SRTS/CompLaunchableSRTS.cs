@@ -578,17 +578,17 @@ namespace SRTS
 				    IEnumerable<FloatMenuOption> nowre = SRTSStatic.getFM(worldObjects[i], pods, this, car);
 				    if (nowre.ToList<FloatMenuOption>().Count < 1)
 				    {
-				    yield return new FloatMenuOption("FormCaravanHere".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) new TransportPodsArrivalAction_FormCaravan(), car)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
+				        yield return new FloatMenuOption("FormCaravanHere".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) new TransportPodsArrivalAction_FormCaravan(), car)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
 				    }
 				    else
 				    {
-				    foreach (FloatMenuOption floatMenuOption in nowre)
-				    {
-					    FloatMenuOption o = floatMenuOption;
-					    anything = true;
-					    yield return o;
-					    o = (FloatMenuOption) null;
-				    }
+				        foreach (FloatMenuOption floatMenuOption in nowre)
+				        {
+					        FloatMenuOption o = floatMenuOption;
+					        anything = true;
+					        yield return o;
+					        o = (FloatMenuOption) null;
+				        }
 				    }
 				    nowre = (IEnumerable<FloatMenuOption>) null;
 			    }

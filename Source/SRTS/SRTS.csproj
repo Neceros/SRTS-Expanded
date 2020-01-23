@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BombingTargeter.cs" />
     <Compile Include="DialogSettings.cs" />
     <Compile Include="FallingBomb.cs" />
     <Compile Include="BomberSkyfaller.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="HarmonyTest_TS.cs" />
     <Compile Include="InitializeDefProperties.cs" />
     <Compile Include="ModSettings.cs" />
-    <Compile Include="MortarDefOf.cs" />
     <Compile Include="SkyfallerDrawPosUtilityExtended.cs" />
     <Compile Include="SPExtra.cs" />
     <Compile Include="SPMultiCell.cs" />

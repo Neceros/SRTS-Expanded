@@ -14,17 +14,22 @@ namespace SRTS
         {
         }
 
-        public SRTSArrivalActionBombRun(MapParent mapParent, IntVec3 cell)
+        public SRTSArrivalActionBombRun(MapParent mapParent, Pair<IntVec3, IntVec3> targetCells, IEnumerable<IntVec3> bombCells, Map originalMap, IntVec3 originalLandingSpot)
         {
             this.mapParent = mapParent;
-            this.cell = cell;
+            this.targetCellA = targetCells.First;
+            this.targetCellB = targetCells.Second;
+            this.bombCells = bombCells.ToList();
+            this.originalMap = originalMap;
+            this.originalLandingSpot = originalLandingSpot;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_References.Look<MapParent>(ref this.mapParent, "mapParent", false);
-            Scribe_Values.Look<IntVec3>(ref this.cell, "cell", default(IntVec3), false);
+            Scribe_Values.Look(ref this.targetCellA, "targetCellA");
+            Scribe_Values.Look(ref this.targetCellB, "targetCellB");
         }
 
         public override FloatMenuAcceptanceReport StillValid(IEnumerable<IThingHolder> pods, int destinationTile)
@@ -44,7 +49,7 @@ namespace SRTS
         public override void Arrived(List<ActiveDropPodInfo> pods, int tile)
         {
             Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
-            BombRunArrivalUtility.BombWithSRTS(pods, this.cell, this.mapParent.Map);
+            BombRunArrivalUtility.BombWithSRTS(pods, this.targetCellA, this.targetCellB, this.bombCells, this.mapParent.Map, originalMap, originalLandingSpot);
             Messages.Message("BombRunStarted".Translate(), lookTarget, MessageTypeDefOf.CautionInput, true);
         }
 
@@ -55,6 +60,14 @@ namespace SRTS
 
         private MapParent mapParent;
 
-        private IntVec3 cell;
+        private IntVec3 targetCellA;
+
+        private IntVec3 targetCellB;
+
+        private List<IntVec3> bombCells;
+
+        private Map originalMap;
+
+        private IntVec3 originalLandingSpot;
     }
 }

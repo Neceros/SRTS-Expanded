@@ -15,6 +15,9 @@ namespace SRTS
     private bool alreadyLeft;
     public Rot4 rotation;
 
+    public Map originalMap;
+    public IntVec3 originalLandingSpot;
+
     public ActiveDropPodInfo Contents
     {
       get

@@ -52,24 +52,25 @@ namespace SRTS
             return (BomberSkyfaller)GenSpawn.Spawn(thing, pos, map, WipeMode.Vanish);
         }
 
-        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, Thing innerThing, IntVec3 pos, Map map, int idNumber, Thing original)
+        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, Thing innerThing, IntVec3 start, IntVec3 end, List<IntVec3> bombCells, Map map, int idNumber, Thing original, Map originalMap, IntVec3 landingSpot)
         {
             BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, innerThing);
-            thing.source = StartUp.SRTSBombers[idNumber];
+            Log.Message(": " + originalMap + " | " + landingSpot);
+            thing.originalMap = originalMap;
+            thing.sourceLandingSpot = landingSpot;
             thing.numberOfBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.numberBombs);
             thing.speed = SRTSMod.GetStatFor<float>(original.def.defName, StatName.bombingSpeed);
             thing.radius = SRTSMod.GetStatFor<int>(original.def.defName, StatName.radiusDrop);
             thing.sound = original.TryGetComp<CompBombFlyer>().Props.soundFlyBy;
 
-            double angle = pos.AngleThroughOrigin(map);
-            if(pos.x == map.Size.x / 2 && pos.z == map.Size.z / 2)
-                angle = 0;
-            IntVec3 exitPoint = SPTrig.PointFromOrigin(angle, map);
+            double angle = start.AngleToPointRelative(end);
             thing.angle = (float)(angle + 90) * -1;
+            IntVec3 exitPoint = SPTrig.ExitPointCustom(angle, start, map);
+            if(exitPoint.IsValid)
+                GenSpawn.Spawn(ThingDefOf.AIPersonaCore, exitPoint, map);
 
-            StartUp.SRTSBombers.Remove(idNumber);
             BomberSkyfaller bomber = (BomberSkyfaller)GenSpawn.Spawn(thing, exitPoint, map, WipeMode.Vanish);
-            bomber.bombPos = pos;
+            bomber.bombCells = bombCells;
             return bomber;
         }
 

@@ -171,6 +171,7 @@ Internal power plant: 800w</description>
         <numberBombs>5</numberBombs> <!-- num dropped per run -->
         <radiusOfDrop>4</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
         <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
+		<distanceBetweenDrops>8</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>500</fuelCapacity>
