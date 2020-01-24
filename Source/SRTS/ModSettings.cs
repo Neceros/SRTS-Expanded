@@ -368,7 +368,6 @@ namespace SRTS
             this.settings.disallowedBombs.Clear();
             this.settings.allowedBombs.Clear();
             StartUp.PopulateAllowedBombs();
-            Log.Message("Bomb List Reset");
         }
 
         public void ReferenceDefCheck(ref SRTS_DefProperties props)

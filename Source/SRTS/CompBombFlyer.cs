@@ -137,7 +137,6 @@ namespace SRTS
 
                     StartUp.targeter.BeginTargeting(bombingTargetingParams, delegate (IEnumerable<IntVec3> cells, Pair<IntVec3, IntVec3> targetPoints)
                     {
-                        Log.Message("Target: " + targetPoints.First + " | " + targetPoints.Second);
                         TryLaunchBombRun(target.Tile, targetPoints, cells, targetMapParent);
                     }, this.parent.def, targetMap, null, delegate ()
                     {

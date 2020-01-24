@@ -119,11 +119,8 @@ namespace SRTS
 
         public override void Tick()
         {
-            Log.Message("thingOwner: " + (innerContainer is null));
             this.innerContainer.ThingOwnerTick(true);
             this.ticksToExit--;
-            Log.Message("cells: " + (bombCells is null) + " | " + bombCells?.Count);
-            Log.Message("Everything Else: " + (originalMap is null) + " | " + (sourceLandingSpot.IsValid) + " | " + numberOfBombs);
             if(bombCells.Any() && Math.Abs(this.DrawPosCell.x - bombCells.First().x) < 3 && Math.Abs(this.DrawPosCell.z - bombCells.First().z) < 3)
                 this.DropBomb();
             if (this.ticksToExit == 0)
