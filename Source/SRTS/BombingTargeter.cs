@@ -88,14 +88,6 @@ namespace SRTS
 
         public void TargeterUpdate()
         {
-            if(this.action != null)
-            {
-                LocalTargetInfo target = this.CurrentTargetUnderMouse();
-                if(target.IsValid)
-                {
-                    GenDraw.DrawTargetHighlight(target);
-                }
-            }
             if(this.selections.Any())
             {
                 GenDraw.DrawLineBetween(selections[0].CenterVector3, UI.MouseMapPosition().ToIntVec3().ToVector3Shifted(), SimpleColor.Red);
@@ -106,17 +98,20 @@ namespace SRTS
         private void DrawTargetingPoints()
         {
             GenDraw.DrawRadiusRing(selections[0].Cell, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
+            GenDraw.DrawTargetHighlight(new LocalTargetInfo(selections[0].Cell));
             this.targetingLength = Vector3.Distance(selections[0].CenterVector3, UI.MouseMapPosition().ToIntVec3().ToVector3Shifted());
             this.numRings = ((int)(targetingLength / SRTSMod.GetStatFor<float>(this.bomber.defName, StatName.distanceBetweenDrops))).Clamp<int>(0, SRTSMod.GetStatFor<int>(this.bomber.defName, StatName.numberBombs));
             
             if(SRTSMod.mod.settings.expandBombPoints && numRings >= 1)
             {
                 GenDraw.DrawRadiusRing(UI.MouseMapPosition().ToIntVec3(), SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
+                GenDraw.DrawTargetHighlight(new LocalTargetInfo(UI.MouseMapPosition().ToIntVec3()));
             }
             for(int i = 1; i < numRings - (SRTSMod.mod.settings.expandBombPoints ? 1 : 0); i++)
             {
                 IntVec3 cellTargeted = this.TargeterToCell(i);
                 GenDraw.DrawRadiusRing(cellTargeted, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
+                GenDraw.DrawTargetHighlight(new LocalTargetInfo(cellTargeted));
             }
         }
 
