@@ -519,7 +519,7 @@ namespace SRTS
 		                  travelingTransportPods.SetFaction(Faction.OfPlayer);
 		                  travelingTransportPods.destinationTile = destinationTile;
 		                  travelingTransportPods.arrivalAction = arrivalAction;
-                          travelingTransportPods.material = this.parent.Graphic.MatSingle;
+                          travelingTransportPods.flyingThing = this.parent;
 		                  Find.WorldObjects.Add((WorldObject) travelingTransportPods);
 		                  travelingTransportPods.AddPod(activeDropPod.Contents, true);
 		                  activeDropPod.Contents = (ActiveDropPodInfo) null;

@@ -17,6 +17,7 @@ namespace SRTS
         public BomberSkyfaller()
         {
             this.innerContainer = new ThingOwner<Thing>(this);
+            this.bombCells = new List<IntVec3>();
         }
 
         public override Graphic Graphic
@@ -74,12 +75,11 @@ namespace SRTS
             {
                 this
             });
+            Scribe_References.Look(ref originalMap, "originalMap");
             Scribe_Values.Look<int>(ref ticksToExit, "ticksToExit", 0, false);
             Scribe_Values.Look<float>(ref angle, "angle", 0f, false);
-            Scribe_References.Look<Map>(ref originalMap, "originalMap");
             Scribe_Values.Look(ref sourceLandingSpot, "sourceLandingSpot");
-            Scribe_Collections.Look<IntVec3>(ref bombCells, "bombCells", LookMode.Undefined, new object[0]);
-            Scribe_References.Look(ref originalMap, "originalMap");
+            Scribe_Collections.Look<IntVec3>(ref bombCells, "bombCells", LookMode.Value);
 
             Scribe_Values.Look(ref numberOfBombs, "numberOfBombs");
             Scribe_Values.Look(ref speed, "speed");
@@ -123,6 +123,7 @@ namespace SRTS
             this.innerContainer.ThingOwnerTick(true);
             this.ticksToExit--;
             Log.Message("cells: " + (bombCells is null) + " | " + bombCells?.Count);
+            Log.Message("Everything Else: " + (originalMap is null) + " | " + (sourceLandingSpot.IsValid) + " | " + numberOfBombs);
             if(bombCells.Any() && Math.Abs(this.DrawPosCell.x - bombCells.First().x) < 3 && Math.Abs(this.DrawPosCell.z - bombCells.First().z) < 3)
                 this.DropBomb();
             if (this.ticksToExit == 0)
@@ -183,7 +184,7 @@ namespace SRTS
             travelingTransportPods.SetFaction(Faction.OfPlayer);
             travelingTransportPods.destinationTile = this.originalMap.Tile;
             travelingTransportPods.arrivalAction = new TransportPodsArrivalAction_LandInSpecificCell(this.originalMap.Parent, this.sourceLandingSpot);
-            travelingTransportPods.material = this.Graphic.MatSingle;
+            travelingTransportPods.flyingThing = this;
             Find.WorldObjects.Add((WorldObject)travelingTransportPods);
             travelingTransportPods.AddPod(activeDropPod.Contents, true);
             this.Destroy();

@@ -11,104 +11,66 @@ namespace SRTS
 {
     public class TravelingSRTS : TravelingTransportPods
     {
-        public override Texture2D ExpandingIcon => RotateTexture((Texture2D)SRTSMaterial.mainTexture, Vector3.Angle(this.DrawPos, Find.WorldGrid.GetTileCenter(this.destinationTile)));
-
         private Material SRTSMaterial
         {
             get
             {
-                if (material is null)
+                if(flyingThing is null)
                     return this.Material;
-                return material;
+                return flyingThing.Graphic.MatSingle;
             }
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_References.Look(ref flyingThing, "flyingThing");
         }
         public override void Draw()
         {
-            float averageTileSize = Find.WorldGrid.averageTileSize;
-            float transitionPct = ExpandableWorldObjectsUtility.TransitionPct;
-            Vector3 normalized = this.DrawPos.normalized;
+            if(!SRTSMod.mod.settings.dynamicWorldDrawingSRTS)
+            {
+                base.Draw();
+                return;
+            }
+            //Log.Message("Point: " + Find.WorldCameraDriver.CurrentlyLookingAtPointOnSphere);
+            if (!this.HiddenBehindTerrainNow())
+            {
+                float averageTileSize = Find.WorldGrid.averageTileSize;
+                float transitionPct = ExpandableWorldObjectsUtility.TransitionPct;
             
-            Quaternion quat = Quaternion.LookRotation(this.DrawPos - Find.WorldGrid.GetTileCenter(this.destinationTile), normalized);
-            Vector3 s = new Vector3(averageTileSize * 0.7f, 1f, averageTileSize * 0.7f);
-            Matrix4x4 matrix = default;
-            matrix.SetTRS(this.DrawPos + normalized * 0.015f, quat, s);
-            int layer = WorldCameraManager.WorldLayer; //WorldLayer originally
-            Graphics.DrawMesh(MeshPool.plane10, matrix, this.SRTSMaterial, layer);
-        }
+                if(transitionSize < 1)
+                    transitionSize += TransitionTakeoff * (int)Find.TickManager.CurTimeSpeed;
+                float drawPct = (1 + (transitionPct * Find.WorldCameraDriver.AltitudePercent * ExpandingResize)) * transitionSize;
 
-        private Texture2D RotateTexture(Texture2D tex, float angle)
-        {
-            Texture2D rotImage = new Texture2D(tex.width, tex.height);
-            int x, y;
-            float x1, y1, x2, y2;
+                if(directionFacing == default)
+                    InitializeFacing();
+                
+                Vector3 normalized = this.DrawPos.normalized;
+                Quaternion quat = Quaternion.LookRotation(Vector3.Cross(normalized, directionFacing), normalized) * Quaternion.Euler(0f, -90f, 0f);
+                Vector3 s = new Vector3(averageTileSize * 0.7f * drawPct, 1f, averageTileSize * 0.7f * drawPct);
 
-            int w = tex.width;
-            int h = tex.height;
-            float x0 = rot_x(angle, -w / 2.0f, -h / 2.0f) + w / 2.0f;
-            float y0 = rot_y(angle, -w / 2.0f, -h / 2.0f) + h / 2.0f;
-
-            float dx_x = rot_x(angle, 1.0f, 0.0f);
-            float dx_y = rot_y(angle, 1.0f, 0.0f);
-            float dy_x = rot_x(angle, 0.0f, 1.0f);
-            float dy_y = rot_y(angle, 0.0f, 1.0f);
-
-
-            x1 = x0;
-            y1 = y0;
-
-            for (x = 0; x < tex.width; x++)
-            {
-                x2 = x1;
-                y2 = y1;
-                for (y = 0; y < tex.height; y++)
-                {
-                    //rotImage.SetPixel (x1, y1, Color.clear);          
-                    x2 += dx_x;//rot_x(angle, x1, y1);
-                    y2 += dx_y;//rot_y(angle, x1, y1);
-                    rotImage.SetPixel((int)Mathf.Floor(x), (int)Mathf.Floor(y), getPixel(tex, x2, y2));
-                }
-
-                x1 += dy_x;
-                y1 += dy_y;
-
+                Matrix4x4 matrix = default;
+                matrix.SetTRS(this.DrawPos + normalized * 0.015f, quat, s);
+                int layer = WorldCameraManager.WorldLayer;
+                Graphics.DrawMesh(MeshPool.plane10, matrix, this.SRTSMaterial, layer);
             }
-
-            rotImage.Apply();
-            return rotImage;
         }
 
-        private Color getPixel(Texture2D tex, float x, float y)
+        private void InitializeFacing()
         {
-            Color pix;
-            int x1 = (int)Mathf.Floor(x);
-            int y1 = (int)Mathf.Floor(y);
-
-            if (x1 > tex.width || x1 < 0 ||
-               y1 > tex.height || y1 < 0)
-            {
-                pix = Color.clear;
-            }
-            else
-            {
-                pix = tex.GetPixel(x1, y1);
-            }
-
-            return pix;
+            Vector3 tileLocation = Find.WorldGrid.GetTileCenter(this.destinationTile).normalized;
+            directionFacing = (this.DrawPos - tileLocation).normalized;
         }
 
-        private float rot_x(float angle, float x, float y)
-        {
-            float cos = Mathf.Cos(angle / 180.0f * Mathf.PI);
-            float sin = Mathf.Sin(angle / 180.0f * Mathf.PI);
-            return (x * cos + y * (-sin));
-        }
-        private float rot_y(float angle, float x, float y)
-        {
-            float cos = Mathf.Cos(angle / 180.0f * Mathf.PI);
-            float sin = Mathf.Sin(angle / 180.0f * Mathf.PI);
-            return (x * sin + y * cos);
-        }
+        public Thing flyingThing;
 
-        public Material material;
+        private const float ExpandingResize = 35f;
+
+        private const float TransitionTakeoff = 0.015f;
+
+        private float transitionSize = 0f;
+
+        Vector3 directionFacing;
     }
 }

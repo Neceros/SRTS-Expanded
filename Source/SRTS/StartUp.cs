@@ -33,9 +33,12 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(SettlementBase_TraderTracker), name: nameof(SettlementBase_TraderTracker.GiveSoldThingToPlayer)), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(GiveSoldThingsToSRTSTranspiler)));
-            harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.CanStartNow)).GetGetMethod(),
-                prefix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(CanStartCustomResearch)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(WorldDynamicDrawManager), name: nameof(WorldDynamicDrawManager.DrawDynamicWorldObjects)), prefix: null, postfix: null,
+                transpiler: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(DrawDynamicSRTSObjectsTranspiler)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(ExpandableWorldObjectsUtility), name: nameof(ExpandableWorldObjectsUtility.ExpandableWorldObjectsOnGUI)), prefix: null, postfix: null,
+                transpiler: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(ExpandableIconDetourSRTSTranspiler)));
 
             //Bomb Runs
             harmony.Patch(original: AccessTools.Method(type: typeof(TransportPodsArrivalActionUtility), name: nameof(TransportPodsArrivalActionUtility.DropTravelingTransportPods)),
@@ -67,9 +70,9 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddItemsToTransferables"), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(AddItemsEntireMapNonHomeTranspiler)));
-            harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "CheckForErrors"), prefix: null, postfix: null,
+            /*harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "CheckForErrors"), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ErrorOnNoPawnsTranspiler)));
+                name: nameof(ErrorOnNoPawnsTranspiler)));*/
             harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.CostApparent)).GetGetMethod(),
                 prefix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(ResearchCostApparent)));
@@ -99,12 +102,7 @@ namespace SRTS
                name: nameof(DrawCustomResearchPrereqs)));
         }
 
-        public static bool CanStartCustomResearch(ref bool __result, ResearchProjectDef __instance)
-        {
-            //Log.Message(!__instance.IsFinished + " | " + __instance.PrerequisitesCompleted + " | ");
-            return true;
-        }
-        public static IEnumerable<CodeInstruction> ErrorOnNoPawnsTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
+        /*public static IEnumerable<CodeInstruction> ErrorOnNoPawnsTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
             List<CodeInstruction> instructionsList = instructions.ToList();
 
@@ -112,7 +110,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionsList[i];
 
-                /*if(instruction.opcode == OpCodes.Ldc_I4_1 && instructionsList[i+1].opcode == OpCodes.Ret && SRTSMod.mod.settings.passengerLimits)
+                if (instruction.opcode == OpCodes.Ldc_I4_1 && instructionsList[i + 1].opcode == OpCodes.Ret && SRTSMod.mod.settings.passengerLimits)
                 {
                     Label label = ilg.DefineLabel();
                     Label label2 = ilg.DefineLabel();
@@ -172,11 +170,11 @@ namespace SRTS
                     yield return new CodeInstruction(opcode: OpCodes.Ret);
 
                     instruction.labels.Add(label2);
-                }*/
+                }
 
                 yield return instruction;
             }
-        }
+        }*/
 
         public static string MinMaxString(List<CompTransporter> transporters, bool min)
         {
@@ -288,6 +286,82 @@ namespace SRTS
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.AddToSRTSFromCaravan)));
                     instruction.labels.Add(label);
                 }
+                yield return instruction;
+            }
+        }
+
+        public static IEnumerable<CodeInstruction> DrawDynamicSRTSObjectsTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
+        {
+            List<CodeInstruction> instructionList = instructions.ToList();
+
+            for(int i = 0; i < instructionList.Count; i++)
+            {
+                CodeInstruction instruction = instructionList[i];
+
+                if(instruction.opcode == OpCodes.Call && instruction.operand == AccessTools.Property(type: typeof(ExpandableWorldObjectsUtility), name: nameof(ExpandableWorldObjectsUtility.TransitionPct)).GetGetMethod())
+                {
+                    Label label = ilg.DefineLabel();
+                    Label brlabel = ilg.DefineLabel();
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Isinst, operand: typeof(TravelingSRTS));
+                    yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
+
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(StartUp), name: nameof(StartUp.DynamicTexturesEnabled)).GetGetMethod());
+                    yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(TravelingSRTS), name: nameof(TravelingSRTS.Draw)));
+                    yield return new CodeInstruction(opcode: OpCodes.Leave, brlabel);
+
+                    int j = i;
+                    while(j < instructionList.Count)
+                    {
+                        if(instructionList[j].opcode == OpCodes.Ldloca_S)
+                        {
+                            instructionList[j].labels.Add(brlabel);
+                            break;
+                        }
+                        j++;
+                    }
+                    instruction.labels.Add(label);
+                }
+                yield return instruction;
+            }
+        }
+
+        public static IEnumerable<CodeInstruction> ExpandableIconDetourSRTSTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
+        {
+            List<CodeInstruction> instructionList = instructions.ToList();
+            Label jumpLabel = ilg.DefineLabel();
+
+            for(int i = 0; i < instructionList.Count; i++)
+            {
+                CodeInstruction instruction = instructionList[i];
+
+                if(instruction.opcode == OpCodes.Ldloc_2 && instructionList[i+1].opcode == OpCodes.Ldc_I4_1)
+                {
+                    instruction.labels.Add(jumpLabel);
+                }
+                if(instruction.opcode == OpCodes.Callvirt && instruction.operand == AccessTools.Property(type: typeof(WorldObject), name: nameof(WorldObject.ExpandingIconColor)).GetGetMethod())
+                {
+                    Label label = ilg.DefineLabel();
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_3);
+                    yield return new CodeInstruction(opcode: OpCodes.Isinst, operand: typeof(TravelingSRTS));
+                    yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
+
+                    yield return new CodeInstruction(opcode: OpCodes.Pop);
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(StartUp), name: nameof(StartUp.DynamicTexturesEnabled)).GetGetMethod());
+                    yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_3);
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(TravelingSRTS), name: nameof(TravelingSRTS.Draw)));
+                    yield return new CodeInstruction(opcode: OpCodes.Br, jumpLabel);
+
+                    instruction.labels.Add(label);
+                }
+
                 yield return instruction;
             }
         }
@@ -738,6 +812,7 @@ namespace SRTS
             }
         }
         public static bool SRTSInCaravan => TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null);
+        public static bool DynamicTexturesEnabled => SRTSMod.mod.settings.dynamicWorldDrawingSRTS;
         private static Dictionary<ThingDef, ResearchProjectDef> srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
         public static bool CEModLoaded = false;
         public static Type CompProperties_ExplosiveCE;

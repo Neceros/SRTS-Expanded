@@ -28,8 +28,12 @@ namespace SRTS
         {
             base.ExposeData();
             Scribe_References.Look<MapParent>(ref this.mapParent, "mapParent", false);
+            Scribe_References.Look(ref originalMap, "originalMap");
             Scribe_Values.Look(ref this.targetCellA, "targetCellA");
             Scribe_Values.Look(ref this.targetCellB, "targetCellB");
+
+            Scribe_Collections.Look(ref bombCells, "bombCells");
+            Scribe_Values.Look(ref originalLandingSpot, "originalLandingSpot");
         }
 
         public override FloatMenuAcceptanceReport StillValid(IEnumerable<IThingHolder> pods, int destinationTile)

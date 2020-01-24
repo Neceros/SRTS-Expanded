@@ -55,7 +55,6 @@ namespace SRTS
         public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, Thing innerThing, IntVec3 start, IntVec3 end, List<IntVec3> bombCells, Map map, int idNumber, Thing original, Map originalMap, IntVec3 landingSpot)
         {
             BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, innerThing);
-            Log.Message(": " + originalMap + " | " + landingSpot);
             thing.originalMap = originalMap;
             thing.sourceLandingSpot = landingSpot;
             thing.numberOfBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.numberBombs);
@@ -79,7 +78,5 @@ namespace SRTS
             BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, things);
             return (BomberSkyfaller)GenSpawn.Spawn(thing, pos, map, WipeMode.Vanish);
         }
-
-        
     }
 }

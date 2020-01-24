@@ -21,13 +21,15 @@
 	<DisplayHomeItems>Display All Items</DisplayHomeItems>
 	<DisplayHomeItemsTooltip>Display all items on the map when loading SRTS and not on home map.</DisplayHomeItemsTooltip>
 	<DefSettings>Stats</DefSettings>
+	<DynamicWorldObjectSRTS>Dynamic World Textures</DynamicWorldObjectSRTS>
+	<DynamicWorldObjectSRTSTooltip>Dynamically draw SRTS textures on the world map to match both SRTS texture and rotation</DynamicWorldObjectSRTSTooltip>
 	<ExpandBombPoints>Expand Bomb Targets</ExpandBombPoints>
 	<ExpandBombPointsTooltip>Expand the bombing points along the targeting line to fit across the line.</ExpandBombPointsTooltip>
 	<AllowedBombs>Allowed Explosives (Bomb Runs)</AllowedBombs>
 	<ChangeItemSRTS>Edit</ChangeItemSRTS>
 	<SearchExplosive>Add Item</SearchExplosive>
 	<CurrentExplosives>Allowed Explosives</CurrentExplosives>
-	
+
 	<SRTSSettings>SRTS Settings</SRTSSettings>
 	<FlightSpeed>Flight Speed (World Map)</FlightSpeed>
 	<Instant>Instant</Instant>
@@ -64,6 +66,7 @@
 	<TooManyPilots>Too many colonists to launch</TooManyPilots>
 	<BombRunStarted>Bomb run has begun.</BombRunStarted>
 	<CannotBombMap>Cannot bomb here unless active map is loaded.</CannotBombMap>
+
 	<!-- Caravans -->
 
 	<!-- Status -->

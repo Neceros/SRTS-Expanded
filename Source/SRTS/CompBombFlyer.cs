@@ -199,7 +199,6 @@ namespace SRTS
             srtsLeaving.groupID = groupID;
             srtsLeaving.destinationTile = destTile;
             srtsLeaving.arrivalAction = new SRTSArrivalActionBombRun(mapParent, targetPoints, bombCells, map, CompLauncher.FuelingPortSource.Position);
-            //StartUp.SRTSBombers.Add(thing.thingIDNumber, new Pair<Map, IntVec3>(map, CompLauncher.FuelingPortSource.Position));
 
             comp1.CleanUpLoadingVars(map);
             IntVec3 position = fuelPortSource.Position;

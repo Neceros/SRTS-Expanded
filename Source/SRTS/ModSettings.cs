@@ -18,24 +18,28 @@ namespace SRTS
         public Dictionary<string, SRTS_DefProperties> defProperties = new Dictionary<string, SRTS_DefProperties>();
 
         public bool passengerLimits = true;
-        public bool dynamicRotation = true;
         public bool displayHomeItems = true;
         public bool disableAdvancedRecipes = false;
         public bool expandBombPoints = true;
+        public bool dynamicWorldDrawingSRTS = true;
         public float buildCostMultiplier = 1f;
         public List<string> allowedBombs = new List<string>();
         public List<string> disallowedBombs = new List<string>();
 
+        internal bool CEPreviouslyInitialized;
+
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<bool>(ref passengerLimits, "passengerLimits", true);
-            Scribe_Values.Look<bool>(ref dynamicRotation, "dynamicRotation", true);
-            Scribe_Values.Look<bool>(ref displayHomeItems, "displayHomeItems", true);
-            Scribe_Values.Look<bool>(ref expandBombPoints, "expandBombPoints", true);
+            Scribe_Values.Look(ref passengerLimits, "passengerLimits", true);
+            Scribe_Values.Look(ref displayHomeItems, "displayHomeItems", true);
+            Scribe_Values.Look(ref expandBombPoints, "expandBombPoints", true);
+            Scribe_Values.Look(ref dynamicWorldDrawingSRTS, "dynamicWorldDrawingSRTS", true);
             Scribe_Collections.Look<string, SRTS_DefProperties>(ref defProperties, "defProperties", LookMode.Value, LookMode.Deep);
             Scribe_Collections.Look<string>(ref allowedBombs, "allowedBombs", LookMode.Value);
             Scribe_Collections.Look<string>(ref disallowedBombs, "disallowedBombs", LookMode.Value);
+
+            Scribe_Values.Look(ref CEPreviouslyInitialized, "CEPreviouslyInitialized");
         }
 
         public void CheckDictionarySavedValid()
@@ -280,13 +284,16 @@ namespace SRTS
 
                 listing_Standard.CheckboxLabeled("DisplayHomeItems".Translate(), ref settings.displayHomeItems, "DisplayHomeItemsTooltip".Translate());
 
-                listing_Standard.CheckboxLabeled("ExpandBombPoints".Translate(), ref settings.expandBombPoints, "ExpandBombPointsTooltip".Translate());
+                listing_Standard.CheckboxLabeled("DynamicWorldObjectSRTS".Translate(), ref settings.dynamicWorldDrawingSRTS, "DynamicWorldObjectSRTSTooltip".Translate());
 
                 listing_Standard.Gap(24f);
-                
+
+                listing_Standard.CheckboxLabeled("ExpandBombPoints".Translate(), ref settings.expandBombPoints, "ExpandBombPointsTooltip".Translate());
+
                 listing_Standard.End();
 
-                float bufferFromGroup2 = 96f;
+                int numBoxesBefore = 4;
+                float bufferFromGroup2 = 24f + (24 * numBoxesBefore);
                 Rect bombLabel = new Rect(group2.x, group2.y + bufferFromGroup2, group2.width, group2.height / 3);
                 listing_Standard.Begin(bombLabel);
 
@@ -349,11 +356,19 @@ namespace SRTS
         {
             SoundDefOf.RadioButtonClicked.PlayOneShotOnCamera();
             this.settings.passengerLimits = true;
-            this.settings.dynamicRotation = true;
+            this.settings.dynamicWorldDrawingSRTS = true;
             this.settings.displayHomeItems = true;
             this.settings.disallowedBombs.Clear();
             this.settings.allowedBombs.Clear();
             StartUp.PopulateAllowedBombs();
+        }
+
+        internal void ResetBombList()
+        {
+            this.settings.disallowedBombs.Clear();
+            this.settings.allowedBombs.Clear();
+            StartUp.PopulateAllowedBombs();
+            Log.Message("Bomb List Reset");
         }
 
         public void ReferenceDefCheck(ref SRTS_DefProperties props)
