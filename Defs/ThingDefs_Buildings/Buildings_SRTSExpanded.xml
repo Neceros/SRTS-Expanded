@@ -123,8 +123,8 @@ Internal power plant: 600w</description>
 
 
   <ThingDef ParentName="ShipBase">
-    <defName>SRTSSkip</defName>
-    <label>SRTS Mk.I: Skip</label>
+    <defName>SRTSSkip</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>SRTS Mk.I: Skip</label> <!-- name displayed ingame -->
     <description>An aerial military vessel designed to scout, quest, and assault. Liable to breakdown.
 
 Passenger capacity: Min 1 - 2 Max
@@ -135,45 +135,45 @@ Fuel capacity: 500L
 Fuel efficiency: Good
 ----------------------------
 Cargo capacity: 420kg
-Internal power plant: 800w</description>
+Internal power plant: 800w</description> <!-- description of course... -->
     <graphicData>
-      <texPath>Skip</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(4,4)</drawSize>
+      <texPath>Skip</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(4,4)</drawSize> <!-- how much the image is stretched out ingame -->
     </graphicData>
-    <size>(2,2)</size>
+    <size>(2,2)</size> <!-- hitbox -->
     <statBases>
-      <MaxHitPoints>350</MaxHitPoints>
-      <WorkToBuild>7200</WorkToBuild>
-      <Flammability>0.7</Flammability>
-      <Mass>20</Mass>
-      <Beauty>25</Beauty>
+      <MaxHitPoints>350</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7200</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
     </statBases>
-    <costList>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
       <Steel>1020</Steel>
       <Plasteel>125</Plasteel>
       <Gold>100</Gold>
       <Silver>1250</Silver>
       <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
-    <comps>
+    <comps> <!-- required for sending as drop pod -->
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.75</restEffectiveness>
         <massCapacity>420</massCapacity>
       </li>
-      <li Class="SRTS.CompProperties_LaunchableSRTS">
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
         <travelSpeed>8</travelSpeed>
         <fuelPerTile>1.75</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>2</maxPassengers>
       </li>
-      <li Class="SRTS.CompProperties_BombsAway">
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont -->
         <numberBombs>5</numberBombs> <!-- num dropped per run -->
         <radiusOfDrop>4</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
         <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
 		<distanceBetweenDrops>8</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
       </li>
-      <li Class="CompProperties_Refuelable">
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
         <fuelCapacity>500</fuelCapacity>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>500</initialConfigurableTargetFuelLevel>
@@ -189,7 +189,7 @@ Internal power plant: 800w</description>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
-      <li Class="CompProperties_Power">
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-800</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
@@ -201,11 +201,11 @@ Internal power plant: 800w</description>
         <glowColor>(217,217,217,0)</glowColor>
       </li>
     </comps>
-    <researchPrerequisites>
+    <researchPrerequisites> <!-- research requirements -->
       <li>Research_SRTSSkip</li>
     </researchPrerequisites>
-    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
-    <uiIconScale>0.55</uiIconScale>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.55</uiIconScale> <!-- UI scaling -->
   </ThingDef>
 
 
