@@ -476,7 +476,7 @@ Internal power plant: 2,800w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(11,15)</drawSize>
+      <drawSize>(15,15)</drawSize>
     </graphicData>
     <size>(5,9)</size>
     <statBases>
