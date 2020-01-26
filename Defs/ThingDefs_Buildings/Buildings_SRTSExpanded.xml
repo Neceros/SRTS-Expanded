@@ -24,17 +24,15 @@
     <inspectorTabs>
       <li>ITab_TransporterContents</li>
     </inspectorTabs>
-    <!---
     <placeWorkers>
       <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
-    -->
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.90</fillPercent>
     <designationCategory>Ship</designationCategory>
     <killedLeavings>
-      <ChunkSlagSteel>8</ChunkSlagSteel>
+      <ChunkSlagSteel>12</ChunkSlagSteel>
     </killedLeavings>
     <comps />
   </ThingDef>
@@ -77,12 +75,12 @@ Internal power plant: 600w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>0.5</restEffectiveness>
-        <massCapacity>240</massCapacity>
+        <restEffectiveness>0.5</restEffectiveness>  <!-- How well (1.0 = 100%) passengers can rest, eat, heal while aboard -->
+        <massCapacity>240</massCapacity> <!-- weight in kg -->
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>2</travelSpeed> <!-- Drop pod is 25 speed, min 1, max 100 -->
-        <fuelPerTile>2.50</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 6 -->
+        <travelSpeed>1</travelSpeed> <!-- Vanilla drop pod is 25 speed, min 1, max 100 -->
+        <fuelPerTile>2.50</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 6. Why'd we cap it at 6? I can't remember. -->
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
       </li>
@@ -127,17 +125,21 @@ Internal power plant: 600w</description>
     <label>SRTS Mk.I: Skip</label> <!-- name displayed ingame -->
     <description>An aerial military vessel designed to scout, quest, and assault. Liable to breakdown.
 
-Passenger capacity: Min 1 - 2 Max
-Military: 5 bombs
+Passenger cap: Min 1 - 2 Max
+--Military--
+  Bombs: 4
+  Accuracy: Poor
 ----------------------------
 Speed: Normal
-Fuel capacity: 500L
+Fuel cap: 500L
 Fuel efficiency: Good
 ----------------------------
-Cargo capacity: 420kg
+Cargo cap: 420kg
 Internal power plant: 800w</description> <!-- description of course... -->
     <graphicData>
-      <texPath>Skip</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol -->
+      <texPath>Skip</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
       <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
       <drawSize>(4,4)</drawSize> <!-- how much the image is stretched out ingame -->
     </graphicData>
@@ -168,10 +170,10 @@ Internal power plant: 800w</description> <!-- description of course... -->
         <maxPassengers>2</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont -->
-        <numberBombs>5</numberBombs> <!-- num dropped per run -->
-        <radiusOfDrop>4</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <numberBombs>4</numberBombs> <!-- num dropped per run -->
+        <radiusOfDrop>6</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
         <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
-		<distanceBetweenDrops>8</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+		    <distanceBetweenDrops>6</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
       </li>
       <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
         <fuelCapacity>500</fuelCapacity>
@@ -214,14 +216,15 @@ Internal power plant: 800w</description> <!-- description of course... -->
     <label>SRAF: Canary</label>
     <description>Short Range Aerial Freighter. A transport system made to fly cargo across the world, but almost no room for passengers. These industrial behemoths have been in service for millenia.
 
-Passenger capacity: Min 1 - 3 Max
-Military: No
+Passenger cap: Min 1 - 3 Max
+--Military--
+  No
 ----------------------------
 Speed: Awful
-Fuel capacity: 2,000L
+Fuel cap: 2,000L
 Fuel efficiency: Awful
 ----------------------------
-Cargo capacity: 5,000kg
+Cargo cap: 5,000kg
 Internal power plant: 1000w</description>
     <graphicData>
       <texPath>Freighter</texPath>
@@ -294,14 +297,16 @@ Internal power plant: 1000w</description>
     <label>SRTS Mk.II: Albatross</label>
     <description>An aerial vessel designed to care for all of your caravaning and military needs. A good ship, but not specialized, so it's not great in any one area.
 
-Passenger capacity: Min 1 - 7 Max
-Military: 12 bombs
+Passenger cap: Min 1 - 7 Max
+--Military--
+  Bombs: 8
+  Accuracy: Normal
 ----------------------------
 Speed: Good
-Fuel capacity: 1,600L
+Fuel cap: 1,600L
 Fuel efficiency: Good
 ----------------------------
-Cargo capacity: 2,200kg
+Cargo capy: 2,200kg
 Internal power plant: 1,700w</description>
     <graphicData>
       <texPath>Albatross</texPath>
@@ -335,9 +340,10 @@ Internal power plant: 1,700w</description>
         <maxPassengers>7</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>12</numberBombs>
-        <radiusOfDrop>6</radiusOfDrop>
+        <numberBombs>8</numberBombs>
+        <radiusOfDrop>4</radiusOfDrop>
         <speed>1</speed>
+        <distanceBetweenDrops>5</distanceBetweenDrops>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
@@ -379,14 +385,16 @@ Internal power plant: 1,700w</description>
     <label>SRTS Mk.III: Phoenix</label>
     <description>An aerial transport ship designed to raid, assault, and bomb. Highly advanced, created by an ancient civilization.
 
-Passenger capacity: Min 1 - 13 Max
-Military: 24 bombs
+Passenger cap: Min 1 - 13 Max
+--Military--
+  Bombs: 14
+  Accuracy: Good
 ----------------------------
 Speed: Excellent
-Fuel capacity: 2,800L
+Fuel cap: 2,800L
 Fuel efficiency: Excellent
 ----------------------------
-Cargo capacity: 3,600kg
+Cargo cap: 3,600kg
 Internal power plant: 3,600w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
@@ -420,9 +428,10 @@ Internal power plant: 3,600w</description>
         <maxPassengers>13</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>24</numberBombs>
-        <radiusOfDrop>8</radiusOfDrop>
+        <numberBombs>14</numberBombs>
+        <radiusOfDrop>3</radiusOfDrop>
         <speed>1</speed>
+        <distanceBetweenDrops>4</distanceBetweenDrops>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2800</fuelCapacity>
@@ -456,6 +465,9 @@ Internal power plant: 3,600w</description>
     </researchPrerequisites>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
+    <killedLeavings>
+      <ChunkSlagSteel>20</ChunkSlagSteel>
+    </killedLeavings>
   </ThingDef>
 
 <!--
@@ -464,14 +476,15 @@ Internal power plant: 3,600w</description>
     <label>SRTS Mk.IIIp: Pelican</label>
     <description>An aerial cargo transport vessel. Low military application, but the best conventional cargo and tranport ship ever concieved in the outer rim. Highly advanced, created by an ancient civilization.
 
-Passenger capacity: Min 1 - 32 Max
-Military: No
-----------------------------
+Passenger cap: Min 1 - 32 Max
+Military
+  No
+
 Speed: Excellent
-Fuel capacity: 5,000L
+Fuel cap: 5,000L
 Fuel efficiency: Excellent
-----------------------------
-Cargo capacity: 20,000kg
+
+Cargo cap: 20,000kg
 Internal power plant: 2,800w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
@@ -536,6 +549,9 @@ Internal power plant: 2,800w</description>
     </researchPrerequisites>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.50</uiIconScale>
+    <killedLeavings>
+      <ChunkSlagSteel>28</ChunkSlagSteel>
+    </killedLeavings>
   </ThingDef>
 -->
 
@@ -544,15 +560,17 @@ Internal power plant: 2,800w</description>
     <label>SRTS Mk.IV: Genesis</label>
     <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.
 
-Passenger capacity: Min 2 - No Max
-Military: 48 bombs
+Passenger cap: Min 2 - No Max
+--Military--
+  Bombs: 5
+  Accuracy: Poor
 ----------------------------
 Speed: Legendary
 Fuel type: Uranium
-Fuel capacity: Legendary
+Fuel cap: Legendary
 Fuel efficiency: Legendary
 ----------------------------
-Cargo capacity: No Max
+Cargo cap: No Max
 Internal power plant: 12,600w</description>
     <graphicData>
       <texPath>SRTSMk4</texPath>
@@ -587,9 +605,10 @@ Internal power plant: 12,600w</description>
         <maxPassengers>9999</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>48</numberBombs>
-        <radiusOfDrop>10</radiusOfDrop>
+        <numberBombs>21</numberBombs>
+        <radiusOfDrop>2</radiusOfDrop>
         <speed>1</speed>
+        <distanceBetweenDrops>2</distanceBetweenDrops>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Uranium reactor charge level</fuelLabel>
@@ -626,6 +645,9 @@ Internal power plant: 12,600w</description>
     </researchPrerequisites>
     <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
     <uiIconScale>0.60</uiIconScale>
+    <killedLeavings>
+      <ChunkSlagSteel>28</ChunkSlagSteel>
+    </killedLeavings>
   </ThingDef>
   
 </Defs>
