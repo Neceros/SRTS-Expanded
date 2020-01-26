@@ -235,7 +235,7 @@ Internal power plant: 1000w</description>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(15,15)</drawSize>
     </graphicData>
-    <size>(7,9)</size>
+    <size>(5,9)</size>
     <statBases>
       <MaxHitPoints>3000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
@@ -482,7 +482,7 @@ Internal power plant: 3,600w</description>
     <label>SRTS Mk.IIIp: Pelican</label>
     <description>An aerial cargo transport vessel. Low military application, but the best conventional cargo and tranport ship ever concieved in the outer rim. Highly advanced, created by an ancient civilization.
 
-Passenger cap: Min 1 - 32 Max
+Passenger cap: Min 1 - 38 Max
 
 --Military--
   No
@@ -496,9 +496,9 @@ Internal power plant: 2,800w</description>
     <graphicData>
       <texPath>Pelican</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(15,15)</drawSize>
+      <drawSize>(17,17)</drawSize>
     </graphicData>
-    <size>(5,9)</size>
+    <size>(9,7)</size>
     <statBases>
       <MaxHitPoints>1250</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
@@ -507,11 +507,12 @@ Internal power plant: 2,800w</description>
       <Beauty>75</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_MeshPlate>11</ShuttleComp_MeshPlate>
-      <ShuttleComp_MechSystem>7</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>3</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>8</ShuttleComp_Engines>
-      <ShuttleComp_Structural>6</ShuttleComp_Structural>
+      <ShuttleComp_MeshPlate>5</ShuttleComp_MeshPlate>
+      <ShuttleComp_Plates>15</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>4</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>5</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>9</ShuttleComp_Engines>
+      <ShuttleComp_Structural>9</ShuttleComp_Structural>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -522,7 +523,7 @@ Internal power plant: 2,800w</description>
         <travelSpeed>20</travelSpeed>
         <fuelPerTile>1.25</fuelPerTile>
         <minPassengers>1</minPassengers>
-        <maxPassengers>32</maxPassengers>
+        <maxPassengers>38</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>5000</fuelCapacity>
@@ -555,7 +556,7 @@ Internal power plant: 2,800w</description>
       <li>Research_SRTSMk3p</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
-    <uiIconScale>0.50</uiIconScale>
+    <uiIconScale>0.90</uiIconScale>
     <killedLeavings>
       <ChunkSlagSteel>28</ChunkSlagSteel>
     </killedLeavings>
