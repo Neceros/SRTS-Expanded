@@ -458,7 +458,7 @@ Internal power plant: 3,600w</description>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
 
-
+<!--
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIIIp</defName>
     <label>SRTS Mk.IIIp: Pelican</label>
@@ -537,7 +537,7 @@ Internal power plant: 2,800w</description>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.50</uiIconScale>
   </ThingDef>
-
+-->
 
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIV</defName>
