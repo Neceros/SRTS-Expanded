@@ -43,7 +43,9 @@
     <description>An aerial transport system designed to fly passengers and cargo slowly and dangerously across the world. Liable to breakdown.
 
 Passenger capacity: 1
-Military: No
+
+--Military--
+  No
 ----------------------------
 Speed: Awful
 Fuel capacity: 240L
@@ -126,6 +128,7 @@ Internal power plant: 600w</description>
     <description>An aerial military vessel designed to scout, quest, and assault. Liable to breakdown.
 
 Passenger cap: Min 1 - 2 Max
+
 --Military--
   Bombs: 4
   Accuracy: Poor
@@ -217,6 +220,7 @@ Internal power plant: 800w</description> <!-- description of course... -->
     <description>Short Range Aerial Freighter. A transport system made to fly cargo across the world, but almost no room for passengers. These industrial behemoths have been in service for millenia.
 
 Passenger cap: Min 1 - 3 Max
+
 --Military--
   No
 ----------------------------
@@ -298,6 +302,7 @@ Internal power plant: 1000w</description>
     <description>An aerial vessel designed to care for all of your caravaning and military needs. A good ship, but not specialized, so it's not great in any one area.
 
 Passenger cap: Min 1 - 7 Max
+
 --Military--
   Bombs: 8
   Accuracy: Normal
@@ -386,6 +391,7 @@ Internal power plant: 1,700w</description>
     <description>An aerial transport ship designed to raid, assault, and bomb. Highly advanced, created by an ancient civilization.
 
 Passenger cap: Min 1 - 13 Max
+
 --Military--
   Bombs: 14
   Accuracy: Good
@@ -470,24 +476,25 @@ Internal power plant: 3,600w</description>
     </killedLeavings>
   </ThingDef>
 
-<!--
+
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIIIp</defName>
     <label>SRTS Mk.IIIp: Pelican</label>
     <description>An aerial cargo transport vessel. Low military application, but the best conventional cargo and tranport ship ever concieved in the outer rim. Highly advanced, created by an ancient civilization.
 
 Passenger cap: Min 1 - 32 Max
-Military
-  No
 
+--Military--
+  No
+----------------------------
 Speed: Excellent
 Fuel cap: 5,000L
 Fuel efficiency: Excellent
-
+----------------------------
 Cargo cap: 20,000kg
 Internal power plant: 2,800w</description>
     <graphicData>
-      <texPath>Phoenix</texPath>
+      <texPath>Pelican</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(15,15)</drawSize>
     </graphicData>
@@ -553,7 +560,7 @@ Internal power plant: 2,800w</description>
       <ChunkSlagSteel>28</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
--->
+
 
   <ThingDef ParentName="ShipBase">
     <defName>SRTSMkIV</defName>
@@ -561,9 +568,10 @@ Internal power plant: 2,800w</description>
     <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.
 
 Passenger cap: Min 2 - No Max
+
 --Military--
-  Bombs: 5
-  Accuracy: Poor
+  Bombs: 21
+  Accuracy: Legendary
 ----------------------------
 Speed: Legendary
 Fuel type: Uranium

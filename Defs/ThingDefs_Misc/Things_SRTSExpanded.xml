@@ -198,10 +198,10 @@
     <label>SRTS Mk.IIIp incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
-      <texPath>Phoenix</texPath>
+      <texPath>Pelican</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>13</drawSize>
+      <drawSize>15</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
@@ -218,10 +218,10 @@
     <label>SRTS Mk.IIIp leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>Phoenix</texPath>
+      <texPath>Pelican</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>13</drawSize>
+      <drawSize>15</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
@@ -242,9 +242,9 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Phoenix</texPath>
+      <texPath>Pelican</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>13</drawSize>
+      <drawSize>15</drawSize>
       <shadowData>
         <volume>(0.8, 0.6, 0.8)</volume>
       </shadowData>
