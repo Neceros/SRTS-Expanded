@@ -437,6 +437,12 @@ namespace SRTS
         public static T GetStatFor<T>(string defName, StatName stat)
         {
             SRTSMod.mod.CheckDictionaryValid();
+            if(!mod.settings.defProperties.ContainsKey(defName) && DefDatabase<ThingDef>.GetNamedSilentFail(defName)?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
+            {
+                Log.Warning("Key was not able to be found inside ModSettings Dictionary. Resetting to default values and initializing: " + defName);
+                mod.settings.defProperties.Add(defName, new SRTS_DefProperties(DefDatabase<ThingDef>.GetNamed(defName))); //Initialize
+            }
+
             switch(stat)
             {
                 case StatName.massCapacity:
@@ -491,16 +497,11 @@ namespace SRTS
             this.maxPassengers = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().maxPassengers;
             this.flightSpeed = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().travelSpeed;
             this.fuelPerTile = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().fuelPerTile;
-
-            int num = 0;
-            foreach (ResearchProjectDef proj in this.referencedDef.researchPrerequisites)
-            {
-                num += (int)proj.baseCost;
-            }
-            this.researchPoints = num;
+            
             if(this.requiredResearch is null)
                 this.requiredResearch = new List<ResearchProjectDef>();
             this.requiredResearch.AddRange(referencedDef.researchPrerequisites);
+            this.researchPoints = this.RequiredResearch?[0].baseCost ?? 1;
             this.customResearchRequirements = new List<ResearchProjectDef>();
             this.customResearchDefNames = new List<string>();
 
@@ -547,7 +548,7 @@ namespace SRTS
 
         public float fuelPerTile = 2.25f;
 
-        public float researchPoints;
+        public float researchPoints = 1f;
 
         public List<ResearchProjectDef> requiredResearch;
 
