@@ -18,6 +18,13 @@
   <SRTSMkIII_Active.label>SRTS:Mk-3(始動)</SRTSMkIII_Active.label>
 
 
+  <!-- SRTS MkIIIp -->
+
+  <SRTSMkIIIp_Incoming.label>SRTS:Mk-3P型(着陸)</SRTSMkIIIp_Incoming.label>
+  <SRTSMkIIIp_Leaving.label>SRTS:Mk-3P型(離陸)</SRTSMkIIIp_Leaving.label>
+  <SRTSMkIIIp_Active.label>SRTS:Mk-3P型(始動)</SRTSMkIIIp_Active.label>
+
+
   <!-- SRTF -->
 
   <SRTF_Incoming.label>SRTF:(着陸)</SRTF_Incoming.label>

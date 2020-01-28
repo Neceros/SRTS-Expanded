@@ -20,6 +20,18 @@
   <DisplayHomeItems>全アイテムをリストに表示：</DisplayHomeItems>
   <DisplayHomeItemsTooltip>SRTSに積み込む際にコロニーゾーンだけでなくマップ上の全アイテムを表示します。</DisplayHomeItemsTooltip>
   <DefSettings>ステータス</DefSettings>
+  <DynamicWorldObjectSRTS>動的ワールドマップ描画：</DynamicWorldObjectSRTS>
+  <DynamicWorldObjectSRTSTooltip>SRTS画像を回転させてワールドマップ上で進行方向と表示画像が一致するように、SRTSのテクスチャを動的に描画します</DynamicWorldObjectSRTSTooltip>
+  <ExpandBombPoints>爆撃目標の拡張：</ExpandBombPoints>
+  <ExpandBombPointsTooltip>爆撃目標を基準にして爆弾投下地点を飛行ラインに沿ってライン全体に移動させます。</ExpandBombPointsTooltip>
+  <AllowedBombs>爆弾搭載を許可（爆撃の実行）</AllowedBombs>
+  <ChangeItemSRTS>変更</ChangeItemSRTS>
+  <SearchExplosive>爆弾追加</SearchExplosive>
+  <CurrentExplosives>現在の爆弾</CurrentExplosives>
+  <SRTSBoardingOptions>搭乗設定</SRTSBoardingOptions>
+  <AllowDownedSRTS>倒れたポーンを許可</AllowDownedSRTS>
+  <AllowUnsecurePrisonerSRTS>未拘束な囚人を許可</AllowUnsecurePrisonerSRTS>
+  <AllowCapturablePawnSRTS>逮捕可能なポーンを許可</AllowCapturablePawnSRTS>
 
   <SRTSSettings>SRTSの設定</SRTSSettings>
   <FlightSpeed>飛行速度（ワールドマップ上）</FlightSpeed>
@@ -35,12 +47,17 @@
   <BombSettings>爆撃の設定</BombSettings>
   <BombSpeed>飛行速度（爆撃時）</BombSpeed>
   <RadiusDrop>爆撃半径:</RadiusDrop>
-  <NumberBombs>最大爆弾搭載数:</NumberBombs>
+  <BombCountSRTS>爆弾数:</BombCountSRTS>
+  <CarpetBombing>絨毯爆撃</CarpetBombing>
+  <PreciseBombing>精密爆撃</PreciseBombing>
+  <DistanceBetweenDrops>投下距離の間隔</DistanceBetweenDrops>
+  <CellsEndValue> セル</CellsEndValue>
+  <SingleDrop>1発投下</SingleDrop>
 
   <ResearchSettings>研究</ResearchSettings>
   <ResearchDef>Research Def:\n{0}</ResearchDef>
   <SearchResearch>Research Defsを追加</SearchResearch>
-  <AddResearch>追加</AddResearch>
+  <AddItemSRTS>追加</AddItemSRTS>
   <RemoveResearch>削除</RemoveResearch>
   <RestartGameResearch>変更した研究設定を適用するには再起動が必要</RestartGameResearch>
 
@@ -53,6 +70,11 @@
   <NotEnoughPilots>発信するのにパイロットが不足</NotEnoughPilots>
   <TooManyPilots>乗り込む入植者が多すぎます</TooManyPilots>
   <BombRunStarted>爆撃が開始されました。</BombRunStarted>
+  <CannotBombMap>マップが読み込まれない限り、ここへ爆撃することは不可能です。</CannotBombMap>
+  <CommandAddFuelSRTS>{0}を給油</CommandAddFuelSRTS>
+  <CommandAddFuelDescSRTS>インベントリからSRTSに燃料を給油する</CommandAddFuelDescSRTS>
+  <AddFuelSRTSCaravan>{0}の燃料が{1}に給油されました。</AddFuelSRTSCaravan>
+  <NoFuelSRTSCaravan>燃料がありません</NoFuelSRTSCaravan>
 
   <!-- Caravans -->
 
