@@ -1,6 +1,5 @@
-# THIS VERSION IS NOT STABLE. THIS IS A LIVE COPY FOR TESTING AND UPDATING.
+# SRTS Expanded
 
-## Get a stable release from the link below:
+**Download the most up to date [version](https://github.com/Neceros/SRTS-Expanded/releases/latest)**
 
-### Stable Releases:
-https://github.com/Neceros/SRTS-Expanded/releases
+If you download straight from the repository, you might be grabbing unreleased content which may or may not break your game. It is for us to test with before we release.
