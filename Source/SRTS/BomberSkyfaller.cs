@@ -129,7 +129,7 @@ namespace SRTS
 
         private void DropBomb()
         {
-            for(int i = 0; i < (bombType == BombingType.precise ? this.precisionBombingNumBombs : 1); i++)
+            for(int i = 0; i < (bombType == BombingType.precise ? this.precisionBombingNumBombs : 1); ++i)
             {
                 if (innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName)) ?? false))
                 {
@@ -174,6 +174,8 @@ namespace SRTS
                     //GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(CEt, DamageDefOf., null); /*Is GenExplosion CE compatible?*/
                 }
             }
+            if(bombType == BombingType.precise && bombCells.Any())
+                bombCells.Clear();
         }
 
         private void ExitMap()
