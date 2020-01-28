@@ -67,8 +67,6 @@ namespace SRTS
             double angle = start.AngleToPointRelative(end);
             thing.angle = (float)(angle + 90) * -1;
             IntVec3 exitPoint = SPTrig.ExitPointCustom(angle, start, map);
-            if(exitPoint.IsValid)
-                GenSpawn.Spawn(ThingDefOf.AIPersonaCore, exitPoint, map);
 
             BomberSkyfaller bomber = (BomberSkyfaller)GenSpawn.Spawn(thing, exitPoint, map, WipeMode.Vanish);
             bomber.bombCells = bombCells;
