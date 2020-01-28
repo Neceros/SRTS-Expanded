@@ -14,7 +14,7 @@ namespace SRTS
         {
         }
 
-        public SRTSArrivalActionBombRun(MapParent mapParent, Pair<IntVec3, IntVec3> targetCells, IEnumerable<IntVec3> bombCells, Map originalMap, IntVec3 originalLandingSpot)
+        public SRTSArrivalActionBombRun(MapParent mapParent, Pair<IntVec3, IntVec3> targetCells, IEnumerable<IntVec3> bombCells, BombingType bombType, Map originalMap, IntVec3 originalLandingSpot)
         {
             this.mapParent = mapParent;
             this.targetCellA = targetCells.First;
@@ -22,6 +22,7 @@ namespace SRTS
             this.bombCells = bombCells.ToList();
             this.originalMap = originalMap;
             this.originalLandingSpot = originalLandingSpot;
+            this.bombType = bombType;
         }
 
         public override void ExposeData()
@@ -31,7 +32,7 @@ namespace SRTS
             Scribe_References.Look(ref originalMap, "originalMap");
             Scribe_Values.Look(ref this.targetCellA, "targetCellA");
             Scribe_Values.Look(ref this.targetCellB, "targetCellB");
-
+            Scribe_Values.Look(ref this.bombType, "bombType");
             Scribe_Collections.Look(ref bombCells, "bombCells");
             Scribe_Values.Look(ref originalLandingSpot, "originalLandingSpot");
         }
@@ -53,7 +54,7 @@ namespace SRTS
         public override void Arrived(List<ActiveDropPodInfo> pods, int tile)
         {
             Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
-            BombRunArrivalUtility.BombWithSRTS(pods, this.targetCellA, this.targetCellB, this.bombCells, this.mapParent.Map, originalMap, originalLandingSpot);
+            BombRunArrivalUtility.BombWithSRTS(pods, this.targetCellA, this.targetCellB, this.bombCells, this.bombType, this.mapParent.Map, originalMap, originalLandingSpot);
             Messages.Message("BombRunStarted".Translate(), lookTarget, MessageTypeDefOf.CautionInput, true);
         }
 
@@ -73,5 +74,7 @@ namespace SRTS
         private Map originalMap;
 
         private IntVec3 originalLandingSpot;
+
+        private BombingType bombType;
     }
 }

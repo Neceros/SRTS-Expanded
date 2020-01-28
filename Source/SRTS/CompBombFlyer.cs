@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace SRTS
 {
+    public enum BombingType { carpet, precise, missile }
     public class CompBombFlyer : ThingComp
     {
         public Building SRTS_Launcher => this.parent as Building;
@@ -34,33 +35,52 @@ namespace SRTS
                                 num++;
                             }
                         }
-                        if (num < SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.minPassengers))
+                        if(SRTSMod.mod.settings.passengerLimits)
                         {
-                            Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
-                            return;
+                            if (num < SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.minPassengers))
+                            {
+                                Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
+                                return;
+                            }
+                            else if (num > SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.maxPassengers))
+                            {
+                                Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
+                                return;
+                            }
                         }
-                        else if (num > SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.maxPassengers))
+                        
+                        FloatMenuOption carpetBombing = new FloatMenuOption("CarpetBombing".Translate(), delegate ()
                         {
-                            Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
-                            return;
-                        }
-
-                        if (CompLauncher.AnyInGroupHasAnythingLeftToLoad)
+                            bombType = BombingType.carpet;
+                            if (CompLauncher.AnyInGroupHasAnythingLeftToLoad)
+                            {
+                                Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(CompLauncher.FirstThingLeftToLoadInGroup.LabelCapNoCount,
+                                    CompLauncher.FirstThingLeftToLoadInGroup), new Action(this.StartChoosingDestinationBomb), false, null));
+                            }
+                            this.StartChoosingDestinationBomb();
+                        });
+                        FloatMenuOption preciseBombing = new FloatMenuOption("PreciseBombing".Translate(), delegate ()
                         {
-                            Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(CompLauncher.FirstThingLeftToLoadInGroup.LabelCapNoCount, 
-                                CompLauncher.FirstThingLeftToLoadInGroup), new Action(this.StartChoosingDestinationBomb), false, null));
-                        }
-                        this.StartChoosingDestinationBomb();
+                            bombType = BombingType.precise;
+                            if (CompLauncher.AnyInGroupHasAnythingLeftToLoad)
+                            {
+                                Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(CompLauncher.FirstThingLeftToLoadInGroup.LabelCapNoCount,
+                                    CompLauncher.FirstThingLeftToLoadInGroup), new Action(this.StartChoosingDestinationBomb), false, null));
+                            }
+                            this.StartChoosingDestinationBomb();
+                        });
+                        Find.WindowStack.Add(new FloatMenuGizmo(new List<FloatMenuOption>() { carpetBombing, preciseBombing }, this.parent, this.parent.LabelCap, UI.MouseMapPosition()));
                     }
                 };
             }
         }
 
-        private void StartChoosingDestinationBomb()
+        public void StartChoosingDestinationBomb()
         {
             CameraJumper.TryJump(CameraJumper.GetWorldTarget(this.parent));
             Find.WorldSelector.ClearSelection();
             int tile = this.parent.Map.Tile;
+
             Find.WorldTargeter.BeginTargeting(new Func<GlobalTargetInfo, bool>(this.ChoseWorldTargetToBomb), false, Tex2D.LauncherTargeting, true, delegate
             {
                 GenDraw.DrawWorldRadiusRing(tile, CompLauncher.MaxLaunchDistance);
@@ -135,10 +155,10 @@ namespace SRTS
                     bombingTargetingParams.canTargetItems = true;
                     bombingTargetingParams.validator = ((TargetInfo x) => x.Cell.InBounds(targetMap) && (!x.Cell.GetRoof(targetMap)?.isThickRoof ?? true));
 
-                    StartUp.targeter.BeginTargeting(bombingTargetingParams, delegate (IEnumerable<IntVec3> cells, Pair<IntVec3, IntVec3> targetPoints)
+                    SRTSHelper.targeter.BeginTargeting(bombingTargetingParams, delegate (IEnumerable<IntVec3> cells, Pair<IntVec3, IntVec3> targetPoints)
                     {
                         TryLaunchBombRun(target.Tile, targetPoints, cells, targetMapParent);
-                    }, this.parent.def, targetMap, null, delegate ()
+                    }, this.parent.def, bombType, targetMap, null, delegate ()
                     {
                         if (Find.Maps.Contains(this.parent.Map))
                         {
@@ -197,7 +217,7 @@ namespace SRTS
             srtsLeaving.rotation = CompLauncher.FuelingPortSource.Rotation;
             srtsLeaving.groupID = groupID;
             srtsLeaving.destinationTile = destTile;
-            srtsLeaving.arrivalAction = new SRTSArrivalActionBombRun(mapParent, targetPoints, bombCells, map, CompLauncher.FuelingPortSource.Position);
+            srtsLeaving.arrivalAction = new SRTSArrivalActionBombRun(mapParent, targetPoints, bombCells, this.bombType, map, CompLauncher.FuelingPortSource.Position);
 
             comp1.CleanUpLoadingVars(map);
             IntVec3 position = fuelPortSource.Position;
@@ -205,5 +225,7 @@ namespace SRTS
             GenSpawn.Spawn((Thing)srtsLeaving, position, map, WipeMode.Vanish);
             CameraJumper.TryHideWorld();
         }
+
+        public BombingType bombType;
     }
 }

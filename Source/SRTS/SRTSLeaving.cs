@@ -1,8 +1,10 @@
 ﻿using RimWorld;
 using RimWorld.Planet;
 using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 using Verse.AI.Group;
+using Verse.Sound;
 
 namespace SRTS
 {
@@ -27,6 +29,35 @@ namespace SRTS
             }
         }
 
+        /*public override Vector3 DrawPos
+        {
+            get
+            {
+                switch(def.skyfaller.movementType)
+                {
+                    case SkyfallerMovementType.Accelerate:
+                        if (initiatingTakeoff)
+                            return SkyfallerDrawPosUtilityExtended.DrawPos_AccelerateSRTSDirectional(originalDrawPos, ticksToImpact, rotation, def.skyfaller.speed);
+                        else
+                            return SkyfallerDrawPosUtilityExtended.DrawPos_TakeoffUpward(originalDrawPos, takeoffTicks);
+                    case SkyfallerMovementType.ConstantSpeed:
+                        return base.DrawPos;// SkyfallerDrawPosUtilityExtended.DrawPos_AccelerateSRTSDirectional(base.DrawPos, ticksToImpact, rotation, def.skyfaller.speed);
+                    *//*case SkyfallerMovementType.Decelerate:
+                        return;*//*
+                    default:
+                        Log.Error("SkyfallerMovementType is not consistent with Vanilla enum options. Defaulting to vanilla's accelerate mechanic. - Smash Phil");
+                        return SkyfallerDrawPosUtility.DrawPos_Accelerate(base.DrawPos, ticksToImpact, angle, def.skyfaller.speed);
+                }
+            }
+        }*/
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            originalDrawPos = base.DrawPos;
+            this.Rotation = Rot4.West; //rotation; going to be for directional lift off
+        }
+
         public override void ExposeData()
         {
             base.ExposeData();
@@ -35,7 +66,7 @@ namespace SRTS
             Scribe_Values.Look<int>(ref this.destinationTile, "destinationTile", 0, false);
             Scribe_Deep.Look<TransportPodsArrivalAction>(ref this.arrivalAction, "arrivalAction");
             Scribe_Values.Look<bool>(ref this.alreadyLeft, "alreadyLeft", false, false);
-            Scribe_Values.Look<Rot4>(ref this.rotation, "rotation");
+            Scribe_Values.Look<Rot4>(ref this.rotation, "rotation", Rot4.North);
         }
 
         protected override void LeaveMap()
@@ -80,5 +111,42 @@ namespace SRTS
                 }
             }
         }
+
+        /*public override void Tick()
+        {
+            innerContainer.ThingOwnerTick(true);
+            takeoffTicks++;
+            if (takeoffTicks >= TakeoffCountTicks && !initiatingTakeoff)
+            {
+                initiatingTakeoff = true;
+                originalDrawPos = SkyfallerDrawPosUtilityExtended.DrawPos_TakeoffUpward(originalDrawPos, TakeoffCountTicks);
+            }
+            if(initiatingTakeoff)
+            {
+                ticksToImpact++;
+
+                if (!soundPlayed && def.skyfaller.anticipationSound != null && ticksToImpact > def.skyfaller.anticipationSoundTicks)
+                {
+                    soundPlayed = true;
+                    def.skyfaller.anticipationSound.PlayOneShot(new TargetInfo(base.Position, base.Map, false));
+                }
+                if (ticksToImpact == 220)
+                    LeaveMap();
+            }
+            else
+            {
+                MoteMaker.MakeStaticMote()
+            }
+        }*/
+
+        private const int TakeoffCountTicks = 300;
+
+        private int takeoffTicks = 0;
+
+        private bool soundPlayed = false;
+
+        private bool initiatingTakeoff = false;
+
+        private Vector3 originalDrawPos = Vector3.zero;
     }
 }

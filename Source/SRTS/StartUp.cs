@@ -18,18 +18,15 @@ namespace SRTS
     {
         static StartUp()
         {
-            var harmony = HarmonyInstance.Create("SRTSExpanded");
+            var harmony = HarmonyInstance.Create("SRTSExpanded.smashphil.neceros");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
             /* Smash Phil Addition */
 
-            //Mechanics and Rendering 
+            /* Mechanics and Rendering */ 
             harmony.Patch(original: AccessTools.Method(type: typeof(CompTransporter), name: nameof(CompTransporter.CompGetGizmosExtra)), prefix: null,
                 postfix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(NoLaunchGroupForSRTS)));
-            harmony.Patch(original: AccessTools.Method(type: typeof(Skyfaller), name: nameof(Skyfaller.DrawAt)), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(RotateSRTSLeavingTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(SettlementBase_TraderTracker), name: nameof(SettlementBase_TraderTracker.GiveSoldThingToPlayer)), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(GiveSoldThingsToSRTSTranspiler)));
@@ -39,8 +36,12 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(ExpandableWorldObjectsUtility), name: nameof(ExpandableWorldObjectsUtility.ExpandableWorldObjectsOnGUI)), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(ExpandableIconDetourSRTSTranspiler)));
+            //Maybe add in the future ...?
+            /*harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_Trade), name: "SetupPlayerCaravanVariables"), prefix: null, postfix: null,
+                transpiler: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(SRTSAreNotTradeable)));*/
 
-            //Bomb Runs
+            /* Bomb Runs */
             harmony.Patch(original: AccessTools.Method(type: typeof(TransportPodsArrivalActionUtility), name: nameof(TransportPodsArrivalActionUtility.DropTravelingTransportPods)),
                 prefix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(DropSRTSExactSpot)));
@@ -54,7 +55,7 @@ namespace SRTS
                 postfix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(BombTargeterUpdate)));
             
-            //Custom Settings
+            /* Custom Settings */
             harmony.Patch(original: AccessTools.Property(type: typeof(TravelingTransportPods), name: "TraveledPctStepPerTick").GetGetMethod(nonPublic: true),
                 prefix: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(CustomTravelSpeedSRTS)));
@@ -100,6 +101,28 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawResearchPrereqs"), prefix: null,
                postfix: new HarmonyMethod(type: typeof(StartUp),
                name: nameof(DrawCustomResearchPrereqs)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(Caravan), name: nameof(Caravan.GetGizmos)), prefix: null,
+                postfix: new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(LaunchAndBombGizmosPassthrough)));
+
+            /* Destructive Patch Fixes */
+            bool sos2Flag = false;
+            if(ModLister.HasActiveModWithName("Save Our Ship 2"))
+            {
+                sos2Flag = true;
+                Log.Message("[SRTSExpanded] Overriding SOS2 destructive patches.");
+            }    
+            harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddPawnsToTransferables"), 
+                prefix: sos2Flag ? new HarmonyMethod(type: typeof(StartUp), 
+                name: nameof(CustomOptionsPawnsToTransportOverride)) : null, 
+                postfix: null,
+                transpiler: sos2Flag ? null : new HarmonyMethod(type: typeof(StartUp),
+                name: nameof(CustomOptionsPawnsToTransportTranspiler)));
+
+            /* Unpatch Save our Ship 2 's destructive and incompetent patch on transporter pawns */
+            //harmony.Unpatch(AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddPawnsToTransferables"), HarmonyPatchType.Prefix, "HugsLib.ShipInteriorMod2");
+            /*bool flag = harmony.HasAnyPatches("HugsLib.ShipInteriorMod2");
+            Log.Message("SoS2: " + flag);*/
         }
 
         /*public static IEnumerable<CodeInstruction> ErrorOnNoPawnsTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
@@ -176,46 +199,12 @@ namespace SRTS
             }
         }*/
 
-        public static string MinMaxString(List<CompTransporter> transporters, bool min)
-        {
-            var srts = transporters.First(x => x.parent.GetComp<CompLaunchableSRTS>() != null).parent;
-            return min ? "Minimum Required Pawns for " + srts.def.LabelCap + ": " + (SRTSMod.GetStatFor<int>(srts.def.defName, StatName.minPassengers)) :
-                "Maximum Pawns able to board " + srts.def.LabelCap + ": " + (SRTSMod.GetStatFor<int>(srts.def.defName, StatName.maxPassengers));
-        }
-
-        public static bool NoPawnInSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
-        {
-            if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null) && !pawns.Any(x => x.IsColonistPlayerControlled))
-                return true;
-            return false;
-        }
-
-        public static bool MinPawnRestrictionsSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
-        {
-            if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
-            {
-                int minPawns = transporters.Min(x => SRTSMod.GetStatFor<int>(x.parent.def.defName, StatName.minPassengers));
-                if(pawns.Where(x => x.IsColonistPlayerControlled).Count() < minPawns)
-                {
-                    return true;
-                }
-                
-            }
-            return false;
-        }
-        public static bool MaxPawnRestrictionsSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
-        {
-            if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
-            {
-                int maxPawns = transporters.Max(x => SRTSMod.GetStatFor<int>(x.parent.def.defName, StatName.maxPassengers));
-                if (pawns.Count > maxPawns)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+        /// <summary>
+        /// Insert all items on map (non minifiable) if map is not player home.
+        /// </summary>
+        /// <param name="instructions"></param>
+        /// <param name="ilg"></param>
+        /// <returns></returns>
         public static IEnumerable<CodeInstruction> AddItemsEntireMapNonHomeTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
             List<CodeInstruction> instructionList = instructions.ToList();
@@ -228,20 +217,24 @@ namespace SRTS
                 {
                     Label label = ilg.DefineLabel();
 
+                    ///Check if SRTS is present inside dialog menu transferables
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.SRTSLauncherSelected)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.SRTSLauncherSelected)));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
+                    ///Check if player / SRTS selected is inside non playerhome map
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "map"));
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.SRTSNonPlayerHomeMap)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.SRTSNonPlayerHomeMap)));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
+                    ///Pop top 3 values from stack, which are all false
                     yield return new CodeInstruction(opcode: OpCodes.Pop);
                     yield return new CodeInstruction(opcode: OpCodes.Pop);
                     yield return new CodeInstruction(opcode: OpCodes.Pop);
 
+                    ///Push true, true, false onto stack, to change resulting method call parameters
                     yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
                     yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_1);
                     yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
@@ -253,20 +246,12 @@ namespace SRTS
             }
         }
 
-        public static bool SRTSLauncherSelected(List<CompTransporter> transporters)
-        {
-            if(transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public static bool SRTSNonPlayerHomeMap(Map map)
-        {
-            return !map.IsPlayerHome;
-        }
-
+        /// <summary>
+        /// Add purchased items to list of things contained within SRTS, to drop contents on landing rather than placing inside pawn's inventory.
+        /// </summary>
+        /// <param name="instructions"></param>
+        /// <param name="ilg"></param>
+        /// <returns></returns>
         public static IEnumerable<CodeInstruction> GiveSoldThingsToSRTSTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
             List<CodeInstruction> instructionList = instructions.ToList();
@@ -283,13 +268,19 @@ namespace SRTS
                     Label label = ilg.DefineLabel();
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.AddToSRTSFromCaravan)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.AddToSRTSFromCaravan)));
                     instruction.labels.Add(label);
                 }
                 yield return instruction;
             }
         }
 
+        /// <summary>
+        /// Draw SRTS textures dynamically to mimic both the flying SRTS texture and its rotation
+        /// </summary>
+        /// <param name="instructions"></param>
+        /// <param name="ilg"></param>
+        /// <returns></returns>
         public static IEnumerable<CodeInstruction> DrawDynamicSRTSObjectsTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
             List<CodeInstruction> instructionList = instructions.ToList();
@@ -303,13 +294,16 @@ namespace SRTS
                     Label label = ilg.DefineLabel();
                     Label brlabel = ilg.DefineLabel();
 
+                    ///Check if TravelingTransportPod is SRTS Instance
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
                     yield return new CodeInstruction(opcode: OpCodes.Isinst, operand: typeof(TravelingSRTS));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(StartUp), name: nameof(StartUp.DynamicTexturesEnabled)).GetGetMethod());
+                    ///Check if dynamic textures mod setting is enabled
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(SRTSHelper), name: nameof(SRTSHelper.DynamicTexturesEnabled)).GetGetMethod());
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
+                    ///Hook onto SRTS Draw method
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(TravelingSRTS), name: nameof(TravelingSRTS.Draw)));
                     yield return new CodeInstruction(opcode: OpCodes.Leave, brlabel);
@@ -330,6 +324,12 @@ namespace SRTS
             }
         }
 
+        /// <summary>
+        /// Expanding Icon dynamic drawer for SRTS dynamic textures
+        /// </summary>
+        /// <param name="instructions"></param>
+        /// <param name="ilg"></param>
+        /// <returns></returns>
         public static IEnumerable<CodeInstruction> ExpandableIconDetourSRTSTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
         {
             List<CodeInstruction> instructionList = instructions.ToList();
@@ -341,20 +341,24 @@ namespace SRTS
 
                 if(instruction.opcode == OpCodes.Ldloc_2 && instructionList[i+1].opcode == OpCodes.Ldc_I4_1)
                 {
+                    ///Jump label, for loop
                     instruction.labels.Add(jumpLabel);
                 }
                 if(instruction.opcode == OpCodes.Callvirt && instruction.operand == AccessTools.Property(type: typeof(WorldObject), name: nameof(WorldObject.ExpandingIconColor)).GetGetMethod())
                 {
                     Label label = ilg.DefineLabel();
 
+                    ///Check if TravelingTransportPod is SRTS Instance
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_3);
                     yield return new CodeInstruction(opcode: OpCodes.Isinst, operand: typeof(TravelingSRTS));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
+                    ///Check if dynamic textures mod setting is enabled
                     yield return new CodeInstruction(opcode: OpCodes.Pop);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(StartUp), name: nameof(StartUp.DynamicTexturesEnabled)).GetGetMethod());
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(SRTSHelper), name: nameof(SRTSHelper.DynamicTexturesEnabled)).GetGetMethod());
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
+                    ///Hook onto SRTS Draw method and continue
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_3);
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(TravelingSRTS), name: nameof(TravelingSRTS.Draw)));
                     yield return new CodeInstruction(opcode: OpCodes.Br, jumpLabel);
@@ -362,35 +366,6 @@ namespace SRTS
                     instruction.labels.Add(label);
                 }
 
-                yield return instruction;
-            }
-        }
-
-        public static void AddToSRTSFromCaravan(Caravan caravan, Thing thing)
-        {
-            if(caravan.AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null))
-                caravan.AllThings.First(x => x.TryGetComp<CompLaunchableSRTS>() != null).TryGetComp<CompLaunchableSRTS>()?.AddThingsToSRTS(thing);
-        }
-
-        public static IEnumerable<CodeInstruction> RotateSRTSLeavingTranspiler(IEnumerable<CodeInstruction> instructions)
-        {
-            List<CodeInstruction> instructionList = instructions.ToList();
-
-            for(int i = 0; i < instructionList.Count; i++)
-            {
-                CodeInstruction instruction = instructionList[i];
-
-                if(instruction.opcode == OpCodes.Stloc_0)
-                {
-                    yield return instruction;
-                    instruction = instructionList[++i];
-
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldflda, operand: AccessTools.Field(type: typeof(Skyfaller), name: nameof(Skyfaller.innerContainer)));
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.RotateSRTS)));
-                    yield return new CodeInstruction(opcode: OpCodes.Stloc_0);
-                }
                 yield return instruction;
             }
         }
@@ -433,14 +408,10 @@ namespace SRTS
 
         public static bool SRTSMassCapacityCaravan(List<Thing> allCurrentThings, List<Tradeable> tradeables, StringBuilder explanation, ref float __result)
         {
-            Thing ship = null;
-            if(TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null))
+            if(allCurrentThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null))
             {
-                ship = TradeSession.playerNegotiator.GetCaravan().AllThings.First(x => x.TryGetComp<CompLaunchableSRTS>() != null);
-            }
-            if (ship != null)
-            {
-                __result = ship.def.GetCompProperties<CompProperties_Transporter>().massCapacity;
+                Thing srts = allCurrentThings.First(x => x.TryGetComp<CompLaunchableSRTS>() != null);
+                __result = SRTSMod.GetStatFor<float>(srts.def.defName, StatName.massCapacity);
                 return false;
             }
             return true;
@@ -461,7 +432,7 @@ namespace SRTS
                     instruction = instructionList[++i];
 
                     Label label = ilg.DefineLabel();
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(StartUp), name: nameof(StartUp.SRTSInCaravan)).GetGetMethod());
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(SRTSHelper), name: nameof(SRTSHelper.SRTSInCaravan)).GetGetMethod());
                     continue;
                 }
 
@@ -492,7 +463,7 @@ namespace SRTS
             {
                 foreach(Thing t in pod.innerContainer)
                 {
-                    if(ThingDef.Named(t.def.defName.Split('_')[0])?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
+                    if(DefDatabase<ThingDef>.GetNamedSilentFail(t.def.defName.Split('_')[0])?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
                     {
                         TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(dropPods);
                         foreach(ActiveDropPodInfo pod2 in dropPods)
@@ -508,17 +479,17 @@ namespace SRTS
 
         public static void DrawBombingTargeter()
         {
-            StartUp.targeter.TargeterOnGUI();
+            SRTSHelper.targeter.TargeterOnGUI();
         }
 
         public static void ProcessBombingInputEvents()
         {
-            StartUp.targeter.ProcessInputEvents();
+            SRTSHelper.targeter.ProcessInputEvents();
         }
 
         public static void BombTargeterUpdate()
         {
-            StartUp.targeter.TargeterUpdate();
+            SRTSHelper.targeter.TargeterUpdate();
         }
 
         public static bool CustomSRTSMassCapacity(ref float __result, List<CompTransporter> ___transporters)
@@ -538,9 +509,9 @@ namespace SRTS
 
         public static bool ResearchCostApparent(ResearchProjectDef __instance, ref float __result)
         {
-            if(srtsDefProjects.Any(x => x.Value == __instance))
+            if(SRTSHelper.srtsDefProjects.Any(x => x.Value == __instance))
             {
-                __result = GetResearchStat(__instance) * __instance.CostFactor(Faction.OfPlayer.def.techLevel);
+                __result = SRTSHelper.GetResearchStat(__instance) * __instance.CostFactor(Faction.OfPlayer.def.techLevel);
                 return false;
             }
             return true;
@@ -548,9 +519,9 @@ namespace SRTS
 
         public static bool ResearchIsFinished(ResearchProjectDef __instance, ref bool __result)
         {
-            if(srtsDefProjects.Any(x => x.Value == __instance))
+            if(SRTSHelper.srtsDefProjects.Any(x => x.Value == __instance))
             {
-                __result = __instance.ProgressReal >= GetResearchStat(__instance);
+                __result = __instance.ProgressReal >= SRTSHelper.GetResearchStat(__instance);
                 return false;
             }
             return true;
@@ -558,9 +529,9 @@ namespace SRTS
 
         public static bool ResearchProgressPercent(ResearchProjectDef __instance, ref float __result)
         {
-            if(srtsDefProjects.Any(x => x.Value == __instance))
+            if(SRTSHelper.srtsDefProjects.Any(x => x.Value == __instance))
             {
-                __result = Find.ResearchManager.GetProgress(__instance) / GetResearchStat(__instance);
+                __result = Find.ResearchManager.GetProgress(__instance) / SRTSHelper.GetResearchStat(__instance);
                 return false;
             }
             return true;
@@ -572,12 +543,12 @@ namespace SRTS
 
             Label prerequisitesLabel = ilg.DefineLabel();
             yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
-            yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.ContainedInDefProjects)));
+            yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.ContainedInDefProjects)));
             yield return new CodeInstruction(opcode: OpCodes.Brfalse, prerequisitesLabel);
 
             yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
             yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
-            yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.FinishCustomPrerequisites)));
+            yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.FinishCustomPrerequisites)));
 
             yield return new CodeInstruction(opcode: OpCodes.Nop) { labels = new List<Label> { prerequisitesLabel } };
 
@@ -594,12 +565,12 @@ namespace SRTS
                     Label brlabel = ilg.DefineLabel();
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.ContainedInDefProjects)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.ContainedInDefProjects)));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.GetResearchStat)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.GetResearchStat)));
                     yield return new CodeInstruction(opcode: OpCodes.Br, brlabel);
 
                     int x = i;
@@ -633,10 +604,10 @@ namespace SRTS
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(MainTabWindow_Research), name: "selectedProject"));
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.ContainedInDefProjects)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.ContainedInDefProjects)));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.GetResearchStatString)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.GetResearchStatString)));
                     yield return new CodeInstruction(opcode: OpCodes.Br, brlabel);
 
                     instruction.labels.Add(label);
@@ -648,18 +619,18 @@ namespace SRTS
 
         public static void ResearchFinishAllSRTS(ResearchManager __instance, ref Dictionary<ResearchProjectDef, float> ___progress)
         {
-            foreach(ResearchProjectDef researchProjectDef in srtsDefProjects.Values)
+            foreach(ResearchProjectDef researchProjectDef in SRTSHelper.srtsDefProjects.Values)
             {
-                ___progress[researchProjectDef] = GetResearchStat(researchProjectDef);
+                ___progress[researchProjectDef] = SRTSHelper.GetResearchStat(researchProjectDef);
             }
             __instance.ReapplyAllMods();
         }
 
         public static void CustomPrerequisitesCompleted(ResearchProjectDef __instance, ref bool __result, List<ResearchProjectDef> ___prerequisites)
         {
-            if(ContainedInDefProjects(__instance) && ___prerequisites != null && __result is true)
+            if(SRTSHelper.ContainedInDefProjects(__instance) && ___prerequisites != null && __result is true)
             {
-                List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[srtsDefProjects.FirstOrDefault(x => x.Value == __instance).Key.defName].CustomResearch;
+                List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[SRTSHelper.srtsDefProjects.FirstOrDefault(x => x.Value == __instance).Key.defName].CustomResearch;
                 foreach(ResearchProjectDef proj in projects)
                 {
                     if (!proj.IsFinished)
@@ -684,7 +655,7 @@ namespace SRTS
                     Label label = ilg.DefineLabel();
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 19);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.ContainedInDefProjects)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.ContainedInDefProjects)));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 19);
@@ -695,7 +666,7 @@ namespace SRTS
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(MainTabWindow_Research), name: "selectedProject"));
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 17);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(StartUp), name: nameof(StartUp.DrawLinesCustomPrerequisites)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.DrawLinesCustomPrerequisites)));
                     
                     instruction.labels.Add(label);
                 }
@@ -705,9 +676,9 @@ namespace SRTS
 
         public static void DrawCustomResearchPrereqs(ResearchProjectDef project, Rect rect, ref float __result)
         {
-            if(ContainedInDefProjects(project))
+            if(SRTSHelper.ContainedInDefProjects(project))
             {
-                List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName].CustomResearch;
+                List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[SRTSHelper.srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName].CustomResearch;
                 float yMin = rect.yMin;
                 rect.yMin += rect.height;
                 var oldResult = __result;
@@ -728,96 +699,191 @@ namespace SRTS
             }
         }
 
-        /*=========================== Helper Methods ===================================*/
-
-        public static float GetResearchStat(ResearchProjectDef project) => SRTSMod.GetStatFor<float>(srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName, StatName.researchPoints);
-        public static NamedArgument GetResearchStatString(ResearchProjectDef project) => SRTSMod.GetStatFor<float>(srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName, StatName.researchPoints).ToString("F0");
-        public static bool ContainedInDefProjects(ResearchProjectDef project) => srtsDefProjects.Any(x => x.Value == project);
-
-        public static void FinishCustomPrerequisites(ResearchProjectDef project, ResearchManager instance)
+        public static IEnumerable<Gizmo> LaunchAndBombGizmosPassthrough(IEnumerable<Gizmo> __result, Caravan __instance)
         {
-            List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName].CustomResearch;
-            foreach(ResearchProjectDef proj in projects)
+            IEnumerator<Gizmo> enumerator = __result.GetEnumerator();
+            while(enumerator.MoveNext())
             {
-                if(!proj.IsFinished)
+                var element = enumerator.Current;
+                yield return element;
+                if( (element as Command_Action)?.defaultLabel == "CommandSettle".Translate() && __instance.PawnsListForReading.Any(x => x.inventory.innerContainer.Any(y => y.TryGetComp<CompLaunchableSRTS>() != null)))
                 {
-                    instance.FinishProject(proj, false, null);
-                } 
-            }
-        }
-
-        public static void DrawLinesCustomPrerequisites(ResearchProjectDef project, ResearchTabDef curTab, Vector2 start, Vector2 end, ResearchProjectDef selectedProject, int i)
-        {
-            List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName].CustomResearch;
-
-            start.x = project.ResearchViewX * 190f + 140f;
-            start.y = project.ResearchViewY * 100f + 25f;
-            foreach(ResearchProjectDef proj in projects)
-            {
-                if(proj != null && proj.tab == curTab)
-                {
-                    end.x = proj.ResearchViewX * 190f;
-                    end.y = proj.ResearchViewY * 100f + 25f;
-                    if(selectedProject == project || selectedProject == proj)
+                    float massUsage = 0f;
+                    Thing srts = null;
+                    foreach(Pawn p in __instance.PawnsListForReading)
                     {
-                        if(i == 1)
-                            Widgets.DrawLine(start, end, TexUI.HighlightLineResearchColor, 4f);
+                        foreach(Thing t in p.inventory?.innerContainer)
+                        {
+                            if(t.TryGetComp<CompLaunchableSRTS>() != null)
+                                srts = t;
+                            else
+                            {
+                                massUsage += t.GetStatValue(StatDefOf.Mass, true) * t.stackCount;
+                            }
+                        }
+                        massUsage += p.GetStatValue(StatDefOf.Mass, true);
+                        massUsage -= MassUtility.InventoryMass(p) * p.stackCount;
                     }
-                    if(i == 0)
-                        Widgets.DrawLine(start, end, new Color(255, 215, 0, 0.25f), 2f);
-                }
-            }
-        }
-
-        public static void PopulateDictionary()
-        {
-            srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
-            List<ThingDef> defs = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x?.researchPrerequisites?.Count > 0 && x.researchPrerequisites?[0].tab.ToString() == "SRTSE").ToList();
-            foreach (ThingDef def in defs)
-            {
-                srtsDefProjects.Add(def, def.researchPrerequisites[0]);
-            }
-        }
-
-        public static void PopulateAllowedBombs()
-        {
-            if(CEModLoaded)
-            {
-                List<ThingDef> CEthings = DefDatabase<ThingDef>.AllDefsListForReading.FindAll(x => x.HasComp(Type.GetType("CombatExtended.CompExplosiveCE,CombatExtended")));
-                if (SRTSMod.mod.settings.allowedBombs is null)
-                    SRTSMod.mod.settings.allowedBombs = new List<string>();
-                if (SRTSMod.mod.settings.disallowedBombs is null)
-                    SRTSMod.mod.settings.disallowedBombs = new List<string>();
-                foreach(ThingDef td in CEthings)
-                {
-                    if (!SRTSMod.mod.settings.allowedBombs.Contains(td.defName) && !SRTSMod.mod.settings.disallowedBombs.Contains(td.defName))
+                    yield return new Command_Action
                     {
-                        SRTSMod.mod.settings.allowedBombs.Add(td.defName);
-                    }
-                }
-                return;
-            }
+                        defaultLabel = "CommandLaunchGroup".Translate(),
+                        defaultDesc = "CommandLaunchGroupDesc".Translate(),
+                        icon = Tex2D.LaunchSRTS,
+                        alsoClickIfOtherInGroupClicked = false,
+                        action = delegate ()
+                        {
+                            if (massUsage > SRTSMod.GetStatFor<float>(srts.def.defName, StatName.massCapacity))
+                                Messages.Message("TooBigTransportersMassUsage".Translate(), MessageTypeDefOf.RejectInput, false);
+                            else
+                                srts.TryGetComp<CompLaunchableSRTS>().WorldStartChoosingDestination(__instance);
+                        }
+                    };
+                    /* Not Yet Implemented */
+                    /*yield return new Command_Action
+                    {
+                        defaultLabel = "BombTarget".Translate(),
+                        defaultDesc = "BombTargetDesc".Translate(),
+                        icon = TexCommand.Attack,
+                        action = delegate ()
+                        {
+                            if(SRTSMod.mod.settings.passengerLimits)
+                            {
+                                if(__instance.PawnsListForReading.Count < SRTSMod.GetStatFor<int>(srts.def.defName, StatName.minPassengers))
+                                {
+                                    Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
+                                    return;
+                                }
+                                else if(__instance.PawnsListForReading.Count > SRTSMod.GetStatFor<int>(srts.def.defName, StatName.maxPassengers))
+                                {
+                                    Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
+                                    return;
+                                }
+                            }
+                            
+                            FloatMenuOption carpetBombing = new FloatMenuOption("CarpetBombing".Translate(), delegate ()
+                            {
+                                srts.TryGetComp<CompBombFlyer>().bombType = BombingType.carpet;
+                                srts.TryGetComp<CompBombFlyer>().StartChoosingWorldDestinationBomb(__instance);
+                            });
+                            FloatMenuOption preciseBombing = new FloatMenuOption("PreciseBombing".Translate(), delegate ()
+                            {
+                                srts.TryGetComp<CompBombFlyer>().bombType = BombingType.precise;
+                                srts.TryGetComp<CompBombFlyer>().StartChoosingWorldDestinationBomb(__instance);
+                            });
+                            Find.WindowStack.Add(new FloatMenuGizmo(new List<FloatMenuOption>() { carpetBombing, preciseBombing }, srts, srts.LabelCap, UI.MouseMapPosition()));
+                        }
+                    };*/
 
-            List<ThingDef> things = DefDatabase<ThingDef>.AllDefsListForReading.FindAll(x => x.GetCompProperties<CompProperties_Explosive>() != null && x.projectileWhenLoaded != null);
-            if(SRTSMod.mod.settings.allowedBombs is null)
-                SRTSMod.mod.settings.allowedBombs = new List<string>();
-            if(SRTSMod.mod.settings.disallowedBombs is null)
-                SRTSMod.mod.settings.disallowedBombs = new List<string>();
-            foreach(ThingDef td in things)
-            {
-                if(!SRTSMod.mod.settings.allowedBombs.Contains(td.defName) && !SRTSMod.mod.settings.disallowedBombs.Contains(td.defName))
-                {
-                    SRTSMod.mod.settings.allowedBombs.Add(td.defName);
+                    Command_Action RefuelSRTS = new Command_Action()
+                    {
+                        defaultLabel = "CommandAddFuelSRTS".Translate(srts.TryGetComp<CompRefuelable>().parent.Label),
+                        defaultDesc = "CommandAddFuelDescSRTS".Translate(),
+                        icon = Tex2D.FuelSRTS,
+                        alsoClickIfOtherInGroupClicked = false,
+                        action = delegate ()
+                        {
+                            bool flag = false;
+                            int count = 0;
+                            List<Thing> thingList = CaravanInventoryUtility.AllInventoryItems(__instance);
+                            for (int index = 0; index < thingList.Count; ++index)
+                            {
+                                if(thingList[index].def == ThingDefOf.Chemfuel)
+                                {
+                                    count = thingList[index].stackCount;
+                                    Pawn ownerOf = CaravanInventoryUtility.GetOwnerOf(__instance, thingList[index]);
+                                    float num = srts.TryGetComp<CompRefuelable>().Props.fuelCapacity - srts.TryGetComp<CompRefuelable>().Fuel;
+                                    if ((double)num < 1.0 && (double)num > 0.0)
+                                        count = 1;
+                                    if ((double)count * 1.0 >= (double)num)
+                                        count = (int)num;
+                                    if ((double)thingList[index].stackCount * 1.0 <= (double)count)
+                                    {
+                                        thingList[index].stackCount -= count;
+                                        Thing thing = thingList[index];
+                                        ownerOf.inventory.innerContainer.Remove(thing);
+                                        thing.Destroy(DestroyMode.Vanish);
+                                    }
+                                    else if ((uint)count > 0U)
+                                        thingList[index].SplitOff(count).Destroy(DestroyMode.Vanish);
+                                    srts.TryGetComp<CompRefuelable>().GetType().GetField("fuel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue((object)srts.TryGetComp<CompRefuelable>(), (object)(float)((double)srts.TryGetComp<CompRefuelable>().Fuel + (double)count));
+                                    flag = true;
+                                    break;
+                                }
+                            }
+                            if (flag)
+                                Messages.Message("AddFuelSRTSCaravan".Translate(count, srts.LabelCap), MessageTypeDefOf.PositiveEvent, false);
+                            else
+                                Messages.Message("NoFuelSRTSCaravan".Translate(), MessageTypeDefOf.RejectInput, false);
+                        }
+                    };
+                    if(srts.TryGetComp<CompRefuelable>().IsFull)
+                        RefuelSRTS.Disable();
+                    yield return RefuelSRTS;
+                    yield return new Gizmo_MapRefuelableFuelStatus
+                    {
+                        
+                        nowFuel = srts.TryGetComp<CompRefuelable>().Fuel,
+                        maxFuel = srts.TryGetComp<CompRefuelable>().Props.fuelCapacity,
+                        compLabel = srts.TryGetComp<CompRefuelable>().Props.FuelGizmoLabel
+                    };
                 }
             }
         }
-        public static bool SRTSInCaravan => TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null);
-        public static bool DynamicTexturesEnabled => SRTSMod.mod.settings.dynamicWorldDrawingSRTS;
-        private static Dictionary<ThingDef, ResearchProjectDef> srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
-        public static bool CEModLoaded = false;
-        public static Type CompProperties_ExplosiveCE;
-        public static Type CompExplosiveCE;
 
-        public static BombingTargeter targeter = new BombingTargeter();
+        public static IEnumerable<CodeInstruction> CustomOptionsPawnsToTransportTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilg)
+        {
+            List<CodeInstruction> instructionList = instructions.ToList();
+
+            for(int i = 0; i < instructionList.Count; i++)
+            {
+                CodeInstruction instruction = instructionList[i];
+
+                if(instruction.opcode == OpCodes.Call && instruction.operand == AccessTools.Method(type: typeof(CaravanFormingUtility), name: nameof(CaravanFormingUtility.AllSendablePawns)))
+                {
+                    Label label = ilg.DefineLabel();
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(Dialog_LoadTransporters), name: "transporters"));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.SRTSInTransporters)));
+                    yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
+
+                    ///Remove 4 booleans from the stack, replace with mod settings
+                    yield return new CodeInstruction(opcode: OpCodes.Pop);
+                    yield return new CodeInstruction(opcode: OpCodes.Pop);
+                    yield return new CodeInstruction(opcode: OpCodes.Pop);
+                    yield return new CodeInstruction(opcode: OpCodes.Pop);
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldsfld, operand: AccessTools.Field(type: typeof(SRTSMod), name: nameof(SRTSMod.mod)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(SRTSMod), name: nameof(SRTSMod.settings)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(SRTS_ModSettings), name: nameof(SRTS_ModSettings.allowEvenIfDowned)));
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldc_I4_0);
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldsfld, operand: AccessTools.Field(type: typeof(SRTSMod), name: nameof(SRTSMod.mod)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(SRTSMod), name: nameof(SRTSMod.settings)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(SRTS_ModSettings), name: nameof(SRTS_ModSettings.allowEvenIfPrisonerUnsecured)));
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldsfld, operand: AccessTools.Field(type: typeof(SRTSMod), name: nameof(SRTSMod.mod)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(SRTSMod), name: nameof(SRTSMod.settings)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(SRTS_ModSettings), name: nameof(SRTS_ModSettings.allowCapturablePawns)));
+
+                    instruction.labels.Add(label);
+                }
+
+                yield return instruction;
+            }
+        }
+
+        public static bool CustomOptionsPawnsToTransportOverride(List<CompTransporter> ___transporters, Map ___map, Dialog_LoadTransporters __instance)
+        {
+            if(___transporters.Any(x => x.parent.TryGetComp<CompLaunchableSRTS>() != null))
+            {
+                List<Pawn> pawnlist = CaravanFormingUtility.AllSendablePawns(___map, SRTSMod.mod.settings.allowEvenIfDowned, false, SRTSMod.mod.settings.allowEvenIfPrisonerUnsecured, SRTSMod.mod.settings.allowCapturablePawns);
+                foreach(Pawn p in pawnlist)
+                    AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddToTransferables").Invoke(__instance, new object[] { p });
+                return false;
+            }
+            return true;
+        }
     }
 }

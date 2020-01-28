@@ -33,6 +33,12 @@ namespace SRTS
             }
         }
 
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            this.Rotation = Rot4.East;
+        }
+
         protected override void Impact()
         {
             for (int i = 0; i < 6; i++)

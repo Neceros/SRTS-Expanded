@@ -52,15 +52,17 @@ namespace SRTS
             return (BomberSkyfaller)GenSpawn.Spawn(thing, pos, map, WipeMode.Vanish);
         }
 
-        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, Thing innerThing, IntVec3 start, IntVec3 end, List<IntVec3> bombCells, Map map, int idNumber, Thing original, Map originalMap, IntVec3 landingSpot)
+        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, Thing innerThing, IntVec3 start, IntVec3 end, List<IntVec3> bombCells, BombingType bombType, Map map, int idNumber, Thing original, Map originalMap, IntVec3 landingSpot)
         {
             BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, innerThing);
             thing.originalMap = originalMap;
             thing.sourceLandingSpot = landingSpot;
             thing.numberOfBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.numberBombs);
+            thing.precisionBombingNumBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.precisionBombingNumBombs);
             thing.speed = SRTSMod.GetStatFor<float>(original.def.defName, StatName.bombingSpeed);
             thing.radius = SRTSMod.GetStatFor<int>(original.def.defName, StatName.radiusDrop);
             thing.sound = original.TryGetComp<CompBombFlyer>().Props.soundFlyBy;
+            thing.bombType = bombType;
 
             double angle = start.AngleToPointRelative(end);
             thing.angle = (float)(angle + 90) * -1;

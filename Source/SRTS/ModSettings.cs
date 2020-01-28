@@ -11,7 +11,7 @@ using SPExtended;
 namespace SRTS
 {
     internal enum SettingsCategory { Settings, Stats, Research }
-    public enum StatName { massCapacity, minPassengers, maxPassengers, flightSpeed, numberBombs, radiusDrop, bombingSpeed, distanceBetweenDrops, researchPoints, fuelPerTile}
+    public enum StatName { massCapacity, minPassengers, maxPassengers, flightSpeed, numberBombs, radiusDrop, bombingSpeed, distanceBetweenDrops, researchPoints, fuelPerTile, precisionBombingNumBombs }
 
     public class SRTS_ModSettings : ModSettings
     {
@@ -22,6 +22,11 @@ namespace SRTS
         public bool disableAdvancedRecipes = false;
         public bool expandBombPoints = true;
         public bool dynamicWorldDrawingSRTS = true;
+
+        public bool allowEvenIfDowned = true;
+        public bool allowEvenIfPrisonerUnsecured = false;
+        public bool allowCapturablePawns = true;
+
         public float buildCostMultiplier = 1f;
         public List<string> allowedBombs = new List<string>();
         public List<string> disallowedBombs = new List<string>();
@@ -35,6 +40,11 @@ namespace SRTS
             Scribe_Values.Look(ref displayHomeItems, "displayHomeItems", true);
             Scribe_Values.Look(ref expandBombPoints, "expandBombPoints", true);
             Scribe_Values.Look(ref dynamicWorldDrawingSRTS, "dynamicWorldDrawingSRTS", true);
+
+            Scribe_Values.Look(ref allowEvenIfDowned, "allowEvenIfDowned", true);
+            Scribe_Values.Look(ref allowEvenIfPrisonerUnsecured, "allowEvenIfPrisonerUnsecured", false);
+            Scribe_Values.Look(ref allowCapturablePawns, "allowCapturablePawns", true);
+
             Scribe_Collections.Look<string, SRTS_DefProperties>(ref defProperties, "defProperties", LookMode.Value, LookMode.Deep);
             Scribe_Collections.Look<string>(ref allowedBombs, "allowedBombs", LookMode.Value);
             Scribe_Collections.Look<string>(ref disallowedBombs, "disallowedBombs", LookMode.Value);
@@ -221,7 +231,10 @@ namespace SRTS
                     listing_Standard.Settings_SliderLabeled("BombSpeed".Translate(), string.Empty, ref props.bombingSpeed, 0.5f, 2.5f, 10f, 1);
                     listing_Standard.Settings_SliderLabeled("RadiusDrop".Translate(), "CellsEndValue".Translate(), ref props.radiusDrop, 1, 10);
                     listing_Standard.Settings_SliderLabeled("DistanceBetweenDrops".Translate(), "CellsEndValue".Translate(), ref props.distanceBetweenDrops, 0.2f, 11, 1, 1, 999, "SingleDrop".Translate());
-                    listing_Standard.Settings_IntegerBox("NumberBombs".Translate(), ref props.numberBombs, 100f, 50f, 1, 100);
+
+                    listing_Standard.Settings_Header("BombCountSRTS".Translate(), DialogSettings.highlightColor, GameFont.Tiny, TextAnchor.MiddleLeft);
+                    listing_Standard.Settings_SliderLabeled("PreciseBombing".Translate(), string.Empty, ref props.precisionBombingNumBombs, 1, 10);
+                    listing_Standard.Settings_SliderLabeled("CarpetBombing".Translate(), string.Empty, ref props.numberBombs, 1, 40);
                 }
                 listing_Standard.End();
             }
@@ -281,9 +294,7 @@ namespace SRTS
                 listing_Standard.Begin(group2);
 
                 listing_Standard.CheckboxLabeled("PassengerLimit".Translate(), ref settings.passengerLimits, "PassengerLimitTooltip".Translate());
-
                 listing_Standard.CheckboxLabeled("DisplayHomeItems".Translate(), ref settings.displayHomeItems, "DisplayHomeItemsTooltip".Translate());
-
                 listing_Standard.CheckboxLabeled("DynamicWorldObjectSRTS".Translate(), ref settings.dynamicWorldDrawingSRTS, "DynamicWorldObjectSRTSTooltip".Translate());
 
                 listing_Standard.Gap(24f);
@@ -317,6 +328,18 @@ namespace SRTS
 
                 listing_Standard.End();
                 Widgets.EndScrollView();
+
+                Rect transportGroupRect = new Rect(inRect.width - inRect.width / 3, group2.y, inRect.width / 3, group2.height);
+
+                listing_Standard.Begin(transportGroupRect);
+
+                listing_Standard.Settings_Header("SRTSBoardingOptions".Translate(), DialogSettings.highlightColor, GameFont.Small);
+
+                listing_Standard.CheckboxLabeled("AllowDownedSRTS".Translate(), ref settings.allowEvenIfDowned);
+                listing_Standard.CheckboxLabeled("AllowUnsecurePrisonerSRTS".Translate(), ref settings.allowEvenIfPrisonerUnsecured);
+                listing_Standard.CheckboxLabeled("AllowCapturablePawnSRTS".Translate(), ref settings.allowCapturablePawns);
+
+                listing_Standard.End();
             }
 
             if (currentPage == SRTS.SettingsCategory.Stats || currentPage == SRTS.SettingsCategory.Research)
@@ -358,16 +381,19 @@ namespace SRTS
             this.settings.passengerLimits = true;
             this.settings.dynamicWorldDrawingSRTS = true;
             this.settings.displayHomeItems = true;
+            this.settings.allowEvenIfDowned = true;
+            this.settings.allowEvenIfPrisonerUnsecured = false;
+            this.settings.allowCapturablePawns = true;
             this.settings.disallowedBombs.Clear();
             this.settings.allowedBombs.Clear();
-            StartUp.PopulateAllowedBombs();
+            SRTSHelper.PopulateAllowedBombs();
         }
 
         internal void ResetBombList()
         {
             this.settings.disallowedBombs.Clear();
             this.settings.allowedBombs.Clear();
-            StartUp.PopulateAllowedBombs();
+            SRTSHelper.PopulateAllowedBombs();
         }
 
         public void ReferenceDefCheck(ref SRTS_DefProperties props)
@@ -433,6 +459,8 @@ namespace SRTS
                     return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].researchPoints, typeof(T));
                 case StatName.fuelPerTile:
                     return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].fuelPerTile, typeof(T));
+                case StatName.precisionBombingNumBombs:
+                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].precisionBombingNumBombs, typeof(T));
             }
             return default;
         }
@@ -483,6 +511,7 @@ namespace SRTS
                 this.radiusDrop = referencedDef.GetCompProperties<CompProperties_BombsAway>().radiusOfDrop;
                 this.bombingSpeed = referencedDef.GetCompProperties<CompProperties_BombsAway>().speed;
                 this.distanceBetweenDrops = referencedDef.GetCompProperties<CompProperties_BombsAway>().distanceBetweenDrops;
+                this.precisionBombingNumBombs = referencedDef.GetCompProperties<CompProperties_BombsAway>().precisionBombingNumBombs;
             }
         }
 
@@ -494,7 +523,8 @@ namespace SRTS
                 if(BombCapable)
                 {
                     flag = this.numberBombs == referencedDef.GetCompProperties<CompProperties_BombsAway>().numberBombs && this.radiusDrop == referencedDef.GetCompProperties<CompProperties_BombsAway>().radiusOfDrop &&
-                        this.bombingSpeed == referencedDef.GetCompProperties<CompProperties_BombsAway>().speed && this.distanceBetweenDrops == referencedDef.GetCompProperties<CompProperties_BombsAway>().distanceBetweenDrops;
+                        this.precisionBombingNumBombs == referencedDef.GetCompProperties<CompProperties_BombsAway>().precisionBombingNumBombs && this.bombingSpeed == referencedDef.GetCompProperties<CompProperties_BombsAway>().speed 
+                        && this.distanceBetweenDrops == referencedDef.GetCompProperties<CompProperties_BombsAway>().distanceBetweenDrops;
                 }
                 return flag && this.RequiredResearch[0].baseCost == this.researchPoints && !this.customResearchDefNames.Any() && this.massCapacity == referencedDef.GetCompProperties<CompProperties_Transporter>().massCapacity && this.minPassengers == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().minPassengers
                     && this.maxPassengers == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().maxPassengers && this.flightSpeed == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().travelSpeed &&
@@ -624,6 +654,7 @@ namespace SRTS
                 this.numberBombs = this.referencedDef.GetCompProperties<CompProperties_BombsAway>().numberBombs;
                 this.radiusDrop = this.referencedDef.GetCompProperties<CompProperties_BombsAway>().radiusOfDrop;
                 this.distanceBetweenDrops = referencedDef.GetCompProperties<CompProperties_BombsAway>().distanceBetweenDrops;
+                this.precisionBombingNumBombs = this.referencedDef.GetCompProperties<CompProperties_BombsAway>().precisionBombingNumBombs;
             }
         }
 
@@ -653,6 +684,8 @@ namespace SRTS
 
         public float bombingSpeed = 1;
 
+        public int precisionBombingNumBombs = 1;
+
         private bool bombingCapable;
 
         public bool defaultValues = true;
@@ -674,6 +707,7 @@ namespace SRTS
             Scribe_Values.Look(ref this.radiusDrop, "radiusDrop");
             Scribe_Values.Look(ref this.distanceBetweenDrops, "distanceBetweenDrops");
             Scribe_Values.Look(ref this.bombingSpeed, "bombingSpeed");
+            Scribe_Values.Look(ref this.precisionBombingNumBombs, "precisionBombingNumBombs");
         }
     }
 }

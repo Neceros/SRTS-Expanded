@@ -14,7 +14,7 @@ namespace SRTS
     {
         public bool IsTargeting => this.action != null;
 
-        public void BeginTargeting(TargetingParameters targetParams, Action<IEnumerable<IntVec3>, Pair<IntVec3, IntVec3>> action, ThingDef bomber, Map map, Pawn caster = null, Action actionWhenFinished = null, Texture2D mouseAttachment = null)
+        public void BeginTargeting(TargetingParameters targetParams, Action<IEnumerable<IntVec3>, Pair<IntVec3, IntVec3>> action, ThingDef bomber, BombingType bombType, Map map, Pawn caster = null, Action actionWhenFinished = null, Texture2D mouseAttachment = null)
         {
             this.action = action;
             this.targetParams = targetParams;
@@ -24,6 +24,7 @@ namespace SRTS
             this.selections = new List<LocalTargetInfo>();
             this.bomber = bomber;
             this.map = map;
+            this.bombType = bombType;
         }
 
         public void StopTargeting()
@@ -97,21 +98,32 @@ namespace SRTS
 
         private void DrawTargetingPoints()
         {
-            GenDraw.DrawRadiusRing(selections[0].Cell, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
-            GenDraw.DrawTargetHighlight(new LocalTargetInfo(selections[0].Cell));
             this.targetingLength = Vector3.Distance(selections[0].CenterVector3, UI.MouseMapPosition().ToIntVec3().ToVector3Shifted());
-            this.numRings = ((int)(targetingLength / SRTSMod.GetStatFor<float>(this.bomber.defName, StatName.distanceBetweenDrops))).Clamp<int>(0, SRTSMod.GetStatFor<int>(this.bomber.defName, StatName.numberBombs));
-            
-            if(SRTSMod.mod.settings.expandBombPoints && numRings >= 1)
+            GenDraw.DrawTargetHighlight(new LocalTargetInfo(selections[0].Cell));
+            if(bombType == BombingType.carpet)
             {
-                GenDraw.DrawRadiusRing(UI.MouseMapPosition().ToIntVec3(), SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
-                GenDraw.DrawTargetHighlight(new LocalTargetInfo(UI.MouseMapPosition().ToIntVec3()));
+                GenDraw.DrawRadiusRing(selections[0].Cell, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
+                
+                this.numRings = ((int)(targetingLength / SRTSMod.GetStatFor<float>(this.bomber.defName, StatName.distanceBetweenDrops))).Clamp<int>(0, SRTSMod.GetStatFor<int>(this.bomber.defName, StatName.numberBombs));
+
+                if (SRTSMod.mod.settings.expandBombPoints && numRings >= 1)
+                {
+                    GenDraw.DrawRadiusRing(UI.MouseMapPosition().ToIntVec3(), SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
+                    GenDraw.DrawTargetHighlight(new LocalTargetInfo(UI.MouseMapPosition().ToIntVec3()));
+                }
+                for (int i = 1; i < numRings - (SRTSMod.mod.settings.expandBombPoints ? 1 : 0); i++)
+                {
+                    IntVec3 cellTargeted = this.TargeterToCell(i);
+                    GenDraw.DrawRadiusRing(cellTargeted, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
+                    GenDraw.DrawTargetHighlight(new LocalTargetInfo(cellTargeted));
+                }
             }
-            for(int i = 1; i < numRings - (SRTSMod.mod.settings.expandBombPoints ? 1 : 0); i++)
+            else if(bombType == BombingType.precise)
             {
-                IntVec3 cellTargeted = this.TargeterToCell(i);
-                GenDraw.DrawRadiusRing(cellTargeted, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
-                GenDraw.DrawTargetHighlight(new LocalTargetInfo(cellTargeted));
+                IntVec3 centeredTarget = this.TargeterCentered();
+                GenDraw.DrawTargetHighlight(new LocalTargetInfo(centeredTarget));
+                GenDraw.DrawTargetHighlight(new LocalTargetInfo(UI.MouseMapPosition().ToIntVec3()));
+                GenDraw.DrawRadiusRing(centeredTarget, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop) * RadiusPreciseMultiplier);
             }
         }
 
@@ -128,10 +140,28 @@ namespace SRTS
             return new IntVec3((int)xDiff, 0, (int)zDiff);
         }
 
+        private IntVec3 TargeterCentered()
+        {
+            IntVec3 mousePos = UI.MouseMapPosition().ToIntVec3();
+            IntVec3 targetedCell = new IntVec3(mousePos.x, selections[0].Cell.y, mousePos.z);
+            double angle = selections[0].Cell.AngleToPoint(mousePos);
+            float xDiff = selections[0].Cell.x + Math.Sign(targetedCell.x - selections[0].CenterVector3.x) * (float)(this.targetingLength / 2 * Math.Cos(angle.DegreesToRadians()));
+            float zDiff = selections[0].Cell.z + Math.Sign(targetedCell.z - selections[0].CenterVector3.z) * (float)(this.targetingLength / 2 * Math.Sin(angle.DegreesToRadians()));
+            return new IntVec3((int)xDiff, 0, (int)zDiff);
+        }
+
         private IEnumerable<IntVec3> BombCellsFinalized()
         {
-            for(int i = 0; i < this.numRings; i++)
-                yield return this.TargeterToCell(i);
+            if(bombType == BombingType.carpet)
+            {
+                for (int i = 0; i < this.numRings; i++)
+                    yield return this.TargeterToCell(i);
+            }
+            else if(bombType == BombingType.precise)
+            {
+                yield return TargeterCentered();
+                yield break;
+            }
         }
 
         private void ConfirmStillValid()
@@ -172,10 +202,14 @@ namespace SRTS
 
         private ThingDef bomber;
 
+        private BombingType bombType;
+
         private float targetingLength;
 
         private int numRings;
 
         private Map map;
+
+        private const float RadiusPreciseMultiplier = 0.6f;
     }
 }

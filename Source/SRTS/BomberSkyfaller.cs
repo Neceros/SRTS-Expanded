@@ -38,14 +38,14 @@ namespace SRTS
                 switch (this.def.skyfaller.movementType)
                 {
                     case SkyfallerMovementType.Accelerate:
-                        return SkyfallerDrawPosUtilityExtended.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
+                        return SkyfallerDrawPosUtility.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                     case SkyfallerMovementType.ConstantSpeed:
-                        return SkyfallerDrawPosUtilityExtended.DrawPos_ConstantSpeed(base.DrawPos, this.ticksToExit, this.angle, this.speed);
+                        return SkyfallerDrawPosUtility.DrawPos_ConstantSpeed(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                     case SkyfallerMovementType.Decelerate:
-                        return SkyfallerDrawPosUtilityExtended.DrawPos_Decelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
+                        return SkyfallerDrawPosUtility.DrawPos_Decelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                     default:
                         Log.ErrorOnce("SkyfallerMovementType not handled: " + this.def.skyfaller.movementType, this.thingIDNumber ^ 1948576711, false);
-                        return SkyfallerDrawPosUtilityExtended.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
+                        return SkyfallerDrawPosUtility.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                 }
             }
         }
@@ -129,44 +129,50 @@ namespace SRTS
 
         private void DropBomb()
         {
-            if (innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName)) ?? false))
+            for(int i = 0; i < (bombType == BombingType.precise ? this.precisionBombingNumBombs : 1); i++)
             {
-                ActiveDropPod srts = (ActiveDropPod)innerContainer.First();
+                if (innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName)) ?? false))
+                {
+                    ActiveDropPod srts = (ActiveDropPod)innerContainer.First();
 
-                Thing thing = srts?.Contents.innerContainer.FirstOrDefault(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName));
-                if (thing is null)
-                    return;
-                Thing thing2 = srts?.Contents.innerContainer.Take(thing, 1);
-                IntVec3 bombPos = bombCells[0];
-                bombCells.RemoveAt(0);
-                int timerTickExplode = 20; //Change later to allow release timer
-                if (StartUp.CEModLoaded)
-                    goto Block_CEPatched;
-                FallingBomb bombThing = new FallingBomb(thing2, thing2.TryGetComp<CompExplosive>(), this.Map, this.def.skyfaller.shadow);
-                bombThing.HitPoints = int.MaxValue;
-                bombThing.ticksRemaining = timerTickExplode; 
+                    Thing thing = srts?.Contents.innerContainer.FirstOrDefault(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName));
+                    if (thing is null)
+                        return;
 
-                IntVec3 c = (from x in GenRadial.RadialCellsAround(bombPos, radius, true)
-                                where x.InBounds(this.Map)
-                                select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
-                bombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c) * -10);
-                bombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c) / bombThing.ticksRemaining;
-                Thing t = GenSpawn.Spawn(bombThing, c, this.Map);
-                GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(t, thing2.TryGetComp<CompExplosive>().Props.explosiveDamageType, null);
-                return;
+                    Thing thing2 = srts?.Contents.innerContainer.Take(thing, 1);
+
+                    IntVec3 bombPos = bombCells[0];
+                    if(bombType == BombingType.carpet)
+                        bombCells.RemoveAt(0);
+                    int timerTickExplode = 20 + Rand.Range(0, 5); //Change later to allow release timer
+                    if (SRTSHelper.CEModLoaded)
+                        goto Block_CEPatched;
+                    FallingBomb bombThing = new FallingBomb(thing2, thing2.TryGetComp<CompExplosive>(), this.Map, this.def.skyfaller.shadow);
+                    bombThing.HitPoints = int.MaxValue;
+                    bombThing.ticksRemaining = timerTickExplode;
+
+                    IntVec3 c = (from x in GenRadial.RadialCellsAround(bombPos, GetCurrentTargetingRadius(), true)
+                                 where x.InBounds(this.Map)
+                                 select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / GetCurrentTargetingRadius(), 1f) + 0.05f);
+                    bombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c) * -10);
+                    bombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c) / bombThing.ticksRemaining;
+                    Thing t = GenSpawn.Spawn(bombThing, c, this.Map);
+                    GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(t, thing2.TryGetComp<CompExplosive>().Props.explosiveDamageType, null);
+                    continue;
 
                 Block_CEPatched:;
-                ThingComp CEComp = (thing2 as ThingWithComps)?.AllComps.Find(x => x.GetType().Name == "CompExplosiveCE");
-                FallingBombCE CEbombThing = new FallingBombCE(thing2, CEComp.props, CEComp, this.Map, this.def.skyfaller.shadow);
-                CEbombThing.HitPoints = int.MaxValue;
-                CEbombThing.ticksRemaining = timerTickExplode;
-                IntVec3 c2 = (from x in GenRadial.RadialCellsAround(bombPos, radius, true)
-                                where x.InBounds(this.Map)
-                                select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / radius, 1f) + 0.05f);
-                CEbombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c2) * -10);
-                CEbombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c2) / CEbombThing.ticksRemaining;
-                Thing CEt = GenSpawn.Spawn(CEbombThing, c2, this.Map);
-                //GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(CEt, DamageDefOf., null); /*Is GenExplosion CE compatible?*/
+                    ThingComp CEComp = (thing2 as ThingWithComps)?.AllComps.Find(x => x.GetType().Name == "CompExplosiveCE");
+                    FallingBombCE CEbombThing = new FallingBombCE(thing2, CEComp.props, CEComp, this.Map, this.def.skyfaller.shadow);
+                    CEbombThing.HitPoints = int.MaxValue;
+                    CEbombThing.ticksRemaining = timerTickExplode;
+                    IntVec3 c2 = (from x in GenRadial.RadialCellsAround(bombPos, GetCurrentTargetingRadius(), true)
+                                  where x.InBounds(this.Map)
+                                  select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(this.Position) / GetCurrentTargetingRadius(), 1f) + 0.05f);
+                    CEbombThing.angle = this.angle + (SPTrig.LeftRightOfLine(this.DrawPosCell, this.Position, c2) * -10);
+                    CEbombThing.speed = (float)SPExtra.Distance(this.DrawPosCell, c2) / CEbombThing.ticksRemaining;
+                    Thing CEt = GenSpawn.Spawn(CEbombThing, c2, this.Map);
+                    //GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(CEt, DamageDefOf., null); /*Is GenExplosion CE compatible?*/
+                }
             }
         }
 
@@ -185,6 +191,21 @@ namespace SRTS
             Find.WorldObjects.Add((WorldObject)travelingTransportPods);
             travelingTransportPods.AddPod(activeDropPod.Contents, true);
             this.Destroy();
+        }
+
+        private int GetCurrentTargetingRadius()
+        {
+            switch(bombType)
+            {
+                case BombingType.carpet:
+                    return radius;
+                case BombingType.precise:
+                    return (int)(radius * 0.6f);
+                case BombingType.missile:
+                    throw new NotImplementedException("BombingType");
+                default:
+                    throw new NotImplementedException("BombingType");
+            }
         }
 
         public ThingOwner GetDirectlyHeldThings()
@@ -256,6 +277,10 @@ namespace SRTS
 
         public int radius;
 
+        public int precisionBombingNumBombs;
+
         public float speed;
+
+        public BombingType bombType;
     }
 }

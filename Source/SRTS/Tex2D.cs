@@ -12,6 +12,8 @@ namespace SRTS
     {
         public static readonly Texture2D LauncherTargeting = ContentFinder<Texture2D>.Get("UI/Overlays/LaunchableMouseAttachment", true);
 
+        public static readonly Texture2D LaunchSRTS = ContentFinder<Texture2D>.Get("UI/Commands/LaunchShip", true);
 
+        public static readonly Texture2D FuelSRTS = ContentFinder<Texture2D>.Get("Things/Item/Resource/Chemfuel", true);
     }
 }

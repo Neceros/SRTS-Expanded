@@ -14,7 +14,7 @@ namespace SRTS
     {
         public FallingBombCE(Thing reference, CompProperties comp, ThingComp CEcomp, Map map, string texPathShadow)
         {
-            if (!StartUp.CEModLoaded)
+            if (!SRTSHelper.CEModLoaded)
             {
                 throw new NotImplementedException("Calling wrong constructor. This is only enabled for Combat Extended calls. - Smash Phil");
             }
@@ -26,7 +26,7 @@ namespace SRTS
             this.hitPointsInt = reference.HitPoints;
             this.CEprops = comp;
             this.CEcomp = CEcomp;
-            explosionRadius = (float)AccessTools.Field(StartUp.CompProperties_ExplosiveCE, "explosionRadius").GetValue(comp);
+            explosionRadius = (float)AccessTools.Field(SRTSHelper.CompProperties_ExplosiveCE, "explosionRadius").GetValue(comp);
             this.texPathShadow = texPathShadow;
         }
 
@@ -43,26 +43,14 @@ namespace SRTS
         {
             if (!this.SpawnedOrAnyParentSpawned)
                 return;
-            AccessTools.Method(type: StartUp.CompExplosiveCE, "Explode").Invoke(this.CEcomp, new object[] { this as Thing, this.Position.ToVector3(), this.Map, 1f});
+            AccessTools.Method(type: SRTSHelper.CompExplosiveCE, "Explode").Invoke(this.CEcomp, new object[] { this as Thing, this.Position.ToVector3(), this.Map, 1f});
             this.Destroy();
         }
-
-        private Map map;
-
-        private Graphic graphicInt;
-
-        private int hitPointsInt = -1;
 
         private CompProperties CEprops;
 
         private ThingComp CEcomp;
 
         private float explosionRadius;
-
-        private string texPathShadow;
-
-        private Material cachedShadowMaterial;
-
-        private static MaterialPropertyBlock shadowPropertyBlock = new MaterialPropertyBlock();
     }
 }

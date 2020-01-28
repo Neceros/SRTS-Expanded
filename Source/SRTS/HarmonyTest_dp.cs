@@ -5,7 +5,8 @@ using Verse;
 
 namespace SRTS
 {
-    [HarmonyPatch(typeof (ActiveDropPod), "PodOpen", new System.Type[] {})]
+    /* Akreedz original patch */
+    [HarmonyPatch(typeof (ActiveDropPod), "PodOpen", new Type[] {})]
     public static class HarmonyTest_dp
     {
         public static void Prefix(ActiveDropPod __instance)

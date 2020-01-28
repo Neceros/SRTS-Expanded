@@ -10,30 +10,25 @@ namespace SRTS
 {
     public static class SkyfallerDrawPosUtilityExtended
     {
-        public static Vector3 DrawPos_Accelerate(Vector3 center, int ticksToImpact, float angle, float speed)
+        public static Vector3 DrawPos_AccelerateSRTSDirectional(Vector3 center, int ticksToImpact, Rot4 direction, float speed)
         {
             ticksToImpact = Mathf.Max(ticksToImpact, 0);
             float dist = Mathf.Pow((float)ticksToImpact, 0.95f) * 1.7f * speed;
-            return SkyfallerDrawPosUtilityExtended.PosAtDist(center, dist, angle);
+            return SRTSPosAtDist(center, dist, direction);
         }
 
-        public static Vector3 DrawPos_ConstantSpeed(Vector3 center, int ticksToImpact, float angle, float speed)
+        public static Vector3 DrawPos_TakeoffUpward(Vector3 center, int ticksTillTakeoff)
         {
-            ticksToImpact = Mathf.Max(ticksToImpact, 0);
-            float dist = (float)ticksToImpact * speed;
-            return SkyfallerDrawPosUtilityExtended.PosAtDist(center, dist, angle);
+            Vector3 pos = new Vector3(center.x, center.y, center.z + (0.03f * ticksTillTakeoff));
+            return pos;
         }
 
-        public static Vector3 DrawPos_Decelerate(Vector3 center, int ticksToImpact, float angle, float speed)
+        private static Vector3 SRTSPosAtDist(Vector3 center, float dist, Rot4 dir)
         {
-            ticksToImpact = Mathf.Max(ticksToImpact, 0);
-            float dist = (float)(ticksToImpact * ticksToImpact) * 0.00721f * speed;
-            return SkyfallerDrawPosUtilityExtended.PosAtDist(center, dist, angle);
-        }
-
-        private static Vector3 PosAtDist(Vector3 center, float dist, float angle)
-        {
-            return center + Vector3Utility.FromAngleFlat(angle - 90f) * dist;
+            Vector2 angle = dir.AsVector2 * dist;
+            Vector3 pos = center + new Vector3(angle.x, 0, angle.y);
+            Log.Message("" + pos + " : " + angle + " : " + center);
+            return pos;
         }
     }
 }

@@ -65,7 +65,7 @@
       <drawSize>9</drawSize>
     </graphicData>
     <skyfaller>
-      <movementType>Decelerate</movementType>
+      <movementType>Accelerate</movementType>
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
@@ -155,7 +155,7 @@
       <drawSize>9</drawSize>
     </graphicData>
     <skyfaller>
-      <movementType>Decelerate</movementType>
+      <movementType>Accelerate</movementType>
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
@@ -224,7 +224,7 @@
       <drawSize>15</drawSize>
     </graphicData>
     <skyfaller>
-      <movementType>Decelerate</movementType>
+      <movementType>Accelerate</movementType>
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(12,12)</shadowSize>
@@ -293,7 +293,7 @@
       <drawSize>(15,15)</drawSize>
     </graphicData>
     <skyfaller>
-      <movementType>Decelerate</movementType>
+      <movementType>Accelerate</movementType>
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>
@@ -362,7 +362,7 @@
       <drawSize>(2,2)</drawSize>
     </graphicData>
     <skyfaller>
-      <movementType>Decelerate</movementType>
+      <movementType>Accelerate</movementType>
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(2,2)</shadowSize>
@@ -449,7 +449,7 @@
       <drawSize>(4,4)</drawSize>
     </graphicData>
     <skyfaller>
-      <movementType>Decelerate</movementType>
+      <movementType>Accelerate</movementType>
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(4,4)</shadowSize>
@@ -536,7 +536,7 @@
       <drawSize>13</drawSize>
     </graphicData>
     <skyfaller>
-      <movementType>Decelerate</movementType>
+      <movementType>Accelerate</movementType>
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(6,6)</shadowSize>

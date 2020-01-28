@@ -4,6 +4,7 @@ using Verse;
 
 namespace SRTS
 {
+    /* Akreedz original patch */
     [HarmonyPatch(typeof (DropPodUtility), "MakeDropPodAt", new System.Type[] {typeof (IntVec3), typeof (Map), typeof (ActiveDropPodInfo)})]
     public static class HarmonyTest
     {
@@ -23,7 +24,7 @@ namespace SRTS
                     incomingSRTS.SRTSRotation = ship.Rotation;
                     return false;
                 }
-                else if(DefDatabase<ThingDef>.GetNamed(info.innerContainer[index].def.defName.Split('_')[0], false)?.GetCompProperties<CompProperties_BombsAway>() != null)
+                else if(DefDatabase<ThingDef>.GetNamedSilentFail(info.innerContainer[index].def.defName.Split('_')[0])?.GetCompProperties<CompProperties_BombsAway>() != null)
                 {
                     ThingDef td = DefDatabase<ThingDef>.GetNamed(info.innerContainer[index].def.defName.Split('_')[0]);
                     ActiveDropPod activeDropPod = (ActiveDropPod)ThingMaker.MakeThing(info.innerContainer[index].def, null);

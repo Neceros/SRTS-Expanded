@@ -63,14 +63,11 @@
     <Compile Include="CompProperties_BombsAway.cs" />
     <Compile Include="CompProperties_LaunchableSRTS.cs" />
     <Compile Include="FallingBombCE.cs" />
+    <Compile Include="FloatMenuGizmo.cs" />
     <Compile Include="Gizmo_MapRefuelableFuelStatus.cs" />
     <Compile Include="HarmonyTest_dp.cs" />
-    <Compile Include="HarmonyTest_trade.cs" />
     <Compile Include="HarmonyTest.cs" />
-    <Compile Include="HarmonyTest_C.cs" />
     <Compile Include="HarmonyTest_AJ.cs" />
-    <Compile Include="HarmonyTest_BB.cs" />
-    <Compile Include="HarmonyTest_TS.cs" />
     <Compile Include="InitializeDefProperties.cs" />
     <Compile Include="ModSettings.cs" />
     <Compile Include="SkyfallerDrawPosUtilityExtended.cs" />
@@ -80,6 +77,7 @@
     <Compile Include="SPTuples.cs" />
     <Compile Include="SRTSArrivalActionBombRun.cs" />
     <Compile Include="SRTSBombing.cs" />
+    <Compile Include="SRTSHelper.cs" />
     <Compile Include="SRTSIncoming.cs" />
     <Compile Include="SRTSLeaving.cs" />
     <Compile Include="SRTSArrivalActionUtility.cs" />

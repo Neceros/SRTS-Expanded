@@ -29,6 +29,10 @@
 	<ChangeItemSRTS>Edit</ChangeItemSRTS>
 	<SearchExplosive>Add Item</SearchExplosive>
 	<CurrentExplosives>Allowed Explosives</CurrentExplosives>
+	<SRTSBoardingOptions>Boarding Options</SRTSBoardingOptions>
+	<AllowDownedSRTS>Allow Downed Pawns</AllowDownedSRTS>
+	<AllowUnsecurePrisonerSRTS>Allow Unsecured Prisoners</AllowUnsecurePrisonerSRTS>
+	<AllowCapturablePawnSRTS>Allow Capturable Pawns</AllowCapturablePawnSRTS>
 
 	<SRTSSettings>SRTS Settings</SRTSSettings>
 	<FlightSpeed>Flight Speed (World Map)</FlightSpeed>
@@ -44,7 +48,9 @@
 	<BombSettings>Bomb Settings</BombSettings>
 	<BombSpeed>Flight Speed (Bomb Run)</BombSpeed>
 	<RadiusDrop>Bomb Radius</RadiusDrop>
-	<NumberBombs>Max Bombs Dropped</NumberBombs>
+	<BombCountSRTS>Bomb Counts</BombCountSRTS>
+	<CarpetBombing>Carpet Bombing</CarpetBombing>
+	<PreciseBombing>Precise Drop</PreciseBombing>
 	<DistanceBetweenDrops>Distance between drops</DistanceBetweenDrops>
 	<CellsEndValue> Cells</CellsEndValue>
 	<SingleDrop>Single Drop</SingleDrop>
@@ -66,7 +72,11 @@
 	<TooManyPilots>Too many colonists to launch</TooManyPilots>
 	<BombRunStarted>Bomb run has begun.</BombRunStarted>
 	<CannotBombMap>Cannot bomb here unless active map is loaded.</CannotBombMap>
-
+	<CommandAddFuelSRTS>Refuel {0}</CommandAddFuelSRTS>
+	<CommandAddFuelDescSRTS>Add fuel from inventory into SRTS</CommandAddFuelDescSRTS>
+	<AddFuelSRTSCaravan>{0} fuel has been added to {1}.</AddFuelSRTSCaravan>
+	<NoFuelSRTSCaravan>No fuel available</NoFuelSRTSCaravan>
+	
 	<!-- Caravans -->
 
 	<!-- Status -->

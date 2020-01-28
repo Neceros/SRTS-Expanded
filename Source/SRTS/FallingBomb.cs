@@ -125,11 +125,11 @@ namespace SRTS
 
         public int ticksRemaining;
 
-        private Map map;
+        protected Map map;
 
-        private Graphic graphicInt;
+        protected Graphic graphicInt;
 
-        private int hitPointsInt = -1;
+        protected int hitPointsInt = -1;
 
         private CompProperties_Explosive props;
 
@@ -139,10 +139,10 @@ namespace SRTS
 
         public float speed;
 
-        private string texPathShadow;
+        protected string texPathShadow;
 
-        private Material cachedShadowMaterial;
+        protected Material cachedShadowMaterial;
 
-        private static MaterialPropertyBlock shadowPropertyBlock = new MaterialPropertyBlock();
+        protected static MaterialPropertyBlock shadowPropertyBlock = new MaterialPropertyBlock();
     }
 }

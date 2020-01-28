@@ -294,7 +294,7 @@ namespace SRTS
             if(explosivesString.Count() != charCount || explosivesChanged)
             {
                 explosivesChanged = false;
-                if(StartUp.CEModLoaded)
+                if(SRTSHelper.CEModLoaded)
                 {
                     explosivesSearched = DefDatabase<ThingDef>.AllDefs.Where(x => x.HasComp(Type.GetType("CombatExtended.CompExplosiveCE,CombatExtended")) && !SRTSMod.mod.settings.allowedBombs.Contains(x.defName)
                     && CultureInfo.CurrentCulture.CompareInfo.IndexOf(x.defName, explosivesString, CompareOptions.IgnoreCase) >= 0).ToList();

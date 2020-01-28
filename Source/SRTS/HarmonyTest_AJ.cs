@@ -6,6 +6,7 @@ using Verse;
 
 namespace SRTS
 {
+    /* Akreedz original patch */
     [HarmonyPatch(typeof (TransportPodsArrivalAction_LandInSpecificCell), "Arrived", new System.Type[] {typeof (List<ActiveDropPodInfo>), typeof (int)})]
     public static class HarmonyTest_AJ
     {

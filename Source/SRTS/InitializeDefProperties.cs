@@ -15,8 +15,8 @@ namespace SRTS
         {
             SRTSMod.mod.settings.CheckDictionarySavedValid();
             SRTS_ModSettings.CheckNewDefaultValues();
-            StartUp.PopulateDictionary();
-            StartUp.PopulateAllowedBombs();
+            SRTSHelper.PopulateDictionary();
+            SRTSHelper.PopulateAllowedBombs();
 
             CombatExtendedInitialized();
         }
@@ -27,19 +27,19 @@ namespace SRTS
 
             foreach(ModMetaData mod in mods)
             {
-                if(ModLister.HasActiveModWithName(mod.Name) && mod.Identifier == "1631756268" && !StartUp.CEModLoaded)
+                if(ModLister.HasActiveModWithName(mod.Name) && mod.Identifier == "1631756268" && !SRTSHelper.CEModLoaded)
                 {
                     Log.Message("[SRTS Expanded] Initializing Combat Extended patch for Bombing Runs.");
                     if(!SRTSMod.mod.settings.CEPreviouslyInitialized)
                         SRTSMod.mod.ResetBombList();
                     SRTSMod.mod.settings.CEPreviouslyInitialized = true;
 
-                    StartUp.CEModLoaded = true;
-                    StartUp.CompProperties_ExplosiveCE = AccessTools.TypeByName("CompProperties_ExplosiveCE");
-                    StartUp.CompExplosiveCE = AccessTools.TypeByName("CompExplosiveCE");
+                    SRTSHelper.CEModLoaded = true;
+                    SRTSHelper.CompProperties_ExplosiveCE = AccessTools.TypeByName("CompProperties_ExplosiveCE");
+                    SRTSHelper.CompExplosiveCE = AccessTools.TypeByName("CompExplosiveCE");
                 }
             }
-            if(SRTSMod.mod.settings.CEPreviouslyInitialized && !StartUp.CEModLoaded)
+            if(SRTSMod.mod.settings.CEPreviouslyInitialized && !SRTSHelper.CEModLoaded)
             {
                 SRTSMod.mod.settings.CEPreviouslyInitialized = false;
                 SRTSMod.mod.ResetBombList();
