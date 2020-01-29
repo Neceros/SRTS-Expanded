@@ -386,7 +386,7 @@ Internal power plant: 1,700w</description>
     <label>SRTS Mk.III: Phoenix</label>
     <description>An aerial transport ship designed to raid, assault, and bomb. Highly advanced, created by an ancient civilization.
 
-Passenger cap: Min 1 - 13 Max
+Passenger cap: Min 1 - 17 Max
 
 --Military--
   Bombs: 20/5
@@ -427,7 +427,7 @@ Internal power plant: 3,600w</description>
         <travelSpeed>20</travelSpeed>
         <fuelPerTile>1.25</fuelPerTile>
         <minPassengers>1</minPassengers>
-        <maxPassengers>13</maxPassengers>
+        <maxPassengers>17</maxPassengers>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>20</numberBombs>
@@ -479,7 +479,7 @@ Internal power plant: 3,600w</description>
     <label>SRTS Mk.IIIp: Pelican</label>
     <description>An aerial cargo transport vessel. Low military application, but the best conventional cargo and tranport ship ever concieved in the outer rim. Highly advanced, created by an ancient civilization.
 
-Passenger cap: Min 1 - 38 Max
+Passenger cap: Min 1 - 42 Max
 ----------------------------
 Speed: Excellent
 Fuel cap: 5,000L
@@ -517,7 +517,7 @@ Internal power plant: 2,800w</description>
         <travelSpeed>20</travelSpeed>
         <fuelPerTile>1.25</fuelPerTile>
         <minPassengers>1</minPassengers>
-        <maxPassengers>38</maxPassengers>
+        <maxPassengers>42</maxPassengers>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>5000</fuelCapacity>
