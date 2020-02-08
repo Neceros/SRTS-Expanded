@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Research_SRTSSuperpod.label>Der Superpod</Research_SRTSSuperpod.label>
+  <Research_SRTSSuperpod.description>Setzen Sie ein paar Orbital Relay Launch Modules auf eine traditionelle Transportkapsel und Voilà! Sie haben ein rückflugfähiges Schiff! Es ist jedoch nur ein erster Schritt.</Research_SRTSSuperpod.description>
+
+  <Research_SRTSSkip.label>Die Skip</Research_SRTSSkip.label>
+  <Research_SRTSSkip.description>Dieses Schiffsdesign wurde konzipiert, nachdem eine nahegelegene Kolonie auf dieser Welt eine eigene Version eines Superpods ausprobiert hatte. Sie beschlossen, die Schoten auseinanderzunehmen und einmalig zusammenzusetzen. Es hat sich als sehr schön erwiesen und ist seitdem aufgrund seiner günstigen Materialkosten und des zuverlässigen Transports als Design beliebt geworden.\n\nMit militärischem Potenzial.</Research_SRTSSkip.description>
+
+
+  <Research_SRTF.label>Die Canary</Research_SRTF.label>
+  <Research_SRTF.description>Ein großer Lufttransportfrachter für Fracht. Wir kennen die Geschichte dieses Schiffes nicht, aber es ist überall. Sie finden einen SRAF auf jeder Heimatwelt in Millionenhöhe. Sehr schlechte Treibstoffeffizienz  und sehr langsam, aber der Laderaum ist unglaublich.</Research_SRTF.description>
+
+  <Research_SRTSMk2.label>Der Albatross</Research_SRTSMk2.label>
+  <Research_SRTSMk2.description>Der Albatross X-11 war ursprünglich für militärische exoplanetarische Erkundungen konzipiert, wurde jedoch schnell durch ein neueres Schiffsmodell mit einem viel besseren Motorsystem ersetzt. Sie finden X-11-Teile in der ganzen Galaxie zu typisch niedrigen Preisen. Es ist natürlich, ein natürliches Design, das sich leicht in einen atmosphärischen Flug verwandeln lässt.\n\n Hat definitiv militärisches Potenzial.</Research_SRTSMk2.description>
+
+  <Research_SRTSMk3.label>Der Phoenix</Research_SRTSMk3.label>
+  <Research_SRTSMk3.description>Nach jahrelanger Forschung haben wir endlich etwas Besonderes entdeckt: eine neue Technik, die ursprünglich von einer alten, ausgestorbenen außerirdischen Zivilisation zur Herstellung von Schiffen verwendet wurde. Das neue Modell ist leicht, geräumig und hat im Vergleich zum Albatros viel zu bieten.\n\nDer Schaltplan zeigt ernsthafte militärische Fähigkeiten.</Research_SRTSMk3.description>
+
+  <Research_SRTSMk3p.label>Der Pelican</Research_SRTSMk3p.label>
+  <Research_SRTSMk3p.description>Ohne jegliche militärische Komponenten ist der Pelikan im Grunde genommen ein Mk. III, das in ein Fracht- und Transportschiff zurückversetzt wurde. Dieses Schiff nutzt immer noch die neu entdeckte überlegene Technologie und ist leichter, schneller und weitaus leistungsstärker als alles, was bisher bekannt war.</Research_SRTSMk3p.description>
+
+  <Research_SRTSMk4.label>SRTS Mk. IV</Research_SRTSMk4.label>
+  <Research_SRTSMk4.description>Die Genesis ist ein hochentwickeltes Transportshuttle, das Uran als Brennstoff verwendet und mit Archotech-Technologie ausgestattet ist, um den Laderaum über dimensionale Grenzen hinweg zu vergrößern. Dies ist ein "Blue Box"-Level.\n\nDieser Bauplan scheint einfach nicht so zu funktionieren, wie er fortgeschritten ist, aber wir werden es nicht wissen, wenn wir es nicht versuchen.</Research_SRTSMk4.description>
+
+  <Research_SRTSArchoComps.label>Archotech Ship Komponenten</Research_SRTSArchoComps.label>
+  <Research_SRTSArchoComps.description>Erlernen Sie die Techniken zum Aufbau der hochentwickelten Komponenten, die zum Aufbau der mythischen Genesis erforderlich sind.</Research_SRTSArchoComps.description>
+
+
+</LanguageData>

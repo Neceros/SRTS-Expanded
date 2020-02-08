@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+  <!-- Labels and Titles -->
+  <SRTSExpanded>SRTS Expanded</SRTSExpanded>
+  <SRTSDef>SRTS Def</SRTSDef>
+
+  <!-- Settings -->
+  <ResetDefault>Zurücksetzen</ResetDefault>
+  <ResetDefaultTooltip>Zurücksetzen auf Standardeinstellungen</ResetDefaultTooltip>
+  <ResetThisSRTS>Dies Zurücksetzen</ResetThisSRTS>
+  <ResetAll>Alles Zurücksetzen</ResetAll>
+
+  <DefaultValues>Standardwerte</DefaultValues>
+  <CustomValues>Benutzerdefinierte Werte</CustomValues>
+
+  <MainSettings>Haupteinstellungen</MainSettings>
+
+  <PassengerLimit>Passagierlimits</PassengerLimit>
+  <PassengerLimitTooltip>Erzwinge minimale und maximale Passagiere, die in SRTS erlaubt sind</PassengerLimitTooltip>
+  <DisplayHomeItems>Alle Elemente anzeigen</DisplayHomeItems>
+  <DisplayHomeItemsTooltip>Alle Elemente auf der Karte anzeigen, wenn SRTS geladen wird, und nicht auf der Startkarte.</DisplayHomeItemsTooltip>
+  <DefSettings>Stats</DefSettings>
+  <DynamicWorldObjectSRTS>Dynamische Welttexturen</DynamicWorldObjectSRTS>
+  <DynamicWorldObjectSRTSTooltip>Zeichnen Sie dynamisch SRTS-Texturen auf der Weltkarte, um sie sowohl der SRTS-Textur als auch der Drehung anzupassen</DynamicWorldObjectSRTSTooltip>
+  <ExpandBombPoints>Erweitern Sie die Bombenziele</ExpandBombPoints>
+  <ExpandBombPointsTooltip>Erweitern Sie die Bombenpunkte entlang der Ziellinie, sodass sie über die Linie hinausragen.</ExpandBombPointsTooltip>
+  <AllowedBombs>Erlaubte Sprengstoffe (Bombardierung)</AllowedBombs>
+  <ChangeItemSRTS>Ändern</ChangeItemSRTS>
+  <SearchExplosive>Item hinzufügen</SearchExplosive>
+  <CurrentExplosives>Erlaubte Sprengstoffe</CurrentExplosives>
+  <SRTSBoardingOptions>Einstiegsmöglichkeiten</SRTSBoardingOptions>
+  <AllowDownedSRTS>Erlaube verletzte Personen</AllowDownedSRTS>
+  <AllowUnsecurePrisonerSRTS>Erlaube ungesicherte Gefangene</AllowUnsecurePrisonerSRTS>
+  <AllowCapturablePawnSRTS>Erlaube einfangbare Personen</AllowCapturablePawnSRTS>
+
+  <SRTSSettings>SRTS Einstellungen</SRTSSettings>
+  <FlightSpeed>Fluggeschwíndigkeit(Weltkarte)</FlightSpeed>
+  <Instant>Sofort</Instant>
+  <FuelEfficiency>Treibstoffkosten</FuelEfficiency>
+  <FuelEfficiencySymbol>pro Fliese</FuelEfficiencySymbol>
+  <CargoCapacity>Ladungskapazität</CargoCapacity>
+  <MinPassengers>Minimum Passagiere</MinPassengers>
+  <MaxPassengers>Maximum Passagiere</MaxPassengers>
+  <SRTSResearch>Forschungskosten</SRTSResearch>
+  <SRTSResearchRequirements>Forschung erforderlich</SRTSResearchRequirements>
+
+  <BombSettings>Bombadierungseinstellungen</BombSettings>
+  <BombSpeed>Fluggeschwíndigkeit (Bombadierung)</BombSpeed>
+  <RadiusDrop>Bombenradius</RadiusDrop>
+  <BombCountSRTS>Bombenanzahl</BombCountSRTS>
+  <CarpetBombing>Teppichbombardierung</CarpetBombing>
+  <PreciseBombing>Präzisionsschlag</PreciseBombing>
+  <DistanceBetweenDrops>Abstand zwischen Abwurf</DistanceBetweenDrops>
+  <CellsEndValue> Zellen</CellsEndValue>
+  <SingleDrop>Einzelner Abwurf</SingleDrop>
+
+  <ResearchSettings>Forschung</ResearchSettings>
+  <ResearchDef>{0} Forschungsdefinition</ResearchDef>
+  <SearchResearch>füge Forschungsdefinition hinzu</SearchResearch>
+  <AddItemSRTS>Hinzufügen</AddItemSRTS>
+  <RemoveResearch>Entfernen</RemoveResearch>
+  <RestartGameResearch>Starten Sie Ihr Spiel neu, damit die neuen Forschungseinstellungen angewendet werden</RestartGameResearch>
+
+  <!-- Float Menu -->
+  <BoardSRTS>Einsteigen {0}</BoardSRTS>
+  <JoinSRTSGroup>Treten Sie der SRTS Einstiegsgruppe bei</JoinSRTSGroup>
+
+  <!-- Messages -->
+  <SRTSNoPilot>SRTS kann nicht ohne Pilot gesendet werden.</SRTSNoPilot>
+  <NotEnoughPilots>Nicht genug Piloten, um zu starten</NotEnoughPilots>
+  <TooManyPilots>Zu viele Kolonisten zum Starten</TooManyPilots>
+  <BombRunStarted>Der Bombadierung hat begonnen..</BombRunStarted>
+  <CannotBombMap>Kann hier nicht bombardiert werden, solange keine aktive Karte geladen ist.</CannotBombMap>
+  <CommandAddFuelSRTS>Tanken {0}</CommandAddFuelSRTS>
+  <CommandAddFuelDescSRTS>Füge Kraftstoff aus dem Inventar in SRTS hinzu</CommandAddFuelDescSRTS>
+  <AddFuelSRTSCaravan>{0} Kraftstoff wurde zu {1} hinzugefügt.</AddFuelSRTSCaravan>
+  <NoFuelSRTSCaravan>Kein Kraftstoff vorhanden</NoFuelSRTSCaravan>
+
+  <!-- Caravans -->
+
+  <!-- Status -->
+
+  <!-- Gizmo -->
+  <BombTarget>Bombenangriffsziel</BombTarget>
+  <BombTargetDesc>Wählen Sie ein Ziel auf einer anderen Karte aus, auf das Bomben abgeworfen werden sollen.</BombTargetDesc>
+
+</LanguageData>

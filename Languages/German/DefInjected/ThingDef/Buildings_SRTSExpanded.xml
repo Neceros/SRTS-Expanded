@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <SRTSSuperpod.label>Superpod</SRTSSuperpod.label>
+  <SRTSSuperpod.description>Ein Lufttransportsystem, das entwickelt wurde, um Passagiere und Fracht langsam und gefährlich über die ganze Welt zu fliegen. Pannensicher.
+
+Passagierkapazität: 1
+----------------------------
+Geschwindigkeit: Schrecklich
+Treibstoffkapazität: 240L
+Treibstoffeffizienz: Normal
+----------------------------
+Ladungskapazität: 240kg
+Internes Kraftwerk:600w</SRTSSuperpod.description>
+  <SRTSSuperpod_Entwurf.label>Superpod (Entwurf)</SRTSSuperpod_Entwurf.label>
+  <SRTSSuperpod_Entwurf_Install.label>Superpod (Entwurf)</SRTSSuperpod_Entwurf_Install.label>
+  <SRTSSuperpod_Frame.label>Superpod (im Bau)</SRTSSuperpod_Frame.label>
+  <SRTSSuperpod_Frame.description>Ein Lufttransportsystem, das entwickelt wurde, um Passagiere und Fracht langsam und gefährlich über die ganze Welt zu fliegen. Pannensicher.
+
+Passagierkapazität: 1
+----------------------------
+Geschwindigkeit: Schrecklich
+Treibstoffkapazität: 240L
+Treibstoffeffizienz: Normal
+----------------------------
+Ladungskapazität: 240kg
+Internes Kraftwerk: 600w</SRTSSuperpod_Frame.description>
+
+  <SRTSSkip.label>SRTS Mk.I: Skip</SRTSSkip.label>
+  <SRTSSkip.description>Ein militärisches Luftschiff, das zum Aufspüren, Suchen und Angreifen entwickelt wurde. Pannensicher.
+
+Passagierkapazität: Min 1 - 2 Max
+
+--Bewaffnung--
+  Bomben: 7/3
+  Genauigkeit: schlecht
+----------------------------
+Geschwindigkeit: Normal
+Treibstoffkapazität: 500L
+Treibstoffeffizienz: Gut
+----------------------------
+Ladungskapazität: 420kg
+Internes Kraftwerk: 800w</SRTSSkip.description>
+  <SRTSSkip_Entwurf.label>SRTS Mk.I: Skip (Entwurf)</SRTSSkip_Entwurf.label>
+  <SRTSSkip_Entwurf_Install.label>SRTS Mk.I: Skip (Entwurf)</SRTSSkip_Entwurf_Install.label>
+  <SRTSSkip_Frame.label>SRTS Mk.I: Skip (im Bau)</SRTSSkip_Frame.label>
+  <SRTSSkip_Frame.description>Ein militärisches Luftschiff, das zum Aufspüren, Suchen und Angreifen entwickelt wurde. Pannensicher.
+
+Passagierkapazität: Min 1 - 2 Max
+
+--Bewaffnung--
+  Bomben: 7/3
+  Genauigkeit: schlecht
+----------------------------
+Geschwindigkeit: Normal
+Treibstoffkapazität: 500L
+Treibstoffeffizienz: Gut
+----------------------------
+Ladungskapazität: 420kg
+Internes Kraftwerk: 800w</SRTSSkip_Frame.description>
+
+  <SRTF.label>SRAF: Canary</SRTF.label>
+  <SRTF.description>Kurzstrecken-Luftfrachter. Ein Transportsystem, das Ladung um die Welt fliegen lässt, aber für Passagiere kaum Platz bietet. Diese Industriegiganten sind seit Jahrtausenden im Einsatz.
+
+Passagierkapazität: Min 1 - 3 Max
+----------------------------
+Geschwindigkeit: Schrecklich
+Treibstoffkapazität: 2,000L
+Treibstoffeffizienz: Schrecklich
+----------------------------
+Ladungskapazität: 5,000kg
+Internes Kraftwerk: 1000w</SRTF.description>
+  <SRTF_Entwurf.label>SRAF: Canary (Entwurf)</SRTF_Entwurf.label>
+  <SRTF_Entwurf_Install.label>SRAF: Canary (Entwurf)</SRTF_Entwurf_Install.label>
+  <SRTF_Frame.label>SRAF: Canary (im Bau)</SRTF_Frame.label>
+  <SRTF_Frame.description>Kurzstrecken-Luftfrachter. Ein Transportsystem, das Ladung um die Welt fliegen lässt, aber für Passagiere kaum Platz bietet. Diese Industriegiganten sind seit Jahrtausenden im Einsatz.
+
+Passagierkapazität: Min 1 - 3 Max
+----------------------------
+Geschwindigkeit: Schrecklich
+Treibstoffkapazität: 2,000L
+Treibstoffeffizienz: Schrecklich
+----------------------------
+Ladungskapazität: 5,000kg
+Internes Kraftwerk: 1000w</SRTF_Frame.description>
+
+  <SRTSMkII.label>SRTS Mk.II: Albatross</SRTSMkII.label>
+  <SRTSMkII.description>Ein Luftschiff, das für all Ihre Transport- und Militärbedürfnisse ausgelegt ist. Ein gutes Schiff, aber nicht spezialisiert, daher ist es in keinem Bereich großartig.
+
+Passagierkapazität: Min 1 - 7 Max
+
+--Bewaffnung--
+  Bomben: 12/4
+  Genauigkeit: Normal
+----------------------------
+Geschwindigkeit: Gut
+Treibstoffkapazität: 1,600L
+Treibstoffeffizienz: Gut
+----------------------------
+Ladungskapazität: 2,200kg
+Internes Kraftwerk: 1,700w</SRTSMkII.description>
+  <SRTSMkII_Entwurf.label>SRTS Mk.II: Albatross (Entwurf)</SRTSMkII_Entwurf.label>
+  <SRTSMkII_Entwurf_Install.label>SRTS Mk.II: Albatross (Entwurf)</SRTSMkII_Entwurf_Install.label>
+  <SRTSMkII_Frame.label>SRTS Mk.II: Albatross (im Bau)</SRTSMkII_Frame.label>
+  <SRTSMkII_Frame.description>Ein Luftschiff, das für all Ihre Transport- und Militärbedürfnisse ausgelegt ist. Ein gutes Schiff, aber nicht spezialisiert, daher ist es in keinem Bereich großartig.
+
+Passagierkapazität: Min 1 - 7 Max
+
+--Bewaffnung--
+  Bomben: 12/4
+  Genauigkeit: Normal
+----------------------------
+Geschwindigkeit: Gut
+Treibstoffkapazität: 1,600L
+Treibstoffeffizienz: Gut
+----------------------------
+Ladungskapazität: 2,200kg
+Internes Kraftwerk: 1,700w</SRTSMkII_Frame.description>
+  <SRTSMkIII.label>SRTS Mk.III: Phoenix</SRTSMkIII.label>
+  <SRTSMkIII.description>Ein Lufttransportschiff, das zum Überfallen, Angreifen und Bombenangriff entwickelt wurde. Hoch entwickelt, von einer alten Zivilisation geschaffen.
+
+Passagierkapazität: Min 1 - 17 Max
+
+--Bewaffnung--
+  Bomben: 20/5
+  Genauigkeit: Gut
+----------------------------
+Geschwindigkeit: Ausgezeichnet
+Treibstoffkapazität: 2,800L
+Treibstoffeffizienz: Ausgezeichnet
+----------------------------
+Ladungskapazität: 3,600kg
+Internes Kraftwerk: 3,600w</SRTSMkIII.description>
+  <SRTSMkIII_Entwurf.label>SRTS Mk.III: Phoenix (Entwurf)</SRTSMkIII_Entwurf.label>
+  <SRTSMkIII_Entwurf_Install.label>SRTS Mk.III: Phoenix (Entwurf)</SRTSMkIII_Entwurf_Install.label>
+  <SRTSMkIII_Frame.label>SRTS Mk.III: Phoenix (im Bau)</SRTSMkIII_Frame.label>
+  <SRTSMkIII_Frame.description>Ein Lufttransportschiff, das zum Überfallen, Angreifen und Bombenangriff entwickelt wurde. Hoch entwickelt, von einer alten Zivilisation geschaffen.
+
+Passagierkapazität: Min 1 - 17 Max
+
+--Bewaffnung--
+  Bomben: 20/5
+  Genauigkeit: Gut
+----------------------------
+Geschwindigkeit: Ausgezeichnet
+Treibstoffkapazität: 2,800L
+Treibstoffeffizienz: Ausgezeichnet
+----------------------------
+Ladungskapazität: 3,600kg
+Internes Kraftwerk: 3,600w</SRTSMkIII_Frame.description>
+  <SRTSMkIIIp.label>SRTS Mk.IIIp: Pelican</SRTSMkIIIp.label>
+  <SRTSMkIIIp.description>Eine Riesiges Transportschiff. Geringe militärische Anwendung, aber das beste konventionelle Lade- und Transportschiff, das jemals im Außenrand gefunden wurde. Hoch entwickelt, von einer alten Zivilisation geschaffen.
+
+Passagierkapazität: Min 1 - 42 Max
+----------------------------
+Geschwindigkeit: Ausgezeichnet
+Treibstoffkapazität: 5,000L
+Treibstoffeffizienz: Ausgezeichnet
+----------------------------
+Ladungskapazität: 20,000kg
+Internes Kraftwerk: 2,800w</SRTSMkIIIp.description>
+  <SRTSMkIIIp_Entwurf.label>SRTS Mk.IIIp: Pelican (Entwurf)</SRTSMkIIIp_Entwurf.label>
+  <SRTSMkIIIp_Entwurf_Install.label>SRTS Mk.IIIp: Pelican (Entwurf)</SRTSMkIIIp_Entwurf_Install.label>
+  <SRTSMkIIIp_Frame.label>SRTS Mk.IIIp: Pelican (im Bau)</SRTSMkIIIp_Frame.label>
+  <SRTSMkIIIp_Frame.description>Eine Riesiges Transportschiff. Geringe militärische Anwendung, aber das beste konventionelle Lade- und Transportschiff, das jemals im Außenrand gefunden wurde. Hoch entwickelt, von einer alten Zivilisation geschaffen.
+
+Passagierkapazität: Min 1 - 42 Max
+----------------------------
+Geschwindigkeit: Ausgezeichnet
+Treibstoffkapazität: 5,000L
+Treibstoffeffizienz: Ausgezeichnet
+----------------------------
+Ladungskapazität: 20,000kg
+Internes Kraftwerk: 2,800w</SRTSMkIIIp_Frame.description>
+  <SRTSMkIV.label>SRTS Mk.IV: Genesis</SRTSMkIV.label>
+  <SRTSMkIV.description>Das Genesis-Transportschiff ist eine hochentwickelte Archotech-Technologie. Dieses Schiff wandelt Uran langsam in Energie für Treibstoff um und nutzt zusätzliche dimensionale Verschiebungen, um Ladung zu
+  transportieren, die viel schwerer und größer als das Schiff selbst ist.
+
+Passagierkapazität: Min 2 - No Max
+
+--Bewaffnung--
+  Bomben: 32/10
+  Genauigkeit: Legendär
+----------------------------
+Geschwindigkeit: Legendär
+Treibstoffart: Uran
+Treibstoffkapazität: Legendär
+Treibstoffeffizienz: Legendär
+----------------------------
+Ladungskapazität: Kein Limit
+Internes Kraftwerk: 12,600w</SRTSMkIV.description>
+  <SRTSMkIV_Entwurf.label>SRTS Mk.IV: Genesis (Entwurf)</SRTSMkIV_Entwurf.label>
+  <SRTSMkIV_Entwurf_Install.label>SRTS Mk.IV: Genesis (Entwurf)</SRTSMkIV_Entwurf_Install.label>
+  <SRTSMkIV_Frame.label>SRTS Mk.IV: Genesis (im Bau)</SRTSMkIV_Frame.label>
+  <SRTSMkIV_Frame.description>Das Genesis-Transportschiff ist eine hochentwickelte Archotech-Technologie. Dieses Schiff wandelt Uran langsam in Energie für Treibstoff um und nutzt zusätzliche dimensionale Verschiebungen, um Ladung zu
+  transportieren, die viel schwerer und größer als das Schiff selbst ist.
+
+Passagierkapazität: Min 2 - No Max
+
+--Bewaffnung--
+  Bomben: 32/10
+  Genauigkeit: Legendär
+----------------------------
+Geschwindigkeit: Legendär
+Treibstoffart: Uran
+Treibstoffkapazität: Legendär
+Treibstoffeffizienz: Legendär
+----------------------------
+Ladungskapazität: Kein Limit
+Internes Kraftwerk: 12,600w</SRTSMkIV_Frame.description>
+</LanguageData>
