@@ -127,7 +127,7 @@ Internal power plant: 600w</description>
 Passenger cap: Min 1 - 2 Max
 
 --Military--
-  Bombs: 7/3
+  Bombs: 7/4
   Accuracy: Poor
 ----------------------------
 Speed: Normal
@@ -173,11 +173,11 @@ Internal power plant: 800w</description> <!-- description of course... -->
 		<shuttleBayLanding>true</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont -->
-        <numberBombs>7</numberBombs> <!-- num dropped per run -->
-		    <precisionBombingNumBombs>3</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <numberBombs>8</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>4</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
         <radiusOfDrop>5</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
         <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
-		    <distanceBetweenDrops>5</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+		    <distanceBetweenDrops>4</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
 	  </li>
       <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
         <fuelCapacity>500</fuelCapacity>
@@ -302,7 +302,7 @@ Internal power plant: 1000w</description>
 Passenger cap: Min 1 - 7 Max
 
 --Military--
-  Bombs: 12/4
+  Bombs: 12/6
   Accuracy: Normal
 ----------------------------
 Speed: Good
@@ -344,10 +344,10 @@ Internal power plant: 1,700w</description>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>12</numberBombs>
-        <precisionBombingNumBombs>4</precisionBombingNumBombs>
+        <precisionBombingNumBombs>6</precisionBombingNumBombs>
         <radiusOfDrop>4</radiusOfDrop>
         <speed>1</speed>
-        <distanceBetweenDrops>4</distanceBetweenDrops>
+        <distanceBetweenDrops>3</distanceBetweenDrops>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>1600</fuelCapacity>
@@ -392,7 +392,7 @@ Internal power plant: 1,700w</description>
 Passenger cap: Min 1 - 17 Max
 
 --Military--
-  Bombs: 20/5
+  Bombs: 20/10
   Accuracy: Good
 ----------------------------
 Speed: Excellent
@@ -437,10 +437,10 @@ Internal power plant: 3,600w</description>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>20</numberBombs>
-        <precisionBombingNumBombs>5</precisionBombingNumBombs>
+        <precisionBombingNumBombs>10</precisionBombingNumBombs>
         <radiusOfDrop>3</radiusOfDrop>
         <speed>1</speed>
-        <distanceBetweenDrops>3</distanceBetweenDrops>
+        <distanceBetweenDrops>2</distanceBetweenDrops>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2800</fuelCapacity>
@@ -571,7 +571,7 @@ Internal power plant: 2,800w</description>
 Passenger cap: Min 2 - No Max
 
 --Military--
-  Bombs: 32/10
+  Bombs: 32/32
   Accuracy: Legendary
 ----------------------------
 Speed: Legendary
@@ -615,10 +615,10 @@ Internal power plant: 12,600w</description>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
-        <precisionBombingNumBombs>10</precisionBombingNumBombs>
-        <radiusOfDrop>2</radiusOfDrop>
+        <precisionBombingNumBombs>32</precisionBombingNumBombs>
+        <radiusOfDrop>1</radiusOfDrop>
         <speed>1</speed>
-        <distanceBetweenDrops>2</distanceBetweenDrops>
+        <distanceBetweenDrops>1</distanceBetweenDrops>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Uranium reactor charge level</fuelLabel>
