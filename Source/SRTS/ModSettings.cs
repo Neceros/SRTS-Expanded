@@ -11,7 +11,8 @@ using SPExtended;
 namespace SRTS
 {
     internal enum SettingsCategory { Settings, Stats, Research }
-    public enum StatName { massCapacity, minPassengers, maxPassengers, flightSpeed, numberBombs, radiusDrop, bombingSpeed, distanceBetweenDrops, researchPoints, fuelPerTile, precisionBombingNumBombs }
+    public enum StatName { massCapacity, minPassengers, maxPassengers, flightSpeed, numberBombs, radiusDrop, bombingSpeed, distanceBetweenDrops, researchPoints, fuelPerTile, precisionBombingNumBombs
+        , spaceFaring, shuttleBayLanding}
 
     public class SRTS_ModSettings : ModSettings
     {
@@ -237,6 +238,19 @@ namespace SRTS
                     listing_Standard.Settings_SliderLabeled("CarpetBombing".Translate(), string.Empty, ref props.numberBombs, 1, 40);
                 }
                 listing_Standard.End();
+
+                if(SRTSHelper.SOS2ModLoaded)
+                {
+                    Rect sos2Rect = new Rect(inRect.width - (inRect.width / 4), inRect.height - (inRect.height / 8), inRect.width / 4, inRect.height / 4);
+
+                    listing_Standard.Begin(sos2Rect);
+
+                    listing_Standard.Settings_Header("SOS2Compatibility".Translate(), DialogSettings.highlightColor, GameFont.Small, TextAnchor.MiddleLeft);
+                    listing_Standard.CheckboxLabeled("SpaceFaring".Translate(), ref props.spaceFaring);
+                    listing_Standard.CheckboxLabeled("ShuttleBayLanding".Translate(), ref props.shuttleBayLanding);
+
+                    listing_Standard.End();
+                }
             }
             else if(currentPage == SRTS.SettingsCategory.Research)
             {
@@ -446,27 +460,35 @@ namespace SRTS
             switch(stat)
             {
                 case StatName.massCapacity:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].massCapacity, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].massCapacity, typeof(T));
                 case StatName.minPassengers:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].minPassengers, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].minPassengers, typeof(T));
                 case StatName.maxPassengers:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].maxPassengers, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].maxPassengers, typeof(T));
                 case StatName.flightSpeed:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].flightSpeed, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].flightSpeed, typeof(T));
+
+                /* SOS2 Compatibility */
+                case StatName.spaceFaring:
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].spaceFaring, typeof(T));
+                case StatName.shuttleBayLanding:
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].shuttleBayLanding, typeof(T));
+                /* ------------------ */
+
                 case StatName.bombingSpeed:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].bombingSpeed, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].bombingSpeed, typeof(T));
                 case StatName.numberBombs:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].numberBombs, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].numberBombs, typeof(T));
                 case StatName.radiusDrop:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].radiusDrop, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].radiusDrop, typeof(T));
                 case StatName.distanceBetweenDrops:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].distanceBetweenDrops, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].distanceBetweenDrops, typeof(T));
                 case StatName.researchPoints:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].researchPoints, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].researchPoints, typeof(T));
                 case StatName.fuelPerTile:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].fuelPerTile, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].fuelPerTile, typeof(T));
                 case StatName.precisionBombingNumBombs:
-                    return (T)Convert.ChangeType(SRTSMod.mod.settings.defProperties[defName].precisionBombingNumBombs, typeof(T));
+                    return (T)Convert.ChangeType(mod.settings.defProperties[defName].precisionBombingNumBombs, typeof(T));
             }
             return default;
         }
@@ -497,8 +519,11 @@ namespace SRTS
             this.maxPassengers = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().maxPassengers;
             this.flightSpeed = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().travelSpeed;
             this.fuelPerTile = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().fuelPerTile;
-            
-            if(this.requiredResearch is null)
+
+            this.spaceFaring = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().spaceFaring;
+            this.shuttleBayLanding = referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().shuttleBayLanding;
+
+            if (this.requiredResearch is null)
                 this.requiredResearch = new List<ResearchProjectDef>();
             this.requiredResearch.AddRange(referencedDef.researchPrerequisites);
             this.researchPoints = this.RequiredResearch?[0].baseCost ?? 1;
@@ -555,6 +580,14 @@ namespace SRTS
         public List<ResearchProjectDef> customResearchRequirements;
 
         private List<string> customResearchDefNames;
+
+        /* SOS2 Compatibility */
+        public bool spaceFaring;
+        
+        public bool shuttleBayLanding;
+        /* ------------------ */
+
+
         public List<ResearchProjectDef> ResearchPrerequisites
         {
             get
@@ -639,6 +672,9 @@ namespace SRTS
             this.flightSpeed = this.referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().travelSpeed;
             this.fuelPerTile = this.referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().fuelPerTile;
 
+            this.spaceFaring = this.referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().spaceFaring;
+            this.shuttleBayLanding = this.referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().shuttleBayLanding;
+
             int num = 0;
             foreach (ResearchProjectDef proj in this.referencedDef.researchPrerequisites)
             {
@@ -700,6 +736,9 @@ namespace SRTS
             Scribe_Values.Look(ref this.flightSpeed, "flightSpeed");
             Scribe_Values.Look(ref this.researchPoints, "researchPoints");
             Scribe_Values.Look(ref this.fuelPerTile, "fuelPerTile");
+
+            Scribe_Values.Look(ref this.spaceFaring, "spaceFaring");
+            Scribe_Values.Look(ref this.shuttleBayLanding, "shuttleBayLanding");
 
             Scribe_Collections.Look<string>(ref customResearchDefNames, "customResearchDefNames", LookMode.Value, new object[0]); ;
 

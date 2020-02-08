@@ -110,7 +110,7 @@ namespace SRTS
             if(ModLister.HasActiveModWithName("Save Our Ship 2"))
             {
                 sos2Flag = true;
-                Log.Message("[SRTSExpanded] Overriding SOS2 destructive patches.");
+                Log.Message("[SRTSExpanded] Overriding SOS2 Destructive Patches.");
             }    
             harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddPawnsToTransferables"), 
                 prefix: sos2Flag ? new HarmonyMethod(type: typeof(StartUp), 

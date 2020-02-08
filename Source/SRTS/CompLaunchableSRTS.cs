@@ -7,6 +7,7 @@ using System.Reflection;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Harmony;
 
 namespace SRTS
 {
@@ -213,57 +214,56 @@ namespace SRTS
 
 	    public override IEnumerable<Gizmo> CompGetGizmosExtra()
 	    {
-	          foreach (Gizmo gizmo in base.CompGetGizmosExtra())
-	          {
-		            Gizmo g = gizmo;
-		            yield return g;
-		            g = null;
-	          }
-	          if (this.LoadingInProgressOrReadyToLaunch)
-	          {
-		            Command_Action launch = new Command_Action();
-		            launch.defaultLabel = "CommandLaunchGroup".Translate();
-		            launch.defaultDesc = "CommandLaunchGroupDesc".Translate();
-		            launch.icon = CompLaunchableSRTS.LaunchCommandTex;
-		            launch.alsoClickIfOtherInGroupClicked = false;
-		            launch.action = (Action) (() =>
-		            {
-			            int num = 0;
-			            foreach(Thing t in this.Transporter.innerContainer)
-			            {
-				            if(t is Pawn && (t as Pawn).IsColonist)
-				            {
-					            num++;
-				            }
-			            }
-			            if(SRTSMod.mod.settings.passengerLimits)
-			            {
-				            if (num < SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.minPassengers))
-				            {
-					            Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
-					            return;
-				            }
-				            else if (num > SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.maxPassengers))
-				            {
-					            Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
-					            return;
-				            }
-			            }
+	        foreach (Gizmo gizmo in base.CompGetGizmosExtra())
+	        {
+		        Gizmo g = gizmo;
+		        yield return g;
+		        g = null;
+	        }
+	        if (this.LoadingInProgressOrReadyToLaunch)
+	        {
+		        Command_Action launch = new Command_Action();
+		        launch.defaultLabel = "CommandLaunchGroup".Translate();
+		        launch.defaultDesc = "CommandLaunchGroupDesc".Translate();
+		        launch.icon = LaunchCommandTex;
+		        launch.alsoClickIfOtherInGroupClicked = false;
+		        launch.action = (Action) (() =>
+		        {
+			        int num = 0;
+			        foreach(Thing t in this.Transporter.innerContainer)
+			        {
+				        if(t is Pawn && (t as Pawn).IsColonist)
+				        {
+					        num++;
+				        }
+			        }
+			        if(SRTSMod.mod.settings.passengerLimits)
+			        {
+				        if (num < SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.minPassengers))
+				        {
+					        Messages.Message("NotEnoughPilots".Translate(), MessageTypeDefOf.RejectInput, false);
+					        return;
+				        }
+				        else if (num > SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.maxPassengers))
+				        {
+					        Messages.Message("TooManyPilots".Translate(), MessageTypeDefOf.RejectInput, false);
+					        return;
+				        }
+			        }
 
-		              if (this.AnyInGroupHasAnythingLeftToLoad)
-			                Find.WindowStack.Add((Window) Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(this.FirstThingLeftToLoadInGroup.LabelCapNoCount), new Action(this.StartChoosingDestination), false, (string) null));
-		              else
-			                this.StartChoosingDestination();
-		            });
-		            if (!this.AllInGroupConnectedToFuelingPort)
-		                launch.Disable("CommandLaunchGroupFailNotConnectedToFuelingPort".Translate());
-		            else if (!this.AllFuelingPortSourcesInGroupHaveAnyFuel)
-		                launch.Disable("CommandLaunchGroupFailNoFuel".Translate());
-		            else if (this.AnyInGroupIsUnderRoof)
-		                launch.Disable("CommandLaunchGroupFailUnderRoof".Translate());
-		            yield return (Gizmo) launch;
-		            launch = null;
-	          }
+		            if (this.AnyInGroupHasAnythingLeftToLoad)
+			            Find.WindowStack.Add((Window) Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(this.FirstThingLeftToLoadInGroup.LabelCapNoCount), new Action(this.StartChoosingDestination), false, (string) null));
+		            else
+			            this.StartChoosingDestination();
+		        });
+		        if (!this.AllInGroupConnectedToFuelingPort)
+		            launch.Disable("CommandLaunchGroupFailNotConnectedToFuelingPort".Translate());
+		        else if (!this.AllFuelingPortSourcesInGroupHaveAnyFuel)
+		            launch.Disable("CommandLaunchGroupFailNoFuel".Translate());
+		        else if (this.AnyInGroupIsUnderRoof)
+		            launch.Disable("CommandLaunchGroupFailUnderRoof".Translate());
+		        yield return launch;
+	        }
 	    }
 
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn pawn)
@@ -299,40 +299,85 @@ namespace SRTS
 
 	    private void StartChoosingDestination()
 	    {
-	          CameraJumper.TryJump(CameraJumper.GetWorldTarget((GlobalTargetInfo) ((Thing) this.parent)));
-	          Find.WorldSelector.ClearSelection();
-	          int tile = this.parent.Map.Tile;
-	          this.carr = (Caravan) null;
-	          Find.WorldTargeter.BeginTargeting(new Func<GlobalTargetInfo, bool>(this.ChoseWorldTarget), true, CompLaunchableSRTS.TargeterMouseAttachment, true, (Action) (() => GenDraw.DrawWorldRadiusRing(tile, this.MaxLaunchDistance)), (Func<GlobalTargetInfo, string>) (target =>
-	          {
+	        CameraJumper.TryJump(CameraJumper.GetWorldTarget(parent));
+	        Find.WorldSelector.ClearSelection();
+	        int tile = this.parent.Map.Tile;
+	        carr = null;
+
+            /* SOS2 Compatibility Section */
+            if(SRTSHelper.SOS2ModLoaded)
+            {
+                if (this.parent.Map.Parent.def.defName == "ShipOrbiting")
+                {
+                    Find.WorldTargeter.BeginTargeting(new Func<GlobalTargetInfo, bool>(this.ChoseWorldTarget), true, TargeterMouseAttachment, true, null, delegate (GlobalTargetInfo target)
+                    {
+                        if (!target.IsValid || this.parent.TryGetComp<CompRefuelable>() == null || this.parent.TryGetComp<CompRefuelable>().FuelPercentOfMax == 1.0f)
+                        {
+                            return null;
+                        }
+
+                        if (target.WorldObject != null && target.WorldObject.GetType().IsAssignableFrom(SRTSHelper.SpaceSiteType))
+                        {
+                            /*if (this.parent.TryGetComp<CompRefuelable>().FuelPercentOfMax >= ((SRTSHelper.SpaceSite.worldObjectClass)target.WorldObject).fuelCost / 100f)
+                                return null;
+                            return "MessageShuttleNeedsMoreFuel".Translate(((SpaceSite)target.WorldObject).fuelCost);*/
+                            return null;
+                        }
+                        return "MessageShuttleMustBeFullyFueled".Translate();
+                    });
+                }
+                else if (this.parent.Map.Parent.GetType().IsAssignableFrom(SRTSHelper.SpaceSiteType))
+                {
+                    Find.WorldTargeter.BeginTargeting(new Func<GlobalTargetInfo, bool>(this.ChoseWorldTarget), true, TargeterMouseAttachment, true, null, delegate (GlobalTargetInfo target)
+                    {
+                        if (target.WorldObject == null || (!(target.WorldObject.def == SRTSHelper.SpaceSite) && !(target.WorldObject.def.defName == "ShipOrbiting")))
+                        {
+                            return "MessageOnlyOtherSpaceSites".Translate();
+                        }
+                        return null;
+                        /*if (this.parent.TryGetComp<CompRefuelable>().FuelPercentOfMax >= ((SpaceSite)this.parent.Map.Parent).fuelCost / 100f)
+                            return null;
+                        return "MessageShuttleNeedsMoreFuel".Translate(((SpaceSite)this.parent.Map.Parent).fuelCost);*/
+                    });
+                }
+            }
+            /* -------------------------- */
+	        Find.WorldTargeter.BeginTargeting(new Func<GlobalTargetInfo, bool>(this.ChoseWorldTarget), true, TargeterMouseAttachment, true, (() => GenDraw.DrawWorldRadiusRing(tile, this.MaxLaunchDistance)), (target =>
+	        {
 		        if (!target.IsValid)
-		            return (string) null;
-		        int num = Find.WorldGrid.TraversalDistanceBetween(tile, target.Tile, true, int.MaxValue);
+		            return null;
+		        int num = Find.WorldGrid.TraversalDistanceBetween(tile, target.Tile);
 		        if (num > this.MaxLaunchDistance)
 		        {
-		              GUI.color = Color.red;
-		              if (num > this.MaxLaunchDistanceEverPossible)
-			                return "TransportPodDestinationBeyondMaximumRange".Translate();
-		              return "TransportPodNotEnoughFuel".Translate();
+		            GUI.color = Color.red;
+		            if (num > this.MaxLaunchDistanceEverPossible)
+			            return "TransportPodDestinationBeyondMaximumRange".Translate();
+		            return "TransportPodNotEnoughFuel".Translate();
 		        }
+
+                if( target.WorldObject?.def?.defName == "ShipOrbiting" || (target.WorldObject?.GetType()?.IsAssignableFrom(SRTSHelper.SpaceSiteType) ?? false))
+                {
+                    return null;
+                }
+
 		        IEnumerable<FloatMenuOption> floatMenuOptionsAt = this.GetTransportPodsFloatMenuOptionsAt(target.Tile, (Caravan) null);
 		        if (!floatMenuOptionsAt.Any<FloatMenuOption>())
 		        {
-		              if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
-			                return "MessageTransportPodsDestinationIsInvalid".Translate();
-		              return string.Empty;
+		            if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
+			            return "MessageTransportPodsDestinationIsInvalid".Translate();
+		            return string.Empty;
 		        }
 		        if (floatMenuOptionsAt.Count<FloatMenuOption>() == 1)
 		        {
-		              if (floatMenuOptionsAt.First<FloatMenuOption>().Disabled)
-			                GUI.color = Color.red;
-		              return floatMenuOptionsAt.First<FloatMenuOption>().Label;
+		            if (floatMenuOptionsAt.First<FloatMenuOption>().Disabled)
+			            GUI.color = Color.red;
+		            return floatMenuOptionsAt.First<FloatMenuOption>().Label;
 		        }
-		            MapParent worldObject = target.WorldObject as MapParent;
-		            if (worldObject == null)
-		                return "ClickToSeeAvailableOrders_Empty".Translate();
-		            return "ClickToSeeAvailableOrders_WorldObject".Translate(worldObject.LabelCap);
-	          }));
+		        MapParent worldObject = target.WorldObject as MapParent;
+		        if (worldObject == null)
+		            return "ClickToSeeAvailableOrders_Empty".Translate();
+		        return "ClickToSeeAvailableOrders_WorldObject".Translate(worldObject.LabelCap);
+	        }));
 	    }
 
 	    public void WorldStartChoosingDestination(Caravan car)
@@ -375,44 +420,64 @@ namespace SRTS
 
 	    private bool ChoseWorldTarget(GlobalTargetInfo target)
 	    {
-	          if (this.carr == null && !this.LoadingInProgressOrReadyToLaunch)
-		            return true;
-	          if (!target.IsValid)
-	          {
-		            Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput, false);
+	        if (this.carr == null && !this.LoadingInProgressOrReadyToLaunch)
+		        return true;
+	        if (!target.IsValid)
+	        {
+		        Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput, false);
+		        return false;
+	        }
+            
+            int num = Find.WorldGrid.TraversalDistanceBetween(this.carr != null ? this.carr.Tile : this.parent.Map.Tile, target.Tile, true, int.MaxValue);
+	        if (num > this.MaxLaunchDistance)
+	        {
+		        Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float) num, this.BaseFuelPerTile).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
+		        return false;
+	        }
+	        if( (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile)) && (!SRTSHelper.SOS2ModLoaded || target.WorldObject?.def?.defName != "ShipOrbiting"))
+	        {
+                Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput, false);
+		        return false;
+	        }
+            if(SRTSHelper.SOS2ModLoaded && target.WorldObject?.def?.defName == "ShipOrbiting")
+            {
+                if (!SRTSMod.GetStatFor<bool>(this.parent.def.defName, StatName.spaceFaring))
+                {
+                    Messages.Message("NonSpaceFaringSRTS".Translate(parent.def.defName), MessageTypeDefOf.RejectInput, false);
+                    return false;
+                }
+                if(SRTSMod.GetStatFor<bool>(parent.def.defName, StatName.shuttleBayLanding))
+                { 
+                    IntVec3 shuttleBayPos = (IntVec3)AccessTools.Method(type: SRTSHelper.SOS2LaunchableType, "FirstShuttleBayOpen").Invoke(null, new object[] { (target.WorldObject as MapParent).Map });
+                    if (shuttleBayPos == IntVec3.Zero)
+                    {
+                        Messages.Message("NeedOpenShuttleBay".Translate(), MessageTypeDefOf.RejectInput);
+                        return false;
+                    }
+                    this.TryLaunch(target.Tile, new TransportPodsArrivalAction_LandInSpecificCell((target.WorldObject as MapParent).Map.Parent, shuttleBayPos));
+                    return true;
+                }
+            }
+            Find.WorldObjects.MapParentAt(target.Tile);
+	        IEnumerable<FloatMenuOption> floatMenuOptionsAt = this.GetTransportPodsFloatMenuOptionsAt(target.Tile, this.carr);
+	        if (!floatMenuOptionsAt.Any<FloatMenuOption>())
+	        {
+		        if(Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
+		        {
+                    Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput, false);
 		            return false;
-	          }
-	          int num = Find.WorldGrid.TraversalDistanceBetween(this.carr != null ? this.carr.Tile : this.parent.Map.Tile, target.Tile, true, int.MaxValue);
-	          if (num > this.MaxLaunchDistance)
-	          {
-		            Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float) num, this.BaseFuelPerTile).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
-		            return false;
-	          }
-	          if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
-	          {
-		            Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput, false);
-		            return false;
-	          }
-	          Find.WorldObjects.MapParentAt(target.Tile);
-	          IEnumerable<FloatMenuOption> floatMenuOptionsAt = this.GetTransportPodsFloatMenuOptionsAt(target.Tile, this.carr);
-	          if (!floatMenuOptionsAt.Any<FloatMenuOption>())
-	          {
-		            if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
-		            {
-		              Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput, false);
-		              return false;
-		            }
-		            this.TryLaunch(target.Tile, (TransportPodsArrivalAction) null, (Caravan) null);
-		            return true;
-	          }
-	          if (floatMenuOptionsAt.Count<FloatMenuOption>() == 1)
-	          {
-		            if (!floatMenuOptionsAt.First<FloatMenuOption>().Disabled)
-		                floatMenuOptionsAt.First<FloatMenuOption>().action();
-		            return false;
-	          }
-	          Find.WindowStack.Add((Window) new FloatMenu(floatMenuOptionsAt.ToList<FloatMenuOption>()));
-	          return false;
+		        }
+		        this.TryLaunch(target.Tile, (TransportPodsArrivalAction) null, (Caravan) null);
+		        return true;
+	        }
+	        if (floatMenuOptionsAt.Count<FloatMenuOption>() == 1)
+	        {
+		        if (!floatMenuOptionsAt.First<FloatMenuOption>().Disabled)
+		            floatMenuOptionsAt.First<FloatMenuOption>().action();
+		        return false;
+	        }
+	        Find.WindowStack.Add((Window) new FloatMenu(floatMenuOptionsAt.ToList<FloatMenuOption>()));
+	        return false;
 	    }
 
 	    public void TryLaunch(int destinationTile, TransportPodsArrivalAction arrivalAction, Caravan cafr = null)

@@ -33,7 +33,12 @@
 	<AllowDownedSRTS>Allow Downed Pawns</AllowDownedSRTS>
 	<AllowUnsecurePrisonerSRTS>Allow Unsecured Prisoners</AllowUnsecurePrisonerSRTS>
 	<AllowCapturablePawnSRTS>Allow Capturable Pawns</AllowCapturablePawnSRTS>
-
+	
+	<SOS2Compatibility>Save Our Ship 2 Options</SOS2Compatibility>
+	<SpaceFaring>Space Faring</SpaceFaring>
+	<ShuttleBayLanding>Shuttle Bay Landing</ShuttleBayLanding>
+	<NonSpaceFaringSRTS>{0} is unable to reach orbit</NonSpaceFaringSRTS>
+	
 	<SRTSSettings>SRTS Settings</SRTSSettings>
 	<FlightSpeed>Flight Speed (World Map)</FlightSpeed>
 	<Instant>Instant</Instant>
@@ -79,7 +84,10 @@
 	
 	<!-- Caravans -->
 
-	<!-- Status -->
+	<!-- Status and Compatibility-->
+	<CommandLaunchOrbit>Launch Orbit</CommandLaunchOrbit>
+	<CommandLaunchOrbitDesc>Launch to locations in Orbit</CommandLaunchOrbitDesc>
+	
 	
 	<!-- Gizmo -->
 	<BombTarget>Bomb Target</BombTarget>

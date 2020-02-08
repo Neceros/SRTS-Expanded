@@ -168,6 +168,9 @@ Internal power plant: 800w</description> <!-- description of course... -->
         <fuelPerTile>1.75</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>2</maxPassengers>
+		
+		<spaceFaring>true</spaceFaring>
+		<shuttleBayLanding>true</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont -->
         <numberBombs>7</numberBombs> <!-- num dropped per run -->
@@ -428,6 +431,9 @@ Internal power plant: 3,600w</description>
         <fuelPerTile>1.25</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>17</maxPassengers>
+		
+		<spaceFaring>true</spaceFaring>
+		<shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>20</numberBombs>

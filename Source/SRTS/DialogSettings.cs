@@ -99,6 +99,25 @@ namespace SRTS
             lister.Gap(12f);
         }
 
+        ///WORK IN PROGRESS
+        public static void Settings_BoxLabeled(this Listing_Standard lister, Rect rect, string header, Color highlight, GameFont fontSize = GameFont.Small, TextAnchor anchor = TextAnchor.MiddleLeft)
+        {
+            var textSize = Text.Font;
+            Text.Font = fontSize;
+
+            GUI.color = highlight;
+            GUI.DrawTexture(rect, BaseContent.WhiteTex);
+            GUI.color = textColor;
+
+            var anchorTmp = Text.Anchor;
+            Text.Anchor = anchor;
+            Rect labelRect = lister.GetRect(Text.CalcHeight(header, lister.ColumnWidth));
+            Widgets.Label(labelRect, header);
+            Text.Font = textSize;
+            Text.Anchor = anchorTmp;
+            lister.Gap(12f);
+        }
+
         public static bool Settings_Button(this Listing_Standard lister, string label, Rect rect, Color customColor, bool background = true, bool active = true)
         {
             var anchor = Text.Anchor;

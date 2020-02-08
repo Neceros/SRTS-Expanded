@@ -19,13 +19,17 @@ namespace SRTS
         public FallingBomb(Thing reference, CompExplosive comp, Map map, string texPathShadow)
         {
             this.def = reference.def;
+            this.projectile = def.projectileWhenLoaded.projectile;
             this.thingIDNumber = reference.thingIDNumber;
             this.map = map;
             this.factionInt = reference.Faction;
             this.graphicInt = reference.DefaultGraphic;
             this.hitPointsInt = reference.HitPoints;
             props = reference.TryGetComp<CompExplosive>().Props;
-            explosionRadius = comp.ExplosiveRadius();
+            if(projectile?.explosionRadius != null)
+                explosionRadius = def.projectileWhenLoaded.projectile.explosionRadius;
+            else
+                explosionRadius = comp.ExplosiveRadius();
             this.texPathShadow = texPathShadow;
         }
 
@@ -112,9 +116,18 @@ namespace SRTS
                 effecter.Trigger(new TargetInfo(this.PositionHeld, map, false), new TargetInfo(this.PositionHeld, map, false));
                 effecter.Cleanup();
             }
-            GenExplosion.DoExplosion(this.PositionHeld, map, explosionRadius, props.explosiveDamageType, this, props.damageAmountBase, props.armorPenetrationBase, props.explosionSound, null, null, null, props.postExplosionSpawnThingDef,
-                props.postExplosionSpawnChance, props.postExplosionSpawnThingCount, props.applyDamageToExplosionCellsNeighbors, props.preExplosionSpawnThingDef, props.preExplosionSpawnChance, props.preExplosionSpawnThingCount, props.chanceToStartFire,
-                props.damageFalloff);
+            if(def.projectileWhenLoaded?.projectile != null)
+            {
+                GenExplosion.DoExplosion(this.PositionHeld, map, explosionRadius, projectile.damageDef, this, projectile.GetDamageAmount(1), projectile.GetArmorPenetration(1), projectile.soundExplode, null, def.projectileWhenLoaded, null,
+                    projectile.postExplosionSpawnThingDef, projectile.postExplosionSpawnChance, projectile.postExplosionSpawnThingCount, projectile.applyDamageToExplosionCellsNeighbors, projectile.preExplosionSpawnThingDef,
+                    projectile.preExplosionSpawnChance, projectile.preExplosionSpawnThingCount, projectile.explosionChanceToStartFire, projectile.explosionDamageFalloff);
+            }
+            else
+            {
+                GenExplosion.DoExplosion(this.PositionHeld, map, explosionRadius, props.explosiveDamageType, this, props.damageAmountBase, props.armorPenetrationBase, props.explosionSound, null, null, null, props.postExplosionSpawnThingDef,
+                                props.postExplosionSpawnChance, props.postExplosionSpawnThingCount, props.applyDamageToExplosionCellsNeighbors, props.preExplosionSpawnThingDef, props.preExplosionSpawnChance, props.preExplosionSpawnThingCount, props.chanceToStartFire,
+                                props.damageFalloff);
+            }
         }
 
         public static Vector3 DrawBombFalling(Vector3 center, int ticksToImpact, float angle, float speed)
@@ -132,6 +145,8 @@ namespace SRTS
         protected int hitPointsInt = -1;
 
         private CompProperties_Explosive props;
+
+        private ProjectileProperties projectile;
 
         private float explosionRadius;
 

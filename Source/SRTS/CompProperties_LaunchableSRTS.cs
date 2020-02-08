@@ -14,5 +14,10 @@ namespace SRTS
         public int maxPassengers = 2;
 
         public float fuelPerTile = 2.25f;
+
+        /* SOS2 Compatibility */
+        public bool spaceFaring;
+        public bool shuttleBayLanding;
+        /* ------------------ */
     }
 }

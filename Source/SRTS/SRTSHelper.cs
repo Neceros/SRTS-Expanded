@@ -146,9 +146,16 @@ namespace SRTS
         }
         
         public static Dictionary<ThingDef, ResearchProjectDef> srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
+
         public static bool CEModLoaded = false;
         public static BombingTargeter targeter = new BombingTargeter();
-        public static Type CompProperties_ExplosiveCE;
-        public static Type CompExplosiveCE;
+        public static Type CompProperties_ExplosiveCE { get; set; }
+        public static Type CompExplosiveCE { get; set; }
+
+
+        public static bool SOS2ModLoaded = false;
+        public static WorldObjectDef SpaceSite { get; set; }
+        public static Type SpaceSiteType { get; set; }
+        public static Type SOS2LaunchableType { get; set; }
     }
 }

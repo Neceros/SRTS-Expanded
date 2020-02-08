@@ -18,10 +18,10 @@ namespace SRTS
             SRTSHelper.PopulateDictionary();
             SRTSHelper.PopulateAllowedBombs();
 
-            CombatExtendedInitialized();
+            ModCompatibilityInitialized();
         }
 
-        private static void CombatExtendedInitialized()
+        private static void ModCompatibilityInitialized()
         {
             List<ModMetaData> mods = ModLister.AllInstalledMods.ToList();
 
@@ -37,6 +37,14 @@ namespace SRTS
                     SRTSHelper.CEModLoaded = true;
                     SRTSHelper.CompProperties_ExplosiveCE = AccessTools.TypeByName("CompProperties_ExplosiveCE");
                     SRTSHelper.CompExplosiveCE = AccessTools.TypeByName("CompExplosiveCE");
+                }
+                if(ModLister.HasActiveModWithName(mod.Name) && mod.Identifier == "1909914131" && !SRTSHelper.SOS2ModLoaded)
+                {
+                    Log.Message("[SRTS Expanded] Initializing SoS2 Compatibility Patch.");
+                    SRTSHelper.SpaceSite = DefDatabase<WorldObjectDef>.GetNamed("SiteSpace");
+                    SRTSHelper.SpaceSiteType = AccessTools.TypeByName("SpaceSite");
+                    SRTSHelper.SOS2LaunchableType = AccessTools.TypeByName("CompShuttleLaunchable");
+                    SRTSHelper.SOS2ModLoaded = true;
                 }
             }
             if(SRTSMod.mod.settings.CEPreviouslyInitialized && !SRTSHelper.CEModLoaded)

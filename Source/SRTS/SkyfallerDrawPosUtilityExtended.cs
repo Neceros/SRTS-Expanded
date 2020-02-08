@@ -27,7 +27,6 @@ namespace SRTS
         {
             Vector2 angle = dir.AsVector2 * dist;
             Vector3 pos = center + new Vector3(angle.x, 0, angle.y);
-            Log.Message("" + pos + " : " + angle + " : " + center);
             return pos;
         }
     }
