@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- SRTS MkII -->
+
+  <SRTSMkII_Incoming.label>SRTS Mk.II eingehend</SRTSMkII_Incoming.label>
+  <SRTSMkII_BomberRun.label>SRTS Mk.II Bombardierung</SRTSMkII_BomberRun.label>
+  <SRTSMkII_Leaving.label>SRTS Mk.II verlassen</SRTSMkII_Leaving.label>
+  <SRTSMkII_Active.label>SRTS Mk.II aktiv</SRTSMkII_Active.label>
+
+
+  <!-- SRTS MkIII -->
+
+  <SRTSMkIII_Incoming.label>SRTS Mk.III eingehend</SRTSMkIII_Incoming.label>
+  <SRTSMkIII_BomberRun.label>SRTS Mk.III Bombardierung</SRTSMkIII_BomberRun.label>
+  <SRTSMkIII_Leaving.label>SRTS Mk.III verlassen</SRTSMkIII_Leaving.label>
+  <SRTSMkIII_Active.label>SRTS Mk.III aktiv</SRTSMkIII_Active.label>
+
+
+  <!-- SRTS MkIIIp -->
+
+  <SRTSMkIIIp_Incoming.label>SRTS Mk.IIIp eingehend</SRTSMkIIIp_Incoming.label>
+  <SRTSMkIIIp_Leaving.label>SRTS Mk.IIIp verlassen</SRTSMkIIIp_Leaving.label>
+  <SRTSMkIIIp_Active.label>SRTS Mk.IIIp aktiv</SRTSMkIIIp_Active.label>
+
+
+  <!-- SRTF -->
+
+  <SRTF_Incoming.label>SRTF eingehend</SRTF_Incoming.label>
+  <SRTF_Leaving.label>SRTF verlassen</SRTF_Leaving.label>
+  <SRTF_Active.label>SRTF aktiv</SRTF_Active.label>
+
+
+  <!-- Superpod -->
+
+  <SRTSSuperpod_Incoming.label>Superpod eingehend</SRTSSuperpod_Incoming.label>
+  <SRTSSuperpod_Leaving.label>Superpod verlassen</SRTSSuperpod_Leaving.label>
+  <SRTSSuperpod_Active.label>Superpod aktiv</SRTSSuperpod_Active.label>
+
+
+  <!-- Skip -->
+
+  <SRTSSkip_Incoming.label>SRTS Skip eingehend</SRTSSkip_Incoming.label>
+  <SRTSSkip_BomberRun.label>SRTS Skip Bombardierung</SRTSSkip_BomberRun.label>
+  <SRTSSkip_Leaving.label>SRTS Skip verlassen</SRTSSkip_Leaving.label>
+  <SRTSSkip_Actice.label>SRTS Skip aktiv</SRTSSkip_Actice.label>
+
+
+  <!-- SRTS MkIV -->
+
+  <SRTSMkIV_Incoming.label>SRTS Mk.IV eingehend</SRTSMkIV_Incoming.label>
+  <SRTSMkIV_BomberRun.label>SRTS Mk.IV Bombardierung</SRTSMkIV_BomberRun.label>
+  <SRTSMkIV_Leaving.label>SRTS Mk.IV verlassen</SRTSMkIV_Leaving.label>
+  <SRTSMkIV_Active.label>SRTS Mk.IV aktiv</SRTSMkIV_Active.label>
+
+
+</LanguageData>
