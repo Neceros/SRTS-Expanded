@@ -76,14 +76,14 @@ Internal power plant: 600w</description>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.5</restEffectiveness>  <!-- How well (1.0 = 100%) passengers can rest, eat, heal while aboard -->
         <massCapacity>240</massCapacity> <!-- weight in kg -->
-        <spaceFaring>false</spaceFaring>  <!-- For save our ship 2 -->
-        <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>1</travelSpeed> <!-- Vanilla drop pod is 25 speed, min 1, max 100 -->
         <fuelPerTile>2.50</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 6. Why'd we cap it at 6? I can't remember. -->
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
+        <spaceFaring>false</spaceFaring>  <!-- For save our ship 2 -->
+        <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>240</fuelCapacity>
