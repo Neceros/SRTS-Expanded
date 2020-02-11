@@ -260,7 +260,7 @@ namespace SRTS
 		            launch.Disable("CommandLaunchGroupFailNotConnectedToFuelingPort".Translate());
 		        else if (!this.AllFuelingPortSourcesInGroupHaveAnyFuel)
 		            launch.Disable("CommandLaunchGroupFailNoFuel".Translate());
-		        else if (this.AnyInGroupIsUnderRoof)
+		        else if (this.AnyInGroupIsUnderRoof && !this.parent.Position.GetThingList(this.parent.Map).Any(x => x.def.defName == "ShipShuttleBay"))
 		            launch.Disable("CommandLaunchGroupFailUnderRoof".Translate());
 		        yield return launch;
 	        }
