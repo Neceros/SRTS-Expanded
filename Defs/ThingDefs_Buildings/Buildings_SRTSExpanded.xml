@@ -82,6 +82,8 @@ Internal power plant: 600w</description>
         <fuelPerTile>2.50</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 6. Why'd we cap it at 6? I can't remember. -->
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
+        <spaceFaring>false</spaceFaring>  <!-- For save our ship 2 -->
+        <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>240</fuelCapacity>
@@ -168,9 +170,8 @@ Internal power plant: 800w</description> <!-- description of course... -->
         <fuelPerTile>1.75</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>2</maxPassengers>
-		
-		<spaceFaring>true</spaceFaring>
-		<shuttleBayLanding>true</shuttleBayLanding>
+      	<spaceFaring>false</spaceFaring>
+      	<shuttleBayLanding>true</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont -->
         <numberBombs>8</numberBombs> <!-- num dropped per run -->
@@ -247,6 +248,7 @@ Internal power plant: 1000w</description>
       <ShuttleComp_ElectricSystem>2</ShuttleComp_ElectricSystem>
       <ShuttleComp_Engines>6</ShuttleComp_Engines>
       <ShuttleComp_Structural>6</ShuttleComp_Structural>
+      <Silver>3200</Silver>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -258,6 +260,8 @@ Internal power plant: 1000w</description>
         <fuelPerTile>4.25</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>3</maxPassengers>
+        <spaceFaring>false</spaceFaring>
+        <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000</fuelCapacity>
@@ -330,6 +334,7 @@ Internal power plant: 1,700w</description>
       <ShuttleComp_ElectricSystem>8</ShuttleComp_ElectricSystem>
       <ShuttleComp_Engines>5</ShuttleComp_Engines>
       <ShuttleComp_Structural>10</ShuttleComp_Structural>
+      <Silver>9000</Silver>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -341,6 +346,8 @@ Internal power plant: 1,700w</description>
         <fuelPerTile>1.75</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>7</maxPassengers>
+        <spaceFaring>true</spaceFaring>
+        <shuttleBayLanding>true</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>12</numberBombs>
@@ -420,6 +427,7 @@ Internal power plant: 3,600w</description>
       <ShuttleComp_ElectricSystem>4</ShuttleComp_ElectricSystem>
       <ShuttleComp_Engines>6</ShuttleComp_Engines>
       <ShuttleComp_Structural>12</ShuttleComp_Structural>
+      <Silver>10500</Silver>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -431,9 +439,8 @@ Internal power plant: 3,600w</description>
         <fuelPerTile>1.25</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>17</maxPassengers>
-		
-		<spaceFaring>true</spaceFaring>
-		<shuttleBayLanding>false</shuttleBayLanding>
+		    <spaceFaring>true</spaceFaring>
+		    <shuttleBayLanding>true</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>20</numberBombs>
@@ -513,6 +520,7 @@ Internal power plant: 2,800w</description>
       <ShuttleComp_ElectricSystem>5</ShuttleComp_ElectricSystem>
       <ShuttleComp_Engines>9</ShuttleComp_Engines>
       <ShuttleComp_Structural>9</ShuttleComp_Structural>
+      <Silver>10500</Silver>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -524,6 +532,8 @@ Internal power plant: 2,800w</description>
         <fuelPerTile>1.25</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>42</maxPassengers>
+        <spaceFaring>true</spaceFaring>
+        <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelCapacity>5000</fuelCapacity>
@@ -601,6 +611,7 @@ Internal power plant: 12,600w</description>
       <ShuttleComp_Structural>24</ShuttleComp_Structural>
       <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
       <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
+      <Silver>12500</Silver>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -612,6 +623,8 @@ Internal power plant: 12,600w</description>
         <fuelPerTile>1</fuelPerTile>
         <minPassengers>2</minPassengers>
         <maxPassengers>9999</maxPassengers>
+        <spaceFaring>true</spaceFaring>
+        <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
