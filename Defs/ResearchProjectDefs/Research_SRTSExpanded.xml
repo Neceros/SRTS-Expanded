@@ -74,6 +74,25 @@
 
   <ResearchProjectDef>
     <tab>SRTSE</tab>
+    <defName>Research_SRAFTEK</defName>
+    <label>TEK-7: Drop Ship</label>
+    <description>A large aerial transport freighter for cargo. The TEK-7 class space-faring ship is rather new. It's powered by contential means, but uses more modern technology to achieve more than it's predecessors.</description>
+    <baseCost>12000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Research_SRTF</li>
+      <li>Research_SRTSMk2</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>2</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
     <defName>Research_SRTSMk3</defName>
     <label>The Phoenix</label>
     <description>After years of research we finally discovered something special: a new technique originally used by an ancient exctinct alien civilization used in the process of ship making.\n\nThis process infuses the ship with a "mystical" neuromesh technology while using fewer materials in the build. The new model is light, spacious, and hauls serious ass compared to the Albatross.\n\nThe schematic shows serious military capability.</description>
