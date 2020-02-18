@@ -52,6 +52,24 @@
 
   <ResearchProjectDef>
     <tab>SRTSE</tab>
+    <defName>Research_SRAFTek</defName>
+    <label>TEK-7: Drop Ship</label>
+    <description>A large aerial transport freighter for cargo. The TEK-7 class space-faring ship is rather new. It's powered by contential means, but uses more modern technology to achieve more than it's predecessors.</description>
+    <baseCost>12000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Research_SRTF</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>2</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
     <defName>Research_SRTSMk2</defName>
     <label>The Albatross</label>
     <description>The Albatross X-11 was originally designed for military exoplanetary exploration, but was quickly replaced by a newer ship model with a much better engine system. You can find X-11 parts across the galaxy at typically low prices. It's natural a natural design that could easily be changed to atmospheric flight. \n\n Definitely has military potential.</description>
@@ -70,25 +88,6 @@
     <discoveredLetterTitle>Advanced Ship Components</discoveredLetterTitle>
     <discoveredLetterText>You can now build an additional type of component needed for more powerful ships: neuromesh plates. While you do not yet need them, you will for the next tier of ships. Build them at a Fabrication bench.</discoveredLetterText>
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef>
-    <tab>SRTSE</tab>
-    <defName>Research_SRAFTEK</defName>
-    <label>TEK-7: Drop Ship</label>
-    <description>A large aerial transport freighter for cargo. The TEK-7 class space-faring ship is rather new. It's powered by contential means, but uses more modern technology to achieve more than it's predecessors.</description>
-    <baseCost>12000</baseCost>
-    <techLevel>Spacer</techLevel>
-    <prerequisites>
-      <li>Research_SRTF</li>
-      <li>Research_SRTSMk2</li>
-    </prerequisites>
-    <researchViewX>2</researchViewX>
-    <researchViewY>2</researchViewY>
-    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <requiredResearchFacilities>
-      <li>MultiAnalyzer</li>
-    </requiredResearchFacilities>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
