@@ -382,7 +382,7 @@ Internal power plant: 1,700w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRAFTEK</li>
+      <li>Research_SRAFTek</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
     <uiIconScale>0.50</uiIconScale>
