@@ -328,8 +328,8 @@
     <selectable>true</selectable>
   </ThingDef>
 
-
-  <!-- TEK-7 -->
+<!--
+     TEK-7
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRAFTek_Incoming</defName>
     <label>SRAFTek7 incoming</label>
@@ -395,6 +395,8 @@
     </statBases>
     <selectable>true</selectable>
   </ThingDef>
+
+  -->
 
 
   <!-- Superpod -->
