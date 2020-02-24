@@ -402,7 +402,7 @@ Internal power plant: 1,700w</description>
     <description>An aerial vessel designed to care for all of your caravaning and military needs. A good ship, but not specialized, so it's not great in any one area.
 
 Passenger cap: 1 - 7
-Space flight: Yes, Shuttlebay Only
+Space flight: Yes
 
 --Military--
   Bombs: 12/6
@@ -446,7 +446,7 @@ Internal power plant: 1,700w</description>
         <minPassengers>1</minPassengers>
         <maxPassengers>7</maxPassengers>
         <spaceFaring>true</spaceFaring>
-        <shuttleBayLanding>true</shuttleBayLanding>
+        <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>12</numberBombs>
@@ -499,7 +499,7 @@ Internal power plant: 1,700w</description>
     <description>An aerial transport ship designed to raid, assault, and bomb. Highly advanced, created by an ancient civilization.
 
 Passenger cap: 1 - 15
-Space flight: Yes, Shuttlebay Only
+Space flight: Yes
 
 --Military--
   Bombs: 20/10
@@ -543,7 +543,7 @@ Internal power plant: 3,600w</description>
         <minPassengers>1</minPassengers>
         <maxPassengers>15</maxPassengers>
 		    <spaceFaring>true</spaceFaring>
-		    <shuttleBayLanding>true</shuttleBayLanding>
+		    <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>20</numberBombs>
