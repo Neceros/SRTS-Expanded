@@ -21,8 +21,8 @@ namespace SRTS
         return Enumerable.Empty<FloatMenuOption>();
       if (wobj is Site)
         return SRTSStatic.GetSite(wobj as Site, ih, comp, car);
-      if (wobj is SettlementBase)
-        return SRTSStatic.GetSettle(wobj as SettlementBase, ih, comp, car);
+      if (wobj is Settlement)
+        return SRTSStatic.GetSettle(wobj as Settlement, ih, comp, car);
       if (wobj is MapParent)
         return SRTSStatic.GetMapParent(wobj as MapParent, ih, comp, car);
       return Enumerable.Empty<FloatMenuOption>();
@@ -90,7 +90,7 @@ namespace SRTS
     }
 
     public static IEnumerable<FloatMenuOption> GetSettle(
-      SettlementBase bs,
+      Settlement bs,
       IEnumerable<IThingHolder> pods,
       CompLaunchableSRTS representative,
       Caravan car)

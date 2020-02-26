@@ -391,7 +391,7 @@ namespace SRTS
 
         private void ResetMainSettings()
         {
-            SoundDefOf.RadioButtonClicked.PlayOneShotOnCamera();
+            SoundDefOf.Click.PlayOneShotOnCamera();
             this.settings.passengerLimits = true;
             this.settings.dynamicWorldDrawingSRTS = true;
             this.settings.displayHomeItems = true;

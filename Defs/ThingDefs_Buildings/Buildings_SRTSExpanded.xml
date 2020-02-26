@@ -22,7 +22,7 @@
       <li>Buildings</li>
     </thingCategories>
     <inspectorTabs>
-      <li>ITab_TransporterContents</li>
+      <li>ITab_ContentsTransporter</li>
     </inspectorTabs>
     <placeWorkers>
       <li>PlaceWorker_NotUnderRoof</li>

@@ -6,7 +6,6 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using RimWorld;
-using Harmony;
 
 namespace SRTS
 {
