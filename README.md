@@ -1,5 +1,4 @@
-# SRTS Expanded
+# SRTS Expanded 1.1 BETA
 
-**Download the most up to date [version](https://github.com/Neceros/SRTS-Expanded/releases/latest)**
+Please join our discord to report bugs and weird things https://discordapp.com/invite/AvV7DT5
 
-If you download straight from the repository, you might be grabbing unreleased content which may or may not break your game. It is for us to test with before we release.
