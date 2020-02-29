@@ -319,10 +319,10 @@ Passenger cap: 1 - 28
 Space flight: Yes
 
 Speed: Normal
-Fuel cap: 1,600L
+Fuel cap: 2,600L
 Fuel efficiency: Good
 
-Cargo cap: 7,500kg
+Cargo cap: 10,000kg
 Internal power plant: 1,700w</description>
     <graphicData>
       <texPath>Albatross</texPath>
@@ -348,7 +348,7 @@ Internal power plant: 1,700w</description>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>1</restEffectiveness>
-        <massCapacity>7500</massCapacity>
+        <massCapacity>10000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>8</travelSpeed>
@@ -359,9 +359,9 @@ Internal power plant: 1,700w</description>
         <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="CompProperties_Refuelable">
-        <fuelCapacity>1600</fuelCapacity>
+        <fuelCapacity>2600</fuelCapacity>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>1600</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>2600</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
