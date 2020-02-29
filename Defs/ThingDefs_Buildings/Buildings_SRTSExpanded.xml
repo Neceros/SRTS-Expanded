@@ -296,6 +296,95 @@ Internal power plant: 1000w</description>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
   </ThingDef>
+
+
+<!--
+  <ThingDef ParentName="ShipBase">
+    <defName>SRAFTek</defName>
+    <label>SRAF: TEK-7</label>
+    <description>An aerial vessel designed to hold many people, with several automatic launchbays able to hold a person, and quickly eject said person to the outside of the ship. Huge cargo capacity.
+
+Passenger cap: 1 - 28
+Space flight: Yes
+
+Speed: Normal
+Fuel cap: 2,600L
+Fuel efficiency: Good
+
+Cargo cap: 10,000kg
+Internal power plant: 1,700w</description>
+    <graphicData>
+      <texPath>Albatross</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(11,11)</drawSize>
+    </graphicData>
+    <size>(5,5)</size>
+    <statBases>
+      <MaxHitPoints>950</MaxHitPoints>
+      <WorkToBuild>24000</WorkToBuild>
+      <Flammability>0.3</Flammability>
+      <Mass>20</Mass>
+      <Beauty>50</Beauty>
+    </statBases>
+    <costList>
+      <ShuttleComp_Plates>13</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>21</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>10</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>5</ShuttleComp_Engines>
+      <ShuttleComp_Structural>4</ShuttleComp_Structural>
+      <Silver>9000</Silver>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>1</restEffectiveness>
+        <massCapacity>10000</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+        <travelSpeed>8</travelSpeed>
+        <fuelPerTile>1.75</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>28</maxPassengers>
+        <spaceFaring>true</spaceFaring>
+        <shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>2600</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>2600</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1700</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>18</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>Research_SRAFTek</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
+    <uiIconScale>0.50</uiIconScale>
+    <killedLeavings>
+      <ChunkSlagSteel>16</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  -->
+
   
 
   <ThingDef ParentName="ShipBase">
