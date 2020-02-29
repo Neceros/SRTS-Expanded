@@ -50,6 +50,27 @@
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   </ResearchProjectDef>
 
+<!--
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRAFTek</defName>
+    <label>TEK-7: Drop Ship</label>
+    <description>A large aerial transport freighter for cargo. The TEK-7 class space-faring ship is rather new. It's powered by contential means, but uses more modern technology to achieve more than it's predecessors.\n\nTerra Enclave Kingdrone - 7th Variation, Year 4186. This class has seen much combat, through many model variations each specialized in specific roles. \n\nTEK-7 is designated as a transport carrier.</description>
+    <baseCost>12000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Research_SRTF</li>
+    </prerequisites>
+    <researchViewX>3</researchViewX>
+    <researchViewY>2</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
+-->
+
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRTSMk2</defName>
