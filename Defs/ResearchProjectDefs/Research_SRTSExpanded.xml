@@ -131,6 +131,7 @@
     <techprintCount>2</techprintCount>
     <techprintCommonality>2.6</techprintCommonality>
     <techprintMarketValue>2040</techprintMarketValue>
+    <heldByFactionCategoryTags><li>Empire</li></heldByFactionCategoryTags>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -155,6 +156,7 @@
     <techprintCount>3</techprintCount>
     <techprintCommonality>1.5</techprintCommonality>
     <techprintMarketValue>3500</techprintMarketValue>
+    <heldByFactionCategoryTags><li>Empire</li></heldByFactionCategoryTags>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -175,7 +177,8 @@
     </requiredResearchFacilities>
     <techprintCount>10</techprintCount>
     <techprintCommonality>0.8</techprintCommonality>
-    <techprintMarketValue>4200</techprintMarketValue>
+    <techprintMarketValue>4500</techprintMarketValue>
+    <heldByFactionCategoryTags><li>Empire</li></heldByFactionCategoryTags>
   </ResearchProjectDef>
 
 </Defs>

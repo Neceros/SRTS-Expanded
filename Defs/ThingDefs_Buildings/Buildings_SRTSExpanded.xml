@@ -291,7 +291,7 @@ Internal power plant: 1000w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTF</li>
+      <li>Research_SRAF</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
@@ -470,7 +470,7 @@ Internal power plant: 1,700w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTSMk2</li>
+      <li>Research_SRTSMkII</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
@@ -563,7 +563,7 @@ Internal power plant: 3,600w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTSMk3</li>
+      <li>Research_SRTSMkIII</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
@@ -750,7 +750,7 @@ Internal power plant: 12,600w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTSMk4</li>
+      <li>Research_SRTSMkIV</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
     <uiIconScale>0.60</uiIconScale>
