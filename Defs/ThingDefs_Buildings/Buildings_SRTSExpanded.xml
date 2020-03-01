@@ -217,7 +217,7 @@ Internal power plant: 800w</description> <!-- description of course... -->
 
 
     <ThingDef ParentName="NECShipBase">
-    <defName>SRTF</defName>
+    <defName>SRAF</defName>
     <label>SRAF: Canary</label>
     <description>Short Range Aerial Freighter. A transport system made to fly cargo across the world, but almost no room for passengers. These industrial behemoths have been in service for millenia.
 
@@ -298,19 +298,18 @@ Internal power plant: 1000w</description>
   </ThingDef>
 
 
-<!--
   <ThingDef ParentName="NECShipBase">
     <defName>SRAFTek</defName>
     <label>SRAF: TEK-7</label>
-    <description>An aerial vessel designed to hold many people, with several automatic launchbays able to hold a person, and quickly eject said person to the outside of the ship. Huge cargo capacity.
+    <description>[Temporary Graphic] An aerial vessel designed to hold many people, with several automatic launchbays able to hold a person, and quickly eject said person to the outside of the ship. Huge cargo capacity.
 
 Passenger cap: 1 - 28
 Space flight: Yes
-
+----------------------------
 Speed: Normal
 Fuel cap: 2,600L
 Fuel efficiency: Good
-
+----------------------------
 Cargo cap: 10,000kg
 Internal power plant: 1,700w</description>
     <graphicData>
@@ -383,8 +382,6 @@ Internal power plant: 1,700w</description>
       <ChunkSlagSteel>16</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
-  -->
-
   
 
   <ThingDef ParentName="NECShipBase">

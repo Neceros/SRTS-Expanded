@@ -263,7 +263,7 @@
   <!-- SRTF -->
 
   <ThingDef ParentName="SkyfallerBase">
-    <defName>SRTF_Incoming</defName>
+    <defName>SRAF_Incoming</defName>
     <label>SRTF incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
@@ -283,7 +283,7 @@
   </ThingDef>
 
   <ThingDef ParentName="SkyfallerBase">
-    <defName>SRTF_Leaving</defName>
+    <defName>SRAF_Leaving</defName>
     <label>SRTF leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
@@ -304,7 +304,7 @@
   </ThingDef>
 
   <ThingDef>
-    <defName>SRTF_Active</defName>
+    <defName>SRAF_Active</defName>
     <label>SRTF active</label>
     <category>Item</category>
     <thingClass>ActiveDropPod</thingClass>
@@ -314,6 +314,75 @@
       <texPath>Freighter</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(15,15)</drawSize>
+      <shadowData>
+        <volume>(0.8, 0.6, 0.8)</volume>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>5000</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <selectable>true</selectable>
+  </ThingDef>
+
+
+  <!-- SRTF -->
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRAFTek_Incoming</defName>
+    <label>SRTF incoming</label>
+    <thingClass>SRTS.SRTSIncoming</thingClass>
+    <graphicData>
+      <texPath>Freighter</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(11,11)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6,6)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRAFTek_Leaving</defName>
+    <label>SRTF leaving</label>
+    <thingClass>SRTS.SRTSLeaving</thingClass>
+    <graphicData>
+      <texPath>Freighter</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(11,11)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Accelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6,6)</shadowSize>
+      <anticipationSound>Sound_Launch</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>SRAFTek_Active</defName>
+    <label>SRTF active</label>
+    <category>Item</category>
+    <thingClass>ActiveDropPod</thingClass>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Freighter</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(11,11)</drawSize>
       <shadowData>
         <volume>(0.8, 0.6, 0.8)</volume>
       </shadowData>
