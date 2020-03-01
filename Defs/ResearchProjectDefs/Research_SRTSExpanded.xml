@@ -45,7 +45,7 @@
       <li>Research_SRTSSkip</li>
       <li>Fabrication</li>
     </prerequisites>
-    <researchViewX>1</researchViewX>
+    <researchViewX>2</researchViewX>
     <researchViewY>1</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   </ResearchProjectDef>
