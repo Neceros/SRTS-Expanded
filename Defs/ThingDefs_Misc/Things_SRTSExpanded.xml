@@ -264,10 +264,10 @@
 
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRAF_Incoming</defName>
-    <label>SRTF incoming</label>
+    <label>SRAF incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>(15,15)</drawSize>
@@ -284,10 +284,10 @@
 
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRAF_Leaving</defName>
-    <label>SRTF leaving</label>
+    <label>SRAF leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>(15,15)</drawSize>
@@ -305,13 +305,13 @@
 
   <ThingDef>
     <defName>SRAF_Active</defName>
-    <label>SRTF active</label>
+    <label>SRAF active</label>
     <category>Item</category>
     <thingClass>ActiveDropPod</thingClass>
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(15,15)</drawSize>
       <shadowData>
@@ -329,11 +329,11 @@
   </ThingDef>
 
 
-  <!-- SRTF -->
+  <!-- TEK7 -->
 
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRAFTek_Incoming</defName>
-    <label>SRTF incoming</label>
+    <label>TEK7 incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
       <texPath>Freighter</texPath>
@@ -353,7 +353,7 @@
 
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRAFTek_Leaving</defName>
-    <label>SRTF leaving</label>
+    <label>TEK7 leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
       <texPath>Freighter</texPath>
@@ -374,7 +374,7 @@
 
   <ThingDef>
     <defName>SRAFTek_Active</defName>
-    <label>SRTF active</label>
+    <label>TEK7 active</label>
     <category>Item</category>
     <thingClass>ActiveDropPod</thingClass>
     <scatterableOnMapGen>false</scatterableOnMapGen>

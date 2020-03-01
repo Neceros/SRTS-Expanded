@@ -649,7 +649,7 @@ Internal power plant: 2,800w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTSMk3p</li>
+      <li>Research_SRTSMkIIIp</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.90</uiIconScale>
