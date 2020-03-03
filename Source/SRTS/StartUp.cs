@@ -20,6 +20,7 @@ namespace SRTS
         {
             var harmony = new Harmony("SRTSExpanded.smashphil.neceros");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+            //Harmony.DEBUG = true;
 
             /* Smash Phil Addition */
             
