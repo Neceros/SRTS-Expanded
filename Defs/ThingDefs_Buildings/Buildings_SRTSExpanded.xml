@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef Name="ShipBase" ParentName="BuildingBase" Abstract="True">
+  <ThingDef Name="NECShipBase" ParentName="BuildingBase" Abstract="True">
     <category>Building</category>
     <thingClass>Building</thingClass>
     <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
@@ -37,7 +37,7 @@
     <comps />
   </ThingDef>
 
-  <ThingDef ParentName="ShipBase">
+  <ThingDef ParentName="NECShipBase">
     <defName>SRTSSuperpod</defName>
     <label>Superpod</label>
     <description>An aerial transport system designed to fly passengers and cargo slowly and dangerously across the world. Liable to breakdown.
@@ -121,7 +121,7 @@ Internal power plant: 600w</description>
   </ThingDef>
 
 
-  <ThingDef ParentName="ShipBase">
+  <ThingDef ParentName="NECShipBase">
     <defName>SRTSSkip</defName> <!-- defName must be unique, including with other mods so be creative -->
     <label>SRTS Mk.I: Skip</label> <!-- name displayed ingame -->
     <description>An aerial military vessel designed to scout, quest, and assault. Liable to breakdown.
@@ -216,8 +216,8 @@ Internal power plant: 800w</description> <!-- description of course... -->
   </ThingDef>
 
 
-    <ThingDef ParentName="ShipBase">
-    <defName>SRTF</defName>
+    <ThingDef ParentName="NECShipBase">
+    <defName>SRAF</defName>
     <label>SRAF: Canary</label>
     <description>Short Range Aerial Freighter. A transport system made to fly cargo across the world, but almost no room for passengers. These industrial behemoths have been in service for millenia.
 
@@ -291,14 +291,100 @@ Internal power plant: 1000w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTF</li>
+      <li>Research_SRAF</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
   </ThingDef>
+
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRAFTek</defName>
+    <label>SRAF: TEK-7</label>
+    <description>[Temporary Graphic] An aerial vessel designed to hold many people, with several automatic launchbays able to hold a person, and quickly eject said person to the outside of the ship. Huge cargo capacity.
+
+Passenger cap: 1 - 28
+Space flight: Yes
+----------------------------
+Speed: Normal
+Fuel cap: 2,600L
+Fuel efficiency: Good
+----------------------------
+Cargo cap: 10,000kg
+Internal power plant: 1,700w</description>
+    <graphicData>
+      <texPath>Albatross</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(11,11)</drawSize>
+    </graphicData>
+    <size>(5,5)</size>
+    <statBases>
+      <MaxHitPoints>950</MaxHitPoints>
+      <WorkToBuild>24000</WorkToBuild>
+      <Flammability>0.3</Flammability>
+      <Mass>20</Mass>
+      <Beauty>50</Beauty>
+    </statBases>
+    <costList>
+      <ShuttleComp_Plates>13</ShuttleComp_Plates>
+      <ShuttleComp_MechSystem>21</ShuttleComp_MechSystem>
+      <ShuttleComp_ElectricSystem>10</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Engines>5</ShuttleComp_Engines>
+      <ShuttleComp_Structural>4</ShuttleComp_Structural>
+      <Silver>9000</Silver>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>1</restEffectiveness>
+        <massCapacity>10000</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS">
+        <travelSpeed>8</travelSpeed>
+        <fuelPerTile>1.75</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>28</maxPassengers>
+        <spaceFaring>true</spaceFaring>
+        <shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>2600</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>2600</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1700</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>18</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>Research_SRAFTek</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
+    <uiIconScale>0.50</uiIconScale>
+    <killedLeavings>
+      <ChunkSlagSteel>16</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
   
 
-  <ThingDef ParentName="ShipBase">
+  <ThingDef ParentName="NECShipBase">
     <defName>SRTSMkII</defName>
     <label>SRTS Mk.II: Albatross</label>
     <description>An aerial vessel designed to care for all of your caravaning and military needs. A good ship, but not specialized, so it's not great in any one area.
@@ -384,14 +470,14 @@ Internal power plant: 1,700w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTSMk2</li>
+      <li>Research_SRTSMkII</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
   </ThingDef>
 
 
-  <ThingDef ParentName="ShipBase">
+  <ThingDef ParentName="NECShipBase">
     <defName>SRTSMkIII</defName>
     <label>SRTS Mk.III: Phoenix</label>
     <description>An aerial transport ship designed to raid, assault, and bomb. Highly advanced, created by an ancient civilization.
@@ -477,7 +563,7 @@ Internal power plant: 3,600w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTSMk3</li>
+      <li>Research_SRTSMkIII</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
@@ -487,7 +573,7 @@ Internal power plant: 3,600w</description>
   </ThingDef>
 
 
-  <ThingDef ParentName="ShipBase">
+  <ThingDef ParentName="NECShipBase">
     <defName>SRTSMkIIIp</defName>
     <label>SRTS Mk.IIIp: Pelican</label>
     <description>An aerial cargo transport vessel. Low military application, but the best conventional cargo and tranport ship ever concieved in the outer rim. Highly advanced, created by an ancient civilization.
@@ -563,7 +649,7 @@ Internal power plant: 2,800w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTSMk3p</li>
+      <li>Research_SRTSMkIIIp</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.90</uiIconScale>
@@ -573,7 +659,7 @@ Internal power plant: 2,800w</description>
   </ThingDef>
 
 
-  <ThingDef ParentName="ShipBase">
+  <ThingDef ParentName="NECShipBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
     <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.
@@ -664,7 +750,7 @@ Internal power plant: 12,600w</description>
       </li>
     </comps>
     <researchPrerequisites>
-      <li>Research_SRTSMk4</li>
+      <li>Research_SRTSMkIV</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
     <uiIconScale>0.60</uiIconScale>
