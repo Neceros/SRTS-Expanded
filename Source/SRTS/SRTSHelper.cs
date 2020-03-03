@@ -39,7 +39,11 @@ namespace SRTS
 
         public static void DrawLinesCustomPrerequisites(ResearchProjectDef project, ResearchTabDef curTab, Vector2 start, Vector2 end, ResearchProjectDef selectedProject, int i)
         {
-            List<ResearchProjectDef> projects = SRTSMod.mod.settings.defProperties[srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName].CustomResearch;
+            List<ResearchProjectDef> projects = new List<ResearchProjectDef>();
+            string defName = srtsDefProjects.FirstOrDefault(x => x.Value == project).Key?.defName;
+            if (defName is null)
+                return;
+            projects = SRTSMod.mod.settings.defProperties[defName].CustomResearch;
 
             start.x = project.ResearchViewX * 190f + 140f;
             start.y = project.ResearchViewY * 100f + 25f;
@@ -49,7 +53,7 @@ namespace SRTS
                 {
                     end.x = proj.ResearchViewX * 190f;
                     end.y = proj.ResearchViewY * 100f + 25f;
-                    if (selectedProject == project || selectedProject == proj)
+                    if (selectedProject !=  null && (selectedProject == project || selectedProject == proj))
                     {
                         if (i == 1)
                             Widgets.DrawLine(start, end, TexUI.HighlightLineResearchColor, 4f);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace SRTS
 {
@@ -24,10 +24,10 @@ namespace SRTS
         private static void ModCompatibilityInitialized()
         {
             List<ModMetaData> mods = ModLister.AllInstalledMods.ToList();
-
-            foreach(ModMetaData mod in mods)
+            Log.Warning("[SRTS Expanded] Compatibility with Save our Ship 2 and Combat Extended are temporarily disabled until they update to RimWorld v1.1");
+            /*foreach(ModMetaData mod in mods)
             {
-                if(ModLister.HasActiveModWithName(mod.Name) && mod.Identifier == "1631756268" && !SRTSHelper.CEModLoaded)
+                if(ModLister.HasActiveModWithName(mod.Name) && mod.PackageId == "1631756268" && !SRTSHelper.CEModLoaded)
                 {
                     Log.Message("[SRTS Expanded] Initializing Combat Extended patch for Bombing Runs.");
                     if(!SRTSMod.mod.settings.CEPreviouslyInitialized)
@@ -38,7 +38,7 @@ namespace SRTS
                     SRTSHelper.CompProperties_ExplosiveCE = AccessTools.TypeByName("CompProperties_ExplosiveCE");
                     SRTSHelper.CompExplosiveCE = AccessTools.TypeByName("CompExplosiveCE");
                 }
-                if(ModLister.HasActiveModWithName(mod.Name) && mod.Identifier == "1909914131" && !SRTSHelper.SOS2ModLoaded)
+                if(ModLister.HasActiveModWithName(mod.Name) && mod.PackageId == "1909914131" && !SRTSHelper.SOS2ModLoaded)
                 {
                     Log.Message("[SRTS Expanded] Initializing SoS2 Compatibility Patch.");
                     SRTSHelper.SpaceSite = DefDatabase<WorldObjectDef>.GetNamed("SiteSpace");
@@ -51,7 +51,7 @@ namespace SRTS
             {
                 SRTSMod.mod.settings.CEPreviouslyInitialized = false;
                 SRTSMod.mod.ResetBombList();
-            }
+            }*/
         }
     }
 }

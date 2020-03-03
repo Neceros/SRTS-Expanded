@@ -5,6 +5,6 @@ D:\SteamLibrary\steamapps\common\RimWorld\Mods\SRTS Expanded\Assemblies\SRTS.dll
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\SRTS Expanded\Source\SRTS\obj\Debug\SRTS.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SRTS-Expanded\Assemblies\SRTS.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SRTS-Expanded\Source\SRTS\obj\Debug\SRTS.csproj.CoreCompileInputs.cache
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SRTS-Expanded\Source\SRTS\obj\Debug\SRTS.csproj.CopyComplete
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SRTS-Expanded\Source\SRTS\obj\Debug\SRTS.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SRTS-Expanded\Source\SRTS\obj\Debug\SRTS.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SRTS-Expanded\v1.1\Assemblies\SRTS.dll

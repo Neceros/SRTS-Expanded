@@ -6,9 +6,8 @@
     <li>1.0</li>
     <li>1.1</li>
   </supportedVersions>
-  <packageId>neceros.srtse</packageId>
-  <description>
-These are flying caravans, meant to load people and cargo and bring it somewhere else -- potentially a very long distance, and back again. These act like drop pods, but are not one use -- when you bring it back home you choose where to land and disembark.
+  <packageId>smashphil.srtsexpanded</packageId>
+  <description>These are flying caravans, meant to load people and cargo and bring it somewhere else -- potentially a very long distance, and back again. These act like drop pods, but are not one use -- when you bring it back home you choose where to land and disembark.
 
 Great for hauling cargo, trading with factions, assaulting points of interest on your world map, and so much more. Acts as both a caravan and a drop pod.
 
@@ -21,6 +20,5 @@ MORE INFO ON THE WORKSHOP PAGE!
 
 Conflicts
 - Multiplayer mod: You will not be able to actually load anything into the ship. It won't work. Sorry.
-- Vanishing Ships: If you build a ship and it instantly vanished, then you have a conflict. The Dev console may tell you why or how, but until we figure out why this is happening just move SRTS Expanded and SRTS above the HugsLib mod, so it loads before it.
-</description>
+- Vanishing Ships: If you build a ship and it instantly vanished, then you have a conflict. The Dev console may tell you why or how, but until we figure out why this is happening just move SRTS Expanded and SRTS above the HugsLib mod, so it loads before it.</description>
 </ModMetaData>

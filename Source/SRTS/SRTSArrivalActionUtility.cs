@@ -35,7 +35,7 @@ namespace SRTS
             }
         }
 
-        public static IEnumerable<FloatMenuOption> GetATKFloatMenuOptions(CompLaunchableSRTS representative, IEnumerable<IThingHolder> pods, SettlementBase settlement, Caravan car)
+        public static IEnumerable<FloatMenuOption> GetATKFloatMenuOptions(CompLaunchableSRTS representative, IEnumerable<IThingHolder> pods, Settlement settlement, Caravan car)
         {
             Func<FloatMenuAcceptanceReport> acceptanceReportGetter1 = (Func<FloatMenuAcceptanceReport>)(() => TransportPodsArrivalAction_AttackSettlement.CanAttack(pods, settlement));
             Func<TransportPodsArrivalAction_AttackSettlement> arrivalActionGetter1 = (Func<TransportPodsArrivalAction_AttackSettlement>)(() => new TransportPodsArrivalAction_AttackSettlement(settlement, PawnsArrivalModeDefOf.EdgeDrop));
@@ -55,14 +55,14 @@ namespace SRTS
             }
         }
 
-        public static IEnumerable<FloatMenuOption> GetGIFTFloatMenuOptions(CompLaunchableSRTS representative, IEnumerable<IThingHolder> pods, SettlementBase settlement, Caravan car)
+        public static IEnumerable<FloatMenuOption> GetGIFTFloatMenuOptions(CompLaunchableSRTS representative, IEnumerable<IThingHolder> pods, Settlement settlement, Caravan car)
         {
             if(settlement.Faction == Faction.OfPlayer)
                 return Enumerable.Empty<FloatMenuOption>();
             return SRTSArrivalActionUtility.GetFloatMenuOptions<TransportPodsArrivalAction_GiveGift>((Func<FloatMenuAcceptanceReport>) (() => TransportPodsArrivalAction_GiveGift.CanGiveGiftTo(pods, settlement)), (Func<TransportPodsArrivalAction_GiveGift>) (() => new TransportPodsArrivalAction_GiveGift(settlement)), "GiveGiftViaTransportPods".Translate(settlement.Faction.Name, FactionGiftUtility.GetGoodwillChange(pods, settlement).ToStringWithSign()), representative, settlement.Tile, car);
         }
 
-        public static IEnumerable<FloatMenuOption> GetVisitFloatMenuOptions(CompLaunchableSRTS representative, IEnumerable<IThingHolder> pods, SettlementBase settlement, Caravan car)
+        public static IEnumerable<FloatMenuOption> GetVisitFloatMenuOptions(CompLaunchableSRTS representative, IEnumerable<IThingHolder> pods, Settlement settlement, Caravan car)
         {
             return SRTSArrivalActionUtility.GetFloatMenuOptions<TransportPodsArrivalAction_VisitSettlement>((Func<FloatMenuAcceptanceReport>) (() => TransportPodsArrivalAction_VisitSettlement.CanVisit(pods, settlement)), (Func<TransportPodsArrivalAction_VisitSettlement>) (() => new TransportPodsArrivalAction_VisitSettlement(settlement)), "VisitSettlement".Translate(settlement.Label), representative, settlement.Tile, car);
         }

@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Reflection;
 using System.Collections.Generic;
@@ -18,24 +18,29 @@ namespace SRTS
     {
         static StartUp()
         {
-            var harmony = HarmonyInstance.Create("SRTSExpanded.smashphil.neceros");
+            var harmony = new Harmony("SRTSExpanded.smashphil.neceros");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+            //Harmony.DEBUG = true;
 
             /* Smash Phil Addition */
-
+            
             /* Mechanics and Rendering */ 
             harmony.Patch(original: AccessTools.Method(type: typeof(CompTransporter), name: nameof(CompTransporter.CompGetGizmosExtra)), prefix: null,
-                postfix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(NoLaunchGroupForSRTS)));
-            harmony.Patch(original: AccessTools.Method(type: typeof(SettlementBase_TraderTracker), name: nameof(SettlementBase_TraderTracker.GiveSoldThingToPlayer)), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(GiveSoldThingsToSRTSTranspiler)));
+                postfix: new HarmonyMethod(typeof(StartUp),
+                nameof(NoLaunchGroupForSRTS)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(Settlement_TraderTracker), name: nameof(Settlement_TraderTracker.GiveSoldThingToPlayer)), prefix: null, postfix: null,
+                transpiler: new HarmonyMethod(typeof(StartUp),
+                nameof(GiveSoldThingsToSRTSTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(WorldDynamicDrawManager), name: nameof(WorldDynamicDrawManager.DrawDynamicWorldObjects)), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(DrawDynamicSRTSObjectsTranspiler)));
+                transpiler: new HarmonyMethod(typeof(StartUp),
+                nameof(DrawDynamicSRTSObjectsTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(ExpandableWorldObjectsUtility), name: nameof(ExpandableWorldObjectsUtility.ExpandableWorldObjectsOnGUI)), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ExpandableIconDetourSRTSTranspiler)));
+                transpiler: new HarmonyMethod(typeof(StartUp),
+                nameof(ExpandableIconDetourSRTSTranspiler)));
+            harmony.Patch(original: AccessTools.Method(type: typeof(WorldSelector), name: "HandleWorldClicks"), prefix: null,
+                postfix: new HarmonyMethod(typeof(StartUp),
+                nameof(TravelingSRTSChangeDirection)));
+
             //Maybe add in the future ...?
             /*harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_Trade), name: "SetupPlayerCaravanVariables"), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
@@ -43,67 +48,67 @@ namespace SRTS
 
             /* Bomb Runs */
             harmony.Patch(original: AccessTools.Method(type: typeof(TransportPodsArrivalActionUtility), name: nameof(TransportPodsArrivalActionUtility.DropTravelingTransportPods)),
-                prefix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(DropSRTSExactSpot)));
+                prefix: new HarmonyMethod(typeof(StartUp),
+                nameof(DropSRTSExactSpot)));
             harmony.Patch(original: AccessTools.Method(type: typeof(Targeter), name: nameof(Targeter.TargeterOnGUI)), prefix: null,
-                postfix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(DrawBombingTargeter)));
+                postfix: new HarmonyMethod(typeof(StartUp),
+                nameof(DrawBombingTargeter)));
             harmony.Patch(original: AccessTools.Method(type: typeof(Targeter), name: nameof(Targeter.ProcessInputEvents)), prefix: null,
-                postfix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ProcessBombingInputEvents)));
+                postfix: new HarmonyMethod(typeof(StartUp),
+                nameof(ProcessBombingInputEvents)));
             harmony.Patch(original: AccessTools.Method(type: typeof(Targeter), name: nameof(Targeter.TargeterUpdate)), prefix: null,
-                postfix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(BombTargeterUpdate)));
+                postfix: new HarmonyMethod(typeof(StartUp),
+                nameof(BombTargeterUpdate)));
             
             /* Custom Settings */
             harmony.Patch(original: AccessTools.Property(type: typeof(TravelingTransportPods), name: "TraveledPctStepPerTick").GetGetMethod(nonPublic: true),
-                prefix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(CustomTravelSpeedSRTS)));
+                prefix: new HarmonyMethod(typeof(StartUp),
+                nameof(CustomTravelSpeedSRTS)));
             harmony.Patch(original: AccessTools.Property(type: typeof(Dialog_LoadTransporters), name: "MassCapacity").GetGetMethod(nonPublic: true),
-                prefix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(CustomSRTSMassCapacity)));
+                prefix: new HarmonyMethod(typeof(StartUp),
+                nameof(CustomSRTSMassCapacity)));
             harmony.Patch(original: AccessTools.Property(type: typeof(Dialog_Trade), name: "MassUsage").GetGetMethod(nonPublic: true), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(SRTSMassUsageCaravanTranspiler)));
+                transpiler: new HarmonyMethod(typeof(StartUp),
+                nameof(SRTSMassUsageCaravanTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(CollectionsMassCalculator), name: nameof(CollectionsMassCalculator.CapacityLeftAfterTradeableTransfer)),
-                prefix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(SRTSMassCapacityCaravan)));
+                prefix: new HarmonyMethod(typeof(StartUp),
+                nameof(SRTSMassCapacityCaravan)));
             harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddItemsToTransferables"), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(AddItemsEntireMapNonHomeTranspiler)));
+                transpiler: new HarmonyMethod(typeof(StartUp),
+                nameof(AddItemsEntireMapNonHomeTranspiler)));
             /*harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "CheckForErrors"), prefix: null, postfix: null,
                 transpiler: new HarmonyMethod(type: typeof(StartUp),
                 name: nameof(ErrorOnNoPawnsTranspiler)));*/
             harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.CostApparent)).GetGetMethod(),
-                prefix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ResearchCostApparent)));
+                prefix: new HarmonyMethod(typeof(StartUp),
+                nameof(ResearchCostApparent)));
             harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.IsFinished)).GetGetMethod(),
-                prefix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ResearchIsFinished)));
+                prefix: new HarmonyMethod(typeof(StartUp),
+                nameof(ResearchIsFinished)));
             harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.ProgressPercent)).GetGetMethod(),
-                prefix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ResearchProgressPercent)));
+                prefix: new HarmonyMethod(typeof(StartUp),
+                nameof(ResearchProgressPercent)));
             harmony.Patch(original: AccessTools.Method(type: typeof(ResearchManager), name: nameof(ResearchManager.FinishProject)), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ResearchFinishProjectTranspiler)));
+                transpiler: new HarmonyMethod(typeof(StartUp),
+                nameof(ResearchFinishProjectTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawLeftRect"), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ResearchTranslatedCostTranspiler)));
+                transpiler: new HarmonyMethod(typeof(StartUp),
+                nameof(ResearchTranslatedCostTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(ResearchManager), name: nameof(ResearchManager.DebugSetAllProjectsFinished)), prefix: null,
-                postfix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(ResearchFinishAllSRTS)));
+                postfix: new HarmonyMethod(typeof(StartUp),
+                nameof(ResearchFinishAllSRTS)));
             harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.PrerequisitesCompleted)).GetGetMethod(), prefix: null,
-                postfix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(CustomPrerequisitesCompleted)));
+                postfix: new HarmonyMethod(typeof(StartUp),
+                nameof(CustomPrerequisitesCompleted)));
             harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawRightRect"), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(DrawCustomResearchTranspiler)));
+                transpiler: new HarmonyMethod(typeof(StartUp),
+                nameof(DrawCustomResearchTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawResearchPrereqs"), prefix: null,
-               postfix: new HarmonyMethod(type: typeof(StartUp),
-               name: nameof(DrawCustomResearchPrereqs)));
+               postfix: new HarmonyMethod(typeof(StartUp),
+               nameof(DrawCustomResearchPrereqs)));
             harmony.Patch(original: AccessTools.Method(type: typeof(Caravan), name: nameof(Caravan.GetGizmos)), prefix: null,
-                postfix: new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(LaunchAndBombGizmosPassthrough)));
+                postfix: new HarmonyMethod(typeof(StartUp),
+                nameof(LaunchAndBombGizmosPassthrough)));
 
             /* Destructive Patch Fixes */
             bool sos2Flag = false;
@@ -113,11 +118,11 @@ namespace SRTS
                 Log.Message("[SRTSExpanded] Overriding SOS2 Destructive Patches.");
             }    
             harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddPawnsToTransferables"), 
-                prefix: sos2Flag ? new HarmonyMethod(type: typeof(StartUp), 
-                name: nameof(CustomOptionsPawnsToTransportOverride)) : null, 
+                prefix: sos2Flag ? new HarmonyMethod(typeof(StartUp), 
+                nameof(CustomOptionsPawnsToTransportOverride)) : null, 
                 postfix: null,
-                transpiler: sos2Flag ? null : new HarmonyMethod(type: typeof(StartUp),
-                name: nameof(CustomOptionsPawnsToTransportTranspiler)));
+                transpiler: sos2Flag ? null : new HarmonyMethod(typeof(StartUp),
+                nameof(CustomOptionsPawnsToTransportTranspiler)));
 
             /* Unpatch Save our Ship 2 's destructive and incompetent patch on transporter pawns */
             //harmony.Unpatch(AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddPawnsToTransferables"), HarmonyPatchType.Prefix, "HugsLib.ShipInteriorMod2");
@@ -213,7 +218,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionList[i];
 
-                if(SRTSMod.mod.settings.displayHomeItems && instruction.opcode == OpCodes.Call && instruction.operand == AccessTools.Method(type: typeof(CaravanFormingUtility), name: nameof(CaravanFormingUtility.AllReachableColonyItems)))
+                if(SRTSMod.mod.settings.displayHomeItems && instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == AccessTools.Method(type: typeof(CaravanFormingUtility), name: nameof(CaravanFormingUtility.AllReachableColonyItems)))
                 {
                     Label label = ilg.DefineLabel();
 
@@ -289,7 +294,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionList[i];
 
-                if(instruction.opcode == OpCodes.Call && instruction.operand == AccessTools.Property(type: typeof(ExpandableWorldObjectsUtility), name: nameof(ExpandableWorldObjectsUtility.TransitionPct)).GetGetMethod())
+                /*if(instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == AccessTools.Property(type: typeof(ExpandableWorldObjectsUtility), name: nameof(ExpandableWorldObjectsUtility.TransitionPct)).GetGetMethod())
                 {
                     Label label = ilg.DefineLabel();
                     Label brlabel = ilg.DefineLabel();
@@ -319,7 +324,7 @@ namespace SRTS
                         j++;
                     }
                     instruction.labels.Add(label);
-                }
+                }*/
                 yield return instruction;
             }
         }
@@ -344,7 +349,7 @@ namespace SRTS
                     ///Jump label, for loop
                     instruction.labels.Add(jumpLabel);
                 }
-                if(instruction.opcode == OpCodes.Callvirt && instruction.operand == AccessTools.Property(type: typeof(WorldObject), name: nameof(WorldObject.ExpandingIconColor)).GetGetMethod())
+                if(instruction.opcode == OpCodes.Callvirt && (MethodInfo)instruction.operand == AccessTools.Property(type: typeof(WorldObject), name: nameof(WorldObject.ExpandingIconColor)).GetGetMethod())
                 {
                     Label label = ilg.DefineLabel();
 
@@ -370,7 +375,19 @@ namespace SRTS
             }
         }
 
-        private static bool CustomTravelSpeedSRTS(int ___initialTile, int ___destinationTile, List<ActiveDropPodInfo> ___pods, ref float __result)
+        public static void TravelingSRTSChangeDirection(List<WorldObject> ___selected)
+        {
+            /*if(Event.current.button == 1 && ___selected.Count == 1 && ___selected[0] is TravelingSRTS)
+            {
+                (___selected[0] as TravelingSRTS).destinationTile = GenWorld.MouseTile(false);
+                Vector3 flyingPosition = (___selected[0] as TravelingSRTS).DrawPos;
+                Log.Message("1: " + GenWorld.TileAt(new Vector2(flyingPosition.x, flyingPosition.z)));
+                Log.Message("2: " + GenWorld.MouseTile(false));
+                //AccessTools.Field(type: typeof(TravelingSRTS), name: "initialTile").SetValue((TravelingSRTS)___selected[0], );
+            }*/
+        }
+
+        public static bool CustomTravelSpeedSRTS(int ___initialTile, int ___destinationTile, List<ActiveDropPodInfo> ___pods, ref float __result)
         {
             if (___pods.Any(x => x.innerContainer.Any(y => y.TryGetComp<CompLaunchableSRTS>() != null)))
             {
@@ -545,7 +562,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionList[i];
 
-                if (instruction.opcode == OpCodes.Ldfld && instruction.operand == AccessTools.Field(type: typeof(ResearchManager), name: "progress"))
+                if (instruction.opcode == OpCodes.Ldfld && (FieldInfo)instruction.operand == AccessTools.Field(type: typeof(ResearchManager), name: "progress"))
                 {
                     yield return instruction;
                     instruction = instructionList[++i];
@@ -586,7 +603,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionList[i];
 
-                if (instruction.opcode == OpCodes.Ldflda && instruction.operand == AccessTools.Field(type: typeof(ResearchProjectDef), name: "baseCost"))
+                if (instruction.opcode == OpCodes.Ldflda && (FieldInfo)instruction.operand == AccessTools.Field(type: typeof(ResearchProjectDef), name: "baseCost"))
                 {
                     Label label = ilg.DefineLabel();
                     Label brlabel = ilg.DefineLabel();
@@ -638,7 +655,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionList[i];
 
-                if(instruction.opcode == OpCodes.Call && instruction.operand == AccessTools.Method(type: typeof(MainTabWindow_Research), name: "PosX") && flag)
+                if(instruction.opcode == OpCodes.Call && instruction.Calls(AccessTools.Method(type: typeof(MainTabWindow_Research), name: "PosX")) && flag)
                 {
                     flag = false;
                     Label label = ilg.DefineLabel();
@@ -649,14 +666,15 @@ namespace SRTS
 
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 19);
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
-                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Property(type: typeof(MainTabWindow_Research), name: "CurTab").GetGetMethod(nonPublic: true));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 14);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 15);
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.PropertyGetter(type: typeof(MainTabWindow_Research), name: "CurTab"));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 4);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 5);
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(MainTabWindow_Research), name: "selectedProject"));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 17);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 15);
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.DrawLinesCustomPrerequisites)));
-                    
+
+
                     instruction.labels.Add(label);
                 }
                 yield return instruction;
@@ -827,7 +845,7 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionList[i];
 
-                if(instruction.opcode == OpCodes.Call && instruction.operand == AccessTools.Method(type: typeof(CaravanFormingUtility), name: nameof(CaravanFormingUtility.AllSendablePawns)))
+                if(instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == AccessTools.Method(type: typeof(CaravanFormingUtility), name: nameof(CaravanFormingUtility.AllSendablePawns)))
                 {
                     Label label = ilg.DefineLabel();
 
