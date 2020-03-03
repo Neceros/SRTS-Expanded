@@ -73,8 +73,16 @@ namespace SRTS
             {
                 if(SRTSMod.mod.settings.defProperties[kvp.Key]?.defaultValues ?? true)
                 {
-                    SRTSMod.mod.settings.defProperties[kvp.Key].ResetReferencedDef(kvp.Key);
-                    SRTSMod.mod.settings.defProperties[kvp.Key].ResetToDefaultValues();
+                    if (!SRTSMod.mod.settings.defProperties[kvp.Key].ResetReferencedDef(kvp.Key))
+                    {
+                        SRTSMod.mod.settings.defProperties[kvp.Key].ResetToDefaultValues();
+                    }
+                    else
+                    {
+                        Log.Warning("[SRTSExpanded] Performing a hard reset on ModSettings");
+                        SRTSMod.mod.settings.defProperties.Clear();
+                        SRTSMod.mod.CheckDictionaryValid();
+                    }
                 }
             }
         }
@@ -389,7 +397,7 @@ namespace SRTS
             return "SRTSExpanded".Translate();
         }
 
-        private void ResetMainSettings()
+        internal void ResetMainSettings()
         {
             SoundDefOf.Click.PlayOneShotOnCamera();
             this.settings.passengerLimits = true;
@@ -695,12 +703,22 @@ namespace SRTS
             }
         }
 
-        public void ResetReferencedDef(string defName)
+        public bool ResetReferencedDef(string defName)
         {
             if(this.referencedDef is null)
             {
-                this.referencedDef = DefDatabase<ThingDef>.GetNamed(defName);
+                ThingDef defToReset = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
+                if (defToReset is null)
+                {
+                    Log.Warning("[SRTSExpanded] Failed to load " + defName + " from the database. Either the defName has changed or it cannot be found.");
+                    return false;
+                }
+                else
+                {
+                    this.referencedDef = DefDatabase<ThingDef>.GetNamed(defName);
+                }
             }
+            return true;
         }
 
         /// <summary>
