@@ -336,7 +336,7 @@
     <label>TEK7 incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Tek7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>(11,11)</drawSize>
@@ -356,7 +356,7 @@
     <label>TEK7 leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Tek7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>(11,11)</drawSize>
@@ -380,7 +380,7 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Tek7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(11,11)</drawSize>
       <shadowData>

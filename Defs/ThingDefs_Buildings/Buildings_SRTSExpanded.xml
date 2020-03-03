@@ -313,9 +313,9 @@ Fuel efficiency: Good
 Cargo cap: 10,000kg
 Internal power plant: 1,700w</description>
     <graphicData>
-      <texPath>Albatross</texPath>
+      <texPath>Tek7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(11,11)</drawSize>
+      <drawSize>(15,15)</drawSize>
     </graphicData>
     <size>(5,5)</size>
     <statBases>
