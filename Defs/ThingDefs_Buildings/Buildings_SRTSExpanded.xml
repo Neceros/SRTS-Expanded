@@ -225,7 +225,7 @@ Internal power plant: 800w</description> <!-- description of course... -->
 
 
     <ThingDef ParentName="ShipBase">
-    <defName>SRTF</defName>
+    <defName>SRAF</defName>
     <label>SRAF: Canary</label>
     <description>Short Range Aerial Freighter. A transport system made to fly cargo across the world, but almost no room for passengers. These industrial behemoths have been in service for millenia.
 
