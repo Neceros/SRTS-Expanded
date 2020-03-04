@@ -42,22 +42,22 @@ namespace SRTS
                 base.Draw();
                 return;
             }
-
+            
             if (!this.HiddenBehindTerrainNow())
             {
+
                 float averageTileSize = Find.WorldGrid.averageTileSize;
                 float transitionPct = ExpandableWorldObjectsUtility.TransitionPct;
             
                 if(transitionSize < 1)
                     transitionSize += TransitionTakeoff * (int)Find.TickManager.CurTimeSpeed;
                 float drawPct = (1 + (transitionPct * Find.WorldCameraDriver.AltitudePercent * ExpandingResize)) * transitionSize;
-
                 if(directionFacing == default)
                     InitializeFacing();
                 
                 Vector3 normalized = this.DrawPos.normalized;
                 Quaternion quat = Quaternion.LookRotation(Vector3.Cross(normalized, directionFacing), normalized) * Quaternion.Euler(0f, 90f, 0f);
-                Vector3 s = new Vector3(averageTileSize * 0.7f * drawPct, 1f, averageTileSize * 0.7f * drawPct);
+                Vector3 s = new Vector3(averageTileSize * 0.7f * drawPct, 5f, averageTileSize * 0.7f * drawPct);
                 
                 Matrix4x4 matrix = default;
                 matrix.SetTRS(this.DrawPos + normalized * 0.015f, quat, s);
