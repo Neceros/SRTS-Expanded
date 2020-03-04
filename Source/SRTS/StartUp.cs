@@ -294,13 +294,13 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionList[i];
 
-                /*if(instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == AccessTools.Property(type: typeof(ExpandableWorldObjectsUtility), name: nameof(ExpandableWorldObjectsUtility.TransitionPct)).GetGetMethod())
+                if (instruction.Calls(AccessTools.Property(typeof(ExpandableWorldObjectsUtility), nameof(ExpandableWorldObjectsUtility.TransitionPct)).GetGetMethod()))
                 {
                     Label label = ilg.DefineLabel();
                     Label brlabel = ilg.DefineLabel();
 
                     ///Check if TravelingTransportPod is SRTS Instance
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_1);
                     yield return new CodeInstruction(opcode: OpCodes.Isinst, operand: typeof(TravelingSRTS));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
@@ -309,14 +309,14 @@ namespace SRTS
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
                     ///Hook onto SRTS Draw method
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_1);
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(TravelingSRTS), name: nameof(TravelingSRTS.Draw)));
                     yield return new CodeInstruction(opcode: OpCodes.Leave, brlabel);
 
                     int j = i;
-                    while(j < instructionList.Count)
+                    while (j < instructionList.Count)
                     {
-                        if(instructionList[j].opcode == OpCodes.Ldloca_S)
+                        if (instructionList[j].opcode == OpCodes.Ldloca_S)
                         {
                             instructionList[j].labels.Add(brlabel);
                             break;
@@ -324,7 +324,7 @@ namespace SRTS
                         j++;
                     }
                     instruction.labels.Add(label);
-                }*/
+                }
                 yield return instruction;
             }
         }
@@ -349,7 +349,7 @@ namespace SRTS
                     ///Jump label, for loop
                     instruction.labels.Add(jumpLabel);
                 }
-                if(instruction.opcode == OpCodes.Callvirt && (MethodInfo)instruction.operand == AccessTools.Property(type: typeof(WorldObject), name: nameof(WorldObject.ExpandingIconColor)).GetGetMethod())
+                if(instruction.Calls(AccessTools.Property(type: typeof(WorldObject), name: nameof(WorldObject.ExpandingIconColor)).GetGetMethod()))
                 {
                     Label label = ilg.DefineLabel();
 

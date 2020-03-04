@@ -106,7 +106,7 @@ namespace SRTS
             var font = Text.Font;
             Text.Font = GameFont.Tiny;
             string credit = "Settings by Smash Phil";
-            Widgets.Label(new Rect(inRect.width - (6 * credit.Count()), inRect.height + 64f, inRect.width, inRect.height), credit);
+            //Widgets.Label(new Rect(inRect.width - (6 * credit.Count()), inRect.height + 64f, inRect.width, inRect.height), credit);
             Text.Font = font;
 
             Listing_Standard listing_Standard = new Listing_Standard();
