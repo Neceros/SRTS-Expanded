@@ -51,7 +51,6 @@
   </ResearchProjectDef>
 
 
-<!--
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRAFTek</defName>
@@ -70,7 +69,6 @@
     </requiredResearchFacilities>
   </ResearchProjectDef>
 
--->
 
   <ResearchProjectDef>
     <tab>SRTSE</tab>
