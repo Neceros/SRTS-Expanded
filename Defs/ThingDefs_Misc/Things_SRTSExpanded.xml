@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ThingDef Name="BomberSkyfallerBase" ParentName="EtherealThingBase" Abstract="True">
@@ -263,7 +263,7 @@
   <!-- SRTF -->
 
   <ThingDef ParentName="SkyfallerBase">
-    <defName>SRTF_Incoming</defName>
+    <defName>SRAF_Incoming</defName>
     <label>SRTF incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
@@ -283,7 +283,7 @@
   </ThingDef>
 
   <ThingDef ParentName="SkyfallerBase">
-    <defName>SRTF_Leaving</defName>
+    <defName>SRAF_Leaving</defName>
     <label>SRTF leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
@@ -304,7 +304,7 @@
   </ThingDef>
 
   <ThingDef>
-    <defName>SRTF_Active</defName>
+    <defName>SRAF_Active</defName>
     <label>SRTF active</label>
     <category>Item</category>
     <thingClass>ActiveDropPod</thingClass>
@@ -328,17 +328,16 @@
     <selectable>true</selectable>
   </ThingDef>
 
-<!--
-     TEK-7
+
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRAFTek_Incoming</defName>
     <label>SRAFTek7 incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
-      <texPath>Albatross</texPath>
+      <texPath>TEK7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(11,11)</drawSize>
+      <drawSize>(15,15)</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
@@ -355,10 +354,10 @@
     <label>SRAFTek7 leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>Albatross</texPath>
+      <texPath>TEK7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(11,11)</drawSize>
+      <drawSize>(15,15)</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Accelerate</movementType>
@@ -379,9 +378,9 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Albatross</texPath>
+      <texPath>TEK7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(11,11)</drawSize>
+      <drawSize>(15,15)</drawSize>
       <shadowData>
         <volume>(0.8, 0.6, 0.8)</volume>
       </shadowData>
@@ -395,8 +394,6 @@
     </statBases>
     <selectable>true</selectable>
   </ThingDef>
-
-  -->
 
 
   <!-- Superpod -->
