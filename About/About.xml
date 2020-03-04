@@ -6,7 +6,7 @@
     <li>1.0</li>
     <li>1.1</li>
   </supportedVersions>
-  <packageId>smashphil.srtsexpanded</packageId>
+  <packageId>smashphil.neceros.srtsexpanded</packageId>
   <description>These are flying caravans, meant to load people and cargo and bring it somewhere else -- potentially a very long distance, and back again. These act like drop pods, but are not one use -- when you bring it back home you choose where to land and disembark.
 
 Great for hauling cargo, trading with factions, assaulting points of interest on your world map, and so much more. Acts as both a caravan and a drop pod.
