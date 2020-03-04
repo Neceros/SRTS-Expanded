@@ -263,11 +263,11 @@
   <!-- SRTF -->
 
   <ThingDef ParentName="SkyfallerBase">
-    <defName>SRTF_Incoming</defName>
-    <label>SRTF incoming</label>
+    <defName>SRAF_Incoming</defName>
+    <label>SRAF incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>(15,15)</drawSize>
@@ -283,11 +283,11 @@
   </ThingDef>
 
   <ThingDef ParentName="SkyfallerBase">
-    <defName>SRTF_Leaving</defName>
-    <label>SRTF leaving</label>
+    <defName>SRAF_Leaving</defName>
+    <label>SRAF leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
       <drawSize>(15,15)</drawSize>
@@ -304,14 +304,14 @@
   </ThingDef>
 
   <ThingDef>
-    <defName>SRTF_Active</defName>
-    <label>SRTF active</label>
+    <defName>SRAF_Active</defName>
+    <label>SRAF active</label>
     <category>Item</category>
     <thingClass>ActiveDropPod</thingClass>
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Freighter</texPath>
+      <texPath>Albatross</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(15,15)</drawSize>
       <shadowData>
@@ -328,17 +328,18 @@
     <selectable>true</selectable>
   </ThingDef>
 
-<!--
-     TEK-7
+
+  <!-- TEK7 -->
+
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRAFTek_Incoming</defName>
-    <label>SRAFTek7 incoming</label>
+    <label>TEK7 incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
-      <texPath>Albatross</texPath>
+      <texPath>TEK7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(11,11)</drawSize>
+      <drawSize>(15,15)</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
@@ -352,13 +353,13 @@
 
   <ThingDef ParentName="SkyfallerBase">
     <defName>SRAFTek_Leaving</defName>
-    <label>SRAFTek7 leaving</label>
+    <label>TEK7 leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>Albatross</texPath>
+      <texPath>TEK7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(11,11)</drawSize>
+      <drawSize>(15,15)</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Accelerate</movementType>
@@ -373,15 +374,15 @@
 
   <ThingDef>
     <defName>SRAFTek_Active</defName>
-    <label>SRAFTek7 active</label>
+    <label>TEK7 active</label>
     <category>Item</category>
     <thingClass>ActiveDropPod</thingClass>
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Albatross</texPath>
+      <texPath>TEK7</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(11,11)</drawSize>
+      <drawSize>(15,15)</drawSize>
       <shadowData>
         <volume>(0.8, 0.6, 0.8)</volume>
       </shadowData>
@@ -395,8 +396,6 @@
     </statBases>
     <selectable>true</selectable>
   </ThingDef>
-
-  -->
 
 
   <!-- Superpod -->
