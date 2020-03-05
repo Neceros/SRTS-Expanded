@@ -12,6 +12,9 @@
   <Research_SRTF.label>SRTF カナリア</Research_SRTF.label>
   <Research_SRTF.description>大気圏内で利用される大型輸送貨物船(SRTF:Short-Range-Transport-Freighter)です。この船の開発された経緯や歴史は不明ですが、どこにでもある一般的な船です。SRTFはすべての母星域で何百万隻と見ることができます。バイオ化学燃料の燃焼効率が悪い上に航続距離もあまり優秀ではなく、非常に遅いですが、貨物室はとんでもなく広いです。</Research_SRTF.description>
 
+  <Research_SRAFTek.label>TEK-7: 降下艇</Research_SRAFTek.label>
+  <Research_SRAFTek.description>貨物用の大型空輸貨物船です。TEK-7級の宇宙船はかなり新型です。貨物輸送方式では最新の技術を使い、これまでよりも多くのことを実現しています。\n\nTEK(Terra=Enclave=Kingdrone)4186年製第7クラス。このクラスでは、それぞれが特定の役割に特化した多くの発展型モデルを開発して、多くの実戦を経験してきました。\n\nTEK-7は搬送性の高い貨物船とカテゴリされています。</Research_SRAFTek.description>
+
   <Research_SRTSMk2.label>SRTS:Mk-2 アルバトロス</Research_SRTSMk2.label>
   <Research_SRTSMk2.description>X-11「Albatross」はもともと軍の惑星探査用シャトルとして設計されましたが、構成要素がSRTS(短距離輸送船:Short-Range-Transport-Shuttle)とほぼ完全に一致していることが判明しました。新しい視点と少しの改良により、より優れた燃費性能と効率性を兼ね備えた新しいSRTSの改良設計を研究できるかもしれません。</Research_SRTSMk2.description>
   <Research_SRTSMk2.discoveredLetterTitle>先進的なSRTS部品</Research_SRTSMk2.discoveredLetterTitle>

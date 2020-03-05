@@ -32,6 +32,12 @@
   <AllowDownedSRTS>倒れたポーンを許可</AllowDownedSRTS>
   <AllowUnsecurePrisonerSRTS>未拘束な囚人を許可</AllowUnsecurePrisonerSRTS>
   <AllowCapturablePawnSRTS>逮捕可能なポーンを許可</AllowCapturablePawnSRTS>
+  <AllowCapturablePawnSRTS>Allow Capturable Pawns</AllowCapturablePawnSRTS>
+
+  <SOS2Compatibility>SOS2オプション</SOS2Compatibility>
+  <SpaceFaring>宇宙旅行</SpaceFaring>
+  <ShuttleBayLanding>シャトルベイに着陸</ShuttleBayLanding>
+  <NonSpaceFaringSRTS>{0}は軌道に到達不可能</NonSpaceFaringSRTS>
 
   <SRTSSettings>SRTSの設定</SRTSSettings>
   <FlightSpeed>飛行速度（ワールドマップ上）</FlightSpeed>
@@ -78,7 +84,9 @@
 
   <!-- Caravans -->
 
-  <!-- Status -->
+  <!-- Status and Compatibility-->
+  <CommandLaunchOrbit>軌道上に発射</CommandLaunchOrbit>
+  <CommandLaunchOrbitDesc>軌道上の場所に打ち上げます。</CommandLaunchOrbitDesc>
 
   <!-- Gizmo -->
   <BombTarget>爆撃目標</BombTarget>
