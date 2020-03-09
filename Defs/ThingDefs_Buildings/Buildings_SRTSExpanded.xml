@@ -513,7 +513,7 @@ Internal power plant: 3,600w</description>
     <graphicData>
       <texPath>Phoenix</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(9,9)</drawSize>
+      <drawSize>(11,11)</drawSize>
     </graphicData>
     <size>(3,3)</size>
     <statBases>
@@ -606,9 +606,9 @@ Internal power plant: 2,800w</description>
     <graphicData>
       <texPath>Pelican</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(17,17)</drawSize>
+      <drawSize>(25,25)</drawSize>
     </graphicData>
-    <size>(9,7)</size>
+    <size>(11,9)</size>
     <statBases>
       <MaxHitPoints>1250</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
@@ -700,7 +700,7 @@ Internal power plant: 30,000w</description>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(13,13)</drawSize>
     </graphicData>
-    <size>(7,7)</size>
+    <size>(5,5)</size>
     <statBases>
       <MaxHitPoints>2000</MaxHitPoints>
       <WorkToBuild>128000</WorkToBuild>
