@@ -68,22 +68,24 @@ namespace SRTS
 
         public static void CheckNewDefaultValues()
         {
-            List<KeyValuePair<string, SRTS_DefProperties>> tmpDict = new List<KeyValuePair<string, SRTS_DefProperties>>(SRTSMod.mod.settings.defProperties);
-            foreach (KeyValuePair<string, SRTS_DefProperties> kvp in tmpDict)
+            SRTSMod.mod.settings.CheckDictionarySavedValid();
+            foreach (KeyValuePair<string, SRTS_DefProperties> kvp in SRTSMod.mod.settings.defProperties)
             {
-                if(SRTSMod.mod.settings.defProperties[kvp.Key]?.defaultValues ?? true)
+                if(SRTSMod.mod.settings.defProperties.ContainsKey(kvp.Key))
                 {
-                    if (!SRTSMod.mod.settings.defProperties[kvp.Key].ResetReferencedDef(kvp.Key))
+                    if (SRTSMod.mod.settings.defProperties[kvp.Key].ResetReferencedDef(kvp.Key))
                     {
-                        SRTSMod.mod.settings.defProperties[kvp.Key].ResetToDefaultValues();
-                    }
-                    else
-                    {
-                        Log.Warning("[SRTSExpanded] Performing a hard reset on ModSettings");
-                        SRTSMod.mod.settings.defProperties.Clear();
-                        SRTSMod.mod.CheckDictionaryValid();
+                        if (SRTSMod.mod.settings.defProperties[kvp.Key].defaultValues)
+                        {
+                            SRTSMod.mod.settings.defProperties[kvp.Key].ResetToDefaultValues();
+                        }
+                        continue;
                     }
                 }
+                Log.Warning("[SRTSExpanded] Unable to perform loading procedures on key (" + kvp.Key + "). Performing a hard reset on the ModSettings.");
+                SRTSMod.mod.settings.defProperties.Clear();
+                SRTSMod.mod.CheckDictionaryValid();
+                break;
             }
         }
     }
@@ -707,18 +709,9 @@ namespace SRTS
         {
             if(this.referencedDef is null)
             {
-                ThingDef defToReset = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
-                if (defToReset is null)
-                {
-                    Log.Warning("[SRTSExpanded] Failed to load " + defName + " from the database. Either the defName has changed or it cannot be found.");
-                    return false;
-                }
-                else
-                {
-                    this.referencedDef = DefDatabase<ThingDef>.GetNamed(defName);
-                }
+                referencedDef = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
             }
-            return true;
+            return referencedDef != null;
         }
 
         /// <summary>
