@@ -59,8 +59,8 @@ Treibstoffeffizienz: Gut
 Ladungskapazität: 420kg
 Internes Kraftwerk: 800w</SRTSSkip_Frame.description>
 
-  <SRTF.label>SRAF: Canary</SRTF.label>
-  <SRTF.description>Kurzstrecken-Luftfrachter. Ein Transportsystem, das Ladung um die Welt fliegen lässt, aber für Passagiere kaum Platz bietet. Diese Industriegiganten sind seit Jahrtausenden im Einsatz.
+  <SRAF.label>SRAF: Canary</SRAF.label>
+  <SRAF.description>Kurzstrecken-Luftfrachter. Ein Transportsystem, das Ladung um die Welt fliegen lässt, aber für Passagiere kaum Platz bietet. Diese Industriegiganten sind seit Jahrtausenden im Einsatz.
 
 Passagierkapazität: Min 1 - 3 Max
 ----------------------------
@@ -69,7 +69,7 @@ Treibstoffkapazität: 2,000L
 Treibstoffeffizienz: Schrecklich
 ----------------------------
 Ladungskapazität: 5,000kg
-Internes Kraftwerk: 1000w</SRTF.description>
+Internes Kraftwerk: 1000w</SRAF.description>
   <SRTF_Entwurf.label>SRAF: Canary (Entwurf)</SRTF_Entwurf.label>
   <SRTF_Entwurf_Install.label>SRAF: Canary (Entwurf)</SRTF_Entwurf_Install.label>
   <SRTF_Frame.label>SRAF: Canary (im Bau)</SRTF_Frame.label>
