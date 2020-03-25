@@ -98,9 +98,9 @@ namespace SRTS
             harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.PrerequisitesCompleted)).GetGetMethod(), prefix: null,
                 postfix: new HarmonyMethod(typeof(StartUp),
                 nameof(CustomPrerequisitesCompleted)));
-            harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawRightRect"), prefix: null, postfix: null,
-                transpiler: new HarmonyMethod(typeof(StartUp),
-                nameof(DrawCustomResearchTranspiler)));
+            //harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawRightRect"), prefix: null, postfix: null,
+            //    transpiler: new HarmonyMethod(typeof(StartUp),
+            //    nameof(DrawCustomResearchTranspiler)));
             harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawResearchPrereqs"), prefix: null,
                postfix: new HarmonyMethod(typeof(StartUp),
                nameof(DrawCustomResearchPrereqs)));
