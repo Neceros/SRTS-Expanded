@@ -653,23 +653,23 @@ namespace SRTS
             {
                 CodeInstruction instruction = instructionList[i];
 
-                if(instruction.opcode == OpCodes.Call && instruction.Calls(AccessTools.Method(type: typeof(MainTabWindow_Research), name: "PosX")) && flag)
+                if(instruction.Calls(AccessTools.Method(type: typeof(MainTabWindow_Research), name: "PosX")) && flag)
                 {
                     flag = false;
                     Label label = ilg.DefineLabel();
 
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 19);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 14);
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.ContainedInDefProjects)));
                     yield return new CodeInstruction(opcode: OpCodes.Brfalse, label);
 
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 19);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 14);
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.PropertyGetter(type: typeof(MainTabWindow_Research), name: "CurTab"));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 3);
                     yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 4);
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 5);
                     yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
                     yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(type: typeof(MainTabWindow_Research), name: "selectedProject"));
-                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 15);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_S, 13);
                     yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(type: typeof(SRTSHelper), name: nameof(SRTSHelper.DrawLinesCustomPrerequisites)));
 
 
