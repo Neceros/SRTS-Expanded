@@ -26,9 +26,9 @@
 
   <!-- SRTF -->
 
-  <SRTF_Incoming.label>SRTF eingehend</SRTF_Incoming.label>
-  <SRTF_Leaving.label>SRTF verlassen</SRTF_Leaving.label>
-  <SRTF_Active.label>SRTF aktiv</SRTF_Active.label>
+  <SRAF_Incoming.label>SRTF eingehend</SRAF_Incoming.label>
+  <SRAF_Incoming.label>SRTF verlassen</SRAF_Incoming.label>
+  <SRAF_Incoming.label>SRTF aktiv</SRAF_Incoming.label>
 
 
   <!-- Superpod -->

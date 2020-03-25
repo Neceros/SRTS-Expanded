@@ -245,7 +245,7 @@ Internal power plant: 1000w</description>
     </graphicData>
     <size>(5,9)</size>
     <statBases>
-      <MaxHitPoints>3000</MaxHitPoints>
+      <MaxHitPoints>1000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
       <Mass>20</Mass>
@@ -330,7 +330,7 @@ Internal power plant: 1,700w</description>
     </graphicData>
     <size>(5,9)</size>
     <statBases>
-      <MaxHitPoints>950</MaxHitPoints>
+      <MaxHitPoints>1300</MaxHitPoints>
       <WorkToBuild>24000</WorkToBuild>
       <Flammability>0.3</Flammability>
       <Mass>20</Mass>
@@ -517,7 +517,7 @@ Internal power plant: 3,600w</description>
     </graphicData>
     <size>(3,3)</size>
     <statBases>
-      <MaxHitPoints>1250</MaxHitPoints>
+      <MaxHitPoints>1500</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
       <Mass>20</Mass>
@@ -610,7 +610,7 @@ Internal power plant: 2,800w</description>
     </graphicData>
     <size>(11,9)</size>
     <statBases>
-      <MaxHitPoints>1250</MaxHitPoints>
+      <MaxHitPoints>2000</MaxHitPoints>
       <WorkToBuild>32000</WorkToBuild>
       <Flammability>0.3</Flammability>
       <Mass>20</Mass>
@@ -702,7 +702,7 @@ Internal power plant: 30,000w</description>
     </graphicData>
     <size>(5,5)</size>
     <statBases>
-      <MaxHitPoints>2000</MaxHitPoints>
+      <MaxHitPoints>100000</MaxHitPoints>
       <WorkToBuild>128000</WorkToBuild>
       <Flammability>0</Flammability>
       <Mass>20</Mass>
