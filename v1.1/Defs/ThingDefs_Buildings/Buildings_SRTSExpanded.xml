@@ -676,7 +676,7 @@ Fuel cap: Legendary
 Fuel efficiency: Legendary
 ----------------------------
 Cargo cap: No Max
-Internal power plant: 12,600w</description>
+Internal power plant: 12,000w</description>
     <graphicData>
       <texPath>SRTSMk4</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -740,7 +740,7 @@ Internal power plant: 12,600w</description>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
-        <basePowerConsumption>-12600</basePowerConsumption>
+        <basePowerConsumption>-12000</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
       </li>
       <li Class="CompProperties_Flickable" />
