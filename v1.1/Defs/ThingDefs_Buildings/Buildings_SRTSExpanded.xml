@@ -15,7 +15,7 @@
       <SellPriceFactor>0.70</SellPriceFactor>
     </statBases>
     <tickerType>Normal</tickerType>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <altitudeLayer>Projectile</altitudeLayer>
     <stealable>false</stealable>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
