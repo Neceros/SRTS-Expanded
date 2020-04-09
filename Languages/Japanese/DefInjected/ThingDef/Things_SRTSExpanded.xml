@@ -25,11 +25,18 @@
   <SRTSMkIIIp_Active.label>SRTS:Mk-3P型(始動)</SRTSMkIIIp_Active.label>
 
 
-  <!-- SRTF -->
+  <!-- SRAF -->
 
-  <SRTF_Incoming.label>SRTF:(着陸)</SRTF_Incoming.label>
-  <SRTF_Leaving.label>SRTF:(離陸)</SRTF_Leaving.label>
-  <SRTF_Active.label>SRTF:(始動)</SRTF_Active.label>
+  <SRAF_Incoming.label>SRAF:(着陸)</SRAF_Incoming.label>
+  <SRAF_Leaving.label>SRAF:(離陸)</SRAF_Leaving.label>
+  <SRAF_Active.label>SRAF:(始動)</SRAF_Active.label>
+
+
+  <!-- SRAF -->
+
+  <SRAFTek_Incoming.label>SRTS:TEK-7:(着陸)</SRAFTek_Incoming.label>
+  <SRAFTek_Leaving.label>SRTS:TEK-7:(離陸)</SRAFTek_Leaving.label>
+  <SRAFTek_Active.label>SRTS:TEK-7:(始動)</SRAFTek_Active.label>
 
 
   <!-- Superpod -->

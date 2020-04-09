@@ -32,7 +32,6 @@
   <AllowDownedSRTS>倒れたポーンを許可</AllowDownedSRTS>
   <AllowUnsecurePrisonerSRTS>未拘束な囚人を許可</AllowUnsecurePrisonerSRTS>
   <AllowCapturablePawnSRTS>逮捕可能なポーンを許可</AllowCapturablePawnSRTS>
-  <AllowCapturablePawnSRTS>Allow Capturable Pawns</AllowCapturablePawnSRTS>
 
   <SOS2Compatibility>SOS2オプション</SOS2Compatibility>
   <SpaceFaring>宇宙旅行</SpaceFaring>

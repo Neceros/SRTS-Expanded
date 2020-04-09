@@ -64,7 +64,7 @@
 内部電源：800w</Frame_SRTSSkip.description>
 
   <SRAF.label>SRAF: カナリア</SRAF.label>
-  <SRAF.description>これらの産業用のSRTF(短距離輸送機:Short-Range-Transport-Freighter)は千年以上に渡り使われてきた大型輸送貨物船です。大型なだけあって、かなり大量な荷物を輸送する事が可能で、また飛行に使う燃料も大量に積載できます。攻撃任務には適しません。世界中に乗客と貨物を飛ばすために作られた完成した輸送システムです。
+  <SRAF.description>これらの産業用のSRAF(短距離輸送機:Short-Range-Air-Freighter)は千年以上に渡り使われてきた大型輸送貨物船です。大型なだけあって、かなり大量な荷物を輸送する事が可能で、また飛行に使う燃料も大量に積載できます。攻撃任務には適しません。世界中に乗客と貨物を飛ばすために作られた完成した輸送システムです。
 
 乗客定員：1-3名
 宇宙飛行：不可
@@ -75,10 +75,10 @@
 ----------------------------
 積載量：5,000kg
 内部電源：1000w</SRAF.description>
-  <Blueprint_SRTF.label>SRAF: カナリア(設計)</Blueprint_SRTF.label>
-  <Blueprint_Install_SRTF.label>SRAF: カナリア(移動先)</Blueprint_Install_SRTF.label>
-  <Frame_SRTF.label>SRAF: カナリア(施工)</Frame_SRTF.label>
-  <Frame_SRTF.description>これらの産業用のSRTF(短距離輸送機:Short-Range-Transport-Freighter)は千年以上に渡り使われてきた大型輸送貨物船です。大型なだけあって、かなり大量な荷物を輸送する事が可能で、また飛行に使う燃料も大量に積載できます。攻撃任務には適しません。世界中に乗客と貨物を飛ばすために作られた完成した輸送システムです。
+  <Blueprint_SRAF.label>SRAF: カナリア(設計)</Blueprint_SRAF.label>
+  <Blueprint_Install_SRAF.label>SRAF: カナリア(移動先)</Blueprint_Install_SRAF.label>
+  <Frame_SRAF.label>SRAF: カナリア(施工)</Frame_SRAF.label>
+  <Frame_SRAF.description>これらの産業用のSRAF(短距離輸送機:Short-Range-Air-Freighter)は千年以上に渡り使われてきた大型輸送貨物船です。大型なだけあって、かなり大量な荷物を輸送する事が可能で、また飛行に使う燃料も大量に積載できます。攻撃任務には適しません。世界中に乗客と貨物を飛ばすために作られた完成した輸送システムです。
 
 乗客定員：1-3名
 宇宙飛行：不可
@@ -88,7 +88,7 @@
 燃料効率：悪い
 ----------------------------
 積載量：5,000kg
-内部電源：1000w</Frame_SRTF.description>
+内部電源：1000w</Frame_SRAF.description>
 
   <SRAFTek.label>SRTS:TEK-7</SRAFTek.label>
   <SRAFTek.description>大人数を収容できる設計がされた宇宙船で、複数の自動発射装置に乗員を収容して、素早く船外に射出することが可能です。そして大容量の貨物室を持ちます。
