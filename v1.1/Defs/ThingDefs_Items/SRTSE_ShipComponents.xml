@@ -14,7 +14,7 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>950</MarketValue>
+      <MarketValue>450</MarketValue>
     </statBases>
     <tradeTags>
       <li>ExoticMisc</li>
@@ -56,7 +56,7 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>4200</MarketValue>
+      <MarketValue>930</MarketValue>
     </statBases>
     <recipeMaker>
       <effectWorking>Cook</effectWorking>
@@ -80,7 +80,7 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>24000</MarketValue>
+      <MarketValue>5000</MarketValue>
     </statBases>
     <recipeMaker>
       <effectWorking>Cook</effectWorking>
