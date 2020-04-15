@@ -14,7 +14,6 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>450</MarketValue>
     </statBases>
     <tradeTags>
       <li>ExoticMisc</li>
@@ -57,7 +56,6 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>930</MarketValue>
     </statBases>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -82,7 +80,6 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      <MarketValue>5000</MarketValue>
     </statBases>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
