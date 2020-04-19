@@ -602,7 +602,7 @@ Internal power plant: 2,800w</description>
     <costList>
       <ShuttleComp_MeshPlate>5</ShuttleComp_MeshPlate>
       <ShuttleComp_Plates>15</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>4</ShuttleComp_MechSystem>
+      <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
       <ShuttleComp_ElectricSystem>5</ShuttleComp_ElectricSystem>
       <ShuttleComp_Engines>9</ShuttleComp_Engines>
       <ShuttleComp_Structural>9</ShuttleComp_Structural>
