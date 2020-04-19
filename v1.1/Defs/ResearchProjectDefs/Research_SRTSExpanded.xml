@@ -109,7 +109,10 @@
     <techprintCount>2</techprintCount>
     <techprintCommonality>3</techprintCommonality>
     <techprintMarketValue>2760</techprintMarketValue>
-    <heldByFactionCategoryTags><li>Empire</li></heldByFactionCategoryTags>
+    <heldByFactionCategoryTags>
+        <li>Empire</li>
+        <li>Outlander</li>
+    </heldByFactionCategoryTags>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -131,7 +134,10 @@
     <techprintCount>2</techprintCount>
     <techprintCommonality>2.6</techprintCommonality>
     <techprintMarketValue>2040</techprintMarketValue>
-    <heldByFactionCategoryTags><li>Empire</li></heldByFactionCategoryTags>
+    <heldByFactionCategoryTags>
+        <li>Empire</li>
+        <li>Outlander</li>
+    </heldByFactionCategoryTags>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -155,8 +161,11 @@
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
     <techprintCount>3</techprintCount>
     <techprintCommonality>1.5</techprintCommonality>
-    <techprintMarketValue>3500</techprintMarketValue>
-    <heldByFactionCategoryTags><li>Empire</li></heldByFactionCategoryTags>
+    <techprintMarketValue>3000</techprintMarketValue>
+    <heldByFactionCategoryTags>
+        <li>Empire</li>
+        <li>Outlander</li>
+    </heldByFactionCategoryTags>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -175,10 +184,13 @@
     <requiredResearchFacilities>
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
-    <techprintCount>10</techprintCount>
+    <techprintCount>4</techprintCount>
     <techprintCommonality>0.8</techprintCommonality>
-    <techprintMarketValue>4500</techprintMarketValue>
-    <heldByFactionCategoryTags><li>Empire</li></heldByFactionCategoryTags>
+    <techprintMarketValue>3700</techprintMarketValue>
+    <heldByFactionCategoryTags>
+        <li>Empire</li>
+        <li>Outlander</li>
+    </heldByFactionCategoryTags>
   </ResearchProjectDef>
 
 </Defs>
