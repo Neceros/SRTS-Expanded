@@ -47,10 +47,10 @@ Space flight: No
 ----------------------------
 Speed: Awful
 Fuel capacity: 240L
-Fuel efficiency: Normal
+Fuel efficiency: Awful
 ----------------------------
-Cargo capacity: 240kg
-Internal power plant: 600w</description>
+Cargo capacity: 100kg
+Internal power plant: 400w</description>
     <graphicData>
       <texPath>Superpod</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -76,11 +76,11 @@ Internal power plant: 600w</description>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.5</restEffectiveness>  <!-- How well (1.0 = 100%) passengers can rest, eat, heal while aboard -->
-        <massCapacity>240</massCapacity> <!-- weight in kg -->
+        <massCapacity>100</massCapacity> <!-- weight in kg -->
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>1</travelSpeed> <!-- Vanilla drop pod is 25 speed, min 1, max 100 -->
-        <fuelPerTile>2.50</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 6. Why'd we cap it at 6? I can't remember. -->
+        <fuelPerTile>3.5</fuelPerTile> <!-- Drop pod cost is 2.25 per tile. min 1, max 6. Why'd we cap it at 6? I can't remember. -->
         <minPassengers>1</minPassengers>
         <maxPassengers>1</maxPassengers>
         <spaceFaring>false</spaceFaring>  <!-- For save our ship 2 -->
@@ -104,7 +104,7 @@ Internal power plant: 600w</description>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
-        <basePowerConsumption>-600</basePowerConsumption>
+        <basePowerConsumption>-400</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
       </li>
       <li Class="CompProperties_Breakdownable" />
@@ -128,7 +128,7 @@ Internal power plant: 600w</description>
   <ThingDef ParentName="NECShipBase">
     <defName>SRTSSkip</defName> <!-- defName must be unique, including with other mods so be creative -->
     <label>SRTS Mk.I: Skip</label> <!-- name displayed ingame -->
-    <description>An aerial military vessel designed to scout, quest, and assault. Liable to breakdown.
+    <description>An aerial military vessel designed to scout, quest, and minor assaults. Liable to breakdown.
 
 Passenger cap: 1 - 2
 Space flight: Yes, Shuttlebay Only
@@ -137,12 +137,12 @@ Space flight: Yes, Shuttlebay Only
   Bombs: 8/4
   Accuracy: Poor
 ----------------------------
-Speed: Normal
+Speed: Poor
 Fuel cap: 500L
-Fuel efficiency: Good
+Fuel efficiency: Normal
 ----------------------------
-Cargo cap: 420kg
-Internal power plant: 800w</description> <!-- description of course... -->
+Cargo cap: 160kg
+Internal power plant: 650w</description> <!-- description of course... -->
     <graphicData>
       <texPath>Skip</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
 
@@ -168,11 +168,11 @@ Internal power plant: 800w</description> <!-- description of course... -->
     <comps> <!-- required for sending as drop pod -->
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.75</restEffectiveness>
-        <massCapacity>420</massCapacity>
+        <massCapacity>160</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
-        <travelSpeed>8</travelSpeed>
-        <fuelPerTile>1.75</fuelPerTile>
+        <travelSpeed>3</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>2</maxPassengers>
       	<spaceFaring>false</spaceFaring>
@@ -232,9 +232,9 @@ Internal power plant: 800w</description> <!-- description of course... -->
 Passenger cap: 1 - 3
 Space flight: No
 ----------------------------
-Speed: Awful
+Speed: Poor
 Fuel cap: 2,000L
-Fuel efficiency: Awful
+Fuel efficiency: Poor
 ----------------------------
 Cargo cap: 5,000kg
 Internal power plant: 1000w</description>
@@ -265,8 +265,8 @@ Internal power plant: 1000w</description>
         <massCapacity>5000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>2</travelSpeed>
-        <fuelPerTile>4.25</fuelPerTile>
+        <travelSpeed>3</travelSpeed>
+        <fuelPerTile>3.5</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>3</maxPassengers>
         <spaceFaring>false</spaceFaring>

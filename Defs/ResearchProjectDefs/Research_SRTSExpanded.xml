@@ -37,7 +37,7 @@
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRTF</defName>
-    <label>The Canary</label>
+    <label>The SRAF</label>
     <description>A large aerial transport freighter for cargo. We don't know the history of this ship, but it's everywhere. You can find an SRAF on every homeworld in the millions. Real shit on the chemfuel mileage and very slow, but the cargo room is amazing.</description>
     <baseCost>7200</baseCost>
     <techLevel>Industrial</techLevel>
@@ -54,7 +54,7 @@
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRAFTek</defName>
-    <label>TEK-7: Drop Ship</label>
+    <label>The Drop Ship</label>
     <description>A large aerial transport freighter for cargo. The TEK-7 class space-faring ship is rather new. It's powered by contential means, but uses more modern technology to achieve more than it's predecessors.\n\nTerra Enclave Kingdrone - 7th Variation, Year 4186. This class has seen much combat, through many model variations each specialized in specific roles. \n\nTEK-7 is designated as a transport carrier.</description>
     <baseCost>12000</baseCost>
     <techLevel>Industrial</techLevel>
@@ -131,8 +131,8 @@
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRTSMk4</defName>
-    <label>SRTS Mk. IV</label>
-    <description>The Genesis is a highly advanced transport shuttle that utilizes uranium for fuel, and incorporates archotech level technology to increase the cargo space beyond dimensional boundaries. This is "Blue box" level stuff.\n\nThis blueprint seems like it simply won't work with how advanced it is, but we won't know unless we try.</description>
+    <label>The Genesis</label>
+    <description>The SRTS Mk.4: Genesis is a highly advanced transport shuttle that utilizes uranium for fuel, and incorporates archotech level technology to increase the cargo space beyond dimensional boundaries. This is "Blue box" level stuff.\n\nThis blueprint seems like it simply won't work with how advanced it is, but we won't know unless we try.</description>
     <baseCost>36000</baseCost>
     <techLevel>Archotech</techLevel>
     <prerequisites>
