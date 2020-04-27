@@ -46,10 +46,10 @@ Passenger cap: 1
 Space flight: No
 ----------------------------
 Speed: Awful
-Fuel capacity: 240L
+Fuel capacity: 300L
 Fuel efficiency: Awful
 ----------------------------
-Cargo capacity: 100kg
+Cargo capacity: 120kg
 Internal power plant: 400w</description>
     <graphicData>
       <texPath>Superpod</texPath>
@@ -76,7 +76,7 @@ Internal power plant: 400w</description>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.5</restEffectiveness>  <!-- How well (1.0 = 100%) passengers can rest, eat, heal while aboard -->
-        <massCapacity>100</massCapacity> <!-- weight in kg -->
+        <massCapacity>120</massCapacity> <!-- weight in kg -->
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>1</travelSpeed> <!-- Vanilla drop pod is 25 speed, min 1, max 100 -->
@@ -87,9 +87,9 @@ Internal power plant: 400w</description>
         <shuttleBayLanding>false</shuttleBayLanding>
       </li>
       <li Class="CompProperties_Refuelable">
-        <fuelCapacity>240</fuelCapacity>
+        <fuelCapacity>300</fuelCapacity>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>240</initialConfigurableTargetFuelLevel>
+        <initialConfigurableTargetFuelLevel>300</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
             <li>Chemfuel</li>
@@ -101,6 +101,7 @@ Internal power plant: 400w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -141,7 +142,7 @@ Speed: Poor
 Fuel cap: 500L
 Fuel efficiency: Normal
 ----------------------------
-Cargo cap: 160kg
+Cargo cap: 170kg
 Internal power plant: 650w</description> <!-- description of course... -->
     <graphicData>
       <texPath>Skip</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
@@ -168,7 +169,7 @@ Internal power plant: 650w</description> <!-- description of course... -->
     <comps> <!-- required for sending as drop pod -->
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.75</restEffectiveness>
-        <massCapacity>160</massCapacity>
+        <massCapacity>170</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
         <travelSpeed>3</travelSpeed>
@@ -200,6 +201,7 @@ Internal power plant: 650w</description> <!-- description of course... -->
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
         <compClass>CompPowerPlant</compClass>
@@ -287,6 +289,7 @@ Internal power plant: 1000w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -372,6 +375,7 @@ Internal power plant: 1,700w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -469,6 +473,7 @@ Internal power plant: 1,700w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -566,6 +571,7 @@ Internal power plant: 3,600w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -653,6 +659,7 @@ Internal power plant: 2,800w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -755,6 +762,7 @@ Internal power plant: 12,000w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
