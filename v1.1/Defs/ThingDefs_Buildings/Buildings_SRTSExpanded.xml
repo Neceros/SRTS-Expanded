@@ -100,7 +100,7 @@ Internal power plant: 400w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
+        
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
