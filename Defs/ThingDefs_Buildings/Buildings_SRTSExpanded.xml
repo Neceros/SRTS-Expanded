@@ -101,7 +101,6 @@ Internal power plant: 400w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -201,7 +200,6 @@ Internal power plant: 650w</description> <!-- description of course... -->
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
         <compClass>CompPowerPlant</compClass>
@@ -289,7 +287,6 @@ Internal power plant: 1000w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -375,7 +372,6 @@ Internal power plant: 1,700w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -473,7 +469,6 @@ Internal power plant: 1,700w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -571,7 +566,6 @@ Internal power plant: 3,600w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -659,7 +653,6 @@ Internal power plant: 2,800w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
@@ -762,7 +755,6 @@ Internal power plant: 12,000w</description>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
-        <atomicFueling>true</atomicFueling>
       </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
