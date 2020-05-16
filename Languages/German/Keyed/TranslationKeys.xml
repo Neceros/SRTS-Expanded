@@ -8,81 +8,88 @@
   <!-- Settings -->
   <ResetDefault>Zurücksetzen</ResetDefault>
   <ResetDefaultTooltip>Zurücksetzen auf Standardeinstellungen</ResetDefaultTooltip>
-  <ResetThisSRTS>Dies Zurücksetzen</ResetThisSRTS>
+  <ResetThisSRTS>Diese Einstellung Zurücksetzen</ResetThisSRTS>
   <ResetAll>Alles Zurücksetzen</ResetAll>
 
-  <DefaultValues>Standardwerte</DefaultValues>
+  <DefaultValues>Standwerte</DefaultValues>
   <CustomValues>Benutzerdefinierte Werte</CustomValues>
 
-  <MainSettings>Haupteinstellungen</MainSettings>
+  <MainSettings>Grundeinstellungen</MainSettings>
 
-  <PassengerLimit>Passagierlimits</PassengerLimit>
-  <PassengerLimitTooltip>Erzwinge minimale und maximale Passagiere, die in SRTS erlaubt sind</PassengerLimitTooltip>
-  <DisplayHomeItems>Alle Elemente anzeigen</DisplayHomeItems>
-  <DisplayHomeItemsTooltip>Alle Elemente auf der Karte anzeigen, wenn SRTS geladen wird, und nicht auf der Startkarte.</DisplayHomeItemsTooltip>
-  <DefSettings>Stats</DefSettings>
+  <PassengerLimit>Passagierlimit</PassengerLimit>
+  <PassengerLimitTooltip>Erlaube minimale und maximale Passagiere, die auf SRTS erlaubt sind</PassengerLimitTooltip>
+  <DisplayHomeItems>Alle Gegenstände anzeigen</DisplayHomeItems>
+  <DisplayHomeItemsTooltip>Zeige alle Elemente auf der Karte an, wenn SRTS geladen wird, und sich nicht auf der Heimatkarte befindet.</DisplayHomeItemsTooltip>
+  <DefSettings>Statistiken</DefSettings>
   <DynamicWorldObjectSRTS>Dynamische Welttexturen</DynamicWorldObjectSRTS>
-  <DynamicWorldObjectSRTSTooltip>Zeichnen Sie dynamisch SRTS-Texturen auf der Weltkarte, um sie sowohl der SRTS-Textur als auch der Drehung anzupassen</DynamicWorldObjectSRTSTooltip>
-  <ExpandBombPoints>Erweitern Sie die Bombenziele</ExpandBombPoints>
-  <ExpandBombPointsTooltip>Erweitern Sie die Bombenpunkte entlang der Ziellinie, sodass sie über die Linie hinausragen.</ExpandBombPointsTooltip>
-  <AllowedBombs>Erlaubte Sprengstoffe (Bombardierung)</AllowedBombs>
+  <DynamicWorldObjectSRTSTooltip>Verwende dynamische SRTS-Texturen auf der Weltkarte, um sowohl der Raumschiff-Textur als auch der Drehung anzupassen</DynamicWorldObjectSRTSTooltip>
+  <ExpandBombPoints>Erweitere Bombadierziele</ExpandBombPoints>
+  <ExpandBombPointsTooltip>Erweitere die Bombenpunkte entlang der Ziellinie so, dass sie über die Linie hinausragen.</ExpandBombPointsTooltip>
+  <AllowedBombs>Erlaubte Bomben (Bombardierung)</AllowedBombs>
   <ChangeItemSRTS>Ändern</ChangeItemSRTS>
-  <SearchExplosive>Item hinzufügen</SearchExplosive>
-  <CurrentExplosives>Erlaubte Sprengstoffe</CurrentExplosives>
+  <SearchExplosive>Gegenstand hinzufügen</SearchExplosive>
+  <CurrentExplosives>Erlaubte Bomben</CurrentExplosives>
   <SRTSBoardingOptions>Einstiegsmöglichkeiten</SRTSBoardingOptions>
   <AllowDownedSRTS>Erlaube verletzte Personen</AllowDownedSRTS>
   <AllowUnsecurePrisonerSRTS>Erlaube ungesicherte Gefangene</AllowUnsecurePrisonerSRTS>
   <AllowCapturablePawnSRTS>Erlaube einfangbare Personen</AllowCapturablePawnSRTS>
 
+  <SOS2Compatibility>Save Our Ship 2 Optionen</SOS2Compatibility>
+  <SpaceFaring>Raumfahrt</SpaceFaring>
+  <ShuttleBayLanding>Shuttle Bay Landung</ShuttleBayLanding>
+  <NonSpaceFaringSRTS>{0} kann die Umlaufbahn nicht erreichen</NonSpaceFaringSRTS>
+
   <SRTSSettings>SRTS Einstellungen</SRTSSettings>
-  <FlightSpeed>Fluggeschwíndigkeit(Weltkarte)</FlightSpeed>
+  <FlightSpeed>Fluggeschwindigkeit (Weltkarte)</FlightSpeed>
   <Instant>Sofort</Instant>
   <FuelEfficiency>Treibstoffkosten</FuelEfficiency>
-  <FuelEfficiencySymbol>pro Fliese</FuelEfficiencySymbol>
-  <CargoCapacity>Ladungskapazität</CargoCapacity>
+  <FuelEfficiencySymbol> pro Kachel</FuelEfficiencySymbol>
+  <CargoCapacity>Transportkapazität</CargoCapacity>
   <MinPassengers>Minimum Passagiere</MinPassengers>
   <MaxPassengers>Maximum Passagiere</MaxPassengers>
   <SRTSResearch>Forschungskosten</SRTSResearch>
   <SRTSResearchRequirements>Forschung erforderlich</SRTSResearchRequirements>
 
   <BombSettings>Bombadierungseinstellungen</BombSettings>
-  <BombSpeed>Fluggeschwíndigkeit (Bombadierung)</BombSpeed>
+  <BombSpeed>Fluggeschwindigkeit (Bombadierung)</BombSpeed>
   <RadiusDrop>Bombenradius</RadiusDrop>
   <BombCountSRTS>Bombenanzahl</BombCountSRTS>
-  <CarpetBombing>Teppichbombardierung</CarpetBombing>
+  <CarpetBombing>Teppichbombardement</CarpetBombing>
   <PreciseBombing>Präzisionsschlag</PreciseBombing>
-  <DistanceBetweenDrops>Abstand zwischen Abwurf</DistanceBetweenDrops>
+  <DistanceBetweenDrops>Abstand zwischen Abwürfen</DistanceBetweenDrops>
   <CellsEndValue> Zellen</CellsEndValue>
   <SingleDrop>Einzelner Abwurf</SingleDrop>
 
   <ResearchSettings>Forschung</ResearchSettings>
   <ResearchDef>{0} Forschungsdefinition</ResearchDef>
-  <SearchResearch>füge Forschungsdefinition hinzu</SearchResearch>
+  <SearchResearch>Füge Forschungsdefinitionen hinzu</SearchResearch>
   <AddItemSRTS>Hinzufügen</AddItemSRTS>
   <RemoveResearch>Entfernen</RemoveResearch>
-  <RestartGameResearch>Starten Sie Ihr Spiel neu, damit die neuen Forschungseinstellungen angewendet werden</RestartGameResearch>
+  <RestartGameResearch>Starte das Spiel neu, damit die neuen Forschungseinstellungen angewendet werden</RestartGameResearch>
 
   <!-- Float Menu -->
   <BoardSRTS>Einsteigen {0}</BoardSRTS>
-  <JoinSRTSGroup>Treten Sie der SRTS Einstiegsgruppe bei</JoinSRTSGroup>
+  <JoinSRTSGroup>Trete der Boardgruppe bei</JoinSRTSGroup>
 
   <!-- Messages -->
-  <SRTSNoPilot>SRTS kann nicht ohne Pilot gesendet werden.</SRTSNoPilot>
-  <NotEnoughPilots>Nicht genug Piloten, um zu starten</NotEnoughPilots>
-  <TooManyPilots>Zu viele Kolonisten zum Starten</TooManyPilots>
-  <BombRunStarted>Der Bombadierung hat begonnen..</BombRunStarted>
-  <CannotBombMap>Kann hier nicht bombardiert werden, solange keine aktive Karte geladen ist.</CannotBombMap>
-  <CommandAddFuelSRTS>Tanken {0}</CommandAddFuelSRTS>
-  <CommandAddFuelDescSRTS>Füge Kraftstoff aus dem Inventar in SRTS hinzu</CommandAddFuelDescSRTS>
-  <AddFuelSRTSCaravan>{0} Kraftstoff wurde zu {1} hinzugefügt.</AddFuelSRTSCaravan>
-  <NoFuelSRTSCaravan>Kein Kraftstoff vorhanden</NoFuelSRTSCaravan>
+  <SRTSNoPilot>Das Flugschiff kann nicht ohne Pilot losfliegen.</SRTSNoPilot>
+  <NotEnoughPilots>Nicht genügend Piloten vorhanden, um zu starten.</NotEnoughPilots>
+  <TooManyPilots>Zu viele Kolonisten um zu starten.</TooManyPilots>
+  <BombRunStarted>Die Bombardierung hat begonnen.</BombRunStarted>
+  <CannotBombMap>Kann Bombardierung nicht starten, solange keine aktive Karte geladen ist.</CannotBombMap>
+  <CommandAddFuelSRTS>Nachfüllen {0}</CommandAddFuelSRTS>
+  <CommandAddFuelDescSRTS>Fülle Treibstoff aus dem Inventar in das Flugschiff um.</CommandAddFuelDescSRTS>
+  <AddFuelSRTSCaravan>{0} Treibstoff wurde in {1} umgefüllt.</AddFuelSRTSCaravan>
+  <NoFuelSRTSCaravan>Kein Treibstoff vorhanden</NoFuelSRTSCaravan>
 
   <!-- Caravans -->
 
-  <!-- Status -->
+  <!-- Status and Compatibility-->
+  <CommandLaunchOrbit>Starte in den Orbit</CommandLaunchOrbit>
+  <CommandLaunchOrbitDesc>Fliege zu Orten im Orbit</CommandLaunchOrbitDesc>
 
   <!-- Gizmo -->
-  <BombTarget>Bombenangriffsziel</BombTarget>
-  <BombTargetDesc>Wählen Sie ein Ziel auf einer anderen Karte aus, auf das Bomben abgeworfen werden sollen.</BombTargetDesc>
+  <BombTarget>Angriffsziel</BombTarget>
+  <BombTargetDesc>Wähle ein Ziel auf einer anderen Karte aus, auf das Bomben abgeworfen werden sollen.</BombTargetDesc>
 
 </LanguageData>
