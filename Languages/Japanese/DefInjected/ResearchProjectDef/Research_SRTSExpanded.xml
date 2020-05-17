@@ -9,7 +9,7 @@
   <Research_SRTSSkip.discoveredLetterTitle>短距離輸送用シャトル</Research_SRTSSkip.discoveredLetterTitle>
   <Research_SRTSSkip.discoveredLetterText>自分で船のパーツを作ることができるようになりました！\n\n短距離輸送用のシャトル船の建設には費用と時間がかかりますが、建築費用に見合うだけの価値は絶対にあります。\n\n船の設計図は、アーキテクトメニューの宇宙船タブにあります。コンポーネント工作台でシャトル船を建造するのに必要な宇宙船用のコンポーネントを製造するか、トレーダーたちから購入してください。\n\nスキップ建設にはこれらの部品は必要ありませんが、これから先すべてのシャトルを建設するのに必要となります。</Research_SRTSSkip.discoveredLetterText>
 
-  <Research_SRAF.label>SRTF カナリア</Research_SRAF.label>
+  <Research_SRAF.label>SRAF カナリア</Research_SRAF.label>
   <Research_SRAF.description>大気圏内で利用される大型輸送貨物船(SRTF:Short-Range-Transport-Freighter)です。この船の開発された経緯や歴史は不明ですが、どこにでもある一般的な船です。SRTFはすべての母星域で何百万隻と見ることができます。バイオ化学燃料の燃焼効率が悪い上に航続距離もあまり優秀ではなく、非常に遅いですが、貨物室はとんでもなく広いです。</Research_SRAF.description>
 
   <Research_SRAFTek.label>TEK-7: 降下艇</Research_SRAFTek.label>
@@ -28,7 +28,7 @@
   <Research_SRTSMkIIIp.label>SRTS:Mk-3P型 ペリカン</Research_SRTSMkIIIp.label>
   <Research_SRTSMkIIIp.description>ペリカンはすべての武装が外されている以外は、SRTS:Mk-3と同じです。派生のP型は貨物船や輸送船用に改造されています。最近発見された優秀な技術をそのまま利用しているので、この船は以前のものよりも軽く、速く、そしてはるかに強力です。</Research_SRTSMkIIIp.description>
 
-  <Research_SRTSMkIV.label>SRTS Mk.4</Research_SRTSMkIV.label>
+  <Research_SRTSMkIV.label>SRTS:Mk.4 ジェネシス</Research_SRTSMkIV.label>
   <Research_SRTSMkIV.description>ジェネシスは、燃料にウランを使用する非常に高度な輸送用シャトルで、アルコテックレベルの技術を利用して、貨物容量を異次元空間を利用して拡大しています。これは「ブルーボックス」級です。この設計図はどれだけ資源を費やしても実現不可能に見えますが試してみないとわかりません。</Research_SRTSMkIV.description>
   <Research_SRTSMkIV.discoveredLetterTitle>新世代の輸送用シャトル</Research_SRTSMkIV.discoveredLetterTitle>
   <Research_SRTSMkIV.discoveredLetterText>Mk.4ジェネシスを建設するのに必要な2つのコンポーネントを理解する必要があります。そんなに複雑なものを自分で作ることは今のところ不可能だと思われています。\n\n現在はより高度なアルコテックコンポーネントはトレーダーから購入するか、ジェネシスを建設するためのクエストの報酬として研究サンプル手に入れてください。</Research_SRTSMkIV.discoveredLetterText>
