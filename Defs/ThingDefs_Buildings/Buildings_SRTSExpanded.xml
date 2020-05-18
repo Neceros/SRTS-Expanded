@@ -134,7 +134,7 @@ Passenger cap: 1 - 2
 Space flight: Yes, Shuttlebay Only
 
 --Military--
-  Bombs: 5/5
+  Bombs: 4/4
   Accuracy: Poor
   Build: Strike Craft
 ----------------------------
@@ -347,7 +347,7 @@ Internal power plant: 1,700w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>1</restEffectiveness>
+        <restEffectiveness>1.50</restEffectiveness>
         <massCapacity>10000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
@@ -630,7 +630,7 @@ Internal power plant: 2,800w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>2</restEffectiveness>
+        <restEffectiveness>3</restEffectiveness>
         <massCapacity>20000</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
@@ -724,7 +724,7 @@ Internal power plant: 12,000w</description>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
-        <restEffectiveness>4</restEffectiveness>
+        <restEffectiveness>17</restEffectiveness>
         <massCapacity>9999999</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
