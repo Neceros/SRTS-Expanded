@@ -120,7 +120,7 @@ Internal power plant: 400w</description>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
     <killedLeavings>
-      <ChunkSlagSteel>5</ChunkSlagSteel>
+      <ChunkSlagSteel>3</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
 
@@ -134,8 +134,9 @@ Passenger cap: 1 - 2
 Space flight: Yes, Shuttlebay Only
 
 --Military--
-  Bombs: 8/4
+  Bombs: 5/5
   Accuracy: Poor
+  Build: Strike Craft
 ----------------------------
 Speed: Poor
 Fuel cap: 500L
@@ -179,11 +180,11 @@ Internal power plant: 650w</description> <!-- description of course... -->
       	<shuttleBayLanding>true</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont -->
-        <numberBombs>8</numberBombs> <!-- num dropped per run -->
-		    <precisionBombingNumBombs>4</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
-        <radiusOfDrop>5</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <numberBombs>4</numberBombs> <!-- num dropped per run -->
+        <precisionBombingNumBombs>4</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>3</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
         <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
-		    <distanceBetweenDrops>4</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+        <distanceBetweenDrops>3</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
 	  </li>
       <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
         <fuelCapacity>500</fuelCapacity>
@@ -219,7 +220,7 @@ Internal power plant: 650w</description> <!-- description of course... -->
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite> <!-- construction skill requirements -->
     <uiIconScale>0.55</uiIconScale> <!-- UI scaling -->
     <killedLeavings>
-      <ChunkSlagSteel>8</ChunkSlagSteel>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
 
@@ -305,7 +306,7 @@ Internal power plant: 1000w</description>
     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
     <uiIconScale>0.75</uiIconScale>
     <killedLeavings>
-      <ChunkSlagSteel>12</ChunkSlagSteel>
+      <ChunkSlagSteel>8</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
 
@@ -390,7 +391,7 @@ Internal power plant: 1,700w</description>
     <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
     <uiIconScale>0.50</uiIconScale>
     <killedLeavings>
-      <ChunkSlagSteel>16</ChunkSlagSteel>
+      <ChunkSlagSteel>8</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
 
@@ -404,8 +405,9 @@ Passenger cap: 1 - 7
 Space flight: Yes, Shuttlebay Only
 
 --Military--
-  Bombs: 12/6
+  Bombs: 6/16
   Accuracy: Normal
+  Build: Precise
 ----------------------------
 Speed: Good
 Fuel cap: 1,600L
@@ -448,8 +450,8 @@ Internal power plant: 1,700w</description>
         <shuttleBayLanding>true</shuttleBayLanding>
       </li>
       <li Class="SRTS.CompProperties_BombsAway">
-        <numberBombs>12</numberBombs>
-        <precisionBombingNumBombs>6</precisionBombingNumBombs>
+        <numberBombs>6</numberBombs>
+        <precisionBombingNumBombs>16</precisionBombingNumBombs>
         <radiusOfDrop>4</radiusOfDrop>
         <speed>1</speed>
         <distanceBetweenDrops>3</distanceBetweenDrops>
@@ -487,7 +489,7 @@ Internal power plant: 1,700w</description>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
     <killedLeavings>
-      <ChunkSlagSteel>12</ChunkSlagSteel>
+      <ChunkSlagSteel>8</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
 
@@ -503,6 +505,7 @@ Space flight: Yes, Shuttlebay Only
 --Military--
   Bombs: 20/10
   Accuracy: Good
+  Build: Wide
 ----------------------------
 Speed: Excellent
 Fuel cap: 2,800L
@@ -547,7 +550,7 @@ Internal power plant: 3,600w</description>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>20</numberBombs>
         <precisionBombingNumBombs>10</precisionBombingNumBombs>
-        <radiusOfDrop>3</radiusOfDrop>
+        <radiusOfDrop>5</radiusOfDrop>
         <speed>1</speed>
         <distanceBetweenDrops>2</distanceBetweenDrops>
       </li>
@@ -584,7 +587,7 @@ Internal power plant: 3,600w</description>
     <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.30</uiIconScale>
     <killedLeavings>
-      <ChunkSlagSteel>20</ChunkSlagSteel>
+      <ChunkSlagSteel>12</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
 
@@ -668,10 +671,9 @@ Internal power plant: 2,800w</description>
     <researchPrerequisites>
       <li>Research_SRTSMk3p</li>
     </researchPrerequisites>
-    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <uiIconScale>0.90</uiIconScale>
     <killedLeavings>
-      <ChunkSlagSteel>28</ChunkSlagSteel>
+      <ChunkSlagSteel>12</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
 
@@ -679,19 +681,19 @@ Internal power plant: 2,800w</description>
   <ThingDef ParentName="NECShipBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
-    <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself.
+    <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. The ship seems to construct itself once the parts are brought together.
 
-Passengers: At least 1
-Space flight: Yes
+Passenger cap: No limit
 
 --Military--
   Bombs: 32/32
   Accuracy: Legendary
+  Build: Ultimate
 ----------------------------
 Speed: Legendary
-Fuel type: Uranium
-Fuel cap: Legendary
-Fuel efficiency: Legendary
+Fuel type: ???
+Fuel cap: ???
+Fuel efficiency: ???
 ----------------------------
 Cargo cap: No Max
 Internal power plant: 12,000w</description>
@@ -703,7 +705,7 @@ Internal power plant: 12,000w</description>
     <size>(5,5)</size>
     <statBases>
       <MaxHitPoints>100000</MaxHitPoints>
-      <WorkToBuild>128000</WorkToBuild>
+      <WorkToBuild>1000</WorkToBuild>
       <Flammability>0</Flammability>
       <Mass>20</Mass>
       <Beauty>1000</Beauty>
@@ -715,12 +717,12 @@ Internal power plant: 12,000w</description>
       <ShuttleComp_Structural>24</ShuttleComp_Structural>
       <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
       <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
-      <Silver>12500</Silver>
+      <Silver>45000</Silver>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>4</restEffectiveness>
-        <massCapacity>999999999</massCapacity>
+        <massCapacity>9999999</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>30</travelSpeed>
@@ -733,18 +735,18 @@ Internal power plant: 12,000w</description>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
         <precisionBombingNumBombs>32</precisionBombingNumBombs>
-        <radiusOfDrop>1</radiusOfDrop>
+        <radiusOfDrop>5</radiusOfDrop>
         <speed>1</speed>
-        <distanceBetweenDrops>1</distanceBetweenDrops>
+        <distanceBetweenDrops>3</distanceBetweenDrops>
       </li>
       <li Class="CompProperties_Refuelable">
-        <fuelLabel>Uranium reactor charge level</fuelLabel>
-        <fuelGizmoLabel>Uranium Reactor</fuelGizmoLabel>
+        <fuelLabel>Hyperspace Containment</fuelLabel>
+        <fuelGizmoLabel>Hyperspace Containment</fuelGizmoLabel>
         <fuelCapacity>100000</fuelCapacity>
-        <fuelMultiplier>444</fuelMultiplier>
+        <fuelMultiplier>99999</fuelMultiplier>
         <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
-        <initialFuelPercent>0.25</initialFuelPercent>
+        <initialFuelPercent>1</initialFuelPercent>
         <fuelFilter>
           <thingDefs>
             <li>Uranium</li>
@@ -773,7 +775,7 @@ Internal power plant: 12,000w</description>
     <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
     <uiIconScale>0.60</uiIconScale>
     <killedLeavings>
-      <ChunkSlagSteel>28</ChunkSlagSteel>
+      <ChunkSlagSteel>12</ChunkSlagSteel>
     </killedLeavings>
   </ThingDef>
   
