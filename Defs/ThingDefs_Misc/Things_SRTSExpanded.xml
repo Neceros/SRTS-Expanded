@@ -558,10 +558,10 @@
     <label>SRTS Mk.IV incoming</label>
     <thingClass>SRTS.SRTSIncoming</thingClass>
     <graphicData>
-      <texPath>SRTSMk4</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Genesis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(13,13)</drawSize>
+      <drawSize>(9,9)</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Decelerate</movementType>
@@ -578,10 +578,10 @@
     <label>SRTS Mk.IV Bombing</label>
     <thingClass>SRTS.SRTSBombing</thingClass>
     <graphicData>
-      <texPath>SRTSMk4</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Genesis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(13,13)</drawSize>
+      <drawSize>(9,9)</drawSize>
     </graphicData>
     <skyfaller>
       <speed>0.85</speed>
@@ -599,10 +599,10 @@
     <label>SRTS Mk.IV leaving</label>
     <thingClass>SRTS.SRTSLeaving</thingClass>
     <graphicData>
-      <texPath>SRTSMk4</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Genesis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutFlying</shaderType>
-      <drawSize>(13,13)</drawSize>
+      <drawSize>(9,9)</drawSize>
     </graphicData>
     <skyfaller>
       <movementType>Accelerate</movementType>
@@ -623,9 +623,9 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>SRTSMk4</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(13,13)</drawSize>
+      <texPath>Genesis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(9,9)</drawSize>
       <shadowData>
         <volume>(0.8, 0.6, 0.8)</volume>
       </shadowData>

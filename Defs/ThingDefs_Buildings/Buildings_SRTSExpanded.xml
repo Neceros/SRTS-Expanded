@@ -15,7 +15,7 @@
       <SellPriceFactor>0.70</SellPriceFactor>
     </statBases>
     <tickerType>Normal</tickerType>
-    <altitudeLayer>Projectile</altitudeLayer>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <stealable>false</stealable>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
@@ -671,7 +671,7 @@ Internal power plant: 2,800w</description>
     <researchPrerequisites>
       <li>Research_SRTSMk3p</li>
     </researchPrerequisites>
-    <uiIconScale>0.90</uiIconScale>
+    <uiIconScale>0.50</uiIconScale>
     <killedLeavings>
       <ChunkSlagSteel>12</ChunkSlagSteel>
     </killedLeavings>
@@ -681,7 +681,7 @@ Internal power plant: 2,800w</description>
   <ThingDef ParentName="NECShipBase">
     <defName>SRTSMkIV</defName>
     <label>SRTS Mk.IV: Genesis</label>
-    <description>The Genesis transport ship is highly advanced archotech technology. This ship slowly converts uranium into energy for fuel, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. The ship seems to construct itself once the parts are brought together.
+    <description>The Genesis transport ship is highly advanced archotech technology. Somehow it fuels itself with a spec of uranium, and incorporates extra dimensional shiftspace to haul cargo much heavier and bigger than the ship itself. The ship seems to construct itself once the parts are brought together.
 
 Passenger cap: No limit
 
@@ -698,11 +698,13 @@ Fuel efficiency: ???
 Cargo cap: No Max
 Internal power plant: 12,000w</description>
     <graphicData>
-      <texPath>SRTSMk4</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(13,13)</drawSize>
+      <texPath>Genesis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(9,9)</drawSize>
+      <drawRotated>false</drawRotated>
     </graphicData>
     <size>(5,5)</size>
+    <rotatable>false</rotatable>
     <statBases>
       <MaxHitPoints>100000</MaxHitPoints>
       <WorkToBuild>1000</WorkToBuild>
@@ -717,6 +719,7 @@ Internal power plant: 12,000w</description>
       <ShuttleComp_Structural>24</ShuttleComp_Structural>
       <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
       <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
+      <Uranium>1</Uranium>
       <Silver>45000</Silver>
     </costList>
     <comps>
@@ -725,7 +728,7 @@ Internal power plant: 12,000w</description>
         <massCapacity>9999999</massCapacity>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
-        <travelSpeed>30</travelSpeed>
+        <travelSpeed>80</travelSpeed>
         <fuelPerTile>1</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>9999</maxPassengers>
@@ -735,18 +738,17 @@ Internal power plant: 12,000w</description>
       <li Class="SRTS.CompProperties_BombsAway">
         <numberBombs>32</numberBombs>
         <precisionBombingNumBombs>32</precisionBombingNumBombs>
-        <radiusOfDrop>5</radiusOfDrop>
-        <speed>1</speed>
-        <distanceBetweenDrops>3</distanceBetweenDrops>
+        <radiusOfDrop>9</radiusOfDrop>
+        <speed>0.7</speed>
+        <distanceBetweenDrops>1</distanceBetweenDrops>
       </li>
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Hyperspace Containment</fuelLabel>
         <fuelGizmoLabel>Hyperspace Containment</fuelGizmoLabel>
-        <fuelCapacity>100000</fuelCapacity>
+        <fuelCapacity>10000000</fuelCapacity>
         <fuelMultiplier>99999</fuelMultiplier>
-        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>100000</initialConfigurableTargetFuelLevel>
-        <initialFuelPercent>1</initialFuelPercent>
+        <initialConfigurableTargetFuelLevel>10000000</initialConfigurableTargetFuelLevel>
+        <initialFuelPercent>1.0</initialFuelPercent>
         <fuelFilter>
           <thingDefs>
             <li>Uranium</li>
@@ -754,7 +756,7 @@ Internal power plant: 12,000w</description>
         </fuelFilter>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <autoRefuelPercent>1</autoRefuelPercent>
-        <showFuelGizmo>true</showFuelGizmo>
+        <showFuelGizmo>false</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
         <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
       </li>
