@@ -706,7 +706,7 @@ Internal power plant: 12,000w</description>
     <size>(5,5)</size>
     <rotatable>false</rotatable>
     <statBases>
-      <MaxHitPoints>100000</MaxHitPoints>
+      <MaxHitPoints>9999999</MaxHitPoints>
       <WorkToBuild>1000</WorkToBuild>
       <Flammability>0</Flammability>
       <Mass>20</Mass>

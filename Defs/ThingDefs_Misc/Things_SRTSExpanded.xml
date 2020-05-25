@@ -118,6 +118,7 @@
       <anticipationSoundTicks>100</anticipationSoundTicks>
       <motesPerCell>0</motesPerCell>
     </skyfaller>
+    <soundFlyBy>SoundDef</soundFlyBy>
   </ThingDef>
 
   <ThingDef ParentName="SkyfallerBase">
