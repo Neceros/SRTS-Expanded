@@ -50,6 +50,7 @@
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   </ResearchProjectDef>
 
+
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRAFTek</defName>
@@ -67,6 +68,7 @@
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
   </ResearchProjectDef>
+
 
   <ResearchProjectDef>
     <tab>SRTSE</tab>
@@ -95,7 +97,7 @@
     <defName>Research_SRTSMkIII</defName>
     <label>The Phoenix</label>
     <description>After years of research we finally discovered something special: a new technique originally used by an ancient exctinct alien civilization used in the process of ship making.\n\nThis process infuses the ship with a "mystical" neuromesh technology while using fewer materials in the build. The new model is light, spacious, and hauls serious ass compared to the Albatross.\n\nThe schematic shows serious military capability.</description>
-    <baseCost>12000</baseCost>
+    <baseCost>24000</baseCost>
     <techLevel>Ultra</techLevel>
     <prerequisites>
       <li>Research_SRTSMkII</li>
@@ -106,13 +108,6 @@
     <requiredResearchFacilities>
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
-    <techprintCount>2</techprintCount>
-    <techprintCommonality>3</techprintCommonality>
-    <techprintMarketValue>2760</techprintMarketValue>
-    <heldByFactionCategoryTags>
-        <li>Empire</li>
-        <li>Outlander</li>
-    </heldByFactionCategoryTags>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -120,7 +115,7 @@
     <defName>Research_SRTSMkIIIp</defName>
     <label>The Pelican</label>
     <description>Devoid of all military dressing, the Pelican is basically a Mk. III that's been retroverted into a cargo and transport vessel. Still utilizing the superior technology discovered recently, this ship is lighter, faster, and far more powerful than anything previously known.</description>
-    <baseCost>12000</baseCost>
+    <baseCost>20000</baseCost>
     <techLevel>Ultra</techLevel>
     <prerequisites>
       <li>Research_SRTSMkII</li>
@@ -132,21 +127,14 @@
     <requiredResearchFacilities>
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
-    <techprintCount>2</techprintCount>
-    <techprintCommonality>2.6</techprintCommonality>
-    <techprintMarketValue>2040</techprintMarketValue>
-    <heldByFactionCategoryTags>
-        <li>Empire</li>
-        <li>Outlander</li>
-    </heldByFactionCategoryTags>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRTSMkIV</defName>
     <label>The Genesis</label>
-    <description>The Genesis is a highly advanced transport shuttle that utilizes uranium for fuel, and incorporates archotech level technology to increase the cargo space beyond dimensional boundaries. This is "Blue box" level stuff.\n\nThis blueprint seems like it simply won't work with how advanced it is, but we won't know unless we try.</description>
-    <baseCost>24000</baseCost>
+    <description>The SRTS Mk.4: Genesis is a highly advanced transport shuttle that utilizes uranium for fuel, and incorporates archotech level technology to increase the cargo space beyond dimensional boundaries. This is "Blue box" level stuff.\n\nThis blueprint seems like it simply won't work with how advanced it is, but we won't know unless we try.</description>
+    <baseCost>36000</baseCost>
     <techLevel>Archotech</techLevel>
     <prerequisites>
       <li>Research_SRTSMkIII</li>
@@ -160,13 +148,6 @@
     <discoveredLetterTitle>The Genesis</discoveredLetterTitle>
     <discoveredLetterText>A few of the components needed to build the Genesis elude you. You don't think you can craft them yourself being how complicated they are. At least not yet.\n\nFor now, buy the more advanced components from traders or as quest rewards to build the Genesis.</discoveredLetterText>
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
-    <techprintCount>3</techprintCount>
-    <techprintCommonality>1.5</techprintCommonality>
-    <techprintMarketValue>3000</techprintMarketValue>
-    <heldByFactionCategoryTags>
-        <li>Empire</li>
-        <li>Outlander</li>
-    </heldByFactionCategoryTags>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -179,19 +160,12 @@
     <prerequisites>
       <li>Research_SRTSMkIV</li>
     </prerequisites>
-    <researchViewX>4</researchViewX>
+    <researchViewX>5</researchViewX>
     <researchViewY>1</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
     <requiredResearchFacilities>
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
-    <techprintCount>4</techprintCount>
-    <techprintCommonality>0.8</techprintCommonality>
-    <techprintMarketValue>3700</techprintMarketValue>
-    <heldByFactionCategoryTags>
-        <li>Empire</li>
-        <li>Outlander</li>
-    </heldByFactionCategoryTags>
   </ResearchProjectDef>
 
 </Defs>
