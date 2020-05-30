@@ -42,7 +42,7 @@
     <baseCost>7200</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
-      <li>Research_SRTSSuperpod</li>
+      <li>Research_SRTSSkip</li>
       <li>Fabrication</li>
     </prerequisites>
     <researchViewX>2</researchViewX>
