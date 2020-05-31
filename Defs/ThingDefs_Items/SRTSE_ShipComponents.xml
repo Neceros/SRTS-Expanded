@@ -45,7 +45,7 @@
       <skillRequirements>
         <Crafting>5</Crafting>
       </skillRequirements>
-      <researchPrerequisite>Research_SRTSSkip</researchPrerequisite>
+      <researchPrerequisite>Research_SRTSSuperpod</researchPrerequisite>
     </recipeMaker>
   </ThingDef>
 

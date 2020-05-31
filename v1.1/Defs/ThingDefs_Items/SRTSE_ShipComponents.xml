@@ -14,7 +14,6 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      
     </statBases>
     <tradeTags>
       <li>ExoticMisc</li>
@@ -45,7 +44,7 @@
       <skillRequirements>
         <Crafting>5</Crafting>
       </skillRequirements>
-      <researchPrerequisite>Research_SRTSSkip</researchPrerequisite>
+      <researchPrerequisite>Research_SRTSSuperpod</researchPrerequisite>
     </recipeMaker>
   </ThingDef>
 
@@ -56,7 +55,6 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
-      
     </statBases>
     <recipeMaker>
       <effectWorking>Cook</effectWorking>

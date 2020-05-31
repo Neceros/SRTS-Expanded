@@ -713,14 +713,13 @@ Internal power plant: 12,000w</description>
       <Beauty>1000</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_MeshPlate>16</ShuttleComp_MeshPlate>
+      <ShuttleComp_MeshPlate>20</ShuttleComp_MeshPlate>
       <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>16</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Structural>24</ShuttleComp_Structural>
+      <ShuttleComp_ElectricSystem>40</ShuttleComp_ElectricSystem>
+      <ShuttleComp_Structural>30</ShuttleComp_Structural>
       <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
       <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
-      <Uranium>1</Uranium>
-      <Silver>45000</Silver>
+      <Silver>50000</Silver>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
