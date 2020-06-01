@@ -5,7 +5,7 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSSuperpod</defName>
     <label>The Superpod</label>
-    <description>Slap on a few Orbital Relay Launch Modules onto a traditional transport pod and Voilà! You've got a ship capable of return flight! It's just a first step, though.</description>
+    <description>Slap a few Orbital Relay Launch Modules onto a traditional transport pod and Voilà! You've got a ship capable of return flight! It's just a first shaky step though.</description>
     <baseCost>4800</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -114,7 +114,7 @@
     <tab>SRTSE</tab>
     <defName>Research_SRTSMkIIIp</defName>
     <label>The Pelican</label>
-    <description>Devoid of all military dressing, the Pelican is basically a Mk. III that's been retroverted into a cargo and transport vessel. Still utilizing the superior technology discovered recently, this ship is lighter, faster, and far more powerful than anything previously known.</description>
+    <description>Devoid of all military dressing, the Pelican is basically a Mk. III Phoenix that's been retrofit into a massive cargo and transport vessel. \n\nStill utilizing the superior technology discovered recently, this ship is lighter, faster, and far more powerful than anything previously known.</description>
     <baseCost>20000</baseCost>
     <techLevel>Ultra</techLevel>
     <prerequisites>
