@@ -34,6 +34,7 @@
       <li>SRTSComponents</li>
     </thingCategories>
     <recipeMaker>
+      <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
       <effectWorking>Cook</effectWorking>
       <soundWorking>Recipe_Machining</soundWorking>

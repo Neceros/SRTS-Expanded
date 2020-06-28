@@ -3,6 +3,8 @@
 
   <Research_SRTSSuperpod.label>スーパーポッド</Research_SRTSSuperpod.label>
   <Research_SRTSSuperpod.description>いくつかの軌道往復用発射モジュールを、伝統的な輸送用ポッドと組み合わせました！これでも往復できる船です！しかし、これは最初の第一歩にすぎません。</Research_SRTSSuperpod.description>
+  <Research_SRTSSuperpod.discoveredLetterTitle>SRTS部品の製造</Research_SRTSSuperpod.discoveredLetterTitle>
+  <Research_SRTSSuperpod.discoveredLetterText>自分で船の部品を作成する事ができるようになりました。\n\n単純な船は、資源をそのまま使って建造できます。しかし高度な船には、船を建造するために特別に設計された特殊な船体部品が必要です。これらはコンポーネント工作台で製造可能です。</Research_SRTSSuperpod.discoveredLetterText>
 
   <Research_SRTSSkip.label>SRTS スキップ</Research_SRTSSkip.label>
   <Research_SRTSSkip.description>この小型船(Skip)のデザインは、この世界にある近くのコロニーが独自のスーパーポッドを試した後に考え出されました。彼らはポッドを分解して独自の形に組み立てることにしました。とても素晴らしい船になりましたが、その安価な材料コストと信頼できる輸送能力によってこのデザインは人気が出ました。武装可能です。</Research_SRTSSkip.description>
