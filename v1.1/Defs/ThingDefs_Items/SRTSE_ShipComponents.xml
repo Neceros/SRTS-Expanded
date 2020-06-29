@@ -14,15 +14,16 @@
       <MaxHitPoints>150</MaxHitPoints>
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
+      <MarketValue>1000</MarketValue>
     </statBases>
-    <tradeTags>
-      <li>ExoticMisc</li>
-    </tradeTags>
-    <tradeability>All</tradeability>
+    <tradeability>Sellable</tradeability>
     <techLevel>Industrial</techLevel>
     <comps>
       <li Class="CompProperties_Forbiddable"/>
     </comps>
+    <costList>
+      <Steel>10000000</Steel>
+    </costList>
     <alwaysHaulable>true</alwaysHaulable>
     <drawGUIOverlay>true</drawGUIOverlay>
     <rotatable>false</rotatable>
@@ -30,22 +31,15 @@
     <soundInteract>Metal_Drop</soundInteract>
     <soundDrop>Standard_Drop</soundDrop>
     <intricate>true</intricate>
-    <thingCategories>
-      <li>SRTSComponents</li>
-    </thingCategories>
     <recipeMaker>
       <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
       <effectWorking>Cook</effectWorking>
       <soundWorking>Recipe_Machining</soundWorking>
-      <workAmount>1200</workAmount>
+      <workAmount>999990000</workAmount>
       <workSkill>Crafting</workSkill>
-      <recipeUsers>
-        <li>FabricationBench</li>
-      </recipeUsers>
       <skillRequirements>
-        <Crafting>5</Crafting>
+        <Crafting>20</Crafting>
       </skillRequirements>
-      <researchPrerequisite>Research_SRTSSuperpod</researchPrerequisite>
     </recipeMaker>
   </ThingDef>
 
@@ -57,19 +51,6 @@
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
     </statBases>
-    <recipeMaker>
-      <effectWorking>Cook</effectWorking>
-      <soundWorking>Recipe_Machining</soundWorking>
-      <workAmount>7200</workAmount>
-      <workSkill>Crafting</workSkill>
-      <recipeUsers>
-        <li>FabricationBench</li>
-      </recipeUsers>
-      <skillRequirements>
-        <Crafting>12</Crafting>
-      </skillRequirements>
-      <researchPrerequisite>Research_SRTSMkII</researchPrerequisite>
-    </recipeMaker>
   </ThingDef>
 
   <ThingDef Name="SRTSArchoCompBase" ParentName="SRTSCompBase" Abstract="True">
@@ -80,19 +61,6 @@
       <Mass>5</Mass>
       <Flammability>0.4</Flammability>
     </statBases>
-    <recipeMaker>
-      <effectWorking>Cook</effectWorking>
-      <soundWorking>Recipe_Machining</soundWorking>
-      <workAmount>24000</workAmount>
-      <workSkill>Crafting</workSkill>
-      <recipeUsers>
-        <li>FabricationBench</li>
-      </recipeUsers>
-      <skillRequirements>
-        <Crafting>16</Crafting>
-      </skillRequirements>
-      <researchPrerequisite>Research_SRTSArchoComps</researchPrerequisite>
-    </recipeMaker>
   </ThingDef>
 
 
@@ -102,74 +70,51 @@
   <ThingDef ParentName="SRTSCompBase">
     <defName>ShuttleComp_Plates</defName>
     <label>SRTS: steel plates</label>
-    <description>Several hardened steel plates in many sizes and shapes, bundled up for easy construction. Sensitive wiring, tubing, and electrical components line the insides of these plates. Necessary for assembling short range transport shuttles.</description>
+    <description>This item is no longer required for SRTS Expanded. Sell them or destroy them. \n\nRemove the recipes from your workbenches! A future update will remove this entirely and may break your fabrication bench!!!</description>
     <graphicData>
       <texPath>Items/CompPlates</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costList>
-      <Steel>175</Steel>
-    </costList>
   </ThingDef>
 
   <ThingDef ParentName="SRTSCompBase">
     <defName>ShuttleComp_MechSystem</defName>
     <label>SRTS: mechanical components</label>
-    <description>Miscellaneous gears, levers, circuit boards, pulleys, wheels, and other industrial parts. Necessary for assembling short range transport shuttles.</description>
+    <description>This item is no longer required for SRTS Expanded. Sell them or destroy them. \n\nRemove the recipes from your workbenches! A future update will remove this entirely and may break your fabrication bench!!!</description>
     <graphicData>
       <texPath>Items/CompMech</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costList>
-      <Steel>50</Steel>
-      <ComponentIndustrial>2</ComponentIndustrial>
-    </costList>
   </ThingDef>
 
   <ThingDef ParentName="SRTSCompBase">
     <defName>ShuttleComp_ElectricSystem</defName>
     <label>SRTS: electrical components</label>
-    <description>Miscellaneous chips, wires, sensors, circuit boards, connectors, switches, buttons, and other electrical components. Necessary for assembling short range transport shuttles.</description>
+    <description>This item is no longer required for SRTS Expanded. Sell them or destroy them. \n\nRemove the recipes from your workbenches! A future update will remove this entirely and may break your fabrication bench!!!</description>
     <graphicData>
       <texPath>Items/CompElec</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costList>
-      <Steel>25</Steel>
-      <ComponentIndustrial>4</ComponentIndustrial>
-      <Gold>2</Gold>
-    </costList>
   </ThingDef>
 
   <ThingDef ParentName="SRTSCompBase">
     <defName>ShuttleComp_Engines</defName>
     <label>SRTS: engine components</label>
-    <description>Miscellaneous pipes, valves, reactive linings, repulsor plates, swivel pins, and other hardened fuel and engine components. Necessary for assembling short range transport shuttles.</description>
+    <description>This item is no longer required for SRTS Expanded. Sell them or destroy them. \n\nRemove the recipes from your workbenches! A future update will remove this entirely and may break your fabrication bench!!!</description>
     <graphicData>
       <texPath>Items/CompEngine</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costList>
-      <Steel>75</Steel>
-      <Plasteel>15</Plasteel>
-      <Chemfuel>125</Chemfuel>
-      <ComponentIndustrial>4</ComponentIndustrial>
-    </costList>
   </ThingDef>
 
   <ThingDef ParentName="SRTSCompBase">
     <defName>ShuttleComp_Structural</defName>
     <label>SRTS: internal components</label>
-    <description>Miscellaneous seats, dashboards, internal walls, curtains, sinks, toilets, tables, and many other components required by passengers. Necessary for assembling short range transport shuttles.</description>
+    <description>This item is no longer required for SRTS Expanded. Sell them or destroy them. \n\nRemove the recipes from your workbenches! A future update will remove this entirely and may break your fabrication bench!!!</description>
     <graphicData>
       <texPath>Items/CompInternal</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costList>
-      <Steel>15</Steel>
-      <WoodLog>20</WoodLog>
-      <Cloth>35</Cloth>
-    </costList>
   </ThingDef>
 
 
@@ -178,16 +123,11 @@
   <ThingDef ParentName="SRTSAdvCompBase">
     <defName>ShuttleComp_MeshPlate</defName>
     <label>SRTS: neural mesh plates</label>
-    <description>Several hardened steel plates in many sizes and shapes, bundled up for easy construction. A high tech neural mesh network is weaved through the steel plating. Necessary for assembling complex short range transport shuttles.</description>
+    <description>This item is no longer required for SRTS Expanded. Sell them or destroy them. \n\nRemove the recipes from your workbenches! A future update will remove this entirely and may break your fabrication bench!!!</description>
     <graphicData>
       <texPath>Items/CompMeshPlates</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <costList>
-      <Steel>80</Steel>
-      <ComponentSpacer>1</ComponentSpacer>
-      <Neutroamine>12</Neutroamine>
-    </costList>
   </ThingDef>
 
 
@@ -196,7 +136,7 @@
   <ThingDef ParentName="SRTSArchoCompBase">
     <defName>ShuttleComp_Reactor</defName>
     <label>SRTS: nuclear reactor components</label>
-    <description>Highly advanced and miniaturized nuclear components used to convert uranium into energy within a specialized reactor. Necessary for assembling really complex short range transport shuttles.</description>
+    <description>This item is no longer required for SRTS Expanded. Sell them or destroy them. \n\nRemove the recipes from your workbenches! A future update will remove this entirely and may break your fabrication bench!!!</description>
     <graphicData>
       <texPath>Items/CompReactor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -204,18 +144,12 @@
     <thingSetMakerTags>
       <li>RewardSpecial</li>
     </thingSetMakerTags>
-    <costList>
-      <Steel>1800</Steel>
-      <Gold>10</Gold>
-      <Uranium>125</Uranium>
-      <ComponentSpacer>6</ComponentSpacer>
-    </costList>
   </ThingDef>
 
   <ThingDef ParentName="SRTSArchoCompBase">
     <defName>ShuttleComp_DimShift</defName>
     <label>SRTS: dimensional components</label>
-    <description>A highly advanced system which hooks into your entire ship at various points. Tubes, flashing lights, wires, and many mysterious boxes and gizmos. Necessary for assembling really complex short range transport shuttles.</description>
+    <description>This item is no longer required for SRTS Expanded. Sell them or destroy them. \n\nRemove the recipes from your workbenches! A future update will remove this entirely and may break your fabrication bench!!!</description>
     <graphicData>
       <texPath>Items/CompDim</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -223,13 +157,6 @@
     <thingSetMakerTags>
       <li>RewardSpecial</li>
     </thingSetMakerTags>
-    <costList>
-      <AIPersonaCore>1</AIPersonaCore>
-      <Steel>150</Steel>
-      <Plasteel>360</Plasteel>
-      <Hyperweave>100</Hyperweave>
-      <ComponentSpacer>10</ComponentSpacer>
-    </costList>
   </ThingDef>
 
 </Defs>

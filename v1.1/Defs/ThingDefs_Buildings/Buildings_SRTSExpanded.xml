@@ -66,10 +66,9 @@ Internal power plant: 400w</description>
       <Beauty>15</Beauty>
     </statBases>
     <costList>
-      <Steel>550</Steel>
-      <Plasteel>50</Plasteel>
+      <Steel>700</Steel>
       <Gold>45</Gold>
-      <Silver>150</Silver>
+      <Silver>2000</Silver>
       <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
     <comps>
@@ -158,10 +157,9 @@ Internal power plant: 650w</description> <!-- description of course... -->
       <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
     </statBases>
     <costList> <!-- Costs to build, the names are the defNames of items -->
-      <Steel>1020</Steel>
-      <Plasteel>125</Plasteel>
+      <Steel>1200</Steel>
       <Gold>100</Gold>
-      <Silver>1250</Silver>
+      <Silver>1800</Silver>
       <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
     <comps> <!-- required for sending as drop pod -->
@@ -250,12 +248,10 @@ Internal power plant: 1000w</description>
       <Beauty>25</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>10</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>5</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>2</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>6</ShuttleComp_Engines>
-      <ShuttleComp_Structural>6</ShuttleComp_Structural>
+      <Steel>3200</Steel>
+      <Gold>225</Gold>
       <Silver>3200</Silver>
+      <ComponentIndustrial>16</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -264,7 +260,7 @@ Internal power plant: 1000w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>3</travelSpeed>
-        <fuelPerTile>3.6</fuelPerTile>
+        <fuelPerTile>4</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>3</maxPassengers>
         <spaceFaring>false</spaceFaring>
@@ -336,12 +332,10 @@ Internal power plant: 1,700w</description>
       <Beauty>50</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>13</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>21</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>10</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>5</ShuttleComp_Engines>
-      <ShuttleComp_Structural>4</ShuttleComp_Structural>
-      <Silver>9000</Silver>
+      <Steel>4500</Steel>
+      <Gold>350</Gold>
+      <Silver>6000</Silver>
+      <ComponentIndustrial>20</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -350,7 +344,7 @@ Internal power plant: 1,700w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>8</travelSpeed>
-        <fuelPerTile>1.75</fuelPerTile>
+        <fuelPerTile>2.25</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>28</maxPassengers>
         <spaceFaring>true</spaceFaring>
@@ -426,12 +420,13 @@ Internal power plant: 1,700w</description>
       <Beauty>50</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_Plates>6</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>8</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>5</ShuttleComp_Engines>
-      <ShuttleComp_Structural>10</ShuttleComp_Structural>
-      <Silver>9000</Silver>
+      <Steel>2500</Steel>
+      <Plasteel>240</Plasteel>
+      <Gold>325</Gold>
+      <Silver>6000</Silver>
+      <Synthread>100</Synthread>
+      <ComponentIndustrial>16</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -440,7 +435,7 @@ Internal power plant: 1,700w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>11</travelSpeed>
-        <fuelPerTile>1.75</fuelPerTile>
+        <fuelPerTile>2</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>7</maxPassengers>
         <spaceFaring>true</spaceFaring>
@@ -523,12 +518,14 @@ Internal power plant: 3,600w</description>
       <Beauty>75</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_MeshPlate>13</ShuttleComp_MeshPlate>
-      <ShuttleComp_MechSystem>3</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>4</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>6</ShuttleComp_Engines>
-      <ShuttleComp_Structural>12</ShuttleComp_Structural>
+      <Steel>700</Steel>
+      <Plasteel>1200</Plasteel>
+      <Gold>500</Gold>
       <Silver>10500</Silver>
+      <Synthread>240</Synthread>
+      <Neutroamine>100</Neutroamine>
+      <ComponentIndustrial>24</ComponentIndustrial>
+      <ComponentSpacer>8</ComponentSpacer>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -537,7 +534,7 @@ Internal power plant: 3,600w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
-        <fuelPerTile>1.25</fuelPerTile>
+        <fuelPerTile>1</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>17</maxPassengers>
 		    <spaceFaring>true</spaceFaring>
@@ -615,13 +612,13 @@ Internal power plant: 2,800w</description>
       <Beauty>75</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_MeshPlate>5</ShuttleComp_MeshPlate>
-      <ShuttleComp_Plates>15</ShuttleComp_Plates>
-      <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>5</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Engines>9</ShuttleComp_Engines>
-      <ShuttleComp_Structural>9</ShuttleComp_Structural>
+      <Steel>2800</Steel>
+      <Plasteel>1300</Plasteel>
+      <Gold>500</Gold>
+      <Neutroamine>200</Neutroamine>
       <Silver>10500</Silver>
+      <ComponentIndustrial>32</ComponentIndustrial>
+      <ComponentSpacer>9</ComponentSpacer>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
@@ -630,7 +627,7 @@ Internal power plant: 2,800w</description>
       </li>
       <li Class="SRTS.CompProperties_LaunchableSRTS">
         <travelSpeed>20</travelSpeed>
-        <fuelPerTile>1.25</fuelPerTile>
+        <fuelPerTile>1</fuelPerTile>
         <minPassengers>1</minPassengers>
         <maxPassengers>42</maxPassengers>
         <spaceFaring>true</spaceFaring>
@@ -709,13 +706,16 @@ Internal power plant: 12,000w</description>
       <Beauty>1000</Beauty>
     </statBases>
     <costList>
-      <ShuttleComp_MeshPlate>20</ShuttleComp_MeshPlate>
-      <ShuttleComp_MechSystem>10</ShuttleComp_MechSystem>
-      <ShuttleComp_ElectricSystem>40</ShuttleComp_ElectricSystem>
-      <ShuttleComp_Structural>30</ShuttleComp_Structural>
-      <ShuttleComp_Reactor>1</ShuttleComp_Reactor>
-      <ShuttleComp_DimShift>3</ShuttleComp_DimShift>
+      <Steel>5600</Steel>
+      <Plasteel>2400</Plasteel>
+      <Gold>2400</Gold>
       <Silver>50000</Silver>
+      <Uranium>600</Uranium>
+      <Hyperweave>300</Hyperweave>
+      <Neutroamine>400</Neutroamine>
+      <ComponentIndustrial>32</ComponentIndustrial>
+      <ComponentSpacer>16</ComponentSpacer>
+      <AIPersonaCore>3</AIPersonaCore>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">

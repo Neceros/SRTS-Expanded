@@ -14,9 +14,6 @@
     <researchViewX>0</researchViewX>
     <researchViewY>0</researchViewY>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <discoveredLetterTitle>SRTS Components</discoveredLetterTitle>
-    <discoveredLetterText>You've unlocked the ability to craft your own ship parts.\n\nSimple ships are built with raw resources. Advanced ships require specialized components designed speficially for ship construction. You can build these at the Fabrication bench.</discoveredLetterText>
-    <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -87,9 +84,6 @@
     <requiredResearchFacilities>
         <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
-    <discoveredLetterTitle>Advanced Ship Components</discoveredLetterTitle>
-    <discoveredLetterText>You can now build an additional type of component needed for more powerful ships: neuromesh plates. While you do not yet need them, you will for the next tier of ships. Build them at a Fabrication bench.</discoveredLetterText>
-    <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -150,7 +144,7 @@
     <discoveredLetterMinDifficulty>1</discoveredLetterMinDifficulty>
   </ResearchProjectDef>
 
-  <ResearchProjectDef>
+  <!-- <ResearchProjectDef>
     <tab>SRTSE</tab>
     <defName>Research_SRTSArchoComps</defName>
     <label>Archotech Ship Components</label>
@@ -166,6 +160,6 @@
     <requiredResearchFacilities>
       <li>MultiAnalyzer</li>
     </requiredResearchFacilities>
-  </ResearchProjectDef>
+  </ResearchProjectDef> -->
 
 </Defs>
