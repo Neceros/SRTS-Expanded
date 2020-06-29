@@ -4,33 +4,33 @@
   <!-- Industrial -->
 
   <ShuttleComp_Plates.label>SRTS:スチール板</ShuttleComp_Plates.label>
-  <ShuttleComp_Plates.description>さまざまな大きさと形状をした複数のスチール鋼板が、簡単に組み立てられるように束ねられています。繊細な配線やチューブ管、電気部品などがこれらの鋼板の内に並んでいます。短距離輸送用シャトルの組み立てに必要です。</ShuttleComp_Plates.description>
+  <ShuttleComp_Plates.description>このアイテムはv1.5の新しいSRTS-Expandedでは不要になりました。それらを売るか破壊してください。\n\nコンポーネント工作台からレシピを削除してください！将来のアップデートでこれは完全に削除されて、コンポーネント工作台が壊れる可能性があります!!!</ShuttleComp_Plates.description>
 
   <ShuttleComp_MechSystem.label>SRTS:機械式部品</ShuttleComp_MechSystem.label>
-  <ShuttleComp_MechSystem.description>様々な歯車やレバーや回路基板や滑車やホイールと他の機械的な部品の集合体です。短距離輸送用シャトルの組み立てに必要です。</ShuttleComp_MechSystem.description>
+  <ShuttleComp_MechSystem.description>このアイテムはv1.5の新しいSRTS-Expandedでは不要になりました。それらを売るか破壊してください。\n\nコンポーネント工作台からレシピを削除してください！将来のアップデートでこれは完全に削除されて、コンポーネント工作台が壊れる可能性があります!</ShuttleComp_MechSystem.description>
 
   <ShuttleComp_ElectricSystem.label>SRTS:電装部品</ShuttleComp_ElectricSystem.label>
-  <ShuttleComp_ElectricSystem.description>様々なチップやワイヤーやセンサー類や回路基板やコネクターやスイッチやボタンと他の電気部品のコンポーネントです。短距離輸送用シャトルの組み立てに必要です。</ShuttleComp_ElectricSystem.description>
+  <ShuttleComp_ElectricSystem.description>このアイテムはv1.5の新しいSRTS-Expandedでは不要になりました。それらを売るか破壊してください。\n\nコンポーネント工作台からレシピを削除してください！将来のアップデートでこれは完全に削除されて、コンポーネント工作台が壊れる可能性があります!</ShuttleComp_ElectricSystem.description>
 
   <ShuttleComp_Engines.label>SRTS:エンジン部品</ShuttleComp_Engines.label>
-  <ShuttleComp_Engines.description>様々なパイプやバルブや感応式ライニングやリパルサーや自在軸と他に燃料用の鍛錬タンクなどのエンジン部品のコンポーネントです。短距離輸送用シャトルの組み立てに必要です。</ShuttleComp_Engines.description>
+  <ShuttleComp_Engines.description>このアイテムはv1.5の新しいSRTS-Expandedでは不要になりました。それらを売るか破壊してください。\n\nコンポーネント工作台からレシピを削除してください！将来のアップデートでこれは完全に削除されて、コンポーネント工作台が壊れる可能性があります!</ShuttleComp_Engines.description>
 
   <ShuttleComp_Structural.label>SRTS:内装部品</ShuttleComp_Structural.label>
-  <ShuttleComp_Structural.description>様々な座席やダッシュボードや内壁やカーテンや洗面台、トイレやテーブルなどの乗客が必要とする他の内装用部品のコンポーネントです。短距離輸送用シャトルの組み立てに必要です。</ShuttleComp_Structural.description>
+  <ShuttleComp_Structural.description>このアイテムはv1.5の新しいSRTS-Expandedでは不要になりました。それらを売るか破壊してください。\n\nコンポーネント工作台からレシピを削除してください！将来のアップデートでこれは完全に削除されて、コンポーネント工作台が壊れる可能性があります!</ShuttleComp_Structural.description>
 
 
   <!-- Ultra -->
 
   <ShuttleComp_MeshPlate.label>SRTS:網状構造板</ShuttleComp_MeshPlate.label>
-  <ShuttleComp_MeshPlate.description>さまざまな大きさと形状をした複数のスチール鋼板が、簡単に組み立てられるように束ねられています。先進的なニューラルメッシュ構造にスチール鋼板が織り込まれています。より複雑な短距離輸送用シャトルの組み立てに必要です。</ShuttleComp_MeshPlate.description>
+  <ShuttleComp_MeshPlate.description>このアイテムはv1.5の新しいSRTS-Expandedでは不要になりました。それらを売るか破壊してください。\n\nコンポーネント工作台からレシピを削除してください！将来のアップデートでこれは完全に削除されて、コンポーネント工作台が壊れる可能性があります!</ShuttleComp_MeshPlate.description>
 
 
   <!-- Archotech -->
 
   <ShuttleComp_Reactor.label>SRTS:反応炉部品</ShuttleComp_Reactor.label>
-  <ShuttleComp_Reactor.description>特殊な反応炉内でウランをエネルギーへ変換するために使用される高度な超小型核動力コンポーネントです。信じられないほど複雑な短距離輸送用シャトルの組み立てに必要です。</ShuttleComp_Reactor.description>
+  <ShuttleComp_Reactor.description>このアイテムはv1.5の新しいSRTS-Expandedでは不要になりました。それらを売るか破壊してください。\n\nコンポーネント工作台からレシピを削除してください！将来のアップデートでこれは完全に削除されて、コンポーネント工作台が壊れる可能性があります!</ShuttleComp_Reactor.description>
 
   <ShuttleComp_DimShift.label>SRTS:次元部品</ShuttleComp_DimShift.label>
-  <ShuttleComp_DimShift.description>色々な空間座標で船全体に取り付ける高度なシステムです。配管や点滅ライトやワイヤー類と多数の神秘的なブルーボックスと何かの機械のコンポーネントです。信じられないほど複雑な短距離輸送用シャトルの組み立てに必要です。</ShuttleComp_DimShift.description>
+  <ShuttleComp_DimShift.description>このアイテムはv1.5の新しいSRTS-Expandedでは不要になりました。それらを売るか破壊してください。\n\nコンポーネント工作台からレシピを削除してください！将来のアップデートでこれは完全に削除されて、コンポーネント工作台が壊れる可能性があります!</ShuttleComp_DimShift.description>
 
 </LanguageData>
