@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <!-- Recipe Users: FabricationBench -->
-
   <Make_ShuttleComp_Plates.label>SRTS: スチール板を作る</Make_ShuttleComp_Plates.label>
   <Make_ShuttleComp_Plates.description>SRTS: スチール板を作る。</Make_ShuttleComp_Plates.description>
   <Make_ShuttleComp_Plates.jobString>SRTS: スチール板を製作中</Make_ShuttleComp_Plates.jobString>
