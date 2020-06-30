@@ -1,7 +1,3 @@
-# SRTS Expanded
-
-### 1.0/1.1 Stable release: https://github.com/Neceros/SRTS-Expanded/releases/tag/1.1
-
 *Please note there will be no further updates or changes to the 1.0 code.* **Future updates will only apply to 1.1!**
 
 ### Please join our discord 
