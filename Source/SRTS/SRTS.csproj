@@ -43,6 +43,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BombingTargeter.cs" />
+    <Compile Include="CannonDef.cs" />
+    <Compile Include="CannonHandler.cs" />
+    <Compile Include="CannonTargeter.cs" />
+    <Compile Include="CompCannons.cs" />
+    <Compile Include="CompProperties_Cannons.cs" />
     <Compile Include="DialogSettings.cs" />
     <Compile Include="FallingBomb.cs" />
     <Compile Include="BomberSkyfaller.cs" />
@@ -58,6 +63,7 @@
     <Compile Include="HarmonyTest_dp.cs" />
     <Compile Include="HarmonyTest.cs" />
     <Compile Include="HarmonyTest_AJ.cs" />
+    <Compile Include="HelperMethods.cs" />
     <Compile Include="InitializeDefProperties.cs" />
     <Compile Include="ModSettings.cs" />
     <Compile Include="SkyfallerDrawPosUtilityExtended.cs" />
@@ -78,9 +84,8 @@
     <Compile Include="TravelingSRTS.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="0Harmony, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.0.1\lib\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
