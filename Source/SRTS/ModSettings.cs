@@ -369,7 +369,7 @@ namespace SRTS
             if (currentPage == SRTS.SettingsCategory.Stats || currentPage == SRTS.SettingsCategory.Research)
             {
                 GraphicRequest graphicRequest = new GraphicRequest(props.referencedDef.graphicData.graphicClass, props.referencedDef.graphicData.texPath, ShaderTypeDefOf.Cutout.Shader, props.referencedDef.graphic.drawSize,
-                       Color.white, Color.white, props.referencedDef.graphicData, 0, null);
+                       Color.white, Color.white, props.referencedDef.graphicData, 0, null, null);
                 string texPath = props.referencedDef.graphicData.texPath;
                 if (graphicRequest.graphicClass == typeof(Graphic_Multi))
                     texPath += "_north";

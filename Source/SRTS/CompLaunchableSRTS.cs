@@ -270,7 +270,7 @@ namespace SRTS
         {
             if (!pawn.Dead && !pawn.InMentalState && pawn.Faction == Faction.OfPlayerSilentFail)
             {
-                if(pawn.CanReach(this.parent, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn))
+                if(pawn.CanReach(this.parent, PathEndMode.Touch, Danger.Deadly, false, mode: TraverseMode.ByPawn))
                 {
                     if(this.LoadingInProgressOrReadyToLaunch)
                     {
@@ -627,13 +627,13 @@ namespace SRTS
 			    if(TransportPodsArrivalAction_FormCaravan.CanFormCaravanAt(pods, tile) && !Find.WorldObjects.AnySettlementBaseAt(tile) && !Find.WorldObjects.AnySiteAt(tile))
 			    {
 				    anything = true;
-				    yield return new FloatMenuOption("FormCaravanHere".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) new TransportPodsArrivalAction_FormCaravan(), car)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
+				    yield return new FloatMenuOption("FormCaravanHere".Translate(), (() => this.TryLaunch(tile, new TransportPodsArrivalAction_FormCaravan(), car)));
 			    }
 		    }
 		    else if (!Find.WorldObjects.AnySettlementBaseAt(tile) && !Find.WorldObjects.AnySiteAt(tile) && !Find.World.Impassable(tile))
 		    {
 			    anything = true;
-			    yield return new FloatMenuOption("FormCaravanHere".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) new TransportPodsArrivalAction_FormCaravan(), car)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
+			    yield return new FloatMenuOption("FormCaravanHere".Translate(), (() => this.TryLaunch(tile, new TransportPodsArrivalAction_FormCaravan(), car)));
 		    }
 		    List<WorldObject> worldObjects = Find.WorldObjects.AllWorldObjects;
 		    for (int i = 0; i < worldObjects.Count; ++i)
@@ -643,7 +643,7 @@ namespace SRTS
 				    IEnumerable<FloatMenuOption> nowre = SRTSStatic.getFM(worldObjects[i], pods, this, car);
 				    if (nowre.ToList<FloatMenuOption>().Count < 1)
 				    {
-				        yield return new FloatMenuOption("FormCaravanHere".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) new TransportPodsArrivalAction_FormCaravan(), car)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
+				        yield return new FloatMenuOption("FormCaravanHere".Translate(), (() => this.TryLaunch(tile, (TransportPodsArrivalAction) new TransportPodsArrivalAction_FormCaravan(), car)));
 				    }
 				    else
 				    {
@@ -658,9 +658,11 @@ namespace SRTS
 				    nowre = (IEnumerable<FloatMenuOption>) null;
 			    }
 		    }
-		    if (!anything && !Find.World.Impassable(tile))
-			    yield return new FloatMenuOption("TransportPodsContentsWillBeLost".Translate(), (Action) (() => this.TryLaunch(tile, (TransportPodsArrivalAction) null, (Caravan) null)), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
-	    }
+
+            if (!anything && !Find.World.Impassable(tile))
+                yield return new FloatMenuOption("TransportPodsContentsWillBeLost".Translate(),
+                    (() => TryLaunch(tile, (TransportPodsArrivalAction) null)));
+        }
 
 		List<Thing> thingsInsideShip = new List<Thing>();
 	}
