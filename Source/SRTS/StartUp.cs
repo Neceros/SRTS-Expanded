@@ -108,16 +108,6 @@ namespace SRTS
           postfix: new HarmonyMethod(typeof(StartUp),
           nameof(LaunchAndBombGizmosPassthrough)));
 
-      // Vehicles update
-      harmony.Patch(original: AccessTools.Method(typeof(Targeter), nameof(Targeter.TargeterOnGUI)), prefix: null,
-  postfix: new HarmonyMethod(typeof(ShipHarmony),
-  nameof(DrawCannonTargeter)));
-      harmony.Patch(original: AccessTools.Method(typeof(Targeter), nameof(Targeter.ProcessInputEvents)), prefix: null,
-              postfix: new HarmonyMethod(typeof(ShipHarmony),
-              nameof(ProcessCannonInputEvents)));
-      harmony.Patch(original: AccessTools.Method(typeof(Targeter), nameof(Targeter.TargeterUpdate)), prefix: null,
-              postfix: new HarmonyMethod(typeof(ShipHarmony),
-              nameof(CannonTargeterUpdate)));
 
       /* Destructive Patch Fixes */
       bool sos2Flag = false;
@@ -212,23 +202,6 @@ namespace SRTS
             yield return instruction;
         }
     }*/
-
-    public static void DrawCannonTargeter()
-    {
-      HelperMethods.CannonTargeter.TargeterOnGUI();
-    }
-
-    public static void ProcessCannonInputEvents()
-    {
-      HelperMethods.CannonTargeter.ProcessInputEvents();
-    }
-
-    public static void CannonTargeterUpdate()
-    {
-      HelperMethods.CannonTargeter.TargeterUpdate();
-    }
-
-
 
     /// <summary>
     /// Insert all items on map (non minifiable) if map is not player home.

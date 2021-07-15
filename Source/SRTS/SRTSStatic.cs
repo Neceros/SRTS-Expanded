@@ -46,7 +46,7 @@ namespace SRTS
               return;
             Current.Game.CurrentMap = myMap;
           }), CompLaunchable.TargeterMouseAttachment);
-        }), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
+        }), MenuOptionPriority.Default,  null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
     }
 
     public static IEnumerable<FloatMenuOption> GetSite(

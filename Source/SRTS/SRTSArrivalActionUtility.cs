@@ -16,7 +16,7 @@ namespace SRTS
             if (rep.Accepted || !rep.FailReason.NullOrEmpty() || !rep.FailMessage.NullOrEmpty())
             {
                 if (!rep.FailReason.NullOrEmpty())
-                    yield return new FloatMenuOption(label + " (" + rep.FailReason + ")", (Action) null, MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
+                    yield return new FloatMenuOption(label + " (" + rep.FailReason + ")",null);
                 else
                     yield return new FloatMenuOption(label, (Action) (() =>
                 {
@@ -31,7 +31,7 @@ namespace SRTS
                             return;
                         Messages.Message(acceptanceReport.FailMessage, (LookTargets) new GlobalTargetInfo(destinationTile), MessageTypeDefOf.RejectInput, false);
                     }
-                }), MenuOptionPriority.Default, (Action) null, (Thing) null, 0.0f, (Func<Rect, bool>) null, (WorldObject) null);
+                }));
             }
         }
 

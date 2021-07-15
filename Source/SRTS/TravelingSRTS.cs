@@ -21,7 +21,7 @@ namespace SRTS
                 {
                     string texPath = flyingThing.def.graphicData.texPath;
                     GraphicRequest graphicRequest = new GraphicRequest(flyingThing.def.graphicData.graphicClass, flyingThing.def.graphicData.texPath, ShaderTypeDefOf.Cutout.Shader, flyingThing.def.graphic.drawSize,
-                       Color.white, Color.white, flyingThing.def.graphicData, 0, null);
+                       Color.white, Color.white, flyingThing.def.graphicData, 0, null, null);
                     if(graphicRequest.graphicClass == typeof(Graphic_Multi))
                         texPath += "_north";
                     material = MaterialPool.MatFrom(texPath, ShaderDatabase.WorldOverlayTransparentLit, WorldMaterials.WorldObjectRenderQueue);
