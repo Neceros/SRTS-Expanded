@@ -577,8 +577,8 @@ namespace SRTS
 		                  thingsInsideShip.Clear();
 
 		                  cafr.RemoveAllPawns();
-		                  if(cafr.Spawned)
-			                    Find.WorldObjects.Remove((WorldObject) cafr);
+		                  if(!cafr.Destroyed)
+			                    cafr.Destroy();
 		                  TravelingSRTS travelingTransportPods = (TravelingSRTS) WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
 		                  travelingTransportPods.Tile = cafr.Tile;
 		                  travelingTransportPods.SetFaction(Faction.OfPlayer);
