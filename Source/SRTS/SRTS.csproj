@@ -56,7 +56,9 @@
     </PackageReference>
     <PackageReference Include="Lib.Harmony">
       <Version>2.1.0</Version>
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>compile</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-  <!--Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" /-->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
