@@ -135,7 +135,7 @@ namespace SRTS
             int num = Find.WorldGrid.TraversalDistanceBetween(this.parent.Map.Tile, target.Tile);
             if (num > CompLauncher.MaxLaunchDistance)
             {
-                Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num, this.parent.GetComp<CompLaunchableSRTS>().BaseFuelPerTile).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
+                Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist(num, this.parent.GetComp<CompLaunchableSRTS>().BaseFuelPerTile).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
                 return false;
             }
             if (Find.WorldObjects.AnyMapParentAt(target.Tile))
@@ -177,7 +177,7 @@ namespace SRTS
         {
             if (!this.parent.Spawned)
             {
-                Log.Error("Tried to launch " + this.parent + ", but it's unspawned.", false);
+                Log.Error("Tried to launch " + this.parent + ", but it's unspawned.");
                 return;
             }
 
@@ -194,7 +194,7 @@ namespace SRTS
             }
             CompLauncher.Transporter.TryRemoveLord(map);
             int groupID = CompLauncher.Transporter.groupID;
-            float amount = Mathf.Max(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num, this.parent.GetComp<CompLaunchableSRTS>().BaseFuelPerTile), 1f);
+            float amount = Mathf.Max(CompLaunchableSRTS.FuelNeededToLaunchAtDist(num, this.parent.GetComp<CompLaunchableSRTS>().BaseFuelPerTile), 1f);
             CompTransporter comp1 = CompLauncher.FuelingPortSource.TryGetComp<CompTransporter>();
             Building fuelPortSource = CompLauncher.FuelingPortSource;
             if (fuelPortSource != null)
@@ -205,16 +205,16 @@ namespace SRTS
             thing.SetFactionDirect(Faction.OfPlayer);
             thing.Rotation = CompLauncher.FuelingPortSource.Rotation;
             CompRefuelable comp2 = thing.TryGetComp<CompRefuelable>();
-            comp2.GetType().GetField("fuel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue((object)comp2, (object)fuelPortSource.TryGetComp<CompRefuelable>().Fuel);
+            comp2.GetType().GetField("fuel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(comp2, fuelPortSource.TryGetComp<CompRefuelable>().Fuel);
             comp2.TargetFuelLevel = fuelPortSource.TryGetComp<CompRefuelable>().TargetFuelLevel;
             thing.stackCount = 1;
             directlyHeldThings.TryAddOrTransfer(thing, true);
 
             ActiveDropPod activeDropPod = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(parent.def.defName + "_Active"), null);
             activeDropPod.Contents = new ActiveDropPodInfo();
-            activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer((IEnumerable<Thing>)directlyHeldThings, true, true);
+            activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer(directlyHeldThings, true, true);
 
-            SRTSLeaving srtsLeaving = (SRTSLeaving)SkyfallerMaker.MakeSkyfaller(ThingDef.Named(parent.def.defName + "_Leaving"), (Thing)activeDropPod);
+            SRTSLeaving srtsLeaving = (SRTSLeaving)SkyfallerMaker.MakeSkyfaller(ThingDef.Named(parent.def.defName + "_Leaving"), activeDropPod);
             srtsLeaving.rotation = CompLauncher.FuelingPortSource.Rotation;
             srtsLeaving.groupID = groupID;
             srtsLeaving.destinationTile = destTile;
@@ -222,8 +222,8 @@ namespace SRTS
 
             comp1.CleanUpLoadingVars(map);
             IntVec3 position = fuelPortSource.Position;
-            SRTSStatic.SRTSDestroy((Thing)fuelPortSource, DestroyMode.Vanish);
-            GenSpawn.Spawn((Thing)srtsLeaving, position, map, WipeMode.Vanish);
+            SRTSStatic.SRTSDestroy(fuelPortSource, DestroyMode.Vanish);
+            GenSpawn.Spawn(srtsLeaving, position, map, WipeMode.Vanish);
             CameraJumper.TryHideWorld();
         }
 

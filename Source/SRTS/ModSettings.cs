@@ -109,7 +109,7 @@ namespace SRTS
 
             var font = Text.Font;
             Text.Font = GameFont.Tiny;
-            string credit = "Settings by Smash Phil";
+            // Credit: Settings by Smash Phil
             //Widgets.Label(new Rect(inRect.width - (6 * credit.Count()), inRect.height + 64f, inRect.width, inRect.height), credit);
             Text.Font = font;
 
@@ -232,7 +232,7 @@ namespace SRTS
 
                 int mass = (int)props.massCapacity;
                 listing_Standard.Settings_IntegerBox("CargoCapacity".Translate(), ref mass, 100f, 50f, 0, int.MaxValue);
-                props.massCapacity = (float)mass;
+                props.massCapacity = mass;
 
                 listing_Standard.Gap(12f);
 
@@ -272,7 +272,7 @@ namespace SRTS
 
                 int rPoints = (int)props.researchPoints;
                 listing_Standard.Settings_IntegerBox("SRTSResearch".Translate(), ref rPoints, 100f, 50f, 0, int.MaxValue);
-                props.researchPoints = (float)rPoints;
+                props.researchPoints = rPoints;
 
                 listing_Standard.Gap(24f);
 
@@ -342,7 +342,7 @@ namespace SRTS
                 }
                 listing_Standard.End();
                 Rect group3 = new Rect(group2.x, bombLabel.y + 24f, group2.width, group2.height / 3);
-                Rect viewRect = new Rect(group3.x, group3.y, group2.width - 24f, group3.height * ((float)mod.settings.allowedBombs.Count / 6f) + 24f);
+                Rect viewRect = new Rect(group3.x, group3.y, group2.width - 24f, group3.height * (mod.settings.allowedBombs.Count / 6f) + 24f);
 
                 Widgets.BeginScrollView(group3, ref scrollPosition, viewRect, true);
                 listing_Standard.Begin(viewRect);

@@ -38,19 +38,19 @@ namespace SPExtended
 
             if (exitPoint.x < offset)
             {
-                exitPoint.x = (int)(offset / 2);
+                exitPoint.x = offset / 2;
             }
             else if (exitPoint.x >= (map.Size.x - (offset / 2)))
             {
-                exitPoint.x = (int)(map.Size.x - (offset / 2));
+                exitPoint.x = map.Size.x - (offset / 2);
             }
             if (exitPoint.z < offset)
             {
-                exitPoint.z = (int)(offset / 2);
+                exitPoint.z = offset / 2;
             }
             else if (exitPoint.z > (map.Size.z - (offset / 2)))
             {
-                exitPoint.z = (int)(map.Size.z - (offset / 2));
+                exitPoint.z = map.Size.z - (offset / 2);
             }
         }
 
@@ -69,19 +69,19 @@ namespace SPExtended
             int offset = x > z ? x + extraOffset : z + extraOffset;
             if (spawnPoint.x < offset)
             {
-                spawnPoint.x = (int)(offset / 2);
+                spawnPoint.x = offset / 2;
             }
             else if (spawnPoint.x >= (map.Size.x - (offset / 2)))
             {
-                spawnPoint.x = (int)(map.Size.x - (offset / 2));
+                spawnPoint.x = map.Size.x - (offset / 2);
             }
             if (spawnPoint.z < offset)
             {
-                spawnPoint.z = (int)(offset / 2);
+                spawnPoint.z = offset / 2;
             }
             else if (spawnPoint.z > (map.Size.z - (offset / 2)))
             {
-                spawnPoint.z = (int)(map.Size.z - (offset / 2));
+                spawnPoint.z = map.Size.z - (offset / 2);
             }
             return spawnPoint;
         }

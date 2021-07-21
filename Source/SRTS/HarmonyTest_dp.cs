@@ -12,7 +12,7 @@ namespace SRTS
     {
         public static void Prefix(ActiveDropPod __instance)
         {
-            ActiveDropPodInfo activeDropPodInfo = Traverse.Create((object)__instance).Field("contents").GetValue<ActiveDropPodInfo>();
+            ActiveDropPodInfo activeDropPodInfo = Traverse.Create(__instance).Field("contents").GetValue<ActiveDropPodInfo>();
             for (int index = activeDropPodInfo.innerContainer.Count - 1; index >= 0; --index)
             {
                 Thing thing = activeDropPodInfo.innerContainer[index];

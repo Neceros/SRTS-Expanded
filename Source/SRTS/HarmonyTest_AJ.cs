@@ -20,7 +20,7 @@ namespace SRTS
                     if (pod.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null || DefDatabase<ThingDef>.GetNamed(pod.innerContainer[index]?.def?.defName?.Split('_')[0], false)?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
                     {
                         Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
-                        Traverse traverse = Traverse.Create((object)__instance);
+                        Traverse traverse = Traverse.Create(__instance);
                         IntVec3 c = traverse.Field("cell").GetValue<IntVec3>();
                         Map map = traverse.Field("mapParent").GetValue<MapParent>().Map;
                         TransportPodsArrivalActionUtility.RemovePawnsFromWorldPawns(pods);
@@ -29,7 +29,7 @@ namespace SRTS
                             pods[i].openDelay = 0;
                             DropPodUtility.MakeDropPodAt(c, map, pods[i]);
                         }
-                        Messages.Message("MessageTransportPodsArrived".Translate(), (LookTargets)lookTarget, MessageTypeDefOf.TaskCompletion, true);
+                        Messages.Message("MessageTransportPodsArrived".Translate(), lookTarget, MessageTypeDefOf.TaskCompletion, true);
                         return false;
                     }
                 }

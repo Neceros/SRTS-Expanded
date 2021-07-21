@@ -74,7 +74,7 @@ namespace SPExtended
         {
             int xPrime = c.x - (map.Size.x / 2);
             int yPrime = c.z - (map.Size.z / 2);
-            double slope = (double)yPrime / (double)xPrime;
+            double slope = yPrime / (double)xPrime;
             double angleRadians = Math.Atan(slope);
             double angle = Math.Abs(angleRadians.RadiansToDegrees());
             switch (SPExtra.Quadrant.QuadrantOfIntVec3(c, map).AsInt)
@@ -101,7 +101,7 @@ namespace SPExtended
         {
             int xPrime = pos.x - point.x;
             int yPrime = pos.z - point.z;
-            double slope = (double)yPrime / (double)xPrime;
+            double slope = yPrime / (double)xPrime;
             double angleRadians = Math.Atan(slope);
             double angle = Math.Abs(angleRadians.RadiansToDegrees());
             return angle;
@@ -117,7 +117,7 @@ namespace SPExtended
         {
             int xPrime = start.x - end.x;
             int yPrime = start.z - end.z;
-            double slope = (double)yPrime / (double)xPrime;
+            double slope = yPrime / (double)xPrime;
             double angleRadians = Math.Atan(slope);
             double angle = Math.Abs(angleRadians.RadiansToDegrees());
 

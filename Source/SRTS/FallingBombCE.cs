@@ -38,7 +38,7 @@ namespace SRTS
         {
             if (!this.SpawnedOrAnyParentSpawned)
                 return;
-            AccessTools.Method(type: SRTSHelper.CompExplosiveCE, "Explode").Invoke(this.CEcomp, new object[] { this as Thing, this.Position.ToVector3(), this.Map, 1f });
+            AccessTools.Method(type: SRTSHelper.CompExplosiveCE, "Explode").Invoke(this.CEcomp, new object[] { this, this.Position.ToVector3(), this.Map, 1f });
             this.Destroy();
         }
 

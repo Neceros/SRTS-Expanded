@@ -39,7 +39,7 @@ namespace SRTS
         public override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
             float angleDropped = this.angle - 45f;
-            this.Graphic.Draw(drawLoc, !flip ? base.Rotation.Opposite : base.Rotation, this as Thing, angleDropped);
+            this.Graphic.Draw(drawLoc, !flip ? base.Rotation.Opposite : base.Rotation, this, angleDropped);
             this.DrawDropSpotShadow();
         }
 
@@ -75,12 +75,12 @@ namespace SRTS
             ticksToImpact = Mathf.Max(ticksToImpact, 0);
             Vector3 pos = center;
             pos.y = AltitudeLayer.Shadows.AltitudeFor();
-            float num = 1f + (float)ticksToImpact / 100f;
+            float num = 1f + ticksToImpact / 100f;
             Vector3 s = new Vector3(num * shadowSize.x, 1f, num * shadowSize.y);
             Color white = Color.white;
             if (ticksToImpact > 150)
             {
-                white.a = Mathf.InverseLerp(200f, 150f, (float)ticksToImpact);
+                white.a = Mathf.InverseLerp(200f, 150f, ticksToImpact);
             }
             FallingBomb.shadowPropertyBlock.SetColor(ShaderPropertyIDs.Color, white);
             Matrix4x4 matrix = default;
@@ -127,7 +127,7 @@ namespace SRTS
 
         public static Vector3 DrawBombFalling(Vector3 center, int ticksToImpact, float angle, float speed)
         {
-            float dist = (float)ticksToImpact * speed;
+            float dist = ticksToImpact * speed;
             return center + Vector3Utility.FromAngleFlat(angle - 90f) * dist;
         }
 

@@ -46,7 +46,7 @@ namespace SRTS
                         return SkyfallerDrawPosUtility.DrawPos_Decelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
 
                     default:
-                        Log.ErrorOnce("SkyfallerMovementType not handled: " + this.def.skyfaller.movementType, this.thingIDNumber ^ 1948576711, false);
+                        Log.ErrorOnce("SkyfallerMovementType not handled: " + this.def.skyfaller.movementType, this.thingIDNumber ^ 1948576711);
                         return SkyfallerDrawPosUtility.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
                 }
             }
@@ -184,7 +184,7 @@ Block_CEPatched:;
         {
             ActiveDropPod activeDropPod = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(this.def.defName.Split('_')[0] + "_Active"), null);
             activeDropPod.Contents = new ActiveDropPodInfo();
-            activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer((IEnumerable<Thing>)((ActiveDropPod)innerContainer.First()).Contents.innerContainer, true, true);
+            activeDropPod.Contents.innerContainer.TryAddRangeOrTransfer(((ActiveDropPod)innerContainer.First()).Contents.innerContainer, true, true);
 
             TravelingSRTS travelingTransportPods = (TravelingSRTS)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("TravelingSRTS", true));
             travelingTransportPods.Tile = this.Map.Tile;
@@ -192,7 +192,7 @@ Block_CEPatched:;
             travelingTransportPods.destinationTile = this.originalMap.Tile;
             travelingTransportPods.arrivalAction = new TransportPodsArrivalAction_LandInSpecificCell(this.originalMap.Parent, this.sourceLandingSpot);
             travelingTransportPods.flyingThing = this;
-            Find.WorldObjects.Add((WorldObject)travelingTransportPods);
+            Find.WorldObjects.Add(travelingTransportPods);
             travelingTransportPods.AddPod(activeDropPod.Contents, true);
             this.Destroy();
         }
@@ -250,11 +250,11 @@ Block_CEPatched:;
             ticksToExit = Mathf.Max(ticksToExit, 0);
             Vector3 pos = loc;
             pos.y = AltitudeLayer.Shadows.AltitudeFor();
-            float num = 1f + (float)ticksToExit / 100f;
+            float num = 1f + ticksToExit / 100f;
             Vector3 s = new Vector3(num * shadowSize.x, 1f, num * shadowSize.y);
             Color white = Color.white;
             if (ticksToExit > 150)
-                white.a = Mathf.InverseLerp(200f, 150f, (float)ticksToExit);
+                white.a = Mathf.InverseLerp(200f, 150f, ticksToExit);
             shadowPropertyBlock.SetColor(ShaderPropertyIDs.Color, white);
             Matrix4x4 matrix = default(Matrix4x4);
             matrix.SetTRS(pos, rot.AsQuat, s);

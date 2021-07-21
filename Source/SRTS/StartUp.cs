@@ -794,11 +794,11 @@ namespace SRTS
                                     count = thingList[index].stackCount;
                                     Pawn ownerOf = CaravanInventoryUtility.GetOwnerOf(__instance, thingList[index]);
                                     float num = srts.TryGetComp<CompRefuelable>().Props.fuelCapacity - srts.TryGetComp<CompRefuelable>().Fuel;
-                                    if ((double)num < 1.0 && (double)num > 0.0)
+                                    if (num < 1.0 && num > 0.0)
                                         count = 1;
-                                    if ((double)count * 1.0 >= (double)num)
+                                    if (count * 1.0 >= num)
                                         count = (int)num;
-                                    if ((double)thingList[index].stackCount * 1.0 <= (double)count)
+                                    if (thingList[index].stackCount * 1.0 <= count)
                                     {
                                         thingList[index].stackCount -= count;
                                         Thing thing = thingList[index];
@@ -807,7 +807,7 @@ namespace SRTS
                                     }
                                     else if ((uint)count > 0U)
                                         thingList[index].SplitOff(count).Destroy(DestroyMode.Vanish);
-                                    srts.TryGetComp<CompRefuelable>().GetType().GetField("fuel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue((object)srts.TryGetComp<CompRefuelable>(), (object)(float)((double)srts.TryGetComp<CompRefuelable>().Fuel + (double)count));
+                                    srts.TryGetComp<CompRefuelable>().GetType().GetField("fuel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(srts.TryGetComp<CompRefuelable>(), (float)(srts.TryGetComp<CompRefuelable>().Fuel + (double)count));
                                     flag = true;
                                     break;
                                 }

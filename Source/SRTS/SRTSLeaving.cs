@@ -75,12 +75,12 @@ namespace SRTS
                 base.LeaveMap();
             else if (this.groupID < 0)
             {
-                Log.Error("Drop pod left the map, but its group ID is " + (object)this.groupID, false);
+                Log.Error("Drop pod left the map, but its group ID is " + this.groupID);
                 this.Destroy(DestroyMode.Vanish);
             }
             else if (this.destinationTile < 0)
             {
-                Log.Error("Drop pod left the map, but its destination tile is " + (object)this.destinationTile, false);
+                Log.Error("Drop pod left the map, but its destination tile is " + this.destinationTile);
                 this.Destroy(DestroyMode.Vanish);
             }
             else
@@ -94,9 +94,9 @@ namespace SRTS
                 travelingTransportPods.destinationTile = this.destinationTile;
                 travelingTransportPods.arrivalAction = this.arrivalAction;
 
-                Find.WorldObjects.Add((WorldObject)travelingTransportPods);
+                Find.WorldObjects.Add(travelingTransportPods);
                 SRTSLeaving.tmpActiveDropPods.Clear();
-                SRTSLeaving.tmpActiveDropPods.AddRange((IEnumerable<Thing>)this.Map.listerThings.ThingsInGroup(ThingRequestGroup.ActiveDropPod));
+                SRTSLeaving.tmpActiveDropPods.AddRange(this.Map.listerThings.ThingsInGroup(ThingRequestGroup.ActiveDropPod));
                 travelingTransportPods.flyingThing = tmpActiveDropPods.Find(x => (x as SRTSLeaving)?.groupID == this.groupID);
                 for (int index = 0; index < SRTSLeaving.tmpActiveDropPods.Count; ++index)
                 {
@@ -105,7 +105,7 @@ namespace SRTS
                     {
                         tmpActiveDropPod.alreadyLeft = true;
                         travelingTransportPods.AddPod(tmpActiveDropPod.Contents, true);
-                        tmpActiveDropPod.Contents = (ActiveDropPodInfo)null;
+                        tmpActiveDropPod.Contents = null;
                         tmpActiveDropPod.Destroy(DestroyMode.Vanish);
                     }
                 }

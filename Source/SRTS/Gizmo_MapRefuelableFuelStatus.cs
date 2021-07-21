@@ -23,7 +23,7 @@ namespace SRTS
         public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
         {
             Rect overRect = new Rect(topLeft.x, topLeft.y, this.GetWidth(maxWidth), 75f);
-            Find.WindowStack.ImmediateWindow(1523289473, overRect, WindowLayer.GameUI, (Action)(() =>
+            Find.WindowStack.ImmediateWindow(1523289473, overRect, WindowLayer.GameUI, () =>
            {
                Rect rect1 = overRect.AtZero().ContractedBy(6f);
                Rect rect2 = rect1;
@@ -38,7 +38,7 @@ namespace SRTS
                Text.Anchor = TextAnchor.MiddleCenter;
                Widgets.Label(rect3, this.nowFuel.ToString("F0") + " / " + this.maxFuel.ToString("F0"));
                Text.Anchor = TextAnchor.UpperLeft;
-           }), true, false, 1f);
+           }, true, false, 1f);
             return new GizmoResult(GizmoState.Clear);
         }
     }

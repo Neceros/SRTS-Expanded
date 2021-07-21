@@ -270,8 +270,11 @@ namespace SRTS
 
         public override void PreClose()
         {
-            /*if (addedResearch)
-                Messages.Message("RestartGameResearch".Translate(), MessageTypeDefOf.CautionInput, false);*/ //Uncomment to send message to restart game if research has been changed
+#if DEBUG
+            // Send message to restart game if research has been changed
+            if (addedResearch)
+                Messages.Message("RestartGameResearch".Translate(), MessageTypeDefOf.CautionInput, false);
+#endif
         }
 
         private bool addedResearch;
@@ -337,7 +340,7 @@ namespace SRTS
                 }
             }
             Rect outRect = new Rect(inRect.x - 6f, searchBarRect.y + BufferArea, searchBarRect.width, inRect.height - (BufferArea * 2));
-            Rect viewRect = new Rect(outRect.x, outRect.y, outRect.width - 32f, outRect.height * ((float)SRTSMod.mod.settings.allowedBombs.Count / 11f));
+            Rect viewRect = new Rect(outRect.x, outRect.y, outRect.width - 32f, outRect.height * (SRTSMod.mod.settings.allowedBombs.Count / 11f));
             Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect, true);
             for (int i = 0; i < SRTSMod.mod.settings.allowedBombs.Count; i++)
             {

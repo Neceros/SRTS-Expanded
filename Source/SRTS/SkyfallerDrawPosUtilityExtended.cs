@@ -8,7 +8,7 @@ namespace SRTS
         public static Vector3 DrawPos_AccelerateSRTSDirectional(Vector3 center, int ticksToImpact, Rot4 direction, float speed)
         {
             ticksToImpact = Mathf.Max(ticksToImpact, 0);
-            float dist = Mathf.Pow((float)ticksToImpact, 0.95f) * 1.7f * speed;
+            float dist = Mathf.Pow(ticksToImpact, 0.95f) * 1.7f * speed;
             return SRTSPosAtDist(center, dist, direction);
         }
 

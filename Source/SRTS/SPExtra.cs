@@ -29,7 +29,7 @@ namespace SPExtended
             {
                 get
                 {
-                    return (int)this.quadInt;
+                    return this.quadInt;
                 }
                 set
                 {
@@ -246,7 +246,7 @@ namespace SPExtended
         {
             int x = Math.Abs(c1.x - c2.x);
             int y = Math.Abs(c1.z - c2.z);
-            return Math.Sqrt((double)(x.Pow(2) + y.Pow(2)));
+            return Math.Sqrt(x.Pow(2) + y.Pow(2));
         }
 
         /// <summary>
