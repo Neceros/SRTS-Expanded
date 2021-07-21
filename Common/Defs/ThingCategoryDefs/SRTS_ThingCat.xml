@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingCategoryDef>
+    <defName>SRTSComponents</defName>
+    <label>shuttle components</label>
+    <parent>Manufactured</parent>
+    <iconPath>SRTSIcon</iconPath>
+  </ThingCategoryDef>
+
+</Defs>

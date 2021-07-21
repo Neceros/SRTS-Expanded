@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <SRTSSuperpod_Incoming.label>Супер-транспортная капсула (приземляется)</SRTSSuperpod_Incoming.label>
+  <SRTSSuperpod_Leaving.label>Супер-транспортная капсула (улетает)</SRTSSuperpod_Leaving.label>
+  <SRTSSuperpod_Active.label>Супер-транспортная капсула (активирована)</SRTSSuperpod_Active.label>
+
+  <SRTSSkip_Incoming.label>SRTS Mk.I (приземляется)</SRTSSkip_Incoming.label>
+  <SRTSSkip_BomberRun.label>SRTS Mk.I (сбрасывает бомбы)</SRTSSkip_BomberRun.label>
+  <SRTSSkip_Leaving.label>SRTS Mk.I (улетает)</SRTSSkip_Leaving.label>
+  <SRTSSkip_Actice.label>SRTS Mk.I (активирован)</SRTSSkip_Actice.label>
+
+  <SRAF_Incoming.label>SRAF: Канарейка (приземляется)</SRAF_Incoming.label>
+  <SRAF_Leaving.label>SRAF: Канарейка (улетает)</SRAF_Leaving.label>
+  <SRAF_Active.label>SRAF: Канарейка (активирована)</SRAF_Active.label>
+
+  <SRAFTek_Incoming.label>SRAF: TEK-7 (приземляется)</SRAFTek_Incoming.label>
+  <SRAFTek_Leaving.label>SRAF: TEK-7 (улетает)</SRAFTek_Leaving.label>
+  <SRAFTek_Active.label>SRAF: TEK-7 (активирован)</SRAFTek_Active.label>
+
+  <SRTSMkII_Incoming.label>SRTS Mk.II (приземляется)</SRTSMkII_Incoming.label>
+  <SRTSMkII_BomberRun.label>SRTS Mk.II (сбрасывает бомбы)</SRTSMkII_BomberRun.label>
+  <SRTSMkII_Leaving.label>SRTS Mk.II (улетает)</SRTSMkII_Leaving.label>
+  <SRTSMkII_Active.label>SRTS Mk.II (активирован)</SRTSMkII_Active.label>
+
+  <SRTSMkIII_Incoming.label>SRTS Mk.III (приземляется)</SRTSMkIII_Incoming.label>
+  <SRTSMkIII_BomberRun.label>SRTS Mk.III (сбрасывает бомбы)</SRTSMkIII_BomberRun.label>
+  <SRTSMkIII_Leaving.label>SRTS Mk.III (улетает)</SRTSMkIII_Leaving.label>
+  <SRTSMkIII_Active.label>SRTS Mk.III (активирован)</SRTSMkIII_Active.label>
+
+  <SRTSMkIIIp_Incoming.label>SRTS Mk.IIIp (приземляется)</SRTSMkIIIp_Incoming.label>
+  <SRTSMkIIIp_Leaving.label>SRTS Mk.IIIp (улетает)</SRTSMkIIIp_Leaving.label>
+  <SRTSMkIIIp_Active.label>SRTS Mk.IIIp (активирован)</SRTSMkIIIp_Active.label>
+
+  <SRTSMkIV_Incoming.label>SRTS Mk.IV (приземляется)</SRTSMkIV_Incoming.label>
+  <SRTSMkIV_BomberRun.label>SRTS Mk.IV (сбрасывает бомбы)</SRTSMkIV_BomberRun.label>
+  <SRTSMkIV_Leaving.label>SRTS Mk.IV (улетает)</SRTSMkIV_Leaving.label>
+  <SRTSMkIV_Active.label>SRTS Mk.IV (активирован)</SRTSMkIV_Active.label>
+
+</LanguageData>

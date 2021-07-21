@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ShuttleComp_Plates.label>стальные пластины SRTS</ShuttleComp_Plates.label>
+  <ShuttleComp_Plates.description>Несколько закалённых стальных пластин разных размеров и форм, сгруппированных для легкого строительства. Чувствительная проводка, трубки и электрические компоненты находятся внутри этих пластин. Необходимы для сборки транспортных шаттлов ближнего действия (SRTS).</ShuttleComp_Plates.description>
+
+  <ShuttleComp_MechSystem.label>механические компоненты SRTS</ShuttleComp_MechSystem.label>
+  <ShuttleComp_MechSystem.description>Разные шестерни, рычаги, печатные платы, механизмы и другие промышленные детали. Необходимы для сборки транспортных шаттлов ближнего действия (SRTS).</ShuttleComp_MechSystem.description>
+
+  <ShuttleComp_ElectricSystem.label>электрические компоненты SRTS</ShuttleComp_ElectricSystem.label>
+  <ShuttleComp_ElectricSystem.description>Разные микросхемы, провода, датчики, печатные платы, разъёмы, переключатели, кнопки и другие электрические компоненты. Необходимы для сборки транспортных шаттлов ближнего действия (SRTS).</ShuttleComp_ElectricSystem.description>
+
+  <ShuttleComp_Engines.label>компоненты двигателя SRTS</ShuttleComp_Engines.label>
+  <ShuttleComp_Engines.description>Разные трубки, клапаны, накладки, пластины, поворотные штифты и другие закалённые компоненты двигателя. Необходимы для сборки транспортных шаттлов ближнего действия (SRTS).</ShuttleComp_Engines.description>
+
+  <ShuttleComp_Structural.label>внутренние компоненты SRTS</ShuttleComp_Structural.label>
+  <ShuttleComp_Structural.description>Разные сиденья, приборные панели, внутренние стены, шторы, раковины, туалеты, столы и многие другие элементы интерьера, необходимые пассажирам. Необходимы для сборки транспортных шаттлов ближнего действия (SRTS).</ShuttleComp_Structural.description>
+
+  <ShuttleComp_MeshPlate.label>продвинутые стальные пластины SRTS</ShuttleComp_MeshPlate.label>
+  <ShuttleComp_MeshPlate.description>Несколько продвинутых закалённых стальных пластин разных размеров и форм, сгруппированных для легкого строительства. Высокотехнологичная нейронная сеть сплетена через стальное покрытие. Необходимы для сборки высокотехнологичных транспортных шаттлов ближнего действия (SRTS).</ShuttleComp_MeshPlate.description>
+
+  <ShuttleComp_Reactor.label>компоненты ядерного реактора SRTS</ShuttleComp_Reactor.label>
+  <ShuttleComp_Reactor.description>Высокотехнологичные и миниатюрные компоненты, используемые для преобразования урана в энергию внутри специализированного ядерного реактора. Необходимы для сборки невероятно сложных шаттлов.</ShuttleComp_Reactor.description>
+
+  <ShuttleComp_DimShift.label>высокотехнологичные компоненты SRTS</ShuttleComp_DimShift.label>
+  <ShuttleComp_DimShift.description>Высокоразвитая архотек-система, которая подключается к кораблю в разных местах. Трубки, проблесковые огни, провода и много таинственных коробок и штуковин. Необходимы для сборки невероятно сложных шаттлов.</ShuttleComp_DimShift.description>
+
+</LanguageData>

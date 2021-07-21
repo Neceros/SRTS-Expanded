@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Make_ShuttleComp_Plates.label>изготовить стальные пластины SRTS</Make_ShuttleComp_Plates.label>
+  <Make_ShuttleComp_Plates.description>Изготовить стальные пластины SRTS.</Make_ShuttleComp_Plates.description>
+  <Make_ShuttleComp_Plates.jobString>изготавливает стальные пластины SRTS</Make_ShuttleComp_Plates.jobString>
+
+  <Make_ShuttleComp_MechSystem.label>изготовить механические компоненты SRTS</Make_ShuttleComp_MechSystem.label>
+  <Make_ShuttleComp_MechSystem.description>Изготовить механические компоненты SRTS.</Make_ShuttleComp_MechSystem.description>
+  <Make_ShuttleComp_MechSystem.jobString>изготавливает механические компоненты SRTS</Make_ShuttleComp_MechSystem.jobString>
+
+  <Make_ShuttleComp_ElectricSystem.label>изготовить электрические компоненты SRTS</Make_ShuttleComp_ElectricSystem.label>
+  <Make_ShuttleComp_ElectricSystem.description>Изготовить электрические компоненты SRTS.</Make_ShuttleComp_ElectricSystem.description>
+  <Make_ShuttleComp_ElectricSystem.jobString>изготавливает электрические компоненты SRTS</Make_ShuttleComp_ElectricSystem.jobString>
+
+  <Make_ShuttleComp_Engines.label>изготовить компоненты двигателя SRTS</Make_ShuttleComp_Engines.label>
+  <Make_ShuttleComp_Engines.description>Изготовить компоненты двигателя SRTS.</Make_ShuttleComp_Engines.description>
+  <Make_ShuttleComp_Engines.jobString>изготавливает компоненты двигателя SRTS</Make_ShuttleComp_Engines.jobString>
+
+  <Make_ShuttleComp_Structural.label>изготовить внутренние компоненты SRTS</Make_ShuttleComp_Structural.label>
+  <Make_ShuttleComp_Structural.description>Изготовить внутренние компоненты SRTS.</Make_ShuttleComp_Structural.description>
+  <Make_ShuttleComp_Structural.jobString>изготавливает внутренние компоненты SRTS</Make_ShuttleComp_Structural.jobString>
+
+  <Make_ShuttleComp_MeshPlate.label>изготовить продвинутые стальные пластины SRTS</Make_ShuttleComp_MeshPlate.label>
+  <Make_ShuttleComp_MeshPlate.description>Изготовить продвинутые стальные пластины SRTS.</Make_ShuttleComp_MeshPlate.description>
+  <Make_ShuttleComp_MeshPlate.jobString>изготавливает продвинутые стальные пластины SRTS</Make_ShuttleComp_MeshPlate.jobString>
+
+  <Make_ShuttleComp_Reactor.label>изготовить компоненты ядерного реактора SRTS</Make_ShuttleComp_Reactor.label>
+  <Make_ShuttleComp_Reactor.description>Изготовить компоненты ядерного реактора SRTS.</Make_ShuttleComp_Reactor.description>
+  <Make_ShuttleComp_Reactor.jobString>изготавливает компоненты ядерного реактора SRTS</Make_ShuttleComp_Reactor.jobString>
+
+  <Make_ShuttleComp_DimShift.label>изготовить высокотехнологичные компоненты SRTS</Make_ShuttleComp_DimShift.label>
+  <Make_ShuttleComp_DimShift.description>Изготовить высокотехнологичные компоненты SRTS.</Make_ShuttleComp_DimShift.description>
+  <Make_ShuttleComp_DimShift.jobString>изготавливает высокотехнологичные компоненты SRTS</Make_ShuttleComp_DimShift.jobString>
+
+</LanguageData>
