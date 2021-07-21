@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Verse;
 using UnityEngine;
+using Verse;
 
 namespace SPExtended
 {
@@ -128,18 +127,22 @@ namespace SPExtended
                     sizeX = pawn.def.size.x;
                     sizeZ = pawn.def.size.z;
                     break;
+
                 case 1:
                     sizeX = pawn.def.size.z;
                     sizeZ = pawn.def.size.x;
                     break;
+
                 case 2:
                     sizeX = pawn.def.size.x;
                     sizeZ = pawn.def.size.z;
                     break;
+
                 case 3:
                     sizeX = pawn.def.size.z;
                     sizeZ = pawn.def.size.x;
                     break;
+
                 default:
                     throw new NotImplementedException("MoreThan4Rotations");
             }
@@ -220,6 +223,7 @@ namespace SPExtended
                         bracketLocs[i].z = newPos.Second + worldPos.z;
                     }
                     break;
+
                 case -45:
                     for (int i = 0; i < 4; i++)
                     {
@@ -250,6 +254,7 @@ namespace SPExtended
                     drawPos.x += x;
                     drawPos.z += z;
                     break;
+
                 case 1:
                     if (angle == -45)
                     {
@@ -266,10 +271,12 @@ namespace SPExtended
                     drawPos.x += z;
                     drawPos.z += x;
                     break;
+
                 case 2:
                     drawPos.x -= x;
                     drawPos.z -= z;
                     break;
+
                 case 3:
                     if (angle == -45)
                     {
@@ -286,6 +293,7 @@ namespace SPExtended
                     drawPos.x -= z;
                     drawPos.z -= x;
                     break;
+
                 default:
                     throw new NotImplementedException("Pawn Rotation outside Rot4");
             }

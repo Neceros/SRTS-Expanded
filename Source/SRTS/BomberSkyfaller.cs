@@ -1,12 +1,11 @@
-﻿using System;
+﻿using RimWorld;
+using RimWorld.Planet;
+using SPExtended;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using RimWorld;
-using RimWorld.Planet;
-using Verse;
 using UnityEngine;
-using SPExtended;
+using Verse;
 using Verse.Sound;
 
 namespace SRTS
@@ -25,7 +24,7 @@ namespace SRTS
             get
             {
                 Thing thingForGraphic = this.GetThingForGraphic();
-                if(thingForGraphic == this)
+                if (thingForGraphic == this)
                     return base.Graphic;
                 return thingForGraphic.Graphic.ExtractInnerGraphicFor(thingForGraphic).GetShadowlessGraphic();
             }
@@ -39,10 +38,13 @@ namespace SRTS
                 {
                     case SkyfallerMovementType.Accelerate:
                         return SkyfallerDrawPosUtility.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
+
                     case SkyfallerMovementType.ConstantSpeed:
                         return SkyfallerDrawPosUtility.DrawPos_ConstantSpeed(base.DrawPos, this.ticksToExit, this.angle, this.speed);
+
                     case SkyfallerMovementType.Decelerate:
                         return SkyfallerDrawPosUtility.DrawPos_Decelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
+
                     default:
                         Log.ErrorOnce("SkyfallerMovementType not handled: " + this.def.skyfaller.movementType, this.thingIDNumber ^ 1948576711, false);
                         return SkyfallerDrawPosUtility.DrawPos_Accelerate(base.DrawPos, this.ticksToExit, this.angle, this.speed);
@@ -62,7 +64,7 @@ namespace SRTS
         {
             get
             {
-                if(this.cachedShadowMaterial is null && !this.def.skyfaller.shadow.NullOrEmpty())
+                if (this.cachedShadowMaterial is null && !this.def.skyfaller.shadow.NullOrEmpty())
                     this.cachedShadowMaterial = MaterialPool.MatFrom(this.def.skyfaller.shadow, ShaderDatabase.Transparent);
                 return this.cachedShadowMaterial;
             }
@@ -95,11 +97,11 @@ namespace SRTS
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            if(!respawningAfterLoad)
+            if (!respawningAfterLoad)
             {
-                this.ticksToExit = Mathf.CeilToInt((float)SPExtra.Distance(new IntVec3(map.Size.x/2, map.Size.y, map.Size.z/2), this.Position)*2 / this.speed);
+                this.ticksToExit = Mathf.CeilToInt((float)SPExtra.Distance(new IntVec3(map.Size.x / 2, map.Size.y, map.Size.z / 2), this.Position) * 2 / this.speed);
             }
-            if(sound != null)
+            if (sound != null)
                 sound.PlayOneShotOnCamera(this.Map);
         }
 
@@ -121,7 +123,7 @@ namespace SRTS
         {
             this.innerContainer.ThingOwnerTick(true);
             this.ticksToExit--;
-            if(bombCells.Any() && Math.Abs(this.DrawPosCell.x - bombCells.First().x) < 3 && Math.Abs(this.DrawPosCell.z - bombCells.First().z) < 3)
+            if (bombCells.Any() && Math.Abs(this.DrawPosCell.x - bombCells.First().x) < 3 && Math.Abs(this.DrawPosCell.z - bombCells.First().z) < 3)
                 this.DropBomb();
             if (this.ticksToExit == 0)
                 this.ExitMap();
@@ -129,7 +131,7 @@ namespace SRTS
 
         private void DropBomb()
         {
-            for(int i = 0; i < (bombType == BombingType.precise ? this.precisionBombingNumBombs : 1); ++i)
+            for (int i = 0; i < (bombType == BombingType.precise ? this.precisionBombingNumBombs : 1); ++i)
             {
                 if (innerContainer.Any(x => ((ActiveDropPod)x)?.Contents.innerContainer.Any(y => SRTSMod.mod.settings.allowedBombs.Contains(y.def.defName)) ?? false))
                 {
@@ -142,7 +144,7 @@ namespace SRTS
                     Thing thing2 = srts?.Contents.innerContainer.Take(thing, 1);
 
                     IntVec3 bombPos = bombCells[0];
-                    if(bombType == BombingType.carpet)
+                    if (bombType == BombingType.carpet)
                         bombCells.RemoveAt(0);
                     int timerTickExplode = 20 + Rand.Range(0, 5); //Change later to allow release timer
                     if (SRTSHelper.CEModLoaded)
@@ -160,7 +162,7 @@ namespace SRTS
                     GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(t, thing2.TryGetComp<CompExplosive>().Props.explosiveDamageType, null);
                     continue;
 
-                Block_CEPatched:;
+Block_CEPatched:;
                     ThingComp CEComp = (thing2 as ThingWithComps)?.AllComps.Find(x => x.GetType().Name == "CompExplosiveCE");
                     FallingBombCE CEbombThing = new FallingBombCE(thing2, CEComp.props, CEComp, this.Map, this.def.skyfaller.shadow);
                     CEbombThing.HitPoints = int.MaxValue;
@@ -174,7 +176,7 @@ namespace SRTS
                     //GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(CEt, DamageDefOf., null); /*Is GenExplosion CE compatible?*/
                 }
             }
-            if(bombType == BombingType.precise && bombCells.Any())
+            if (bombType == BombingType.precise && bombCells.Any())
                 bombCells.Clear();
         }
 
@@ -197,12 +199,14 @@ namespace SRTS
 
         private int GetCurrentTargetingRadius()
         {
-            switch(bombType)
+            switch (bombType)
             {
                 case BombingType.carpet:
                     return radius;
+
                 case BombingType.precise:
                     return (int)(radius * 0.6f);
+
                 case BombingType.missile:
                     throw new NotImplementedException("BombingType");
                 default:
@@ -241,7 +245,7 @@ namespace SRTS
 
         public static void DrawBombSpotShadow(Vector3 loc, Rot4 rot, Material material, Vector2 shadowSize, int ticksToExit)
         {
-            if(rot.IsHorizontal)
+            if (rot.IsHorizontal)
                 Gen.Swap<float>(ref shadowSize.x, ref shadowSize.y);
             ticksToExit = Mathf.Max(ticksToExit, 0);
             Vector3 pos = loc;

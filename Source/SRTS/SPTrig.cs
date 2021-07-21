@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Verse;
-using UnityEngine;
 
 namespace SPExtended
 {
@@ -85,8 +81,10 @@ namespace SPExtended
             {
                 case 2:
                     return 360 - angle;
+
                 case 3:
                     return 180 + angle;
+
                 case 4:
                     return 180 - angle;
             }
@@ -126,17 +124,17 @@ namespace SPExtended
             //Opposite of the sign of the slope
             int xDir = Math.Sign((double)xPrime) * -1;
             int yDir = Math.Sign((double)yPrime) * -1;
-            
+
             //Horizontal
-            if(start.z == end.z)
+            if (start.z == end.z)
             {
-               if(start.x < end.x)
+                if (start.x < end.x)
                     return 0;
-               else
+                else
                     return 180;
             }
             //Vertical
-            else if(start.x == end.x)
+            else if (start.x == end.x)
             {
                 if (start.z < end.z)
                     return 90;
@@ -145,13 +143,13 @@ namespace SPExtended
             }
 
             //Q4
-            if(xDir == -1 && yDir == 1)
+            if (xDir == -1 && yDir == 1)
                 angle = 180 - angle;
             //Q3
-            else if(xDir == -1 && yDir == -1)
+            else if (xDir == -1 && yDir == -1)
                 angle += 180;
             //Q2
-            else if(xDir == 1 && yDir == -1)
+            else if (xDir == 1 && yDir == -1)
                 angle = 90 - angle + 270;
             //Do nothing if Q1
             return angle;
@@ -199,10 +197,13 @@ namespace SPExtended
             {
                 case 0: //North
                     return new IntVec3((int)(b / (2 * v) + b / 2), 0, b - 1);
+
                 case 1: //East
                     return new IntVec3(a - 1, 0, (int)(a / 2 * v) + a / 2);
+
                 case 2: //South
                     return new IntVec3((int)(b - (b / (2 * v) + b / 2)), 0, 1);
+
                 case 3: //West
                     return new IntVec3(1, 0, (int)(a - ((a / 2 * v) + a / 2)));
             }
@@ -215,11 +216,10 @@ namespace SPExtended
             if (angle < 0 || angle > 360)
                 return IntVec3.Invalid;
 
-
             Rot4 rayDir = Rot4.Invalid;
             if (angle <= start.AngleToPointRelative(map.Size) || angle > start.AngleToPointRelative(new IntVec3(map.Size.x, 0, 0)))
                 rayDir = Rot4.East;
-            else if (angle <= start.AngleToPointRelative(new IntVec3(0, 0, map.Size.z))  && angle >= start.AngleToPointRelative(map.Size))
+            else if (angle <= start.AngleToPointRelative(new IntVec3(0, 0, map.Size.z)) && angle >= start.AngleToPointRelative(map.Size))
                 rayDir = Rot4.North;
             else if (angle <= start.AngleToPointRelative(IntVec3.Zero) && angle >= start.AngleToPointRelative(new IntVec3(0, 0, map.Size.z)))
                 rayDir = Rot4.West;
@@ -229,13 +229,16 @@ namespace SPExtended
             switch (rayDir.AsInt)
             {
                 case 0: //North
-                    return new IntVec3((int)( (map.Size.z - start.z) / Math.Tan( (angle > 90 ? (-(180 - angle)) : angle).DegreesToRadians())) + start.x, 0, map.Size.z - 1);
+                    return new IntVec3((int)((map.Size.z - start.z) / Math.Tan((angle > 90 ? (-(180 - angle)) : angle).DegreesToRadians())) + start.x, 0, map.Size.z - 1);
+
                 case 1: //East
-                    return new IntVec3(map.Size.x - 1, 0, (int)( (map.Size.x - start.x) * Math.Tan(angle.DegreesToRadians())) + start.z);
+                    return new IntVec3(map.Size.x - 1, 0, (int)((map.Size.x - start.x) * Math.Tan(angle.DegreesToRadians())) + start.z);
+
                 case 2: //South
-                    return new IntVec3(start.x + (angle > 270 ? 1 : -1) * (int)( start.z * Math.Tan( (angle > 270 ? angle - 270 : 270 - angle).DegreesToRadians())), 0, 0);
+                    return new IntVec3(start.x + (angle > 270 ? 1 : -1) * (int)(start.z * Math.Tan((angle > 270 ? angle - 270 : 270 - angle).DegreesToRadians())), 0, 0);
+
                 case 3: //West
-                    return new IntVec3(0, 0, start.z + (angle > 180 ? -1 : 1) * (int)(start.x * Math.Tan( (angle > 180 ? (angle - 180) : (180 - angle)).DegreesToRadians())));
+                    return new IntVec3(0, 0, start.z + (angle > 180 ? -1 : 1) * (int)(start.x * Math.Tan((angle > 180 ? (angle - 180) : (180 - angle)).DegreesToRadians())));
             }
             return IntVec3.Invalid;
         }

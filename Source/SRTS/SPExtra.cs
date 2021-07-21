@@ -1,9 +1,9 @@
-﻿using System;
+﻿using RimWorld.Planet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Verse;
-using RimWorld.Planet;
 using UnityEngine;
+using Verse;
 
 namespace SPExtended
 {
@@ -56,20 +56,20 @@ namespace SPExtended
                 else if (c.x <= map.Size.x / 2 && c.z > map.Size.z / 2)
                     return Q4;
 
-                if(c.x == map.Size.x/2 && c.z == map.Size.z/2)
+                if (c.x == map.Size.x / 2 && c.z == map.Size.z / 2)
                     return Q1;
                 return Quadrant.Invalid;
             }
 
             public static Quadrant QuadrantRelativeToPoint(IntVec3 c, IntVec3 point, Map map)
             {
-                if(c.x > point.x && c.z >= point.z)
+                if (c.x > point.x && c.z >= point.z)
                     return Q1;
-                else if(c.x >= point.x && c.z < point.z)
+                else if (c.x >= point.x && c.z < point.z)
                     return Q2;
-                else if(c.x < point.x && c.z <= point.z)
+                else if (c.x < point.x && c.z <= point.z)
                     return Q3;
-                else if(c.x <= point.x && c.z > point.z)
+                else if (c.x <= point.x && c.z > point.z)
                     return Q4;
                 if (c.x == point.x && c.z == point.z)
                     return Q1;
@@ -82,12 +82,16 @@ namespace SPExtended
                 {
                     case 1:
                         return CellRect.WholeMap(map).Cells.Where(c2 => c2.x > map.Size.x / 2 && c2.z >= map.Size.z / 2);
+
                     case 2:
                         return CellRect.WholeMap(map).Cells.Where(c2 => c2.x <= map.Size.x / 2 && c2.z < map.Size.z / 2);
+
                     case 3:
                         return CellRect.WholeMap(map).Cells.Where(c2 => c2.x < map.Size.x / 2 && c2.z <= map.Size.z / 2);
+
                     case 4:
                         return CellRect.WholeMap(map).Cells.Where(c2 => c2.x <= map.Size.x / 2 && c2.z > map.Size.z / 2);
+
                     default:
                         throw new NotImplementedException("Quadrants");
                 }
@@ -258,13 +262,13 @@ namespace SPExtended
             IntVec3 south = new IntVec3(c.x, c.y, c.z - 1);
             IntVec3 west = new IntVec3(c.x - 1, c.y, c.z);
 
-            if(north.InBounds(map))
+            if (north.InBounds(map))
                 yield return north;
-            if(east.InBounds(map))
+            if (east.InBounds(map))
                 yield return east;
-            if(south.InBounds(map))
+            if (south.InBounds(map))
                 yield return south;
-            if(west.InBounds(map))
+            if (west.InBounds(map))
                 yield return west;
         }
 
@@ -442,5 +446,4 @@ namespace SPExtended
         private static readonly Texture2D FillableBarTexture = SolidColorMaterials.NewSolidColorTexture(0.5f, 0.5f, 0.5f, 0.5f);
         private static readonly Texture2D ClearBarTexture = BaseContent.ClearTex;
     }
-
 }

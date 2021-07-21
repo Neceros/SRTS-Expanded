@@ -7,7 +7,8 @@ using Verse;
 namespace SRTS
 {
     /* Akreedz original patch */
-    [HarmonyPatch(typeof (TransportPodsArrivalAction_LandInSpecificCell), "Arrived", new System.Type[] {typeof (List<ActiveDropPodInfo>), typeof (int)})]
+
+    [HarmonyPatch(typeof(TransportPodsArrivalAction_LandInSpecificCell), "Arrived", new System.Type[] { typeof(List<ActiveDropPodInfo>), typeof(int) })]
     public static class HarmonyTest_AJ
     {
         public static bool Prefix(TransportPodsArrivalAction_LandInSpecificCell __instance, List<ActiveDropPodInfo> pods, int tile)
@@ -16,7 +17,7 @@ namespace SRTS
             {
                 for (int index = 0; index < pod.innerContainer.Count; index++)
                 {
-                    if(pod.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null || DefDatabase<ThingDef>.GetNamed(pod.innerContainer[index]?.def?.defName?.Split('_')[0], false)?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
+                    if (pod.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null || DefDatabase<ThingDef>.GetNamed(pod.innerContainer[index]?.def?.defName?.Split('_')[0], false)?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
                     {
                         Thing lookTarget = TransportPodsArrivalActionUtility.GetLookTarget(pods);
                         Traverse traverse = Traverse.Create((object)__instance);

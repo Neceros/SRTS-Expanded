@@ -1,13 +1,11 @@
-﻿using System;
+﻿using RimWorld;
 using UnityEngine;
 using Verse;
-using RimWorld;
 
 namespace SRTS
 {
     public class SRTSIncoming : Skyfaller, IActiveDropPod, IThingHolder
     {
-
         public Rot4 SRTSRotation
         {
             get
@@ -21,6 +19,7 @@ namespace SRTS
                 this.rotation = value;
             }
         }
+
         public ActiveDropPodInfo Contents
         {
             get
@@ -46,7 +45,7 @@ namespace SRTS
                 Vector3 loc = base.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(1f);
                 //MoteMaker.ThrowDustPuff(loc, base.Map, 1.2f);
             }
-            
+
             //MoteMaker.ThrowLightningGlow(base.Position.ToVector3Shifted(), base.Map, 2f);
             GenClamor.DoClamor(this, 15f, ClamorDefOf.Impact);
             base.Impact();

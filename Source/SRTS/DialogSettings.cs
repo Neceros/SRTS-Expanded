@@ -1,11 +1,10 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Globalization;
-using System.Text;
+using System.Linq;
 using UnityEngine;
 using Verse;
-using RimWorld;
 
 namespace SRTS
 {
@@ -14,6 +13,7 @@ namespace SRTS
     {
         public static Color textColor = Color.white;
         public static Color highlightColor = new Color(0f, 0f, 0f, 0.25f);
+
         public static void Settings_IntegerBox(this Listing_Standard lister, string text, ref int value, float labelLength, float padding, int min = int.MinValue, int max = int.MaxValue)
         {
             lister.Gap(12f);
@@ -60,10 +60,10 @@ namespace SRTS
             Rect rect = lister.GetRect(24f);
             string format = string.Format("{0}" + endSymbol, Math.Round(value * multiplier, decimalPlaces));
             if (!endValueDisplay.NullOrEmpty() && endValue > 0)
-                if(value >= endValue)
+                if (value >= endValue)
                     format = endValueDisplay;
             value = Widgets.HorizontalSlider(rect, value, min, max, false, null, label, format);
-            if(endValue > 0 && value >= max)
+            if (endValue > 0 && value >= max)
                 value = endValue;
         }
 
@@ -72,11 +72,11 @@ namespace SRTS
             lister.Gap(12f);
             Rect rect = lister.GetRect(24f);
             string format = string.Format("{0}" + endSymbol, value);
-            if(!endValueDisplay.NullOrEmpty() && endValue > 0)
-                if(value == endValue)
+            if (!endValueDisplay.NullOrEmpty() && endValue > 0)
+                if (value == endValue)
                     format = endValueDisplay;
             value = (int)Widgets.HorizontalSlider(rect, value, min, max, false, null, label, format);
-            if(endValue > 0 && value == max)
+            if (endValue > 0 && value == max)
                 value = endValue;
         }
 
@@ -93,7 +93,7 @@ namespace SRTS
             var anchorTmp = Text.Anchor;
             Text.Anchor = anchor;
             Widgets.Label(rect, header);
-            Text.Font = textSize;   
+            Text.Font = textSize;
             Text.Anchor = anchorTmp;
             lister.Gap(12f);
         }
@@ -121,14 +121,14 @@ namespace SRTS
         {
             var anchor = Text.Anchor;
             Color color = GUI.color;
-            
-            if(background)
+
+            if (background)
             {
                 Texture2D atlas = ButtonBGAtlas;
-                if(Mouse.IsOver(rect))
+                if (Mouse.IsOver(rect))
                 {
                     atlas = ButtonBGAtlasMouseover;
-                    if(Input.GetMouseButton(0))
+                    if (Input.GetMouseButton(0))
                     {
                         atlas = ButtonBGAtlasClick;
                     }
@@ -138,10 +138,10 @@ namespace SRTS
             else
             {
                 GUI.color = customColor;
-                if(Mouse.IsOver(rect))
+                if (Mouse.IsOver(rect))
                     GUI.color = Color.cyan;
             }
-            if(background)
+            if (background)
                 Text.Anchor = TextAnchor.MiddleCenter;
             else
                 Text.Anchor = TextAnchor.MiddleLeft;
@@ -166,7 +166,7 @@ namespace SRTS
             Text.Anchor = TextAnchor.MiddleLeft;
             Widgets.Label(rect, header);
 
-            if(background)
+            if (background)
             {
                 Texture2D atlas = ButtonBGAtlas;
                 if (Mouse.IsOver(buttonRect))
@@ -182,7 +182,7 @@ namespace SRTS
             else
             {
                 GUI.color = Color.white;
-                if(Mouse.IsOver(buttonRect))
+                if (Mouse.IsOver(buttonRect))
                     GUI.color = highlightColor;
             }
             if (background)
@@ -190,7 +190,7 @@ namespace SRTS
             else
                 Text.Anchor = TextAnchor.MiddleRight;
             bool wordWrap = Text.WordWrap;
-            if(buttonRect.height < Text.LineHeight * 2f)
+            if (buttonRect.height < Text.LineHeight * 2f)
                 Text.WordWrap = false;
 
             Widgets.Label(buttonRect, buttonLabel);
@@ -248,18 +248,18 @@ namespace SRTS
             Widgets.Label(labelRect, "SearchResearch".Translate());
             charCount = researchString?.Count() ?? 0;
             researchString = Widgets.TextArea(searchBarRect, researchString);
-            
-            if(researchString.Count() != charCount || researchChanged)
+
+            if (researchString.Count() != charCount || researchChanged)
             {
                 projectsSearched = DefDatabase<ResearchProjectDef>.AllDefs.Where(x => !SRTSMod.mod.props.ResearchPrerequisites.Contains(x) && CultureInfo.CurrentCulture.CompareInfo.IndexOf(x.defName, researchString, CompareOptions.IgnoreCase) >= 0).ToList();
                 researchChanged = false;
             }
-            
-            for(int i = 0; i < projectsSearched.Count; i++)
+
+            for (int i = 0; i < projectsSearched.Count; i++)
             {
                 ResearchProjectDef proj = projectsSearched[i];
-                Rect projectRect = new Rect(inRect.x, searchBarRect.y + 24 + (24*i), inRect.width, 30f);
-                if(Widgets.ButtonText(projectRect, proj.defName, false, false, true) && !SRTSMod.mod.props.ResearchPrerequisites.Contains(proj))
+                Rect projectRect = new Rect(inRect.x, searchBarRect.y + 24 + (24 * i), inRect.width, 30f);
+                if (Widgets.ButtonText(projectRect, proj.defName, false, false, true) && !SRTSMod.mod.props.ResearchPrerequisites.Contains(proj))
                 {
                     addedResearch = true;
                     researchChanged = true;
@@ -274,13 +274,13 @@ namespace SRTS
                 Messages.Message("RestartGameResearch".Translate(), MessageTypeDefOf.CautionInput, false);*/ //Uncomment to send message to restart game if research has been changed
         }
 
-        bool addedResearch;
+        private bool addedResearch;
 
-        bool researchChanged = true;
+        private bool researchChanged = true;
 
         private string researchString;
 
-        int charCount;
+        private int charCount;
 
         private List<ResearchProjectDef> projectsSearched;
     }
@@ -309,10 +309,10 @@ namespace SRTS
             charCount = explosivesString?.Count() ?? 0;
             explosivesString = Widgets.TextArea(searchBarRect, explosivesString);
 
-            if(explosivesString.Count() != charCount || explosivesChanged)
+            if (explosivesString.Count() != charCount || explosivesChanged)
             {
                 explosivesChanged = false;
-                if(SRTSHelper.CEModLoaded)
+                if (SRTSHelper.CEModLoaded)
                 {
                     explosivesSearched = DefDatabase<ThingDef>.AllDefs.Where(x => x.HasComp(Type.GetType("CombatExtended.CompExplosiveCE,CombatExtended")) && !SRTSMod.mod.settings.allowedBombs.Contains(x.defName)
                     && CultureInfo.CurrentCulture.CompareInfo.IndexOf(x.defName, explosivesString, CompareOptions.IgnoreCase) >= 0).ToList();
@@ -328,22 +328,22 @@ namespace SRTS
             {
                 ThingDef explosive = explosivesSearched[i];
                 Rect explosiveRect = new Rect(searchBarRect.x, searchBarRect.y + 24 + (24 * i), searchBarRect.width, 30f);
-                if(Widgets.ButtonText(explosiveRect, explosive.defName, false, false, true) && !SRTSMod.mod.settings.allowedBombs.Contains(explosive.defName))
+                if (Widgets.ButtonText(explosiveRect, explosive.defName, false, false, true) && !SRTSMod.mod.settings.allowedBombs.Contains(explosive.defName))
                 {
                     explosivesChanged = true;
                     SRTSMod.mod.settings.allowedBombs.Add(explosive.defName);
-                    if(SRTSMod.mod.settings.allowedBombs.Contains(explosive.defName))
+                    if (SRTSMod.mod.settings.allowedBombs.Contains(explosive.defName))
                         SRTSMod.mod.settings.disallowedBombs.Remove(explosive.defName);
                 }
             }
             Rect outRect = new Rect(inRect.x - 6f, searchBarRect.y + BufferArea, searchBarRect.width, inRect.height - (BufferArea * 2));
             Rect viewRect = new Rect(outRect.x, outRect.y, outRect.width - 32f, outRect.height * ((float)SRTSMod.mod.settings.allowedBombs.Count / 11f));
             Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect, true);
-            for(int i = 0; i < SRTSMod.mod.settings.allowedBombs.Count; i++)
+            for (int i = 0; i < SRTSMod.mod.settings.allowedBombs.Count; i++)
             {
                 string s = SRTSMod.mod.settings.allowedBombs[i];
                 Rect allowedExplosivesRect = new Rect(inRect.x, searchBarRect.y + 24f + (24f * i), searchBarRect.width, 30f);
-                if(Widgets.ButtonText(allowedExplosivesRect, s, false, false, true))
+                if (Widgets.ButtonText(allowedExplosivesRect, s, false, false, true))
                 {
                     explosivesChanged = true;
                     SRTSMod.mod.settings.allowedBombs.Remove(s);
@@ -359,7 +359,7 @@ namespace SRTS
 
         private bool explosivesChanged = true;
 
-        int charCount;
+        private int charCount;
 
         private List<ThingDef> explosivesSearched;
 

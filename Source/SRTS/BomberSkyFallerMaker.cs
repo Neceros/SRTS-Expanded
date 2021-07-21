@@ -1,10 +1,6 @@
-﻿using System;
+﻿using SPExtended;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Verse;
-using RimWorld;
-using SPExtended;
 
 namespace SRTS
 {
@@ -24,7 +20,7 @@ namespace SRTS
         public static BomberSkyfaller MakeSkyfaller(ThingDef skyfaller, Thing innerThing)
         {
             BomberSkyfaller skyfaller2 = BomberSkyfallerMaker.MakeSkyfaller(skyfaller);
-            if(innerThing != null && !skyfaller2.innerContainer.TryAdd(innerThing, true))
+            if (innerThing != null && !skyfaller2.innerContainer.TryAdd(innerThing, true))
             {
                 Log.Error("Could not add " + innerThing.ToStringSafe<Thing>() + " to a skyfaller.", false);
                 innerThing.Destroy(DestroyMode.Vanish);
@@ -35,7 +31,7 @@ namespace SRTS
         public static BomberSkyfaller MakeSkyfaller(ThingDef skyfaller, IEnumerable<Thing> things)
         {
             BomberSkyfaller skyfaller2 = BomberSkyfallerMaker.MakeSkyfaller(skyfaller);
-            if(things != null)
+            if (things != null)
                 skyfaller2.innerContainer.TryAddRangeOrTransfer(things, false, true);
             return skyfaller2;
         }

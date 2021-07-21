@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Verse;
-using RimWorld;
-using HarmonyLib;
+﻿using RimWorld;
 using UnityEngine;
+using Verse;
 
 namespace SRTS
 {
@@ -26,7 +21,7 @@ namespace SRTS
             this.graphicInt = reference.DefaultGraphic;
             this.hitPointsInt = reference.HitPoints;
             props = reference.TryGetComp<CompExplosive>().Props;
-            if(projectile?.explosionRadius != null)
+            if (projectile?.explosionRadius != null)
                 explosionRadius = def.projectileWhenLoaded.projectile.explosionRadius;
             else
                 explosionRadius = comp.ExplosiveRadius();
@@ -60,7 +55,7 @@ namespace SRTS
         {
             get
             {
-                if(texPathShadow != null && !texPathShadow.NullOrEmpty())
+                if (texPathShadow != null && !texPathShadow.NullOrEmpty())
                     cachedShadowMaterial = MaterialPool.MatFrom(texPathShadow, ShaderDatabase.Transparent);
                 return cachedShadowMaterial;
             }
@@ -75,7 +70,7 @@ namespace SRTS
 
         protected static void DrawDropSpotShadow(Vector3 center, Rot4 rot, Material material, Vector2 shadowSize, int ticksToImpact)
         {
-            if(rot.IsHorizontal)
+            if (rot.IsHorizontal)
                 Gen.Swap<float>(ref shadowSize.x, ref shadowSize.y);
             ticksToImpact = Mathf.Max(ticksToImpact, 0);
             Vector3 pos = center;
@@ -95,7 +90,7 @@ namespace SRTS
 
         public override void Tick()
         {
-            if(ticksRemaining < 0)
+            if (ticksRemaining < 0)
             {
                 this.ExplodeOnImpact();
             }
@@ -116,7 +111,7 @@ namespace SRTS
                 effecter.Trigger(new TargetInfo(this.PositionHeld, map, false), new TargetInfo(this.PositionHeld, map, false));
                 effecter.Cleanup();
             }
-            if(def.projectileWhenLoaded?.projectile != null)
+            if (def.projectileWhenLoaded?.projectile != null)
             {
                 GenExplosion.DoExplosion(this.PositionHeld, map, explosionRadius, projectile.damageDef, this, projectile.GetDamageAmount(1), projectile.GetArmorPenetration(1), projectile.soundExplode, null, def.projectileWhenLoaded, null,
                     projectile.postExplosionSpawnThingDef, projectile.postExplosionSpawnChance, projectile.postExplosionSpawnThingCount, projectile.applyDamageToExplosionCellsNeighbors, projectile.preExplosionSpawnThingDef,

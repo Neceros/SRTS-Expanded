@@ -1,31 +1,32 @@
-﻿using System;
+﻿using RimWorld;
+using RimWorld.Planet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
-using Verse;
-using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
+using Verse;
 
 namespace SRTS
 {
     public enum BombingType { carpet, precise, missile }
+
     public class CompBombFlyer : ThingComp
     {
         public Building SRTS_Launcher => this.parent as Building;
         public CompLaunchableSRTS CompLauncher => SRTS_Launcher.GetComp<CompLaunchableSRTS>();
         public CompProperties_BombsAway Props => (CompProperties_BombsAway)this.props;
+
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
-            if(SRTS_Launcher.GetComp<CompLaunchableSRTS>().LoadingInProgressOrReadyToLaunch)
+            if (SRTS_Launcher.GetComp<CompLaunchableSRTS>().LoadingInProgressOrReadyToLaunch)
             {
                 yield return new Command_Action()
                 {
                     defaultLabel = "BombTarget".Translate(),
                     defaultDesc = "BombTargetDesc".Translate(),
                     icon = TexCommand.Attack,
-                    action = delegate()
+                    action = delegate ()
                     {
                         int num = 0;
                         foreach (Thing t in CompLauncher.Transporter.innerContainer)
@@ -35,7 +36,7 @@ namespace SRTS
                                 num++;
                             }
                         }
-                        if(SRTSMod.mod.settings.passengerLimits)
+                        if (SRTSMod.mod.settings.passengerLimits)
                         {
                             if (num < SRTSMod.GetStatFor<int>(this.parent.def.defName, StatName.minPassengers))
                             {
@@ -48,7 +49,7 @@ namespace SRTS
                                 return;
                             }
                         }
-                        
+
                         FloatMenuOption carpetBombing = new FloatMenuOption("CarpetBombing".Translate(), delegate ()
                         {
                             bombType = BombingType.carpet;
@@ -125,22 +126,22 @@ namespace SRTS
 
         private bool ChoseWorldTargetToBomb(GlobalTargetInfo target)
         {
-            if(!target.IsValid)
+            if (!target.IsValid)
             {
                 Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput, false);
                 return false;
             }
-            
+
             int num = Find.WorldGrid.TraversalDistanceBetween(this.parent.Map.Tile, target.Tile);
-            if(num > CompLauncher.MaxLaunchDistance)
+            if (num > CompLauncher.MaxLaunchDistance)
             {
                 Messages.Message("MessageTransportPodsDestinationIsTooFar".Translate(CompLaunchableSRTS.FuelNeededToLaunchAtDist((float)num, this.parent.GetComp<CompLaunchableSRTS>().BaseFuelPerTile).ToString("0.#")), MessageTypeDefOf.RejectInput, false);
                 return false;
             }
-            if(Find.WorldObjects.AnyMapParentAt(target.Tile))
+            if (Find.WorldObjects.AnyMapParentAt(target.Tile))
             {
                 MapParent targetMapParent = Find.WorldObjects.MapParentAt(target.Tile);
-                if(SRTSArrivalActionBombRun.CanBombSpecificCell(null, targetMapParent))
+                if (SRTSArrivalActionBombRun.CanBombSpecificCell(null, targetMapParent))
                 {
                     Map targetMap = targetMapParent.Map;
                     Current.Game.CurrentMap = targetMap;
@@ -187,7 +188,7 @@ namespace SRTS
 
             Map map = this.parent.Map;
             int num = Find.WorldGrid.TraversalDistanceBetween(map.Tile, destTile);
-            if(num > CompLauncher.MaxLaunchDistance)
+            if (num > CompLauncher.MaxLaunchDistance)
             {
                 return;
             }

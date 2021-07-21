@@ -6,7 +6,7 @@ namespace SRTS
     {
         public CompProperties_LaunchableSRTS()
         {
-            this.compClass = typeof (CompLaunchableSRTS);
+            this.compClass = typeof(CompLaunchableSRTS);
         }
 
         public float travelSpeed = 25f;

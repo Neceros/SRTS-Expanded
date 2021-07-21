@@ -1,18 +1,20 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
-using RimWorld;
-using UnityEngine;
-using SPExtended;
 
 namespace SRTS
 {
     internal enum SettingsCategory { Settings, Stats, Research }
-    public enum StatName { massCapacity, minPassengers, maxPassengers, flightSpeed, numberBombs, radiusDrop, bombingSpeed, distanceBetweenDrops, researchPoints, fuelPerTile, precisionBombingNumBombs
-        , spaceFaring, shuttleBayLanding}
+
+    public enum StatName
+    {
+        massCapacity, minPassengers, maxPassengers, flightSpeed, numberBombs, radiusDrop, bombingSpeed, distanceBetweenDrops, researchPoints, fuelPerTile, precisionBombingNumBombs
+        , spaceFaring, shuttleBayLanding
+    }
 
     public class SRTS_ModSettings : ModSettings
     {
@@ -58,7 +60,7 @@ namespace SRTS
             if (this.defProperties is null || this.defProperties.Count <= 0)
             {
                 this.defProperties = new Dictionary<string, SRTS_DefProperties>();
-                
+
                 foreach (ThingDef t in DefDatabase<ThingDef>.AllDefs.Where(x => x.GetCompProperties<CompProperties_LaunchableSRTS>() != null))
                 {
                     this.defProperties.Add(t.defName, new SRTS_DefProperties(t));
@@ -71,7 +73,7 @@ namespace SRTS
             SRTSMod.mod.settings.CheckDictionarySavedValid();
             foreach (KeyValuePair<string, SRTS_DefProperties> kvp in SRTSMod.mod.settings.defProperties)
             {
-                if(SRTSMod.mod.settings.defProperties.ContainsKey(kvp.Key))
+                if (SRTSMod.mod.settings.defProperties.ContainsKey(kvp.Key))
                 {
                     if (SRTSMod.mod.settings.defProperties[kvp.Key].ResetReferencedDef(kvp.Key))
                     {
@@ -115,17 +117,17 @@ namespace SRTS
             Rect settingsCategory = new Rect(inRect.width / 2 - (inRect.width / 12), inRect.y, inRect.width / 6, inRect.height);
             Rect groupSRTS = new Rect(settingsCategory.x - settingsCategory.width, settingsCategory.y, settingsCategory.width, settingsCategory.height);
 
-            if(Prefs.DevMode)
+            if (Prefs.DevMode)
             {
                 Rect emergencyReset = new Rect(inRect.width - settingsCategory.width, settingsCategory.y, settingsCategory.width, settingsCategory.height);
                 listing_Standard.Begin(emergencyReset);
-                if(listing_Standard.ButtonText("DevMode Reset"))
+                if (listing_Standard.ButtonText("DevMode Reset"))
                 {
                     this.settings.defProperties.Clear();
                     this.CheckDictionaryValid();
                     this.ResetMainSettings();
                     Log.Message("========================== \n DevMode Settings Reset:");
-                    foreach(KeyValuePair<string, SRTS_DefProperties> pair in settings.defProperties)
+                    foreach (KeyValuePair<string, SRTS_DefProperties> pair in settings.defProperties)
                     {
                         Log.Message("KVP: " + pair.Key + " : " + pair.Value.referencedDef.defName);
                     }
@@ -135,13 +137,13 @@ namespace SRTS
             }
 
             listing_Standard.Begin(groupSRTS);
-            if(currentPage == SRTS.SettingsCategory.Settings)
+            if (currentPage == SRTS.SettingsCategory.Settings)
             {
                 listing_Standard.ButtonText(string.Empty);
             }
-            else if(currentPage == SRTS.SettingsCategory.Stats || currentPage == SRTS.SettingsCategory.Research)
+            else if (currentPage == SRTS.SettingsCategory.Stats || currentPage == SRTS.SettingsCategory.Research)
             {
-                if(listing_Standard.ButtonText(currentKey))
+                if (listing_Standard.ButtonText(currentKey))
                 {
                     List<FloatMenuOption> options = new List<FloatMenuOption>();
                     foreach (string s in settings.defProperties.Keys)
@@ -156,17 +158,17 @@ namespace SRTS
             listing_Standard.End();
 
             listing_Standard.Begin(settingsCategory);
-            if(listing_Standard.ButtonText(EnumToString(currentPage)))
+            if (listing_Standard.ButtonText(EnumToString(currentPage)))
             {
                 FloatMenuOption op1 = new FloatMenuOption("MainSettings".Translate(), () => currentPage = SRTS.SettingsCategory.Settings, MenuOptionPriority.Default, null, null, 0f, null, null);
                 FloatMenuOption op2 = new FloatMenuOption("DefSettings".Translate(), () => currentPage = SRTS.SettingsCategory.Stats, MenuOptionPriority.Default, null, null, 0f, null, null);
                 FloatMenuOption op3 = new FloatMenuOption("ResearchSettings".Translate(), () => currentPage = SRTS.SettingsCategory.Research, MenuOptionPriority.Default, null, null, 0f, null, null);
-                Find.WindowStack.Add(new FloatMenu(new List<FloatMenuOption>() { op1, op2, op3}));
+                Find.WindowStack.Add(new FloatMenu(new List<FloatMenuOption>() { op1, op2, op3 }));
             }
             listing_Standard.End();
 
             props = settings.defProperties[currentKey];
-            if(props is null)
+            if (props is null)
             {
                 this.ResetMainSettings();
                 settings.defProperties.Clear();
@@ -211,16 +213,16 @@ namespace SRTS
                 listing_Standard.Settings_SliderLabeled("FlightSpeed".Translate(), string.Empty, ref props.flightSpeed, 0.15f, 50, 2, 2, 9999f, "Instant".Translate());
 
                 listing_Standard.Settings_SliderLabeled("FuelEfficiency".Translate(), "FuelEfficiencySymbol".Translate(), ref props.fuelPerTile, 1, 6f);
-                
-                if(settings.passengerLimits)
+
+                if (settings.passengerLimits)
                 {
                     int min = props.minPassengers;
                     int max = props.maxPassengers;
                     listing_Standard.Settings_SliderLabeled("MinPassengers".Translate(), string.Empty, ref props.minPassengers, 1, 100);
                     listing_Standard.Settings_SliderLabeled("MaxPassengers".Translate(), string.Empty, ref props.maxPassengers, 1, 100, 999, "\u221E");
-                    if(props.minPassengers > props.maxPassengers && min != props.minPassengers)
+                    if (props.minPassengers > props.maxPassengers && min != props.minPassengers)
                         props.maxPassengers = props.minPassengers;
-                    if(props.maxPassengers < props.minPassengers && max != props.maxPassengers)
+                    if (props.maxPassengers < props.minPassengers && max != props.maxPassengers)
                         props.minPassengers = props.maxPassengers;
                 }
                 else
@@ -249,7 +251,7 @@ namespace SRTS
                 }
                 listing_Standard.End();
 
-                if(SRTSHelper.SOS2ModLoaded)
+                if (SRTSHelper.SOS2ModLoaded)
                 {
                     Rect sos2Rect = new Rect(inRect.width - (inRect.width / 4), inRect.height - (inRect.height / 8), inRect.width / 4, inRect.height / 4);
 
@@ -262,7 +264,7 @@ namespace SRTS
                     listing_Standard.End();
                 }
             }
-            else if(currentPage == SRTS.SettingsCategory.Research)
+            else if (currentPage == SRTS.SettingsCategory.Research)
             {
                 listing_Standard.Begin(group2);
 
@@ -275,22 +277,22 @@ namespace SRTS
                 listing_Standard.Gap(24f);
 
                 listing_Standard.Settings_Header("SRTSResearchRequirements".Translate(), DialogSettings.highlightColor, GameFont.Small);
-                
-                foreach(ResearchProjectDef proj in props.requiredResearch)
+
+                foreach (ResearchProjectDef proj in props.requiredResearch)
                 {
                     listing_Standard.Settings_Header(proj.LabelCap, Color.clear, GameFont.Small);
                 }
-                for(int i = props.CustomResearch.Count - 1; i >= 0; i--)
+                for (int i = props.CustomResearch.Count - 1; i >= 0; i--)
                 {
                     ResearchProjectDef proj = props.customResearchRequirements[i];
-                    if(listing_Standard.Settings_ButtonLabeled(proj.LabelCap, "RemoveResearch".Translate(), Color.cyan, 60f, false, true))
+                    if (listing_Standard.Settings_ButtonLabeled(proj.LabelCap, "RemoveResearch".Translate(), Color.cyan, 60f, false, true))
                     {
                         props.RemoveCustomResearch(proj);
                     }
                     listing_Standard.Gap(8f);
                 }
 
-                if(listing_Standard.Settings_Button("AddItemSRTS".Translate(), new Rect(group2.width - 60f, group2.y + 24f, 60f, 20f), Color.white, true, true))
+                if (listing_Standard.Settings_Button("AddItemSRTS".Translate(), new Rect(group2.width - 60f, group2.y + 24f, 60f, 20f), Color.white, true, true))
                 {
                     Find.WindowStack.Add(new Dialog_ResearchChange());
                 }
@@ -299,12 +301,12 @@ namespace SRTS
 
                 listing_Standard.End();
             }
-            else if(currentPage == SRTS.SettingsCategory.Settings)
+            else if (currentPage == SRTS.SettingsCategory.Settings)
             {
-                if(!checkValidityBombs)
+                if (!checkValidityBombs)
                 {
                     ///<summary>Only run once, ensure that removed ThingDefs do not show defNames inside inner list.</summary>
-                    for(int i = mod.settings.allowedBombs.Count - 1; i >= 0; i--)
+                    for (int i = mod.settings.allowedBombs.Count - 1; i >= 0; i--)
                     {
                         string s = mod.settings.allowedBombs[i];
                         if (mod.settings.allowedBombs.Contains(s) && DefDatabase<ThingDef>.GetNamedSilentFail(s) is null)
@@ -334,7 +336,7 @@ namespace SRTS
 
                 listing_Standard.Settings_Header("AllowedBombs".Translate(), DialogSettings.highlightColor, GameFont.Small);
                 float buttonWidth = 60f;
-                if(listing_Standard.Settings_Button("ChangeItemSRTS".Translate(), new Rect(group2.width - buttonWidth, 1f, buttonWidth, 20f), Color.white, true, true))
+                if (listing_Standard.Settings_Button("ChangeItemSRTS".Translate(), new Rect(group2.width - buttonWidth, 1f, buttonWidth, 20f), Color.white, true, true))
                 {
                     Find.WindowStack.Add(new Dialog_AllowedBombs());
                 }
@@ -345,7 +347,7 @@ namespace SRTS
                 Widgets.BeginScrollView(group3, ref scrollPosition, viewRect, true);
                 listing_Standard.Begin(viewRect);
 
-                foreach(string s in mod.settings.allowedBombs)
+                foreach (string s in mod.settings.allowedBombs)
                 {
                     listing_Standard.Settings_Header(s, Color.clear, GameFont.Small);
                 }
@@ -386,11 +388,11 @@ namespace SRTS
                 Text.Font = valueFont;
                 Text.Anchor = alignment;
             }
-            if(props.defaultValues && !props.IsDefault)
+            if (props.defaultValues && !props.IsDefault)
             {
                 props.defaultValues = false;
             }
-            
+
             base.DoSettingsWindowContents(inRect);
         }
 
@@ -422,7 +424,7 @@ namespace SRTS
 
         public void ReferenceDefCheck(ref SRTS_DefProperties props)
         {
-            if(props.referencedDef is null)
+            if (props.referencedDef is null)
             {
                 SRTS_DefProperties propsRef = props;
                 props.referencedDef = DefDatabase<ThingDef>.GetNamed(settings.defProperties.FirstOrDefault(x => x.Value == propsRef).Key);
@@ -431,10 +433,10 @@ namespace SRTS
 
         public void CheckDictionaryValid()
         {
-            if(settings.defProperties is null || settings.defProperties.Count <= 0)
+            if (settings.defProperties is null || settings.defProperties.Count <= 0)
             {
                 settings.defProperties = new Dictionary<string, SRTS_DefProperties>();
-                foreach(ThingDef t in DefDatabase<ThingDef>.AllDefs.Where(x => x.GetCompProperties<CompProperties_LaunchableSRTS>() != null))
+                foreach (ThingDef t in DefDatabase<ThingDef>.AllDefs.Where(x => x.GetCompProperties<CompProperties_LaunchableSRTS>() != null))
                 {
                     settings.defProperties.Add(t.defName, new SRTS_DefProperties(t));
                 }
@@ -445,12 +447,14 @@ namespace SRTS
 
         private string EnumToString(SettingsCategory category)
         {
-            switch(category)
+            switch (category)
             {
                 case SRTS.SettingsCategory.Settings:
                     return "MainSettings".Translate();
+
                 case SRTS.SettingsCategory.Stats:
                     return "DefSettings".Translate();
+
                 case SRTS.SettingsCategory.Research:
                     return "ResearchSettings".Translate();
             }
@@ -461,42 +465,52 @@ namespace SRTS
         public static T GetStatFor<T>(string defName, StatName stat)
         {
             SRTSMod.mod.CheckDictionaryValid();
-            if(!mod.settings.defProperties.ContainsKey(defName) && DefDatabase<ThingDef>.GetNamedSilentFail(defName)?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
+            if (!mod.settings.defProperties.ContainsKey(defName) && DefDatabase<ThingDef>.GetNamedSilentFail(defName)?.GetCompProperties<CompProperties_LaunchableSRTS>() != null)
             {
                 Log.Warning("Key was not able to be found inside ModSettings Dictionary. Resetting to default values and initializing: " + defName);
                 mod.settings.defProperties.Add(defName, new SRTS_DefProperties(DefDatabase<ThingDef>.GetNamed(defName))); //Initialize
             }
 
-            switch(stat)
+            switch (stat)
             {
                 case StatName.massCapacity:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].massCapacity, typeof(T));
+
                 case StatName.minPassengers:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].minPassengers, typeof(T));
+
                 case StatName.maxPassengers:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].maxPassengers, typeof(T));
+
                 case StatName.flightSpeed:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].flightSpeed, typeof(T));
 
                 /* SOS2 Compatibility */
                 case StatName.spaceFaring:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].spaceFaring, typeof(T));
+
                 case StatName.shuttleBayLanding:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].shuttleBayLanding, typeof(T));
                 /* ------------------ */
 
                 case StatName.bombingSpeed:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].bombingSpeed, typeof(T));
+
                 case StatName.numberBombs:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].numberBombs, typeof(T));
+
                 case StatName.radiusDrop:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].radiusDrop, typeof(T));
+
                 case StatName.distanceBetweenDrops:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].distanceBetweenDrops, typeof(T));
+
                 case StatName.researchPoints:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].researchPoints, typeof(T));
+
                 case StatName.fuelPerTile:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].fuelPerTile, typeof(T));
+
                 case StatName.precisionBombingNumBombs:
                     return (T)Convert.ChangeType(mod.settings.defProperties[defName].precisionBombingNumBombs, typeof(T));
             }
@@ -556,10 +570,10 @@ namespace SRTS
             get
             {
                 bool flag = true;
-                if(BombCapable)
+                if (BombCapable)
                 {
                     flag = this.numberBombs == referencedDef.GetCompProperties<CompProperties_BombsAway>().numberBombs && this.radiusDrop == referencedDef.GetCompProperties<CompProperties_BombsAway>().radiusOfDrop &&
-                        this.precisionBombingNumBombs == referencedDef.GetCompProperties<CompProperties_BombsAway>().precisionBombingNumBombs && this.bombingSpeed == referencedDef.GetCompProperties<CompProperties_BombsAway>().speed 
+                        this.precisionBombingNumBombs == referencedDef.GetCompProperties<CompProperties_BombsAway>().precisionBombingNumBombs && this.bombingSpeed == referencedDef.GetCompProperties<CompProperties_BombsAway>().speed
                         && this.distanceBetweenDrops == referencedDef.GetCompProperties<CompProperties_BombsAway>().distanceBetweenDrops;
                 }
                 return flag && this.RequiredResearch[0].baseCost == this.researchPoints && !this.customResearchDefNames.Any() && this.massCapacity == referencedDef.GetCompProperties<CompProperties_Transporter>().massCapacity && this.minPassengers == referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().minPassengers
@@ -593,21 +607,20 @@ namespace SRTS
 
         /* SOS2 Compatibility */
         public bool spaceFaring;
-        
+
         public bool shuttleBayLanding;
         /* ------------------ */
-
 
         public List<ResearchProjectDef> ResearchPrerequisites
         {
             get
             {
-                if(this.requiredResearch is null)
+                if (this.requiredResearch is null)
                 {
                     this.requiredResearch = new List<ResearchProjectDef>();
                     this.requiredResearch.AddRange(referencedDef.researchPrerequisites);
                 }
-                if(this.customResearchRequirements is null)
+                if (this.customResearchRequirements is null)
                     this.customResearchRequirements = new List<ResearchProjectDef>();
                 List<ResearchProjectDef> projects = new List<ResearchProjectDef>();
                 projects.AddRange(requiredResearch);
@@ -620,7 +633,7 @@ namespace SRTS
         {
             get
             {
-                if(this.requiredResearch is null || this.requiredResearch.Count <= 0)
+                if (this.requiredResearch is null || this.requiredResearch.Count <= 0)
                 {
                     this.requiredResearch = new List<ResearchProjectDef>();
                     this.requiredResearch.AddRange(referencedDef.researchPrerequisites);
@@ -633,14 +646,14 @@ namespace SRTS
         {
             get
             {
-                if(this.customResearchRequirements is null)
+                if (this.customResearchRequirements is null)
                     customResearchRequirements = new List<ResearchProjectDef>();
-                if(this.customResearchDefNames is null)
+                if (this.customResearchDefNames is null)
                     customResearchDefNames = new List<string>();
-                if(customResearchDefNames.Count != customResearchRequirements.Count)
+                if (customResearchDefNames.Count != customResearchRequirements.Count)
                 {
                     customResearchRequirements.Clear();
-                    foreach(string defName in customResearchDefNames)
+                    foreach (string defName in customResearchDefNames)
                     {
                         customResearchRequirements.Add(DefDatabase<ResearchProjectDef>.GetNamed(defName));
                     }
@@ -663,7 +676,7 @@ namespace SRTS
 
         public void ResetCustomResearch()
         {
-            if(this.customResearchRequirements is null || this.customResearchDefNames is null)
+            if (this.customResearchRequirements is null || this.customResearchDefNames is null)
             {
                 this.customResearchRequirements = new List<ResearchProjectDef>();
                 this.customResearchDefNames = new List<string>();
@@ -675,7 +688,7 @@ namespace SRTS
         public void ResetToDefaultValues()
         {
             this.defaultValues = true;
-            
+
             this.massCapacity = this.referencedDef.GetCompProperties<CompProperties_Transporter>().massCapacity;
             this.minPassengers = this.referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().minPassengers;
             this.maxPassengers = this.referencedDef.GetCompProperties<CompProperties_LaunchableSRTS>().maxPassengers;
@@ -707,7 +720,7 @@ namespace SRTS
 
         public bool ResetReferencedDef(string defName)
         {
-            if(this.referencedDef is null)
+            if (this.referencedDef is null)
             {
                 referencedDef = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
             }
@@ -724,6 +737,7 @@ namespace SRTS
                 return bombingCapable;
             }
         }
+
         public int numberBombs = 0;
 
         public int radiusDrop = 1;

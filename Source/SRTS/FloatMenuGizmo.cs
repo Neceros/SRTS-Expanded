@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Verse;
-using RimWorld;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using Verse;
+
 namespace SRTS
 {
     public class FloatMenuGizmo : FloatMenu
@@ -17,7 +14,7 @@ namespace SRTS
 
         public override void DoWindowContents(Rect rect)
         {
-            if(srtsSelected is null || srtsSelected.Destroyed)
+            if (srtsSelected is null || srtsSelected.Destroyed)
             {
                 Find.WindowStack.TryRemove(this, true);
                 return;

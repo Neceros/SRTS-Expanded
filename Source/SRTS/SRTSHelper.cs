@@ -1,22 +1,29 @@
-﻿using System;
+﻿using RimWorld;
+using RimWorld.Planet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Verse;
-using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
+using Verse;
 
 namespace SRTS
 {
     public static class SRTSHelper
     {
         public static float GetResearchStat(ResearchProjectDef project) => SRTSMod.GetStatFor<float>(srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName, StatName.researchPoints);
+
         public static NamedArgument GetResearchStatString(ResearchProjectDef project) => SRTSMod.GetStatFor<float>(srtsDefProjects.FirstOrDefault(x => x.Value == project).Key.defName, StatName.researchPoints).ToString("F0");
+
         public static bool ContainedInDefProjects(ResearchProjectDef project) => srtsDefProjects.Any(x => x.Value == project);
+
         public static bool SRTSInCaravan => TradeSession.playerNegotiator.GetCaravan().AllThings.Any(x => x.TryGetComp<CompLaunchableSRTS>() != null);
+
         public static bool SRTSInTransporters(List<CompTransporter> transporters) => transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null);
+
         public static bool DynamicTexturesEnabled => SRTSMod.mod.settings.dynamicWorldDrawingSRTS;
+
         public static bool SRTSLauncherSelected(List<CompTransporter> transporters) => transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null);
+
         public static bool SRTSNonPlayerHomeMap(Map map) => !map.IsPlayerHome;
 
         public static void AddToSRTSFromCaravan(Caravan caravan, Thing thing)
@@ -53,7 +60,7 @@ namespace SRTS
                 {
                     end.x = proj.ResearchViewX * 190f;
                     end.y = proj.ResearchViewY * 100f + 25f;
-                    if (selectedProject !=  null && (selectedProject == project || selectedProject == proj))
+                    if (selectedProject != null && (selectedProject == project || selectedProject == proj))
                     {
                         if (i == 1)
                             Widgets.DrawLine(start, end, TexUI.HighlightLineResearchColor, 4f);
@@ -65,6 +72,7 @@ namespace SRTS
         }
 
         /* =========================== Redacted but used as helper methods to ErrorOnNoPawnsTranspiler =========================== */
+
         public static string MinMaxString(List<CompTransporter> transporters, bool min)
         {
             var srts = transporters.First(x => x.parent.GetComp<CompLaunchableSRTS>() != null).parent;
@@ -88,10 +96,10 @@ namespace SRTS
                 {
                     return true;
                 }
-
             }
             return false;
         }
+
         public static bool MaxPawnRestrictionsSRTS(List<CompTransporter> transporters, List<Pawn> pawns)
         {
             if (transporters.Any(x => x.parent.GetComp<CompLaunchableSRTS>() != null))
@@ -104,6 +112,7 @@ namespace SRTS
             }
             return false;
         }
+
         /* ======================================================================================================================= */
 
         public static void PopulateDictionary()
@@ -148,14 +157,13 @@ namespace SRTS
                 }
             }
         }
-        
+
         public static Dictionary<ThingDef, ResearchProjectDef> srtsDefProjects = new Dictionary<ThingDef, ResearchProjectDef>();
 
         public static bool CEModLoaded = false;
         public static BombingTargeter targeter = new BombingTargeter();
         public static Type CompProperties_ExplosiveCE { get; set; }
         public static Type CompExplosiveCE { get; set; }
-
 
         public static bool SOS2ModLoaded = false;
         public static WorldObjectDef SpaceSite { get; set; }

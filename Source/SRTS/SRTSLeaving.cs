@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 using Verse.AI.Group;
-using Verse.Sound;
 
 namespace SRTS
 {
@@ -21,11 +20,11 @@ namespace SRTS
         {
             get
             {
-                return ((ActiveDropPod) this.innerContainer[0]).Contents;
+                return ((ActiveDropPod)this.innerContainer[0]).Contents;
             }
             set
             {
-                ((ActiveDropPod) this.innerContainer[0]).Contents = value;
+                ((ActiveDropPod)this.innerContainer[0]).Contents = value;
             }
         }
 
@@ -40,6 +39,7 @@ namespace SRTS
                             return SkyfallerDrawPosUtilityExtended.DrawPos_AccelerateSRTSDirectional(originalDrawPos, ticksToImpact, rotation, def.skyfaller.speed);
                         else
                             return SkyfallerDrawPosUtilityExtended.DrawPos_TakeoffUpward(originalDrawPos, takeoffTicks);
+
                     case SkyfallerMovementType.ConstantSpeed:
                         return base.DrawPos;// SkyfallerDrawPosUtilityExtended.DrawPos_AccelerateSRTSDirectional(base.DrawPos, ticksToImpact, rotation, def.skyfaller.speed);
                     *//*case SkyfallerMovementType.Decelerate:
@@ -75,12 +75,12 @@ namespace SRTS
                 base.LeaveMap();
             else if (this.groupID < 0)
             {
-                Log.Error("Drop pod left the map, but its group ID is " + (object) this.groupID, false);
+                Log.Error("Drop pod left the map, but its group ID is " + (object)this.groupID, false);
                 this.Destroy(DestroyMode.Vanish);
             }
             else if (this.destinationTile < 0)
             {
-                Log.Error("Drop pod left the map, but its destination tile is " + (object) this.destinationTile, false);
+                Log.Error("Drop pod left the map, but its destination tile is " + (object)this.destinationTile, false);
                 this.Destroy(DestroyMode.Vanish);
             }
             else
@@ -94,9 +94,9 @@ namespace SRTS
                 travelingTransportPods.destinationTile = this.destinationTile;
                 travelingTransportPods.arrivalAction = this.arrivalAction;
 
-                Find.WorldObjects.Add((WorldObject) travelingTransportPods);
+                Find.WorldObjects.Add((WorldObject)travelingTransportPods);
                 SRTSLeaving.tmpActiveDropPods.Clear();
-                SRTSLeaving.tmpActiveDropPods.AddRange((IEnumerable<Thing>) this.Map.listerThings.ThingsInGroup(ThingRequestGroup.ActiveDropPod));
+                SRTSLeaving.tmpActiveDropPods.AddRange((IEnumerable<Thing>)this.Map.listerThings.ThingsInGroup(ThingRequestGroup.ActiveDropPod));
                 travelingTransportPods.flyingThing = tmpActiveDropPods.Find(x => (x as SRTSLeaving)?.groupID == this.groupID);
                 for (int index = 0; index < SRTSLeaving.tmpActiveDropPods.Count; ++index)
                 {
@@ -105,7 +105,7 @@ namespace SRTS
                     {
                         tmpActiveDropPod.alreadyLeft = true;
                         travelingTransportPods.AddPod(tmpActiveDropPod.Contents, true);
-                        tmpActiveDropPod.Contents = (ActiveDropPodInfo) null;
+                        tmpActiveDropPod.Contents = (ActiveDropPodInfo)null;
                         tmpActiveDropPod.Destroy(DestroyMode.Vanish);
                     }
                 }

@@ -1,12 +1,11 @@
-﻿using System;
+﻿using RimWorld;
+using SPExtended;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
-using UnityEngine;
-using SPExtended;
 
 namespace SRTS
 {
@@ -29,7 +28,7 @@ namespace SRTS
 
         public void StopTargeting()
         {
-            if(this.actionWhenFinished != null)
+            if (this.actionWhenFinished != null)
             {
                 Action action = this.actionWhenFinished;
                 this.actionWhenFinished = null;
@@ -42,12 +41,12 @@ namespace SRTS
         public void ProcessInputEvents()
         {
             this.ConfirmStillValid();
-            if(this.IsTargeting)
+            if (this.IsTargeting)
             {
-                if(Event.current.type == EventType.MouseDown && Event.current.button == 0)
+                if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
                 {
                     Event.current.Use();
-                    if(selections.Count < 2 && this.action != null)
+                    if (selections.Count < 2 && this.action != null)
                     {
                         LocalTargetInfo obj = this.CurrentTargetUnderMouse();
                         if (obj.Cell.InBounds(map) && !selections.Contains(obj))
@@ -59,9 +58,8 @@ namespace SRTS
                         }
                     }
                     SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
-                    if(selections.Count == 2)
+                    if (selections.Count == 2)
                     {
-
                         this.action(this.BombCellsFinalized(), new Pair<IntVec3, IntVec3>(selections[0].Cell, selections[1].Cell));
                         this.StopTargeting();
                     }
@@ -80,7 +78,7 @@ namespace SRTS
 
         public void TargeterOnGUI()
         {
-            if(this.action != null)
+            if (this.action != null)
             {
                 Texture2D icon = this.mouseAttachment ?? Tex2D.LauncherTargeting;
                 GenUI.DrawMouseAttachment(icon);
@@ -89,7 +87,7 @@ namespace SRTS
 
         public void TargeterUpdate()
         {
-            if(this.selections.Any())
+            if (this.selections.Any())
             {
                 GenDraw.DrawLineBetween(selections[0].CenterVector3, UI.MouseMapPosition().ToIntVec3().ToVector3Shifted(), SimpleColor.Red);
                 this.DrawTargetingPoints();
@@ -100,10 +98,10 @@ namespace SRTS
         {
             this.targetingLength = Vector3.Distance(selections[0].CenterVector3, UI.MouseMapPosition().ToIntVec3().ToVector3Shifted());
             GenDraw.DrawTargetHighlight(new LocalTargetInfo(selections[0].Cell));
-            if(bombType == BombingType.carpet)
+            if (bombType == BombingType.carpet)
             {
                 GenDraw.DrawRadiusRing(selections[0].Cell, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
-                
+
                 this.numRings = ((int)(targetingLength / SRTSMod.GetStatFor<float>(this.bomber.defName, StatName.distanceBetweenDrops))).Clamp<int>(0, SRTSMod.GetStatFor<int>(this.bomber.defName, StatName.numberBombs));
 
                 if (SRTSMod.mod.settings.expandBombPoints && numRings >= 1)
@@ -118,7 +116,7 @@ namespace SRTS
                     GenDraw.DrawTargetHighlight(new LocalTargetInfo(cellTargeted));
                 }
             }
-            else if(bombType == BombingType.precise)
+            else if (bombType == BombingType.precise)
             {
                 IntVec3 centeredTarget = this.TargeterCentered();
                 GenDraw.DrawTargetHighlight(new LocalTargetInfo(centeredTarget));
@@ -152,12 +150,12 @@ namespace SRTS
 
         private IEnumerable<IntVec3> BombCellsFinalized()
         {
-            if(bombType == BombingType.carpet)
+            if (bombType == BombingType.carpet)
             {
                 for (int i = 0; i < this.numRings; i++)
                     yield return this.TargeterToCell(i);
             }
-            else if(bombType == BombingType.precise)
+            else if (bombType == BombingType.precise)
             {
                 yield return TargeterCentered();
                 yield break;
@@ -166,7 +164,7 @@ namespace SRTS
 
         private void ConfirmStillValid()
         {
-            if(this.caster != null && (this.caster.Map != Find.CurrentMap || this.caster.Destroyed || !Find.Selector.IsSelected(this.caster)))
+            if (this.caster != null && (this.caster.Map != Find.CurrentMap || this.caster.Destroyed || !Find.Selector.IsSelected(this.caster)))
             {
                 this.StopTargeting();
             }
@@ -174,12 +172,12 @@ namespace SRTS
 
         private LocalTargetInfo CurrentTargetUnderMouse()
         {
-            if(!this.IsTargeting)
+            if (!this.IsTargeting)
                 return LocalTargetInfo.Invalid;
             LocalTargetInfo localTarget = LocalTargetInfo.Invalid;
-            using(IEnumerator<LocalTargetInfo> enumerator = GenUI.TargetsAtMouse(this.targetParams, false).GetEnumerator())
+            using (IEnumerator<LocalTargetInfo> enumerator = GenUI.TargetsAtMouse(this.targetParams, false).GetEnumerator())
             {
-                if(enumerator.MoveNext())
+                if (enumerator.MoveNext())
                 {
                     LocalTargetInfo localTarget2 = enumerator.Current;
                     localTarget = localTarget2;

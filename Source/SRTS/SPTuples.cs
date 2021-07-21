@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Verse;
 
 namespace SPExtended
@@ -25,6 +23,7 @@ namespace SPExtended
                 return new SPTuple<T1, T2, T3>(first, second, third);
             }
         }
+
         /// <summary>
         /// SPTuple of 2 Types
         /// </summary>
@@ -34,14 +33,22 @@ namespace SPExtended
         {
             public T1 First { get; set; }
             public T2 Second { get; set; }
+
             public SPTuple(T1 first, T2 second)
             {
                 First = first;
                 Second = second;
             }
 
-            public static bool operator ==(SPTuple<T1, T2> o1, SPTuple<T1, T2> o2) { return o1.Equals(o2); }
-            public static bool operator !=(SPTuple<T1, T2> o1, SPTuple<T1, T2> o2) { return !(o1 == o2); }
+            public static bool operator ==(SPTuple<T1, T2> o1, SPTuple<T1, T2> o2)
+            {
+                return o1.Equals(o2);
+            }
+
+            public static bool operator !=(SPTuple<T1, T2> o1, SPTuple<T1, T2> o2)
+            {
+                return !(o1 == o2);
+            }
 
             private static readonly IEqualityComparer<T1> FirstComparer = EqualityComparer<T1>.Default;
             private static readonly IEqualityComparer<T2> SecondComparer = EqualityComparer<T2>.Default;
@@ -64,6 +71,7 @@ namespace SPExtended
                 return FirstComparer.Equals(First, o2.First) && SecondComparer.Equals(Second, o2.Second);
             }
         }
+
         /// <summary>
         /// SPTuple of 3 types
         /// </summary>
@@ -73,12 +81,21 @@ namespace SPExtended
         public class SPTuple<T1, T2, T3> : SPTuple<T1, T2>
         {
             public T3 Third { get; set; }
+
             public SPTuple(T1 first, T2 second, T3 third) : base(first, second)
             {
                 Third = third;
             }
-            public static bool operator ==(SPTuple<T1, T2, T3> o1, SPTuple<T1, T2, T3> o2) { return o1.Equals(o2); }
-            public static bool operator !=(SPTuple<T1, T2, T3> o1, SPTuple<T1, T2, T3> o2) { return !(o1 == o2); }
+
+            public static bool operator ==(SPTuple<T1, T2, T3> o1, SPTuple<T1, T2, T3> o2)
+            {
+                return o1.Equals(o2);
+            }
+
+            public static bool operator !=(SPTuple<T1, T2, T3> o1, SPTuple<T1, T2, T3> o2)
+            {
+                return !(o1 == o2);
+            }
 
             private static readonly IEqualityComparer<T1> FirstComparer = EqualityComparer<T1>.Default;
             private static readonly IEqualityComparer<T2> SecondComparer = EqualityComparer<T2>.Default;

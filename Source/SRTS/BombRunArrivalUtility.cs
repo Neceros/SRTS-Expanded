@@ -1,9 +1,5 @@
-﻿using System;
+﻿using RimWorld;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
-using RimWorld.Planet;
 using Verse;
 
 namespace SRTS
@@ -12,9 +8,9 @@ namespace SRTS
     {
         public static void BombWithSRTS(List<ActiveDropPodInfo> srts, IntVec3 targetA, IntVec3 targetB, List<IntVec3> bombCells, BombingType bombType, Map map, Map originalMap, IntVec3 returnSpot)
         {
-            if(srts.Count > 1)
+            if (srts.Count > 1)
                 Log.Error("Initiating bomb run with more than 1 SRTS in Drop Pod Group. This should not happen. - Smash Phil");
-            for(int i = 0; i < srts.Count; i++)
+            for (int i = 0; i < srts.Count; i++)
             {
                 MakeSRTSBombingAt(targetA, targetB, bombCells, bombType, map, srts[i], originalMap, returnSpot);
             }
