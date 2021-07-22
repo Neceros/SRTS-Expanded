@@ -55,7 +55,7 @@ namespace SRTS
                             if (CompLauncher.AnyInGroupHasAnythingLeftToLoad)
                             {
                                 Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(CompLauncher.FirstThingLeftToLoadInGroup.LabelCapNoCount,
-                                    CompLauncher.FirstThingLeftToLoadInGroup), new Action(this.StartChoosingDestinationBomb), false, null));
+                                    CompLauncher.FirstThingLeftToLoadInGroup), StartChoosingDestinationBomb));
                             }
                             this.StartChoosingDestinationBomb();
                         });
@@ -65,7 +65,7 @@ namespace SRTS
                             if (CompLauncher.AnyInGroupHasAnythingLeftToLoad)
                             {
                                 Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(CompLauncher.FirstThingLeftToLoadInGroup.LabelCapNoCount,
-                                    CompLauncher.FirstThingLeftToLoadInGroup), new Action(this.StartChoosingDestinationBomb), false, null));
+                                    CompLauncher.FirstThingLeftToLoadInGroup), StartChoosingDestinationBomb));
                             }
                             this.StartChoosingDestinationBomb();
                         });
