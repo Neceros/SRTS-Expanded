@@ -6,73 +6,67 @@ namespace SRTS
 {
     public static class BomberSkyfallerMaker
     {
-        public static BomberSkyfaller MakeSkyfaller(ThingDef skyfaller)
+        public static BomberSkyfaller MakeSkyfaller(ThingDef skyfallerDef, ThingDef innerThingDef)
         {
-            return (BomberSkyfaller)ThingMaker.MakeThing(skyfaller);
+            return MakeSkyfaller(skyfallerDef, ThingMaker.MakeThing(innerThingDef));
         }
 
-        public static BomberSkyfaller MakeSkyfaller(ThingDef skyfaller, ThingDef innerThing)
+        public static BomberSkyfaller MakeSkyfaller(ThingDef skyfallerDef, Thing innerThing = null)
         {
-            Thing innerThing2 = ThingMaker.MakeThing(innerThing, null);
-            return BomberSkyfallerMaker.MakeSkyfaller(skyfaller, innerThing2);
-        }
-
-        public static BomberSkyfaller MakeSkyfaller(ThingDef skyfaller, Thing innerThing)
-        {
-            BomberSkyfaller skyfaller2 = BomberSkyfallerMaker.MakeSkyfaller(skyfaller);
-            if (innerThing != null && !skyfaller2.innerContainer.TryAdd(innerThing, true))
+            BomberSkyfaller skyfaller = (BomberSkyfaller)ThingMaker.MakeThing(skyfallerDef);
+            if (innerThing != null && !skyfaller.innerContainer.TryAdd(innerThing))
             {
                 Log.Error("Could not add " + innerThing.ToStringSafe() + " to a skyfaller.");
-                innerThing.Destroy(DestroyMode.Vanish);
+                innerThing.Destroy();
             }
-            return skyfaller2;
+            return skyfaller;
         }
 
-        public static BomberSkyfaller MakeSkyfaller(ThingDef skyfaller, IEnumerable<Thing> things)
+        public static BomberSkyfaller MakeSkyfaller(ThingDef skyfallerDef, IEnumerable<Thing> things)
         {
-            BomberSkyfaller skyfaller2 = BomberSkyfallerMaker.MakeSkyfaller(skyfaller);
+            BomberSkyfaller skyfaller = MakeSkyfaller(skyfallerDef);
             if (things != null)
-                skyfaller2.innerContainer.TryAddRangeOrTransfer(things, false, true);
-            return skyfaller2;
+                skyfaller.innerContainer.TryAddRangeOrTransfer(things, false, true);
+            return skyfaller;
         }
 
-        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, IntVec3 pos, Map map)
+        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfallerDef, IntVec3 pos, Map map)
         {
-            BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller);
-            return (BomberSkyfaller)GenSpawn.Spawn(thing, pos, map, WipeMode.Vanish);
+            BomberSkyfaller skyfaller = MakeSkyfaller(skyfallerDef);
+            return (BomberSkyfaller)GenSpawn.Spawn(skyfaller, pos, map);
         }
 
-        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, ThingDef innerThing, IntVec3 pos, Map map)
+        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfallerDef, ThingDef innerThing, IntVec3 pos, Map map)
         {
-            BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, innerThing);
-            return (BomberSkyfaller)GenSpawn.Spawn(thing, pos, map, WipeMode.Vanish);
+            BomberSkyfaller skyfaller = MakeSkyfaller(skyfallerDef, innerThing);
+            return (BomberSkyfaller)GenSpawn.Spawn(skyfaller, pos, map);
         }
 
-        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, Thing innerThing, IntVec3 start, IntVec3 end, List<IntVec3> bombCells, BombingType bombType, Map map, int idNumber, Thing original, Map originalMap, IntVec3 landingSpot)
+        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfallerDef, Thing innerThing, IntVec3 start, IntVec3 end, List<IntVec3> bombCells, BombingType bombType, Map map, int idNumber, Thing original, Map originalMap, IntVec3 landingSpot)
         {
-            BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, innerThing);
-            thing.originalMap = originalMap;
-            thing.sourceLandingSpot = landingSpot;
-            thing.numberOfBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.numberBombs);
-            thing.precisionBombingNumBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.precisionBombingNumBombs);
-            thing.speed = SRTSMod.GetStatFor<float>(original.def.defName, StatName.bombingSpeed);
-            thing.radius = SRTSMod.GetStatFor<int>(original.def.defName, StatName.radiusDrop);
-            thing.sound = original.TryGetComp<CompBombFlyer>().Props.soundFlyBy;
-            thing.bombType = bombType;
+            BomberSkyfaller skyfaller = MakeSkyfaller(skyfallerDef, innerThing);
+            skyfaller.originalMap = originalMap;
+            skyfaller.sourceLandingSpot = landingSpot;
+            skyfaller.numberOfBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.numberBombs);
+            skyfaller.precisionBombingNumBombs = SRTSMod.GetStatFor<int>(original.def.defName, StatName.precisionBombingNumBombs);
+            skyfaller.speed = SRTSMod.GetStatFor<float>(original.def.defName, StatName.bombingSpeed);
+            skyfaller.radius = SRTSMod.GetStatFor<int>(original.def.defName, StatName.radiusDrop);
+            skyfaller.sound = original.TryGetComp<CompBombFlyer>().Props.soundFlyBy;
+            skyfaller.bombType = bombType;
 
             double angle = start.AngleToPointRelative(end);
-            thing.angle = (float)(angle + 90) * -1;
+            skyfaller.angle = (float)(angle + 90) * -1;
             IntVec3 exitPoint = SPTrig.ExitPointCustom(angle, start, map);
 
-            BomberSkyfaller bomber = (BomberSkyfaller)GenSpawn.Spawn(thing, exitPoint, map, WipeMode.Vanish);
-            bomber.bombCells = bombCells;
-            return bomber;
+            BomberSkyfaller spawnedSkyfaller = (BomberSkyfaller)GenSpawn.Spawn(skyfaller, exitPoint, map);
+            spawnedSkyfaller.bombCells = bombCells;
+            return spawnedSkyfaller;
         }
 
-        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfaller, IEnumerable<Thing> things, IntVec3 pos, Map map)
+        public static BomberSkyfaller SpawnSkyfaller(ThingDef skyfallerDef, IEnumerable<Thing> things, IntVec3 pos, Map map)
         {
-            BomberSkyfaller thing = BomberSkyfallerMaker.MakeSkyfaller(skyfaller, things);
-            return (BomberSkyfaller)GenSpawn.Spawn(thing, pos, map, WipeMode.Vanish);
+            BomberSkyfaller skyfaller = MakeSkyfaller(skyfallerDef, things);
+            return (BomberSkyfaller)GenSpawn.Spawn(skyfaller, pos, map);
         }
     }
 }

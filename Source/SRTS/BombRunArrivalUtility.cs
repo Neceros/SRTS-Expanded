@@ -16,17 +16,16 @@ namespace SRTS
             }
         }
 
-        public static void MakeSRTSBombingAt(IntVec3 c1, IntVec3 c2, List<IntVec3> bombCells, BombingType bombType, Map map, ActiveDropPodInfo info, Map originalMap, IntVec3 returnSpot)
+        public static void MakeSRTSBombingAt(IntVec3 start, IntVec3 end, List<IntVec3> bombCells, BombingType bombType, Map map, ActiveDropPodInfo activeDropPodInfo, Map originalMap, IntVec3 returnSpot)
         {
-            for (int index = 0; index < info.innerContainer.Count; index++)
+            foreach (var ship in activeDropPodInfo.innerContainer)
             {
-                if (info.innerContainer[index].TryGetComp<CompLaunchableSRTS>() != null)
+                if (ship.TryGetComp<CompLaunchableSRTS>() != null)
                 {
-                    Thing ship = info.innerContainer[index];
                     string shipType = ship.def.defName;
-                    ActiveDropPod srts = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(shipType + "_Active"), null);
-                    srts.Contents = info;
-                    BomberSkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_BomberRun"), srts, c1, c2, bombCells, bombType, map, ship.thingIDNumber, ship, originalMap, returnSpot);
+                    ActiveDropPod srts = (ActiveDropPod)ThingMaker.MakeThing(ThingDef.Named(shipType + "_Active"));
+                    srts.Contents = activeDropPodInfo;
+                    BomberSkyfallerMaker.SpawnSkyfaller(ThingDef.Named(shipType + "_BomberRun"), srts, start, end, bombCells, bombType, map, ship.thingIDNumber, ship, originalMap, returnSpot);
                 }
             }
         }

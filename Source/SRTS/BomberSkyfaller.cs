@@ -149,9 +149,12 @@ namespace SRTS
                     int timerTickExplode = 20 + Rand.Range(0, 5); //Change later to allow release timer
                     if (SRTSHelper.CEModLoaded)
                         goto Block_CEPatched;
-                    FallingBomb bombThing = new FallingBomb(thing2, thing2.TryGetComp<CompExplosive>(), this.Map, this.def.skyfaller.shadow);
-                    bombThing.HitPoints = int.MaxValue;
-                    bombThing.ticksRemaining = timerTickExplode;
+                    FallingBomb bombThing = new FallingBomb(thing2, thing2.TryGetComp<CompExplosive>(), this.Map, this.def.skyfaller.shadow)
+                    {
+                        HitPoints = int.MaxValue,
+                        ticksRemaining = timerTickExplode
+                    };
+                    Log.Message($"DropBomb.2 - {bombThing?.def?.defName?.ToStringSafe()}");
 
                     IntVec3 c = (from x in GenRadial.RadialCellsAround(bombPos, GetCurrentTargetingRadius(), true)
                                  where x.InBounds(this.Map)
