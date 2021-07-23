@@ -22,7 +22,7 @@ namespace SPExtended
 
             public Quadrant(int q)
             {
-                this.quadInt = (byte)q.Clamp<int>(1, 4);
+                this.quadInt = (byte)q.Clamp(1, 4);
             }
 
             public int AsInt
@@ -33,7 +33,7 @@ namespace SPExtended
                 }
                 set
                 {
-                    value.Clamp<int>(1, 4);
+                    value.Clamp(1, 4);
                     this.quadInt = (byte)value;
                 }
             }
@@ -347,7 +347,7 @@ namespace SPExtended
 
             float angle = Find.WorldGrid.GetHeadingFromTo(map.Tile, (from r1 in rivers
                                                                      orderby -r1.river.degradeThreshold
-                                                                     select r1).First<Tile.RiverLink>().neighbor);
+                                                                     select r1).First().neighbor);
             if (angle < 45)
             {
                 return Rot4.South;

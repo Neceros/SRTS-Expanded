@@ -102,17 +102,17 @@ namespace SRTS
                 else
                 {
                     IEnumerable<FloatMenuOption> transportPodsFloatMenuOptionsAt = CompLauncher.GetTransportPodsFloatMenuOptionsAt(target.Tile);
-                    if (!transportPodsFloatMenuOptionsAt.Any<FloatMenuOption>())
+                    if (!transportPodsFloatMenuOptionsAt.Any())
                     {
                         return string.Empty;
                     }
-                    if (transportPodsFloatMenuOptionsAt.Count<FloatMenuOption>() == 1)
+                    if (transportPodsFloatMenuOptionsAt.Count() == 1)
                     {
-                        if (transportPodsFloatMenuOptionsAt.First<FloatMenuOption>().Disabled)
+                        if (transportPodsFloatMenuOptionsAt.First().Disabled)
                         {
                             GUI.color = Color.red;
                         }
-                        return transportPodsFloatMenuOptionsAt.First<FloatMenuOption>().Label;
+                        return transportPodsFloatMenuOptionsAt.First().Label;
                     }
                     MapParent mapParent = target.WorldObject as MapParent;
                     if (mapParent != null)

@@ -73,13 +73,13 @@ namespace SRTS
           Site site,
           Caravan car)
         {
-            foreach (FloatMenuOption floatMenuOption in SRTSArrivalActionUtility.GetFloatMenuOptions<TransportPodsArrivalAction_VisitSite>(() => TransportPodsArrivalAction_VisitSite.CanVisit(pods, site), () => new TransportPodsArrivalAction_VisitSite(site, PawnsArrivalModeDefOf.EdgeDrop), "DropAtEdge".Translate(), representative, site.Tile, car))
+            foreach (FloatMenuOption floatMenuOption in SRTSArrivalActionUtility.GetFloatMenuOptions(() => TransportPodsArrivalAction_VisitSite.CanVisit(pods, site), () => new TransportPodsArrivalAction_VisitSite(site, PawnsArrivalModeDefOf.EdgeDrop), "DropAtEdge".Translate(), representative, site.Tile, car))
             {
                 FloatMenuOption f = floatMenuOption;
                 yield return f;
                 f = null;
             }
-            foreach (FloatMenuOption floatMenuOption in SRTSArrivalActionUtility.GetFloatMenuOptions<TransportPodsArrivalAction_VisitSite>(() => TransportPodsArrivalAction_VisitSite.CanVisit(pods, site), () => new TransportPodsArrivalAction_VisitSite(site, PawnsArrivalModeDefOf.CenterDrop), "DropInCenter".Translate(), representative, site.Tile, car))
+            foreach (FloatMenuOption floatMenuOption in SRTSArrivalActionUtility.GetFloatMenuOptions(() => TransportPodsArrivalAction_VisitSite.CanVisit(pods, site), () => new TransportPodsArrivalAction_VisitSite(site, PawnsArrivalModeDefOf.CenterDrop), "DropInCenter".Translate(), representative, site.Tile, car))
             {
                 FloatMenuOption f2 = floatMenuOption;
                 yield return f2;

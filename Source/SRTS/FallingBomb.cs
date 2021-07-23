@@ -31,9 +31,9 @@ namespace SRTS
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<int>(ref this.ticksRemaining, "ticksRemaining");
-            Scribe_Values.Look<float>(ref this.angle, "angle");
-            Scribe_Values.Look<string>(ref texPathShadow, "cachedShadowMaterial");
+            Scribe_Values.Look(ref this.ticksRemaining, "ticksRemaining");
+            Scribe_Values.Look(ref this.angle, "angle");
+            Scribe_Values.Look(ref texPathShadow, "cachedShadowMaterial");
         }
 
         public override void DrawAt(Vector3 drawLoc, bool flip = false)
@@ -71,7 +71,7 @@ namespace SRTS
         protected static void DrawDropSpotShadow(Vector3 center, Rot4 rot, Material material, Vector2 shadowSize, int ticksToImpact)
         {
             if (rot.IsHorizontal)
-                Gen.Swap<float>(ref shadowSize.x, ref shadowSize.y);
+                Gen.Swap(ref shadowSize.x, ref shadowSize.y);
             ticksToImpact = Mathf.Max(ticksToImpact, 0);
             Vector3 pos = center;
             pos.y = AltitudeLayer.Shadows.AltitudeFor();

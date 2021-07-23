@@ -73,15 +73,15 @@ namespace SRTS
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look<ThingOwner>(ref this.innerContainer, "innerContainer", new object[]
+            Scribe_Deep.Look(ref this.innerContainer, "innerContainer", new object[]
             {
                 this
             });
             Scribe_References.Look(ref originalMap, "originalMap");
-            Scribe_Values.Look<int>(ref ticksToExit, "ticksToExit", 0, false);
-            Scribe_Values.Look<float>(ref angle, "angle", 0f, false);
+            Scribe_Values.Look(ref ticksToExit, "ticksToExit", 0, false);
+            Scribe_Values.Look(ref angle, "angle", 0f, false);
             Scribe_Values.Look(ref sourceLandingSpot, "sourceLandingSpot");
-            Scribe_Collections.Look<IntVec3>(ref bombCells, "bombCells", LookMode.Value);
+            Scribe_Collections.Look(ref bombCells, "bombCells", LookMode.Value);
 
             Scribe_Values.Look(ref numberOfBombs, "numberOfBombs");
             Scribe_Values.Look(ref speed, "speed");
@@ -246,7 +246,7 @@ Block_CEPatched:;
         public static void DrawBombSpotShadow(Vector3 loc, Rot4 rot, Material material, Vector2 shadowSize, int ticksToExit)
         {
             if (rot.IsHorizontal)
-                Gen.Swap<float>(ref shadowSize.x, ref shadowSize.y);
+                Gen.Swap(ref shadowSize.x, ref shadowSize.y);
             ticksToExit = Mathf.Max(ticksToExit, 0);
             Vector3 pos = loc;
             pos.y = AltitudeLayer.Shadows.AltitudeFor();

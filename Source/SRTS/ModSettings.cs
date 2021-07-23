@@ -48,9 +48,9 @@ namespace SRTS
             Scribe_Values.Look(ref allowEvenIfPrisonerUnsecured, "allowEvenIfPrisonerUnsecured", false);
             Scribe_Values.Look(ref allowCapturablePawns, "allowCapturablePawns", true);
 
-            Scribe_Collections.Look<string, SRTS_DefProperties>(ref defProperties, "defProperties", LookMode.Value, LookMode.Deep);
-            Scribe_Collections.Look<string>(ref allowedBombs, "allowedBombs", LookMode.Value);
-            Scribe_Collections.Look<string>(ref disallowedBombs, "disallowedBombs", LookMode.Value);
+            Scribe_Collections.Look(ref defProperties, "defProperties", LookMode.Value, LookMode.Deep);
+            Scribe_Collections.Look(ref allowedBombs, "allowedBombs", LookMode.Value);
+            Scribe_Collections.Look(ref disallowedBombs, "disallowedBombs", LookMode.Value);
 
             Scribe_Values.Look(ref CEPreviouslyInitialized, "CEPreviouslyInitialized");
         }
@@ -754,7 +754,7 @@ namespace SRTS
 
         public void ExposeData()
         {
-            Scribe_Values.Look<bool>(ref this.defaultValues, "defaultValues");
+            Scribe_Values.Look(ref this.defaultValues, "defaultValues");
             Scribe_Values.Look(ref this.massCapacity, "massCapacity");
             Scribe_Values.Look(ref this.minPassengers, "minPassengers");
             Scribe_Values.Look(ref this.maxPassengers, "maxPassengers");
@@ -765,7 +765,7 @@ namespace SRTS
             Scribe_Values.Look(ref this.spaceFaring, "spaceFaring");
             Scribe_Values.Look(ref this.shuttleBayLanding, "shuttleBayLanding");
 
-            Scribe_Collections.Look<string>(ref customResearchDefNames, "customResearchDefNames", LookMode.Value, new object[0]); ;
+            Scribe_Collections.Look(ref customResearchDefNames, "customResearchDefNames", LookMode.Value, new object[0]); ;
 
             Scribe_Values.Look(ref this.bombingCapable, "bombingCapable");
             Scribe_Values.Look(ref this.numberBombs, "numberBombs");

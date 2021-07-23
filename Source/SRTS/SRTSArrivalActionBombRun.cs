@@ -26,7 +26,7 @@ namespace SRTS
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.Look<MapParent>(ref this.mapParent, "mapParent", false);
+            Scribe_References.Look(ref this.mapParent, "mapParent", false);
             Scribe_References.Look(ref originalMap, "originalMap");
             Scribe_Values.Look(ref this.targetCellA, "targetCellA");
             Scribe_Values.Look(ref this.targetCellB, "targetCellB");

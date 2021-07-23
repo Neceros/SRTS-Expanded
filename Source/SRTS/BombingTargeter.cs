@@ -102,7 +102,7 @@ namespace SRTS
             {
                 GenDraw.DrawRadiusRing(selections[0].Cell, SRTSMod.GetStatFor<int>(bomber.defName, StatName.radiusDrop));
 
-                this.numRings = ((int)(targetingLength / SRTSMod.GetStatFor<float>(this.bomber.defName, StatName.distanceBetweenDrops))).Clamp<int>(0, SRTSMod.GetStatFor<int>(this.bomber.defName, StatName.numberBombs));
+                this.numRings = ((int)(targetingLength / SRTSMod.GetStatFor<float>(this.bomber.defName, StatName.distanceBetweenDrops))).Clamp(0, SRTSMod.GetStatFor<int>(this.bomber.defName, StatName.numberBombs));
 
                 if (SRTSMod.mod.settings.expandBombPoints && numRings >= 1)
                 {

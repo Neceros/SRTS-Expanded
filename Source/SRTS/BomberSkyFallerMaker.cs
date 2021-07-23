@@ -22,7 +22,7 @@ namespace SRTS
             BomberSkyfaller skyfaller2 = BomberSkyfallerMaker.MakeSkyfaller(skyfaller);
             if (innerThing != null && !skyfaller2.innerContainer.TryAdd(innerThing, true))
             {
-                Log.Error("Could not add " + innerThing.ToStringSafe<Thing>() + " to a skyfaller.");
+                Log.Error("Could not add " + innerThing.ToStringSafe() + " to a skyfaller.");
                 innerThing.Destroy(DestroyMode.Vanish);
             }
             return skyfaller2;

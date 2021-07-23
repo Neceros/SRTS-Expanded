@@ -362,17 +362,17 @@ namespace SRTS
                 }
 
                 IEnumerable<FloatMenuOption> floatMenuOptionsAt = this.GetTransportPodsFloatMenuOptionsAt(target.Tile, null);
-                if (!floatMenuOptionsAt.Any<FloatMenuOption>())
+                if (!floatMenuOptionsAt.Any())
                 {
                     if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
                         return "MessageTransportPodsDestinationIsInvalid".Translate();
                     return string.Empty;
                 }
-                if (floatMenuOptionsAt.Count<FloatMenuOption>() == 1)
+                if (floatMenuOptionsAt.Count() == 1)
                 {
-                    if (floatMenuOptionsAt.First<FloatMenuOption>().Disabled)
+                    if (floatMenuOptionsAt.First().Disabled)
                         GUI.color = Color.red;
-                    return floatMenuOptionsAt.First<FloatMenuOption>().Label;
+                    return floatMenuOptionsAt.First().Label;
                 }
                 MapParent worldObject = target.WorldObject as MapParent;
                 if (worldObject == null)
@@ -400,17 +400,17 @@ namespace SRTS
                   return "TransportPodNotEnoughFuel".Translate();
               }
               IEnumerable<FloatMenuOption> floatMenuOptionsAt = this.GetTransportPodsFloatMenuOptionsAt(target.Tile, car);
-              if (!floatMenuOptionsAt.Any<FloatMenuOption>())
+              if (!floatMenuOptionsAt.Any())
               {
                   if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
                       return "MessageTransportPodsDestinationIsInvalid".Translate();
                   return string.Empty;
               }
-              if (floatMenuOptionsAt.Count<FloatMenuOption>() == 1)
+              if (floatMenuOptionsAt.Count() == 1)
               {
-                  if (floatMenuOptionsAt.First<FloatMenuOption>().Disabled)
+                  if (floatMenuOptionsAt.First().Disabled)
                       GUI.color = Color.red;
-                  return floatMenuOptionsAt.First<FloatMenuOption>().Label;
+                  return floatMenuOptionsAt.First().Label;
               }
               MapParent worldObject = target.WorldObject as MapParent;
               if (worldObject == null)
@@ -461,7 +461,7 @@ namespace SRTS
             }
             Find.WorldObjects.MapParentAt(target.Tile);
             IEnumerable<FloatMenuOption> floatMenuOptionsAt = this.GetTransportPodsFloatMenuOptionsAt(target.Tile, this.carr);
-            if (!floatMenuOptionsAt.Any<FloatMenuOption>())
+            if (!floatMenuOptionsAt.Any())
             {
                 if (Find.WorldGrid[target.Tile].biome.impassable || Find.World.Impassable(target.Tile))
                 {
@@ -471,13 +471,13 @@ namespace SRTS
                 this.TryLaunch(target.Tile, null, null);
                 return true;
             }
-            if (floatMenuOptionsAt.Count<FloatMenuOption>() == 1)
+            if (floatMenuOptionsAt.Count() == 1)
             {
-                if (!floatMenuOptionsAt.First<FloatMenuOption>().Disabled)
-                    floatMenuOptionsAt.First<FloatMenuOption>().action();
+                if (!floatMenuOptionsAt.First().Disabled)
+                    floatMenuOptionsAt.First().action();
                 return false;
             }
-            Find.WindowStack.Add(new FloatMenu(floatMenuOptionsAt.ToList<FloatMenuOption>()));
+            Find.WindowStack.Add(new FloatMenu(floatMenuOptionsAt.ToList()));
             return false;
         }
 
@@ -565,7 +565,7 @@ namespace SRTS
                     }
 
                     ThingOwner<Thing> thingOwner = new ThingOwner<Thing>();
-                    foreach (Pawn pawn in directlyHeldThings.AsEnumerable<Pawn>().ToList<Pawn>())
+                    foreach (Pawn pawn in directlyHeldThings.AsEnumerable<Pawn>().ToList())
                         thingOwner.TryAddOrTransfer(pawn, true);
                     if (thing != null && thing.holdingOwner == null)
                         thingOwner.TryAddOrTransfer(thing, false);
@@ -642,7 +642,7 @@ namespace SRTS
                 if (worldObjects[i].Tile == tile)
                 {
                     IEnumerable<FloatMenuOption> nowre = SRTSStatic.getFM(worldObjects[i], pods, this, car);
-                    if (nowre.ToList<FloatMenuOption>().Count < 1)
+                    if (nowre.ToList().Count < 1)
                     {
                         yield return new FloatMenuOption("FormCaravanHere".Translate(), (() => this.TryLaunch(tile, new TransportPodsArrivalAction_FormCaravan(), car)));
                     }

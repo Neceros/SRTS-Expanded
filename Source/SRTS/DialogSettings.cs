@@ -48,7 +48,7 @@ namespace SRTS
             var align = Text.CurTextFieldStyle.alignment;
             Text.CurTextFieldStyle.alignment = TextAnchor.MiddleLeft;
             string buffer = value.ToString();
-            Widgets.TextFieldNumeric<float>(rectRight, ref value, ref buffer, min, max);
+            Widgets.TextFieldNumeric(rectRight, ref value, ref buffer, min, max);
 
             Text.CurTextFieldStyle.alignment = align;
             GUI.color = color;
