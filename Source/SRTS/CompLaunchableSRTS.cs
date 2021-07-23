@@ -253,7 +253,7 @@ namespace SRTS
                    }
 
                    if (this.AnyInGroupHasAnythingLeftToLoad)
-                       Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(this.FirstThingLeftToLoadInGroup.LabelCapNoCount), new Action(this.StartChoosingDestination), false, null));
+                       Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("ConfirmSendNotCompletelyLoadedPods".Translate(this.FirstThingLeftToLoadInGroup.LabelCapNoCount), StartChoosingDestination));
                    else
                        this.StartChoosingDestination();
                };
@@ -383,7 +383,7 @@ namespace SRTS
 
         public void WorldStartChoosingDestination(Caravan car)
         {
-            CameraJumper.TryJump(CameraJumper.GetWorldTarget((WorldObject)car));
+            CameraJumper.TryJump(CameraJumper.GetWorldTarget(car));
             Find.WorldSelector.ClearSelection();
             int tile = car.Tile;
             this.carr = car;
@@ -599,7 +599,7 @@ namespace SRTS
         {
             if (!this.Transporter.CancelLoad())
                 return;
-            Messages.Message("MessageTransportersLoadCanceled_FuelingPortGiverDeSpawned".Translate(), (Thing)this.parent, MessageTypeDefOf.NegativeEvent, true);
+            Messages.Message("MessageTransportersLoadCanceled_FuelingPortGiverDeSpawned".Translate(), this.parent, MessageTypeDefOf.NegativeEvent, true);
         }
 
         public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel, float costPerTile)
