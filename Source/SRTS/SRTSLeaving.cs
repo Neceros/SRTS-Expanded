@@ -75,12 +75,12 @@ namespace SRTS
                 base.LeaveMap();
             else if (this.groupID < 0)
             {
-                Log.Error("Drop pod left the map, but its group ID is " + (object) this.groupID, false);
+                Log.Error("Drop pod left the map, but its group ID is " + (object) this.groupID);
                 this.Destroy(DestroyMode.Vanish);
             }
             else if (this.destinationTile < 0)
             {
-                Log.Error("Drop pod left the map, but its destination tile is " + (object) this.destinationTile, false);
+                Log.Error("Drop pod left the map, but its destination tile is " + (object) this.destinationTile);
                 this.Destroy(DestroyMode.Vanish);
             }
             else
