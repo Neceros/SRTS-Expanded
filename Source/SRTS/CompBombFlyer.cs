@@ -176,7 +176,7 @@ namespace SRTS
         {
             if (!this.parent.Spawned)
             {
-                Log.Error("Tried to launch " + this.parent + ", but it's unspawned.", false);
+                Log.Error("Tried to launch " + this.parent + ", but it's unspawned.");
                 return;
             }
 

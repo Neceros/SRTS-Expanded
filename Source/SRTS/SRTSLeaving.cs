@@ -75,12 +75,12 @@ namespace SRTS
                 base.LeaveMap();
             else if (this.groupID < 0)
             {
-                Log.Error("Drop pod left the map, but its group ID is " + (object) this.groupID, false);
+                Log.Error("Drop pod left the map, but its group ID is " + (object) this.groupID);
                 this.Destroy(DestroyMode.Vanish);
             }
             else if (this.destinationTile < 0)
             {
-                Log.Error("Drop pod left the map, but its destination tile is " + (object) this.destinationTile, false);
+                Log.Error("Drop pod left the map, but its destination tile is " + (object) this.destinationTile);
                 this.Destroy(DestroyMode.Vanish);
             }
             else
@@ -112,7 +112,7 @@ namespace SRTS
             }
         }
 
-        /*public override void Tick()
+        public override void Tick()
         {
             innerContainer.ThingOwnerTick(true);
             takeoffTicks++;
@@ -135,9 +135,9 @@ namespace SRTS
             }
             else
             {
-                MoteMaker.MakeStaticMote()
+                FleckMaker.Static(originalDrawPos, Map, FleckDefOf.FireGlow, 5f); //Really not sure what mote you want here but :) - Jelly
             }
-        }*/
+        }
 
         private const int TakeoffCountTicks = 300;
 
