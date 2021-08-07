@@ -43,11 +43,11 @@ namespace SRTS
         {
             for (int i = 0; i < 6; i++)
             {
-                Vector3 loc = base.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(1f);
-                //MoteMaker.ThrowDustPuff(loc, base.Map, 1.2f);
+                Vector3 loc = Position.ToVector3Shifted() + Gen.RandomHorizontalVector(1f);
+                FleckMaker.ThrowDustPuff(loc, base.Map, 1.2f);
             }
             
-            //MoteMaker.ThrowLightningGlow(base.Position.ToVector3Shifted(), base.Map, 2f);
+            FleckMaker.ThrowLightningGlow(Position.ToVector3Shifted(), Map, 2f);
             GenClamor.DoClamor(this, 15f, ClamorDefOf.Impact);
             base.Impact();
         }
