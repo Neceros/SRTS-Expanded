@@ -1,5 +1,3 @@
-*Please note there will be no further updates or changes to the 1.0 code.* **Future updates will only apply to 1.1!**
-
 ### Please join our discord 
 Report bugs and weird things: https://discordapp.com/invite/AvV7DT5
 
