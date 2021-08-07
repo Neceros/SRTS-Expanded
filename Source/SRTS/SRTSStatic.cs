@@ -125,10 +125,10 @@ namespace SRTS
     public static void SRTSDestroy(Thing thing, DestroyMode mode = DestroyMode.Vanish)
     {
       if (!Thing.allowDestroyNonDestroyable && !thing.def.destroyable)
-        Log.Error("Tried to destroy non-destroyable thing " + (object) thing, false);
+        Log.Error("Tried to destroy non-destroyable thing " + (object) thing);
       else if (thing.Destroyed)
       {
-        Log.Error("Tried to destroy already-destroyed thing " + (object) thing, false);
+        Log.Error("Tried to destroy already-destroyed thing " + (object) thing);
       }
       else
       {

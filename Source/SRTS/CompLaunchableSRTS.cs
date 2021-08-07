@@ -484,7 +484,7 @@ namespace SRTS
 	    {
 	          if (cafr == null && !this.parent.Spawned)
 	          {
-		            Log.Error("Tried to launch " + (object) this.parent + ", but it's unspawned.", false);
+		            Log.Error("Tried to launch " + (object) this.parent + ", but it's unspawned.");
 	          }
 	          else
 	          {
