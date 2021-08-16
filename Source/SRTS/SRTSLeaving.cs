@@ -121,7 +121,7 @@ namespace SRTS
                 initiatingTakeoff = true;
                 originalDrawPos = SkyfallerDrawPosUtilityExtended.DrawPos_TakeoffUpward(originalDrawPos, TakeoffCountTicks);
             }
-            if(initiatingTakeoff)
+            if (initiatingTakeoff)
             {
                 ticksToImpact++;
 
@@ -132,10 +132,6 @@ namespace SRTS
                 }
                 if (ticksToImpact == 220)
                     LeaveMap();
-            }
-            else
-            {
-                FleckMaker.Static(originalDrawPos, Map, FleckDefOf.FireGlow, 5f); //Really not sure what mote you want here but :) - Jelly
             }
         }
 
