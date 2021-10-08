@@ -119,12 +119,24 @@ namespace SRTS
 
         public override void Tick()
         {
-            this.innerContainer.ThingOwnerTick(true);
-            this.ticksToExit--;
-            if(bombCells.Any() && Math.Abs(this.DrawPosCell.x - bombCells.First().x) < 3 && Math.Abs(this.DrawPosCell.z - bombCells.First().z) < 3)
-                this.DropBomb();
-            if (this.ticksToExit == 0)
-                this.ExitMap();
+			try
+			{
+                this.innerContainer.ThingOwnerTick(true);
+                this.ticksToExit--;
+                if (bombCells.Any() && Math.Abs(this.DrawPosCell.x - bombCells.First().x) < 3 && Math.Abs(this.DrawPosCell.z - bombCells.First().z) < 3)
+                {
+                    this.DropBomb();
+                }
+                if (this.ticksToExit == 0)
+                {
+                    this.ExitMap();
+                }
+            }
+            catch (Exception ex)
+			{
+                Log.Error($"Exception thrown while ticking {this}. Immediately sending to world to avoid loss of contents. Ex=\"{ex.Message}\"");
+                ExitMap();
+			}
         }
 
         private void DropBomb()
