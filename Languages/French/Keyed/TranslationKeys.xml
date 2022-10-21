@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Labels and Titles -->
+  <SRTSExpanded>SRTS Expanded</SRTSExpanded>
+  <SRTSDef>SRTS Def</SRTSDef>
+
+  <!-- Settings -->
+  <ResetDefault>réinitialiser</ResetDefault>
+  <ResetDefaultTooltip>Rétablir les valeurs par défaut</ResetDefaultTooltip>
+  <ResetThisSRTS>Réinitialiser ce vaisseau</ResetThisSRTS>
+  <ResetAll>Tout réinitialiser</ResetAll>
+
+  <DefaultValues>Valeurs par défaut</DefaultValues>
+  <CustomValues>Valeurs modifiées</CustomValues>
+
+  <MainSettings>Réglages principaux</MainSettings>
+
+  <PassengerLimit>Nombre de passagers：</PassengerLimit>
+  <PassengerLimitTooltip>Définissez le nombre de passagers minimum et maximum autorisé par SRTS</PassengerLimitTooltip>
+  <DisplayHomeItems>Afficher tous les éléments de la liste:</DisplayHomeItems>
+  <DisplayHomeItemsTooltip>Affiche tous les éléments de la carte, pas seulement la zone de la colonie, lors du chargement dans SRTS.</DisplayHomeItemsTooltip>
+  <DefSettings>Statut</DefSettings>
+  <DynamicWorldObjectSRTS>Dessin de carte du monde dynamique：</DynamicWorldObjectSRTS>
+  <DynamicWorldObjectSRTSTooltip>Faites pivoter l'image SRTS pour dessiner dynamiquement la texture SRTS afin que la direction du déplacement corresponde à l'image affichée sur la carte du monde.</DynamicWorldObjectSRTSTooltip>
+  <ExpandBombPoints>Expansion des cibles de bombardement：</ExpandBombPoints>
+  <ExpandBombPointsTooltip>Déplacez le point de largage de la bombe le long de la ligne de vol à travers la ligne par rapport à la cible de bombardement.</ExpandBombPointsTooltip>
+  <AllowedBombs>Autorisé à charger des bombes (exécution de bombardements)</AllowedBombs>
+  <ChangeItemSRTS>Changer</ChangeItemSRTS>
+  <SearchExplosive>Bombe ajoutée</SearchExplosive>
+  <CurrentExplosives>Bombe actuelle</CurrentExplosives>
+  <SRTSBoardingOptions>Paramètres d'embarquement</SRTSBoardingOptions>
+  <AllowDownedSRTS>Autoriser les colons abattus</AllowDownedSRTS>
+  <AllowUnsecurePrisonerSRTS>Autoriser les prisonniers non retenus</AllowUnsecurePrisonerSRTS>
+  <AllowCapturablePawnSRTS>Autoriser les pions arrêtables</AllowCapturablePawnSRTS>
+
+  <SOS2Compatibility>Option SOS2</SOS2Compatibility>
+  <SpaceFaring>Voyage dans l'espace</SpaceFaring>
+  <ShuttleBayLanding>Atterrissage sur la baie des navettes</ShuttleBayLanding>
+  <NonSpaceFaringSRTS>{0} ne peut pas atteindre l'orbite</NonSpaceFaringSRTS>
+
+  <SRTSSettings>Paramètres SRTS</SRTSSettings>
+  <FlightSpeed>Vitesse de vol (sur la carte du monde)</FlightSpeed>
+  <Instant>Immédiat</Instant>
+  <FuelEfficiency>Coût du carburant:</FuelEfficiency>
+  <FuelEfficiencySymbol>Par case</FuelEfficiencySymbol>
+  <CargoCapacity>Capacité de chargement maximale:</CargoCapacity>
+  <MinPassengers>Nombre minimum de passagers:</MinPassengers>
+  <MaxPassengers>Nombre maximum de passagers:</MaxPassengers>
+  <SRTSResearch>Coût de la recherche:</SRTSResearch>
+  <SRTSResearchRequirements>Recherche préalable</SRTSResearchRequirements>
+
+  <BombSettings>Paramètres de bombardement</BombSettings>
+  <BombSpeed>Vitesse de vol (au moment du bombardement)</BombSpeed>
+  <RadiusDrop>Rayon de bombardement:</RadiusDrop>
+  <BombCountSRTS>Nombre de bombes:</BombCountSRTS>
+  <CarpetBombing>Bombardement de zone</CarpetBombing>
+  <PreciseBombing>Bombardement de précision</PreciseBombing>
+  <DistanceBetweenDrops>Intervalle de distance de chute</DistanceBetweenDrops>
+  <CellsEndValue>case</CellsEndValue>
+  <SingleDrop>un seul lancer</SingleDrop>
+
+  <ResearchSettings>Paramètre de recherche</ResearchSettings>
+  <ResearchDef>Research Def:\n{0}</ResearchDef>
+  <SearchResearch>Ajout de définitions de recherche</SearchResearch>
+  <AddItemSRTS>Ajouter à</AddItemSRTS>
+  <RemoveResearch>Effacer</RemoveResearch>
+  <RestartGameResearch>Redémarrage requis pour appliquer les paramètres de recherches modifiés</RestartGameResearch>
+
+  <!-- Float Menu -->
+  <BoardSRTS>Monter à bord {0}</BoardSRTS>
+  <JoinSRTSGroup>Ajouter au groupe d'embarquement SRTS</JoinSRTSGroup>
+
+  <!-- Messages -->
+  <SRTSNoPilot>Le vaisseau ne peut pas être lancé sans pilote.</SRTSNoPilot>
+  <NotEnoughPilots>Il n'y a pas assez de colons.</NotEnoughPilots>
+  <TooManyPilots>Trop de colons embarquent</TooManyPilots>
+  <BombRunStarted>Le bombardement a commencé.</BombRunStarted>
+  <CannotBombMap>Il est impossible de bombarder ici à moins que la carte ne soit chargée.</CannotBombMap>
+  <CommandAddFuelSRTS>Faire le plein de {0}</CommandAddFuelSRTS>
+  <CommandAddFuelDescSRTS>Faire le plein de SRTS à partir de l'inventaire</CommandAddFuelDescSRTS>
+  <AddFuelSRTSCaravan>{0} carburants ont ravitaillé le {1}.</AddFuelSRTSCaravan>
+  <NoFuelSRTSCaravan>Pas de carburant</NoFuelSRTSCaravan>
+
+  <!-- Caravans -->
+
+  <!-- Status and Compatibility-->
+  <CommandLaunchOrbit>Lancement en orbite</CommandLaunchOrbit>
+  <CommandLaunchOrbitDesc>Lancement vers un emplacement en orbite.</CommandLaunchOrbitDesc>
+
+  <!-- Gizmo -->
+  <BombTarget>Cible de bombardement</BombTarget>
+  <BombTargetDesc>Sélectionner la cible pour larguer la bombe sur une autre carte.</BombTargetDesc>
+
+</LanguageData>
