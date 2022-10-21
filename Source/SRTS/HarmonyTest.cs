@@ -5,7 +5,7 @@ using Verse;
 namespace SRTS
 {
     /* Akreedz original patch */
-    [HarmonyPatch(typeof (DropPodUtility), "MakeDropPodAt", new System.Type[] {typeof (IntVec3), typeof (Map), typeof (ActiveDropPodInfo)})]
+    [HarmonyPatch(typeof (DropPodUtility), "MakeDropPodAt")]
     public static class HarmonyTest
     {
         public static bool Prefix(IntVec3 c, Map map, ActiveDropPodInfo info)

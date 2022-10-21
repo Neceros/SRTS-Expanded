@@ -259,7 +259,7 @@ namespace SRTS
             {
                 ResearchProjectDef proj = projectsSearched[i];
                 Rect projectRect = new Rect(inRect.x, searchBarRect.y + 24 + (24*i), inRect.width, 30f);
-                if(Widgets.ButtonText(projectRect, proj.defName, false, false, true) && !SRTSMod.mod.props.ResearchPrerequisites.Contains(proj))
+                if (Widgets.ButtonText(projectRect, proj.defName, false, false, true) && !SRTSMod.mod.props.ResearchPrerequisites.Contains(proj))
                 {
                     addedResearch = true;
                     researchChanged = true;

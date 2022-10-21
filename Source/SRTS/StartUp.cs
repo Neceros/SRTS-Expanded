@@ -74,36 +74,37 @@ namespace SRTS
       harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "AddItemsToTransferables"), prefix: null, postfix: null,
           transpiler: new HarmonyMethod(typeof(StartUp),
           nameof(AddItemsEntireMapNonHomeTranspiler)));
+
       /*harmony.Patch(original: AccessTools.Method(type: typeof(Dialog_LoadTransporters), name: "CheckForErrors"), prefix: null, postfix: null,
           transpiler: new HarmonyMethod(type: typeof(StartUp),
           name: nameof(ErrorOnNoPawnsTranspiler)));*/
-      harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.CostApparent)).GetGetMethod(),
-          prefix: new HarmonyMethod(typeof(StartUp),
-          nameof(ResearchCostApparent)));
-      harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.IsFinished)).GetGetMethod(),
-          prefix: new HarmonyMethod(typeof(StartUp),
-          nameof(ResearchIsFinished)));
-      harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.ProgressPercent)).GetGetMethod(),
-          prefix: new HarmonyMethod(typeof(StartUp),
-          nameof(ResearchProgressPercent)));
-      harmony.Patch(original: AccessTools.Method(type: typeof(ResearchManager), name: nameof(ResearchManager.FinishProject)), prefix: null, postfix: null,
-          transpiler: new HarmonyMethod(typeof(StartUp),
-          nameof(ResearchFinishProjectTranspiler)));
-      harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawLeftRect"), prefix: null, postfix: null,
-          transpiler: new HarmonyMethod(typeof(StartUp),
-          nameof(ResearchTranslatedCostTranspiler)));
-      harmony.Patch(original: AccessTools.Method(type: typeof(ResearchManager), name: nameof(ResearchManager.DebugSetAllProjectsFinished)), prefix: null,
-          postfix: new HarmonyMethod(typeof(StartUp),
-          nameof(ResearchFinishAllSRTS)));
-      harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.PrerequisitesCompleted)).GetGetMethod(), prefix: null,
-          postfix: new HarmonyMethod(typeof(StartUp),
-          nameof(CustomPrerequisitesCompleted)));
+      //harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.CostApparent)).GetGetMethod(),
+      //    prefix: new HarmonyMethod(typeof(StartUp),
+      //    nameof(ResearchCostApparent)));
+      //harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.IsFinished)).GetGetMethod(),
+      //    prefix: new HarmonyMethod(typeof(StartUp),
+      //    nameof(ResearchIsFinished)));
+      //harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.ProgressPercent)).GetGetMethod(),
+      //    prefix: new HarmonyMethod(typeof(StartUp),
+      //    nameof(ResearchProgressPercent)));
+      //harmony.Patch(original: AccessTools.Method(type: typeof(ResearchManager), name: nameof(ResearchManager.FinishProject)), prefix: null, postfix: null,
+      //    transpiler: new HarmonyMethod(typeof(StartUp),
+      //    nameof(ResearchFinishProjectTranspiler)));
+      //harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawLeftRect"), prefix: null, postfix: null,
+      //    transpiler: new HarmonyMethod(typeof(StartUp),
+      //    nameof(ResearchTranslatedCostTranspiler)));
+      //harmony.Patch(original: AccessTools.Method(type: typeof(ResearchManager), name: nameof(ResearchManager.DebugSetAllProjectsFinished)), prefix: null,
+      //    postfix: new HarmonyMethod(typeof(StartUp),
+      //    nameof(ResearchFinishAllSRTS)));
+      //harmony.Patch(original: AccessTools.Property(type: typeof(ResearchProjectDef), name: nameof(ResearchProjectDef.PrerequisitesCompleted)).GetGetMethod(), prefix: null,
+      //    postfix: new HarmonyMethod(typeof(StartUp),
+      //    nameof(CustomPrerequisitesCompleted)));
       //harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawRightRect"), prefix: null, postfix: null,
       //    transpiler: new HarmonyMethod(typeof(StartUp),
       //    nameof(DrawCustomResearchTranspiler)));
-      harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawResearchPrereqs"), prefix: null,
-         postfix: new HarmonyMethod(typeof(StartUp),
-         nameof(DrawCustomResearchPrereqs)));
+      //harmony.Patch(original: AccessTools.Method(type: typeof(MainTabWindow_Research), name: "DrawResearchPrereqs"), prefix: null,
+      //   postfix: new HarmonyMethod(typeof(StartUp),
+      //   nameof(DrawCustomResearchPrereqs)));
       harmony.Patch(original: AccessTools.Method(type: typeof(Caravan), name: nameof(Caravan.GetGizmos)), prefix: null,
           postfix: new HarmonyMethod(typeof(StartUp),
           nameof(LaunchAndBombGizmosPassthrough)));

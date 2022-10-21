@@ -118,21 +118,29 @@ namespace SRTS
             }
             if(def.projectileWhenLoaded?.projectile != null)
             {
-                GenExplosion.DoExplosion(this.PositionHeld, map, explosionRadius, projectile.damageDef, this, projectile.GetDamageAmount(1), projectile.GetArmorPenetration(1), projectile.soundExplode, null, def.projectileWhenLoaded, null,
-                    projectile.postExplosionSpawnThingDef, projectile.postExplosionSpawnChance, projectile.postExplosionSpawnThingCount, projectile.applyDamageToExplosionCellsNeighbors, projectile.preExplosionSpawnThingDef,
-                    projectile.preExplosionSpawnChance, projectile.preExplosionSpawnThingCount, projectile.explosionChanceToStartFire, projectile.explosionDamageFalloff);
+                GenExplosion.DoExplosion(PositionHeld, map, explosionRadius, projectile.damageDef, this, damAmount: projectile.GetDamageAmount(1), armorPenetration: projectile.GetArmorPenetration(1), 
+                    explosionSound: projectile.soundExplode, projectile: def.projectileWhenLoaded, 
+                    postExplosionSpawnThingDef: projectile.postExplosionSpawnThingDef, postExplosionSpawnChance: projectile.postExplosionSpawnChance,
+                    postExplosionSpawnThingCount: projectile.postExplosionSpawnThingCount, applyDamageToExplosionCellsNeighbors: projectile.applyDamageToExplosionCellsNeighbors,
+                    preExplosionSpawnThingDef: projectile.preExplosionSpawnThingDef, preExplosionSpawnChance: projectile.preExplosionSpawnChance,
+                    preExplosionSpawnThingCount: projectile.preExplosionSpawnThingCount,
+                    chanceToStartFire: projectile.explosionChanceToStartFire, damageFalloff: projectile.explosionDamageFalloff);
             }
             else
             {
-                GenExplosion.DoExplosion(this.PositionHeld, map, explosionRadius, props.explosiveDamageType, this, props.damageAmountBase, props.armorPenetrationBase, props.explosionSound, null, null, null, props.postExplosionSpawnThingDef,
-                                props.postExplosionSpawnChance, props.postExplosionSpawnThingCount, props.applyDamageToExplosionCellsNeighbors, props.preExplosionSpawnThingDef, props.preExplosionSpawnChance, props.preExplosionSpawnThingCount, props.chanceToStartFire,
-                                props.damageFalloff);
+                GenExplosion.DoExplosion(PositionHeld, map, explosionRadius, props.explosiveDamageType, this, damAmount: props.damageAmountBase, armorPenetration: props.armorPenetrationBase,
+                    explosionSound: props.explosionSound,
+                    postExplosionSpawnThingDef: props.postExplosionSpawnThingDef, postExplosionSpawnChance: props.postExplosionSpawnChance,
+                    postExplosionSpawnThingCount: props.postExplosionSpawnThingCount, applyDamageToExplosionCellsNeighbors: props.applyDamageToExplosionCellsNeighbors,
+                    preExplosionSpawnThingDef: props.preExplosionSpawnThingDef, preExplosionSpawnChance: props.preExplosionSpawnChance,
+                    preExplosionSpawnThingCount: props.preExplosionSpawnThingCount,
+                    chanceToStartFire: props.chanceToStartFire, damageFalloff: props.damageFalloff);
             }
         }
 
         public static Vector3 DrawBombFalling(Vector3 center, int ticksToImpact, float angle, float speed)
         {
-            float dist = (float)ticksToImpact * speed;
+            float dist = ticksToImpact * speed;
             return center + Vector3Utility.FromAngleFlat(angle - 90f) * dist;
         }
 

@@ -139,9 +139,9 @@ namespace SRTS
             {
                 listing_Standard.ButtonText(string.Empty);
             }
-            else if(currentPage == SRTS.SettingsCategory.Stats || currentPage == SRTS.SettingsCategory.Research)
+            else if (currentPage == SRTS.SettingsCategory.Stats || currentPage == SRTS.SettingsCategory.Research)
             {
-                if(listing_Standard.ButtonText(currentKey))
+                if (listing_Standard.ButtonText(currentKey))
                 {
                     List<FloatMenuOption> options = new List<FloatMenuOption>();
                     foreach (string s in settings.defProperties.Keys)
@@ -161,7 +161,7 @@ namespace SRTS
                 FloatMenuOption op1 = new FloatMenuOption("MainSettings".Translate(), () => currentPage = SRTS.SettingsCategory.Settings, MenuOptionPriority.Default, null, null, 0f, null, null);
                 FloatMenuOption op2 = new FloatMenuOption("DefSettings".Translate(), () => currentPage = SRTS.SettingsCategory.Stats, MenuOptionPriority.Default, null, null, 0f, null, null);
                 FloatMenuOption op3 = new FloatMenuOption("ResearchSettings".Translate(), () => currentPage = SRTS.SettingsCategory.Research, MenuOptionPriority.Default, null, null, 0f, null, null);
-                Find.WindowStack.Add(new FloatMenu(new List<FloatMenuOption>() { op1, op2, op3}));
+                Find.WindowStack.Add(new FloatMenu(new List<FloatMenuOption>() { op1, op2 })); //Removed SettingsCategory.Research from float menu, removing all research related patches. DO NOT ADD BACK
             }
             listing_Standard.End();
 
@@ -262,14 +262,14 @@ namespace SRTS
                     listing_Standard.End();
                 }
             }
-            else if(currentPage == SRTS.SettingsCategory.Research)
+            else if (currentPage == SRTS.SettingsCategory.Research)
             {
                 listing_Standard.Begin(group2);
 
                 listing_Standard.Settings_Header("ResearchDef".Translate(props.RequiredResearch[0].LabelCap), DialogSettings.highlightColor);
 
                 int rPoints = (int)props.researchPoints;
-                listing_Standard.Settings_IntegerBox("SRTSResearch".Translate(), ref rPoints, 100f, 50f, 0, int.MaxValue);
+                //listing_Standard.Settings_IntegerBox("SRTSResearch".Translate(), ref rPoints, 100f, 50f, 0, int.MaxValue);
                 props.researchPoints = (float)rPoints;
 
                 listing_Standard.Gap(24f);
@@ -607,7 +607,7 @@ namespace SRTS
                     this.requiredResearch = new List<ResearchProjectDef>();
                     this.requiredResearch.AddRange(referencedDef.researchPrerequisites);
                 }
-                if(this.customResearchRequirements is null)
+                if (this.customResearchRequirements is null)
                     this.customResearchRequirements = new List<ResearchProjectDef>();
                 List<ResearchProjectDef> projects = new List<ResearchProjectDef>();
                 projects.AddRange(requiredResearch);
@@ -745,13 +745,13 @@ namespace SRTS
             Scribe_Values.Look(ref this.minPassengers, "minPassengers");
             Scribe_Values.Look(ref this.maxPassengers, "maxPassengers");
             Scribe_Values.Look(ref this.flightSpeed, "flightSpeed");
-            Scribe_Values.Look(ref this.researchPoints, "researchPoints");
+            //Scribe_Values.Look(ref this.researchPoints, "researchPoints");
             Scribe_Values.Look(ref this.fuelPerTile, "fuelPerTile");
 
             Scribe_Values.Look(ref this.spaceFaring, "spaceFaring");
             Scribe_Values.Look(ref this.shuttleBayLanding, "shuttleBayLanding");
 
-            Scribe_Collections.Look<string>(ref customResearchDefNames, "customResearchDefNames", LookMode.Value, new object[0]); ;
+            //Scribe_Collections.Look<string>(ref customResearchDefNames, "customResearchDefNames", LookMode.Value, new object[0]); ;
 
             Scribe_Values.Look(ref this.bombingCapable, "bombingCapable");
             Scribe_Values.Look(ref this.numberBombs, "numberBombs");
